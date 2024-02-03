@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KnockKnockApp.Views.ManagePlayers"
+             Title="ManagePlayers"
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
+             xmlns:models="clr-namespace:KnockKnockApp.Models">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0">
+
+                <FlexLayout x:Name="xEspecialidades"
+                BindableLayout.ItemsSource="{Binding GeneralDataInstance.Players}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand"
+                Wrap="Wrap">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,6"
+                            HeightRequest="20"
+                            HorizontalOptions="StartAndExpand">
+                                <Frame Padding="2"
+                                BackgroundColor="#f1f1f1"
+                                CornerRadius="5"
+                                HorizontalOptions="StartAndExpand">
+                                    <FlexLayout Direction="Row" BackgroundColor="Bisque" AlignItems="Center">
+                                        <Label Text="{Binding Name}"/>
+                                        <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference xEspecialidades}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
+                                    </FlexLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <FlexLayout Direction="Row" AlignItems="End">
+            <Entry 
+            Grid.Row="1"
+            Placeholder="Spielername eingeben"
+            x:Name="SpielerNameEntry"
+            Keyboard="Plain"
+            IsSpellCheckEnabled="False"
+            IsTextPredictionEnabled="False"
+            Text="{Binding SpielerNameEntryText}"/>
+
+            <Button
+            x:Name="SpielerHinzufügenBtn"
+            Text="Spieler"
+            SemanticProperties.Hint="Counts the number of times you click"
+            Command="{Binding AddPlayerCommand}"
+            HorizontalOptions="Center" />
+
+            <Button
+            x:Name="SeiteWechselnBtn"
+            Text="Seite"
+            SemanticProperties.Hint="Wechselt die Seite zu SelectGameMode"
+            Command="{Binding NavigateToSelectGameModeCommand}"
+            HorizontalOptions="Center" />
+
+        </FlexLayout>
+
+    </Grid>
+    
+</ContentPage>
