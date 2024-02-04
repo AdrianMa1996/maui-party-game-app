@@ -4,6 +4,7 @@ using KnockKnockApp.Models;
 using KnockKnockApp.Services;
 using KnockKnockApp.TemporaryData;
 using KnockKnockApp.Views;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,13 @@ namespace KnockKnockApp.ViewModels
 {
     public partial class ManagePlayersViewModel : ObservableObject
     {
-        private readonly GameplayView _gameplayView;
         private readonly IManagePlayersService _managePlayersService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ManagePlayersViewModel(GameplayView gameplayView, IManagePlayersService managePlayersService)
+        public ManagePlayersViewModel(IManagePlayersService managePlayersService, IServiceProvider serviceProvider)
         {
             _managePlayersService = managePlayersService;
-            _gameplayView = gameplayView;
+            _serviceProvider = serviceProvider;
         }
 
         [ObservableProperty]
@@ -49,7 +50,8 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void NavigateToSelectGameMode()
         {
-            _ = Application.Current.MainPage.Navigation.PushAsync(_gameplayView);
+            var gameplayView = _serviceProvider.GetService<GameplayView>();
+            _ = Application.Current.MainPage.Navigation.PushAsync(gameplayView);
         }
     }
 }

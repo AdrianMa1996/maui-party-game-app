@@ -101,7 +101,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Helpers\" />
 	  <Folder Include="Services\Transient\" />
 	  <Folder Include="Services\Singleton\" />
 	  <Folder Include="Views\ContentViews\" />

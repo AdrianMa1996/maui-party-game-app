@@ -16,14 +16,16 @@ namespace KnockKnockApp
             builder.Services.AddTransient<ITemporaryDataRepository, TemporaryDataRepository>();
             builder.Services.AddTransient<IManagePlayersService, ManagePlayersService>();
             builder.Services.AddTransient<IDeviceOrientationService, DeviceOrientationService>();
+            // Helpers
+            builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
-            builder.Services.AddSingleton<ManagePlayers>();
-            builder.Services.AddSingleton<GameplayView>();
-            builder.Services.AddSingleton<SelectGameModeView>();
-            builder.Services.AddSingleton<GameCardView>();
+            builder.Services.AddTransient<ManagePlayers>();
+            builder.Services.AddTransient<GameplayView>();
+            builder.Services.AddTransient<SelectGameModeView>();
+            builder.Services.AddTransient<GameCardView>();
             // ViewModels
-            builder.Services.AddSingleton<ManagePlayersViewModel>();
-            builder.Services.AddSingleton<GameplayViewModel>();
+            builder.Services.AddTransient<ManagePlayersViewModel>();
+            builder.Services.AddTransient<GameplayViewModel>();
 
             builder.ConfigureFonts(fonts =>
             {
