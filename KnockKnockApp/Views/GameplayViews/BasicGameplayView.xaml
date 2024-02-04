@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KnockKnockApp.Views.GameCardView"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
-             x:DataType="viewmodels:GameplayViewModel">
+             x:Class="KnockKnockApp.Views.GameplayViews.BasicGameplayView"
+             Title="BasicGameplayView"
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.GameplayViewModels">
     
     <Grid BackgroundColor="Aqua">
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
         <Label 
         BackgroundColor="Green"
         Grid.Row="0"
-        Text="Welcome to the GameCardView"
+        Text="Welcome to the Basic Gameplay View"
         VerticalOptions="Center" />
 
         <Button 
@@ -22,7 +22,7 @@
         Grid.Row="1"
         Text="Close"
         VerticalOptions="Center"
-        Command="{Binding ChangeCurrentView2Command}"/>
+        Command="{Binding NavigateToSelectGameModeCommand}"/>
     </Grid>
     
-</ContentView>
+</ContentPage>

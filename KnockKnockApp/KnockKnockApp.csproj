@@ -103,15 +103,10 @@
 	<ItemGroup>
 	  <Folder Include="Services\Transient\" />
 	  <Folder Include="Services\Singleton\" />
-	  <Folder Include="Views\ContentViews\" />
-	  <Folder Include="Views\ContentPages\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\GameCardView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\GameplayView.xaml">
+	  <MauiXaml Update="Views\GameplayViews\BasicGameplayView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ManagePlayers.xaml">

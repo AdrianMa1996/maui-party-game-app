@@ -2,13 +2,13 @@ using KnockKnockApp.ViewModels;
 
 namespace KnockKnockApp.Views;
 
-public partial class SelectGameModeView : ContentView
+public partial class SelectGameModeView : ContentPage
 {
-    private readonly GameplayViewModel _viewModel;
+    private readonly SelectGameModeViewModel _viewModel;
 
-    public SelectGameModeView(GameplayViewModel viewModel)
-    {
+    public SelectGameModeView(SelectGameModeViewModel viewModel)
+	{
         BindingContext = _viewModel = viewModel;
         InitializeComponent();
-    }
+	}
 }

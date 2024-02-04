@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.SelectGameModeView"
+             Title="SelectGameModeView"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
              xmlns:models="clr-namespace:KnockKnockApp.Models">
     <Grid>
@@ -17,7 +18,7 @@
                     <DataTemplate>
                         <FlexLayout>
                             <FlexLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.ChangeCurrentView1Command, Source={x:Reference GameModesList}}"/>
+                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}"/>
                             </FlexLayout.GestureRecognizers>
                             <HorizontalStackLayout Padding="30,0">
                                 <VerticalStackLayout>
@@ -46,5 +47,4 @@
         </FlexLayout>
 
     </Grid>
-    
-</ContentView>
+</ContentPage>

@@ -50,8 +50,8 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void NavigateToSelectGameMode()
         {
-            var gameplayView = _serviceProvider.GetService<GameplayView>();
-            _ = Application.Current.MainPage.Navigation.PushAsync(gameplayView);
+            var selectGameModeView = _serviceProvider.GetService<SelectGameModeView>();
+            _ = Application.Current.MainPage.Navigation.PushAsync(selectGameModeView);
         }
     }
 }

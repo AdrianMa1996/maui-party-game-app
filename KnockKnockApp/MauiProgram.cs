@@ -1,7 +1,9 @@
 ﻿using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using KnockKnockApp.ViewModels;
+using KnockKnockApp.ViewModels.GameplayViewModels;
 using KnockKnockApp.Views;
+using KnockKnockApp.Views.GameplayViews;
 using Microsoft.Extensions.Logging;
 
 namespace KnockKnockApp
@@ -20,12 +22,12 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
             builder.Services.AddTransient<ManagePlayers>();
-            builder.Services.AddTransient<GameplayView>();
             builder.Services.AddTransient<SelectGameModeView>();
-            builder.Services.AddTransient<GameCardView>();
+            builder.Services.AddTransient<BasicGameplayView>();
             // ViewModels
             builder.Services.AddTransient<ManagePlayersViewModel>();
-            builder.Services.AddTransient<GameplayViewModel>();
+            builder.Services.AddTransient<SelectGameModeViewModel>();
+            builder.Services.AddTransient<BasicGameplayViewModel>();
 
             builder.ConfigureFonts(fonts =>
             {
