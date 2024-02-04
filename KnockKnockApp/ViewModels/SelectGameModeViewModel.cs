@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Services;
 using KnockKnockApp.TemporaryData;
-using KnockKnockApp.Views;
 using KnockKnockApp.Views.GameplayViews;
 
 namespace KnockKnockApp.ViewModels
