@@ -16,7 +16,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [RelayCommand]
         public void NavigateToSelectGameMode()
         {
-            _ = Application.Current.MainPage.Navigation.PopAsync(false);
+            Shell.Current.GoToAsync("..", false);
             _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
         }
     }

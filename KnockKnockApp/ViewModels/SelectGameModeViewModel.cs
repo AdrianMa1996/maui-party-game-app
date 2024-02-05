@@ -8,12 +8,10 @@ namespace KnockKnockApp.ViewModels
 {
     public partial class SelectGameModeViewModel : ObservableObject
     {
-        private readonly IServiceProvider _serviceProvider;
         private readonly IDeviceOrientationService _deviceOrientationService;
 
-        public SelectGameModeViewModel(IServiceProvider serviceProvider, IDeviceOrientationService deviceOrientationService)
+        public SelectGameModeViewModel(IDeviceOrientationService deviceOrientationService)
         {
-            _serviceProvider = serviceProvider;
             _deviceOrientationService = deviceOrientationService;
         }
 
@@ -23,14 +21,13 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void NavigateToManagePlayers()
         {
-            _ = Application.Current.MainPage.Navigation.PopAsync();
+            Shell.Current.GoToAsync("..", true);
         }
 
         [RelayCommand]
         public void NavigateToGameplay()
         {
-            var basicGameplayView = _serviceProvider.GetService<BasicGameplayView>();
-            _ = Application.Current.MainPage.Navigation.PushAsync(basicGameplayView, false);
+            AppShell.Current.GoToAsync("BasicGameplayView", false);
             _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Landscape);
         }
     }

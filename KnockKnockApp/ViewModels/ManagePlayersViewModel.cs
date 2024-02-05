@@ -10,12 +10,10 @@ namespace KnockKnockApp.ViewModels
     public partial class ManagePlayersViewModel : ObservableObject
     {
         private readonly IManagePlayersService _managePlayersService;
-        private readonly IServiceProvider _serviceProvider;
 
-        public ManagePlayersViewModel(IManagePlayersService managePlayersService, IServiceProvider serviceProvider)
+        public ManagePlayersViewModel(IManagePlayersService managePlayersService)
         {
             _managePlayersService = managePlayersService;
-            _serviceProvider = serviceProvider;
         }
 
         [ObservableProperty]
@@ -44,8 +42,7 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void NavigateToSelectGameMode()
         {
-            var selectGameModeView = _serviceProvider.GetService<SelectGameModeView>();
-            _ = Application.Current.MainPage.Navigation.PushAsync(selectGameModeView);
+            AppShell.Current.GoToAsync("SelectGameModeView", true);
         }
     }
 }
