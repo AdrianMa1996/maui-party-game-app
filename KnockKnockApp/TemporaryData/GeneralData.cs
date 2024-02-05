@@ -58,8 +58,8 @@ namespace KnockKnockApp.TemporaryData
 
         public ObservableCollection<GameMode> _gameModes = new ObservableCollection<GameMode>
         {
-            new GameMode() { GameModeID = 1, Title = "GameModeTitle1", Image = "GameModeTitle1", DescriptionText = "Beispielbeschreibung", IsPrime = false },
-            new GameMode() { GameModeID = 1, Title = "GameModeTitle1", Image = "GameModeTitle1", DescriptionText = "Beispielbeschreibung", IsPrime = false }
+            new GameMode() { GameModeID = 1, Title = "GameModeTitle1", Image = "GameModeTitle1", DescriptionText = "Beispielbeschreibung1", IsPrime = false },
+            new GameMode() { GameModeID = 2, Title = "GameModeTitle2", Image = "GameModeTitle2", DescriptionText = "Beispielbeschreibung2", IsPrime = false }
         };
 
         public ObservableCollection<GameMode> GameModes

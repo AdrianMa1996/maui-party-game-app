@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.ManagePlayers"
              Title="ManagePlayers"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
-             xmlns:models="clr-namespace:KnockKnockApp.Models">
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +16,7 @@
             Spacing="25"
             Padding="30,0">
 
-                <FlexLayout x:Name="xEspecialidades"
+                <FlexLayout x:Name="ListPlayers"
                 BindableLayout.ItemsSource="{Binding GeneralDataInstance.Players}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="StartAndExpand"
@@ -33,7 +32,7 @@
                                 HorizontalOptions="StartAndExpand">
                                     <FlexLayout Direction="Row" BackgroundColor="Bisque" AlignItems="Center">
                                         <Label Text="{Binding Name}"/>
-                                        <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference xEspecialidades}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
+                                        <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
                                     </FlexLayout>
                                 </Frame>
                             </Grid>

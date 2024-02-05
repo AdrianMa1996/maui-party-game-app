@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.SelectGameModeView"
              Title="SelectGameModeView"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
-             xmlns:models="clr-namespace:KnockKnockApp.Models">
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -25,8 +24,8 @@
                                     <Image Source="dotnet_bot.svg" WidthRequest="100" HeightRequest="100"/>
                                 </VerticalStackLayout>
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding Name}"/>
-                                    <Label>Beschreibung</Label>
+                                    <Label Text="{Binding Title}"/>
+                                    <Label Text="{Binding DescriptionText}"/>
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
                         </FlexLayout>
