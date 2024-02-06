@@ -36,14 +36,17 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void NavigateToManagePlayers()
         {
-            var writeTimeApplication = File.GetLastWriteTime(FileSystem.Current.AppDataDirectory); // muss wieder weg
             Shell.Current.GoToAsync("..", true);
         }
 
         [RelayCommand]
-        public void NavigateToGameplay()
+        public void NavigateToGameplay(GameMode gameMode)
         {
-            AppShell.Current.GoToAsync("BasicGameplayView", false);
+            var navParam = new Dictionary<string, object>
+            {
+                { "GameMode", gameMode }
+            };
+            AppShell.Current.GoToAsync("BasicGameplayView", false, navParam);
             _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Landscape);
         }
     }

@@ -14,7 +14,7 @@
         <Label 
         BackgroundColor="Green"
         Grid.Row="0"
-        Text="Welcome to the Basic Gameplay View"
+        Text="{Binding CurrentGameMod.Title}"
         VerticalOptions="Center" />
 
         <Button 

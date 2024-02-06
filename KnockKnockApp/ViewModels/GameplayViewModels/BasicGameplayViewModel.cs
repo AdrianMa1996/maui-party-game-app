@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using KnockKnockApp.Models.Database;
 using KnockKnockApp.Services;
 
 namespace KnockKnockApp.ViewModels.GameplayViewModels
 {
+    [QueryProperty(nameof(CurrentGameMod), "GameMode")]
     public partial class BasicGameplayViewModel : ObservableObject
     {
         private readonly IDeviceOrientationService _deviceOrientationService;
@@ -12,6 +14,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         {
             _deviceOrientationService = deviceOrientationService;
         }
+
+        [ObservableProperty]
+        private GameMode currentGameMod = new GameMode();
 
         [RelayCommand]
         public void NavigateToSelectGameMode()

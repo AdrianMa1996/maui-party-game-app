@@ -17,7 +17,7 @@
                     <DataTemplate>
                         <FlexLayout>
                             <FlexLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}"/>
+                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}"/>
                             </FlexLayout.GestureRecognizers>
                             <HorizontalStackLayout Padding="30,0">
                                 <VerticalStackLayout>
