@@ -14,19 +14,23 @@ namespace KnockKnockApp
         {
             var builder = MauiApp.CreateBuilder();
             builder.UseMauiApp<App>();
+
+            UpdateLocalDatabaseIfOutdated();
+
             // Services
-            builder.Services.AddTransient<ITemporaryDataRepository, TemporaryDataRepository>();
-            builder.Services.AddTransient<IManagePlayersService, ManagePlayersService>();
-            builder.Services.AddTransient<IDeviceOrientationService, DeviceOrientationService>();
+            builder.Services.AddSingleton<ITemporaryDataRepository, TemporaryDataRepository>();
+            builder.Services.AddSingleton<IManagePlayersService, ManagePlayersService>();
+            builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
+            builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
             // Helpers
             builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
-            builder.Services.AddTransient<ManagePlayers>();
-            builder.Services.AddTransient<SelectGameModeView>();
+            builder.Services.AddSingleton<ManagePlayers>();
+            builder.Services.AddSingleton<SelectGameModeView>();
             builder.Services.AddTransient<BasicGameplayView>();
             // ViewModels
-            builder.Services.AddTransient<ManagePlayersViewModel>();
-            builder.Services.AddTransient<SelectGameModeViewModel>();
+            builder.Services.AddSingleton<ManagePlayersViewModel>();
+            builder.Services.AddSingleton<SelectGameModeViewModel>();
             builder.Services.AddTransient<BasicGameplayViewModel>();
 
             builder.ConfigureFonts(fonts =>
@@ -40,6 +44,25 @@ namespace KnockKnockApp
 #endif
 
             return builder.Build();
+        }
+
+        private static void UpdateLocalDatabaseIfOutdated()
+        {
+            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.sqlite");
+
+            var lastWriteTimeAppDataDir = File.GetLastWriteTime(FileSystem.Current.AppDataDirectory);
+            var lastWriteTimeLocalDb = File.GetLastWriteTime(dbPath);
+
+            if (lastWriteTimeAppDataDir >= lastWriteTimeLocalDb)
+            {
+                using var databaseFileStream = FileSystem.OpenAppPackageFileAsync("database.sqlite").Result;
+
+                using (MemoryStream databaseMemoryStream = new MemoryStream())
+                {
+                    databaseFileStream.CopyTo(databaseMemoryStream);
+                    File.WriteAllBytes(dbPath, databaseMemoryStream.ToArray());
+                }
+            }
         }
     }
 }

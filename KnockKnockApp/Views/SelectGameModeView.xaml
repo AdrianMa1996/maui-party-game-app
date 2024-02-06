@@ -12,7 +12,7 @@
 
         <ScrollView Grid.Row="0">
 
-            <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GeneralDataInstance.GameModes}" Spacing="30" Padding="0,30">
+            <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="30" Padding="0,30">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <FlexLayout>

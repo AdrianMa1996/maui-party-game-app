@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Services;
 using KnockKnockApp.TemporaryData;
-using KnockKnockApp.Views;
 
 namespace KnockKnockApp.ViewModels
 {

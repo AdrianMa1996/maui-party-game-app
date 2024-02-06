@@ -53,27 +53,5 @@ namespace KnockKnockApp.TemporaryData
                 OnPropertyChanged(nameof(Players));
             }
         }
-
-        // Ab hier: Zum Testen, kommt später in die Datenbank
-
-        public ObservableCollection<GameMode> _gameModes = new ObservableCollection<GameMode>
-        {
-            new GameMode() { GameModeID = 1, Title = "GameModeTitle1", Image = "GameModeTitle1", DescriptionText = "Beispielbeschreibung1", IsPrime = false },
-            new GameMode() { GameModeID = 2, Title = "GameModeTitle2", Image = "GameModeTitle2", DescriptionText = "Beispielbeschreibung2", IsPrime = false }
-        };
-
-        public ObservableCollection<GameMode> GameModes
-        {
-            get => _gameModes;
-            set
-            {
-                if (value == _gameModes)
-                {
-                    return;
-                }
-                _gameModes = value;
-                OnPropertyChanged(nameof(GameModes));
-            }
-        }
     }
 }
