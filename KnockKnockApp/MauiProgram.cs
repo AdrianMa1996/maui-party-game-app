@@ -22,16 +22,19 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<IManagePlayersService, ManagePlayersService>();
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
+            builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();
             // Helpers
             builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
             builder.Services.AddSingleton<ManagePlayers>();
             builder.Services.AddSingleton<SelectGameModeView>();
             builder.Services.AddTransient<BasicGameplayView>();
+            builder.Services.AddTransient<GameModeSettingsView>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddSingleton<SelectGameModeViewModel>();
             builder.Services.AddTransient<BasicGameplayViewModel>();
+            builder.Services.AddTransient<GameModeSettingsViewModel>();
 
             builder.ConfigureFonts(fonts =>
             {
@@ -53,7 +56,7 @@ namespace KnockKnockApp
             var lastWriteTimeAppDataDir = File.GetLastWriteTime(FileSystem.Current.AppDataDirectory);
             var lastWriteTimeLocalDb = File.GetLastWriteTime(dbPath);
 
-            if (lastWriteTimeAppDataDir >= lastWriteTimeLocalDb)
+            if (lastWriteTimeAppDataDir > lastWriteTimeLocalDb)
             {
                 using var databaseFileStream = FileSystem.OpenAppPackageFileAsync("database.sqlite").Result;
 

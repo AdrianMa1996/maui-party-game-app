@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KnockKnockApp.Views.GameModeSettingsView"
+             Title="GameModeSettingsView"
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0">
+
+            <VerticalStackLayout x:Name="CardSetList" BindableLayout.ItemsSource="{Binding GameModeAndCardSetBindingCollection}" Spacing="30" Padding="0,30">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid  BackgroundColor="Coral">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="dotnet_bot.svg" WidthRequest="100" HeightRequest="100"/>
+                            <Label Grid.Column="1" TextColor="DarkBlue" Text="{Binding Title}"/>
+                            <CheckBox Grid.Column="2"  IsChecked="{Binding IsActivated}"/>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <FlexLayout Grid.Row="1" BackgroundColor="Gray" JustifyContent="Center">
+            <FlexLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeCommand}"/>
+            </FlexLayout.GestureRecognizers>
+            <HorizontalStackLayout Padding="0,15,0,15">
+                <Label Margin="0,0,2,0" Text="{Binding CurrentGameMode.Title}"/>
+                <Label Margin="0,0,0,0">- Einstellungen verlassen</Label>
+            </HorizontalStackLayout>
+        </FlexLayout>
+
+    </Grid>
+</ContentPage>

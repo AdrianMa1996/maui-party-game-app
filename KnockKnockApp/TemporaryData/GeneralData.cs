@@ -1,5 +1,4 @@
 ﻿using KnockKnockApp.Models;
-using KnockKnockApp.Models.Database;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

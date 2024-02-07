@@ -34,12 +34,6 @@ namespace KnockKnockApp.ViewModels
         }
 
         [RelayCommand]
-        public void NavigateToManagePlayers()
-        {
-            Shell.Current.GoToAsync("..", true);
-        }
-
-        [RelayCommand]
         public void NavigateToGameplay(GameMode gameMode)
         {
             var navParam = new Dictionary<string, object>
@@ -48,6 +42,22 @@ namespace KnockKnockApp.ViewModels
             };
             AppShell.Current.GoToAsync("BasicGameplayView", false, navParam);
             _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Landscape);
+        }
+
+        [RelayCommand]
+        public void NavigateToGameModeSettings(GameMode gameMode)
+        {
+            var navParam = new Dictionary<string, object>
+            {
+                { "GameMode", gameMode }
+            };
+            AppShell.Current.GoToAsync("GameModeSettingsView", true, navParam);
+        }
+
+        [RelayCommand]
+        public void NavigateToManagePlayers()
+        {
+            Shell.Current.GoToAsync("..", true);
         }
     }
 }

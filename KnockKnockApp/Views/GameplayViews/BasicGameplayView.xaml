@@ -14,7 +14,7 @@
         <Label 
         BackgroundColor="Green"
         Grid.Row="0"
-        Text="{Binding CurrentGameMod.Title}"
+        Text="{Binding CurrentGameMode.Title}"
         VerticalOptions="Center" />
 
         <Button 

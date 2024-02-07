@@ -10,6 +10,7 @@ namespace KnockKnockApp
             InitializeComponent();
             Routing.RegisterRoute("SelectGameModeView", typeof(SelectGameModeView));
             Routing.RegisterRoute("SelectGameModeView/BasicGameplayView", typeof(BasicGameplayView));
+            Routing.RegisterRoute("SelectGameModeView/GameModeSettingsView", typeof(GameModeSettingsView));
         }
     }
 }
