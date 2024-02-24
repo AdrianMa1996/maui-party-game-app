@@ -13,18 +13,4 @@ namespace KnockKnockApp.Models.Database
         public bool IsActivated { get; set; }
         public int CardSetOccurrence { get; set; }
     }
-
-    public enum OccurrenceFrequency
-    {
-        VeryLow,
-        Low,
-        Minor,
-        ModeratelyLow,
-        Medium,
-        ModeratelyHigh,
-        High,
-        VeryHigh,
-        ExtremelyHigh,
-        Maximum
-    }
 }

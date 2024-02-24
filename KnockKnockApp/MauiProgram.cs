@@ -1,4 +1,5 @@
-﻿using KnockKnockApp.Repositories;
+﻿using KnockKnockApp.Mapper;
+using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using KnockKnockApp.ViewModels;
 using KnockKnockApp.ViewModels.GameplayViewModels;
@@ -23,6 +24,12 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
             builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();
+            builder.Services.AddTransient<ICardManagementService, CardManagementService>();
+
+            builder.Services.AddSingleton<IGameCardMapper, GameCardMapper>();
+            builder.Services.AddSingleton<IGameModeMapper, GameModeMapper>();
+            builder.Services.AddSingleton<ICardSetRepository, CardSetRepository>();
+            builder.Services.AddSingleton<IGameCardRepository, GameCardRepository>();
             // Helpers
             builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
