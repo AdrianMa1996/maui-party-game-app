@@ -28,6 +28,17 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <!-- BackgroundColors of GameCards -->
+
+    <Color x:Key="Basic">#512BD4</Color>
+    <Color x:Key="Information">#ac99ea</Color>
+    <Color x:Key="Game">#242424</Color>
+    <Color x:Key="Dare">#DFD8F7</Color>
+    <Color x:Key="Duel">#9880e5</Color>
+    <Color x:Key="Rule">#2B0B98</Color>
+    <Color x:Key="Curse">#9880e5</Color>
+    <Color x:Key="Powerup">#2B0B98</Color>
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

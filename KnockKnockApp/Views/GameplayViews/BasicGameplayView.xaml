@@ -3,16 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.BasicGameplayView"
              Title="BasicGameplayView"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.GameplayViewModels">
-    
-    <Grid BackgroundColor="Aqua">
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.GameplayViewModels"
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters">
+    <ContentPage.Resources>
+        <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label 
-        BackgroundColor="Green"
+        <Label
         Grid.Row="0"
         Text="{Binding CurrentCard.GameCardDetails.CardText}"
         VerticalOptions="Center" />
