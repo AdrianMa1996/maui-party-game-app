@@ -9,30 +9,20 @@
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label
-        Grid.Row="0"
-        Text="{Binding CurrentCard.GameCardDetails.CardText}"
-        VerticalOptions="Center" />
-
-        <Button 
-        BackgroundColor="Blue"
-        Grid.Row="0"
-        Text="Next Card"
-        VerticalOptions="End"
-        Command="{Binding DisplayNextCardAsyncCommand}"/>
-
-        <Button 
-        BackgroundColor="Red"
-        Grid.Row="1"
-        Text="Close"
-        VerticalOptions="Center"
-        Command="{Binding NavigateToSelectGameModeCommand}"/>
+        <FlexLayout Grid.Row="0" BackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" JustifyContent="SpaceBetween" Direction="Column">
+            <FlexLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding DisplayNextCardAsyncCommand}"/>
+            </FlexLayout.GestureRecognizers>
+            <Button BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding NavigateToSelectGameModeCommand}"/>
+            <Label Grid.Row="0" Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="Center" />
+            <Button BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End"/>
+        </FlexLayout>
     </Grid>
     
 </ContentPage>
