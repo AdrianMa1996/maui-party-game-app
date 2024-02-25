@@ -20,7 +20,10 @@
                 <TapGestureRecognizer Command="{Binding DisplayNextCardAsyncCommand}"/>
             </FlexLayout.GestureRecognizers>
             <Button BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding NavigateToSelectGameModeCommand}"/>
-            <Label Grid.Row="0" Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="Center" />
+            <VerticalStackLayout HorizontalOptions="Center">
+                <Label Text="{Binding CurrentCard.CardSetDetails.Title}" HorizontalOptions="Center" />
+                <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="Center" />
+            </VerticalStackLayout>
             <Button BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End"/>
         </FlexLayout>
     </Grid>
