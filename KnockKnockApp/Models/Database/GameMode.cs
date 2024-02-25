@@ -1,7 +1,10 @@
-﻿namespace KnockKnockApp.Models.Database
+﻿using SQLite;
+
+namespace KnockKnockApp.Models.Database
 {
     public class GameMode
     {
+        [PrimaryKey]
         public int GameModeID { get; set; }
         public string Title { get; set; }
         public string Image { get; set; }

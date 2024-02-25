@@ -1,7 +1,10 @@
-﻿namespace KnockKnockApp.Models.Database
+﻿using SQLite;
+
+namespace KnockKnockApp.Models.Database
 {
     public class CardSet
     {
+        [PrimaryKey]
         public int CardSetID { get; set; }
         public string Name { get; set; } // Wird im Code nicht benötigt, brauche ich aber zur Differenzierung zu anderen CardSets
         public string Title { get; set; }

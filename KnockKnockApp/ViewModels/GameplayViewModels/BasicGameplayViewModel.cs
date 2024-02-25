@@ -33,7 +33,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public async void DisplayNextCardAsync()
         {
             var nextCard = await _cardManagementService.DrawNextCardAsync();
-            if (CurrentCard == null)
+            if (nextCard == null)
             {
                 NavigateToSelectGameMode();
             }

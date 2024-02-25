@@ -1,7 +1,10 @@
-﻿namespace KnockKnockApp.Models.Database
+﻿using SQLite;
+
+namespace KnockKnockApp.Models.Database
 {
     public class GameCard
     {
+        [PrimaryKey]
         public int GameCardID { get; set; }
         public int CardSetID { get; set; }
         public string CardText { get; set; }
