@@ -17,7 +17,7 @@
             Padding="30,0">
 
                 <FlexLayout x:Name="ListPlayers"
-                BindableLayout.ItemsSource="{Binding GeneralDataInstance.Players}"
+                BindableLayout.ItemsSource="{Binding AllPlayers}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="StartAndExpand"
                 Wrap="Wrap">

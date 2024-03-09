@@ -2,21 +2,23 @@
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Services;
-using KnockKnockApp.TemporaryData;
+using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels
 {
     public partial class ManagePlayersViewModel : ObservableObject
     {
-        private readonly IManagePlayersService _managePlayersService;
+        private readonly IPlayerManagementService _playerManagementService;
 
-        public ManagePlayersViewModel(IManagePlayersService managePlayersService)
+        public ManagePlayersViewModel(IPlayerManagementService playerManagementService)
         {
-            _managePlayersService = managePlayersService;
+            _playerManagementService = playerManagementService;
+
+            AllPlayers = _playerManagementService.GetAllPlayers();
         }
 
         [ObservableProperty]
-        public GeneralData generalDataInstance = GeneralData.Instance;
+        public ObservableCollection<Player> allPlayers;
 
         [ObservableProperty]
         public string spielerNameEntryText = string.Empty;
@@ -25,7 +27,7 @@ namespace KnockKnockApp.ViewModels
         public void AddPlayer()
         {
             var playerName = SpielerNameEntryText;
-            _managePlayersService.AddPlayer(playerName);
+            _playerManagementService.AddPlayer(playerName);
             SpielerNameEntryText = string.Empty;
         }
 
@@ -34,8 +36,7 @@ namespace KnockKnockApp.ViewModels
         {
             var player = (Player)commandParameter;
             var playerId = player.Id;
-            _managePlayersService.RemovePlayer(playerId);
-
+            _playerManagementService.RemovePlayer(playerId);
         }
 
         [RelayCommand]

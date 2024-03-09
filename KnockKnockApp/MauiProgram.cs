@@ -19,8 +19,7 @@ namespace KnockKnockApp
             UpdateLocalDatabaseIfOutdated();
 
             // Services
-            builder.Services.AddSingleton<ITemporaryDataRepository, TemporaryDataRepository>();
-            builder.Services.AddSingleton<IManagePlayersService, ManagePlayersService>();
+            builder.Services.AddSingleton<IPlayerManagementService, PlayerManagementService>();
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
             builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();

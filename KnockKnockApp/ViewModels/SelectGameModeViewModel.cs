@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
-using KnockKnockApp.TemporaryData;
 using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels
@@ -12,11 +12,15 @@ namespace KnockKnockApp.ViewModels
     {
         private readonly IDeviceOrientationService _deviceOrientationService;
         private readonly IGameModeRepository _gameModeRepository;
+        private readonly IPlayerManagementService _playerManagementService;
 
-        public SelectGameModeViewModel(IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository)
+        public SelectGameModeViewModel(IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService)
         {
             _deviceOrientationService = deviceOrientationService;
             _gameModeRepository = gameModeRepository;
+            _playerManagementService = playerManagementService;
+
+            AllPlayers = _playerManagementService.GetAllPlayers();
 
             RefreshGameModeCollection();
         }
@@ -25,7 +29,7 @@ namespace KnockKnockApp.ViewModels
         public ObservableCollection<GameMode> gameModeCollection = new ObservableCollection<GameMode>();
 
         [ObservableProperty]
-        public GeneralData generalDataInstance = GeneralData.Instance;
+        public ObservableCollection<Player> allPlayers;
 
         [RelayCommand]
         public async void RefreshGameModeCollection()

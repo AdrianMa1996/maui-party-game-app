@@ -10,7 +10,7 @@ namespace KnockKnockApp.Services
         private readonly IGameModeMapper _gameModeMapper;
         private readonly IGameCardMapper _gameCardMapper;
         private readonly IGameCardRepository _gameCardRepository;
-        private readonly ITemporaryDataRepository _temporaryDataRepository;
+        private readonly IPlayerManagementService _playerManagementService;
 
         private Random _random = new Random();
 
@@ -18,12 +18,12 @@ namespace KnockKnockApp.Services
         private Stack<GameCard?> _cardDeck = new();
         private List<GameCard> _usedCards = [];
 
-        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, ITemporaryDataRepository temporaryDataRepository)
+        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService)
         {
             _gameModeMapper = gameModeMapper;
             _gameCardMapper = gameCardMapper;
             _gameCardRepository = gameCardRepository;
-            _temporaryDataRepository = temporaryDataRepository;
+            _playerManagementService = playerManagementService;
         }
 
         public async Task SetupAsync(GameMode gameMode)
@@ -107,7 +107,7 @@ namespace KnockKnockApp.Services
                 var cardSet = GetRandomActivatedCardSet();
                 int randomNumber = _random.Next(cardSet.GameCards.Count);
                 gameCard = cardSet.GameCards[randomNumber];
-                if (gameCard.RequiredPlayedCardCount <= _usedCards.Count && gameCard.RequiredPlayerCount <= _temporaryDataRepository.GetPlayers().Count && !_usedCards.Contains(gameCard))
+                if (gameCard.RequiredPlayedCardCount <= _usedCards.Count && gameCard.RequiredPlayerCount <= _playerManagementService.GetAllPlayers().Count && !_usedCards.Contains(gameCard))
                 {
                     isValidForPlay = true;
                 }

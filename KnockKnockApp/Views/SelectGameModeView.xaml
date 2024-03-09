@@ -48,7 +48,7 @@
                 <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
             </FlexLayout.GestureRecognizers>
             <HorizontalStackLayout Padding="0,15,0,15">
-                <Label Margin="0,0,2,0" Text="{Binding GeneralDataInstance.Players.Count, StringFormat=Now {0:c}!}"/>
+                <Label Margin="0,0,2,0" Text="{Binding AllPlayers.Count, StringFormat=Now {0:c}!}"/>
                 <Label Margin="0,0,0,0">Spieler</Label>
             </HorizontalStackLayout>
         </FlexLayout>
