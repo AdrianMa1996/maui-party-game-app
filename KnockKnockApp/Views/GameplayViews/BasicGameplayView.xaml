@@ -16,24 +16,4 @@
         GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
-
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-
-        <FlexLayout Grid.Row="0" BackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" JustifyContent="SpaceBetween" Direction="Column">
-            <FlexLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DisplayNextCardAsyncCommand}"/>
-            </FlexLayout.GestureRecognizers>
-            <Button BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding NavigateToSelectGameModeCommand}"/>
-            <VerticalStackLayout HorizontalOptions="Center">
-                <Label Text="{Binding CurrentCard.CardSetDetails.Title}" HorizontalOptions="Center" />
-                <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="Center" />
-            </VerticalStackLayout>
-            <Button BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End"/>
-        </FlexLayout>
-    </Grid>-->
-    
 </ContentPage>
