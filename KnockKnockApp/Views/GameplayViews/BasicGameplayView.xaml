@@ -11,7 +11,7 @@
     </ContentPage.Resources>
 
     <controls:BasicGamecardView 
-        GamecardTitle="Hallo123" 
+        GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 
         GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
         GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
