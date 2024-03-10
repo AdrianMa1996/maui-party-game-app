@@ -35,5 +35,25 @@ namespace KnockKnockApp.Services
             var playerToRemove = allPlayers.FirstOrDefault(p => p.Id == playerId);
             _ = allPlayers.Remove(playerToRemove);
         }
+
+        public ObservableCollection<Player> GetTeamOnePlayers()
+        {
+            return teamOnePlayers;
+        }
+
+        public void AddPlayerToTeamOne(Guid playerId)
+        {
+            return;
+        }
+
+        public ObservableCollection<Player> GetTeamTwoPlayers()
+        {
+            return teamTwoPlayers;
+        }
+
+        public ObservableCollection<Player> GetUnassignedPlayers()
+        {
+            return unassignedPlayers;
+        }
     }
 }

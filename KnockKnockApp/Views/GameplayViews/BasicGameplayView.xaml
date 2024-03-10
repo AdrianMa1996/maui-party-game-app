@@ -4,12 +4,20 @@
              x:Class="KnockKnockApp.Views.GameplayViews.BasicGameplayView"
              Title="BasicGameplayView"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.GameplayViewModels"
+             xmlns:controls="clr-namespace:KnockKnockApp.Views.GameplayViews"
              xmlns:converters="clr-namespace:KnockKnockApp.Converters">
     <ContentPage.Resources>
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
     </ContentPage.Resources>
 
-    <Grid>
+    <controls:BasicGamecardView 
+        GamecardTitle="Hallo123" 
+        GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
+        GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
+        GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
+        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
+
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -26,6 +34,6 @@
             </VerticalStackLayout>
             <Button BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End"/>
         </FlexLayout>
-    </Grid>
+    </Grid>-->
     
 </ContentPage>
