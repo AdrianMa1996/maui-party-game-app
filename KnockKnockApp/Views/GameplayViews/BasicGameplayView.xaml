@@ -8,12 +8,43 @@
              xmlns:converters="clr-namespace:KnockKnockApp.Converters">
     <ContentPage.Resources>
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
+
+        <controls:BasicGamecardView x:Key="BasicGamecardView"
+                        GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 
+                        GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
+                        GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
+                        GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
+                        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
+
     </ContentPage.Resources>
 
-    <controls:BasicGamecardView 
-        GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 
-        GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
-        GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
-        GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
-        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
+    <ContentView Content="{StaticResource BasicGamecardView}">
+        <ContentView.Triggers>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Basic">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Game">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Dare">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Duel">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Rule">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Curse">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Powerup">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+        </ContentView.Triggers>
+    </ContentView>
+
 </ContentPage>
