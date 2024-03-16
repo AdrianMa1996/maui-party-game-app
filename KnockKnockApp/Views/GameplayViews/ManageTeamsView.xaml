@@ -4,7 +4,7 @@
              x:Class="KnockKnockApp.Views.GameplayViews.ManageTeamsView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Das hier ist der Team-Manager"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

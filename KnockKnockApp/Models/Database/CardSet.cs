@@ -13,13 +13,23 @@ namespace KnockKnockApp.Models.Database
 
     public enum CardSetCategory
     {
-        Basic,
         Information,
+        Basic,
         Game,
         Dare,
         Duel,
         Rule,
         Curse,
-        Powerup
+        Powerup,
+        ManageTeams,
+        PunishmentGame,
+        TeamBasic,
+        TeamGame,
+        TeamDare,
+        TeamDuel,
+        TeamVerräterOderSolidarisch,
+        Teamvergleich,
+        TeamStimmtEureGeigen,
+        TeamChampion
     }
 }

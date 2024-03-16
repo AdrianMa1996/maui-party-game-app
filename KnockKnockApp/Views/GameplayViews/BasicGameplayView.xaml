@@ -16,14 +16,16 @@
                         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
 
+        <controls:ManageTeamsView x:Key="ManageTeamsView" />
+
     </ContentPage.Resources>
 
     <ContentView Content="{StaticResource BasicGamecardView}">
         <ContentView.Triggers>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Basic">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Basic">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Game">
@@ -43,6 +45,9 @@
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Powerup">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="ManageTeams">
+                <Setter Property="Content" Value="{StaticResource ManageTeamsView}" />
             </DataTrigger>
         </ContentView.Triggers>
     </ContentView>
