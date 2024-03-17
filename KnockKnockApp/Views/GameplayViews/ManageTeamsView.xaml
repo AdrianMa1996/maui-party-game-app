@@ -1,11 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KnockKnockApp.Views.GameplayViews.ManageTeamsView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Das hier ist der Team-Manager"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="KnockKnockApp.Views.GameplayViews.ManageTeamsView"
+             x:Name="this">
+    <Grid BindingContext="{x:Reference this}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="Team A"/>
+            <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Green" Text="Zufall"/>
+            <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Green" Text="Team B"/>
+
+        </Grid>
+
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <VerticalStackLayout Grid.Row="0" Grid.Column="1" BindableLayout.ItemsSource="{Binding AllPlayers}" Spacing="3" Padding="3" Background="Gray">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid  BackgroundColor="Coral">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" Text="A" HorizontalOptions="Start"/>
+                                <Label Grid.Column="1" Text="{Binding Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Button Grid.Column="2" Text="B" HorizontalOptions="End"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+            </Grid>
+        </ScrollView>
+
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" Text="Spiel Starten"/>
+
+    </Grid>
 </ContentView>

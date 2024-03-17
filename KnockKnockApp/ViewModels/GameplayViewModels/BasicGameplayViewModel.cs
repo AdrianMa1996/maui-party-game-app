@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Models.DTOs;
 using KnockKnockApp.Services;
+using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels.GameplayViewModels
 {
@@ -11,12 +13,27 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
     {
         private readonly IDeviceOrientationService _deviceOrientationService;
         private readonly ICardManagementService _cardManagementService;
+        private readonly IPlayerManagementService _playerManagementService;
 
-        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService)
+        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService)
         {
             _deviceOrientationService = deviceOrientationService;
             _cardManagementService = cardManagementService;
+            _playerManagementService = playerManagementService;
+
+            AllPlayers = _playerManagementService.GetAllPlayers();
+            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
+            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
         }
+
+        [ObservableProperty]
+        public ObservableCollection<Player> allPlayers;
+
+        [ObservableProperty]
+        public ObservableCollection<Player> teamOnePlayers;
+
+        [ObservableProperty]
+        public ObservableCollection<Player> teamTwoPlayers;
 
         [ObservableProperty]
         private GameMode? currentGameMode;

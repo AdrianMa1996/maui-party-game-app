@@ -5,7 +5,7 @@ namespace KnockKnockApp.Services
 {
     class PlayerManagementService : IPlayerManagementService
     {
-        private ObservableCollection<Player> allPlayers = [new Player("Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max")];
+        private ObservableCollection<Player> allPlayers = [new Player("Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max")];
         private ObservableCollection<Player> teamOnePlayers = [];
         private ObservableCollection<Player> teamTwoPlayers = [];
         private ObservableCollection<Player> unassignedPlayers
@@ -49,6 +49,11 @@ namespace KnockKnockApp.Services
         public ObservableCollection<Player> GetTeamTwoPlayers()
         {
             return teamTwoPlayers;
+        }
+
+        public void AddPlayerToTeamTwo(Guid playerId)
+        {
+            return;
         }
 
         public ObservableCollection<Player> GetUnassignedPlayers()

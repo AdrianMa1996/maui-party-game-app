@@ -16,7 +16,8 @@
                         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
 
-        <controls:ManageTeamsView x:Key="ManageTeamsView" />
+        <controls:ManageTeamsView x:Key="ManageTeamsView" 
+                        AllPlayers="{Binding AllPlayers}"/>
 
     </ContentPage.Resources>
 
