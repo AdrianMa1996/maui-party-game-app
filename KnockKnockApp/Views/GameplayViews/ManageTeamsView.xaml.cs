@@ -14,6 +14,14 @@ public partial class ManageTeamsView : ContentView
         set => SetValue(AllPlayersProperty, value);
     }
 
+    public static readonly BindableProperty TeamlessPlayersProperty = BindableProperty.Create(nameof(TeamlessPlayers), typeof(ObservableCollection<Player>), typeof(ManageTeamsView));
+
+    public ObservableCollection<Player> TeamlessPlayers
+    {
+        get => (ObservableCollection<Player>)GetValue(TeamlessPlayersProperty);
+        set => SetValue(TeamlessPlayersProperty, value);
+    }
+
     public static readonly BindableProperty TeamOnePlayersProperty = BindableProperty.Create(nameof(TeamOnePlayers), typeof(ObservableCollection<Player>), typeof(ManageTeamsView));
 
     public ObservableCollection<Player> TeamOnePlayers

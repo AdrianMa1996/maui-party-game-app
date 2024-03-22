@@ -18,6 +18,7 @@
 
         <controls:ManageTeamsView x:Key="ManageTeamsView" 
                         AllPlayers="{Binding AllPlayers}"
+                        TeamlessPlayers="{Binding TeamlessPlayers}"
                         TeamOnePlayers="{Binding TeamOnePlayers}"
                         TeamTwoPlayers="{Binding TeamTwoPlayers}"
                         GamecardTapGestureRecognizerCommand="{Binding NavigateToSelectGameModeCommand}"
