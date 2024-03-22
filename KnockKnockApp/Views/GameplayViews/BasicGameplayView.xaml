@@ -21,7 +21,7 @@
                         TeamlessPlayers="{Binding TeamlessPlayers}"
                         TeamOnePlayers="{Binding TeamOnePlayers}"
                         TeamTwoPlayers="{Binding TeamTwoPlayers}"
-                        GamecardTapGestureRecognizerCommand="{Binding NavigateToSelectGameModeCommand}"
+                        StartGameCommand="{Binding DisplayNextCardAsyncCommand}"
                         AddPlayerToTeamOneCommand="{Binding AddPlayerToTeamTwoCommand}"
                         AddPlayerToTeamTwoCommand="{Binding AddPlayerToTeamTwoCommand}"
                         RemovePlayerOfTeamOneCommand="{Binding RemovePlayerOfTeamOneCommand}"

@@ -31,9 +31,9 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="{Binding TeamOnePlayers.Count, StringFormat=Now {0:c}!}"/>
-            <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Green" Text="{Binding AllPlayers.Count, StringFormat=Now {0:c}!}"/>
-            <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Green" Text="{Binding TeamTwoPlayers.Count, StringFormat=Now {0:c}!}"/>
+            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="TeamA}"/>
+            <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Green" Text="Nicht zugeordnete Spieler"/>
+            <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Green" Text="TeamB"/>
 
         </Grid>
 
@@ -126,7 +126,7 @@
             </Grid>
         </ScrollView>
 
-        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="Red" Text="Spiel Starten" Command="{Binding GamecardTapGestureRecognizerCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}"/>
+        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="Red" Text="Spiel Starten" Command="{Binding StartGameCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}"/>
 
     </Grid>
 </ContentView>

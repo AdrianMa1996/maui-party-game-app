@@ -38,12 +38,12 @@ public partial class ManageTeamsView : ContentView
         set => SetValue(TeamTwoPlayersProperty, value);
     }
 
-    public static readonly BindableProperty GamecardTapGestureRecognizerCommandProperty = BindableProperty.Create(nameof(GamecardTapGestureRecognizerCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+    public static readonly BindableProperty StartGameCommandProperty = BindableProperty.Create(nameof(StartGameCommand), typeof(RelayCommand), typeof(BasicGamecardView));
 
-    public RelayCommand GamecardTapGestureRecognizerCommand
+    public RelayCommand StartGameCommand
     {
-        get => (RelayCommand)GetValue(GamecardTapGestureRecognizerCommandProperty);
-        set => SetValue(GamecardTapGestureRecognizerCommandProperty, value);
+        get => (RelayCommand)GetValue(StartGameCommandProperty);
+        set => SetValue(StartGameCommandProperty, value);
     }
 
     public static readonly BindableProperty AddPlayerToTeamOneCommandProperty = BindableProperty.Create(nameof(AddPlayerToTeamOneCommand), typeof(RelayCommand), typeof(BasicGamecardView));
