@@ -1,7 +1,6 @@
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace KnockKnockApp.Views.GameplayViews;
 
@@ -13,6 +12,62 @@ public partial class ManageTeamsView : ContentView
     {
         get => (ObservableCollection<Player>)GetValue(AllPlayersProperty);
         set => SetValue(AllPlayersProperty, value);
+    }
+
+    public static readonly BindableProperty TeamOnePlayersProperty = BindableProperty.Create(nameof(TeamOnePlayers), typeof(ObservableCollection<Player>), typeof(ManageTeamsView));
+
+    public ObservableCollection<Player> TeamOnePlayers
+    {
+        get => (ObservableCollection<Player>)GetValue(TeamOnePlayersProperty);
+        set => SetValue(TeamOnePlayersProperty, value);
+    }
+
+    public static readonly BindableProperty TeamTwoPlayersProperty = BindableProperty.Create(nameof(TeamTwoPlayers), typeof(ObservableCollection<Player>), typeof(ManageTeamsView));
+
+    public ObservableCollection<Player> TeamTwoPlayers
+    {
+        get => (ObservableCollection<Player>)GetValue(TeamTwoPlayersProperty);
+        set => SetValue(TeamTwoPlayersProperty, value);
+    }
+
+    public static readonly BindableProperty GamecardTapGestureRecognizerCommandProperty = BindableProperty.Create(nameof(GamecardTapGestureRecognizerCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand GamecardTapGestureRecognizerCommand
+    {
+        get => (RelayCommand)GetValue(GamecardTapGestureRecognizerCommandProperty);
+        set => SetValue(GamecardTapGestureRecognizerCommandProperty, value);
+    }
+
+    public static readonly BindableProperty AddPlayerToTeamOneCommandProperty = BindableProperty.Create(nameof(AddPlayerToTeamOneCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand AddPlayerToTeamOneCommand
+    {
+        get => (RelayCommand)GetValue(AddPlayerToTeamOneCommandProperty);
+        set => SetValue(AddPlayerToTeamOneCommandProperty, value);
+    }
+
+    public static readonly BindableProperty AddPlayerToTeamTwoCommandProperty = BindableProperty.Create(nameof(AddPlayerToTeamTwoCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand AddPlayerToTeamTwoCommand
+    {
+        get => (RelayCommand)GetValue(AddPlayerToTeamTwoCommandProperty);
+        set => SetValue(AddPlayerToTeamTwoCommandProperty, value);
+    }
+
+    public static readonly BindableProperty RemovePlayerOfTeamOneCommandProperty = BindableProperty.Create(nameof(RemovePlayerOfTeamOneCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand RemovePlayerOfTeamOneCommand
+    {
+        get => (RelayCommand)GetValue(RemovePlayerOfTeamOneCommandProperty);
+        set => SetValue(RemovePlayerOfTeamOneCommandProperty, value);
+    }
+
+    public static readonly BindableProperty RemovePlayerOfTeamTwoCommandProperty = BindableProperty.Create(nameof(RemovePlayerOfTeamTwoCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand RemovePlayerOfTeamTwoCommand
+    {
+        get => (RelayCommand)GetValue(RemovePlayerOfTeamTwoCommandProperty);
+        set => SetValue(RemovePlayerOfTeamTwoCommandProperty, value);
     }
 
     public ManageTeamsView()

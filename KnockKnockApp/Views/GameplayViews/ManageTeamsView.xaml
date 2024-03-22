@@ -2,7 +2,12 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.ManageTeamsView"
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters"
              x:Name="this">
+    <ContentView.Resources>
+        <converters:IsItemInListMultiConverter x:Key="IsItemInListMultiConverter"/>
+    </ContentView.Resources>
+    
     <Grid BindingContext="{x:Reference this}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -12,11 +17,9 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+        <Grid Grid.Row="0" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -27,13 +30,13 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="Team A"/>
-            <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Green" Text="Zufall"/>
-            <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Green" Text="Team B"/>
+            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="{Binding TeamOnePlayers.Count, StringFormat=Now {0:c}!}"/>
+            <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Green" Text="{Binding AllPlayers.Count, StringFormat=Now {0:c}!}"/>
+            <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Green" Text="{Binding TeamTwoPlayers.Count, StringFormat=Now {0:c}!}"/>
 
         </Grid>
 
-        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+        <ScrollView Grid.Row="1" Grid.Column="0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -45,8 +48,15 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <VerticalStackLayout Grid.Row="0" Grid.Column="1" BindableLayout.ItemsSource="{Binding AllPlayers}" Spacing="3" Padding="3" Background="Gray">
-                    <BindableLayout.ItemTemplate>
+
+                <CollectionView Grid.Column="0" Background="Gray">
+                    <CollectionView.ItemsSource>
+                        <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
+                            <Binding Path="AllPlayers" />
+                            <Binding Path="TeamOnePlayers" />
+                        </MultiBinding>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid  BackgroundColor="Coral">
                                 <Grid.ColumnDefinitions>
@@ -54,19 +64,62 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-
-                                <Button Grid.Column="0" Text="A" HorizontalOptions="Start"/>
-                                <Label Grid.Column="1" Text="{Binding Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                <Button Grid.Column="2" Text="B" HorizontalOptions="End"/>
+                                <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Button Grid.Column="2" Text="U" HorizontalOptions="End" IsVisible="{Binding IsInList}" Command="{Binding Source={x:Reference this}, Path=BindingContext.RemovePlayerOfTeamOneCommand}" CommandParameter="{Binding Player}" />
                             </Grid>
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </VerticalStackLayout>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <CollectionView Grid.Column="1" Background="Gray">
+                    <CollectionView.ItemsSource>
+                        <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
+                            <Binding Path="AllPlayers" />
+                            <Binding Path="TeamOnePlayers" />
+                        </MultiBinding>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid  BackgroundColor="Coral">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Text="A" HorizontalOptions="Start" Command="{Binding Source={x:Reference this}, Path=BindingContext.AddPlayerToTeamOneCommand}" CommandParameter="{Binding Player}"/>
+                                <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Button Grid.Column="2" Text="B" HorizontalOptions="End" Command="{Binding Source={x:Reference this}, Path=BindingContext.AddPlayerToTeamTwoCommand}" CommandParameter="{Binding Player}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <CollectionView Grid.Column="2" Background="Gray">
+                    <CollectionView.ItemsSource>
+                        <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
+                            <Binding Path="AllPlayers" />
+                            <Binding Path="TeamTwoPlayers" />
+                        </MultiBinding>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid  BackgroundColor="Coral">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Text="U" HorizontalOptions="Start" IsVisible="{Binding IsInList}" Command="{Binding Source={x:Reference this}, Path=BindingContext.RemovePlayerOfTeamTwoCommand}" CommandParameter="{Binding Player}" />
+                                <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
             </Grid>
         </ScrollView>
 
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" Text="Spiel Starten"/>
+        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="Red" Text="Spiel Starten" Command="{Binding GamecardTapGestureRecognizerCommand}"/>
 
     </Grid>
 </ContentView>

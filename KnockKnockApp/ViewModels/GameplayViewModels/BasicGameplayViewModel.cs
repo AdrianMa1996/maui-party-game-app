@@ -69,5 +69,41 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             await _cardManagementService.SetupAsync(CurrentGameMode);
             CurrentCard = await _cardManagementService.DrawNextCardAsync();
         }
+
+        [RelayCommand]
+        public void AddPlayerToTeamOne(object commandParameter)
+        {
+            var player = (Player)commandParameter;
+            var teamOnePlayerCopy = new ObservableCollection<Player>(TeamOnePlayers);
+            teamOnePlayerCopy.Add(player);
+            TeamOnePlayers = teamOnePlayerCopy;
+        }
+
+        [RelayCommand]
+        public void AddPlayerToTeamTwo(object commandParameter)
+        {
+            var player = (Player)commandParameter;
+            var teamTwoPlayerCopy = new ObservableCollection<Player>(TeamTwoPlayers);
+            teamTwoPlayerCopy.Add(player);
+            TeamTwoPlayers = teamTwoPlayerCopy;
+        }
+
+        [RelayCommand]
+        public void RemovePlayerOfTeamOne(object commandParameter)
+        {
+            var player = (Player)commandParameter;
+            var teamOnePlayerCopy = new ObservableCollection<Player>(TeamOnePlayers);
+            teamOnePlayerCopy.Remove(player);
+            TeamOnePlayers = teamOnePlayerCopy;
+        }
+
+        [RelayCommand]
+        public void RemovePlayerOfTeamTwo(object commandParameter)
+        {
+            var player = (Player)commandParameter;
+            var teamTwoPlayerCopy = new ObservableCollection<Player>(TeamTwoPlayers);
+            teamTwoPlayerCopy.Remove(player);
+            TeamTwoPlayers = teamTwoPlayerCopy;
+        }
     }
 }

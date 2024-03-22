@@ -17,7 +17,14 @@
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
 
         <controls:ManageTeamsView x:Key="ManageTeamsView" 
-                        AllPlayers="{Binding AllPlayers}"/>
+                        AllPlayers="{Binding AllPlayers}"
+                        TeamOnePlayers="{Binding TeamOnePlayers}"
+                        TeamTwoPlayers="{Binding TeamTwoPlayers}"
+                        GamecardTapGestureRecognizerCommand="{Binding NavigateToSelectGameModeCommand}"
+                        AddPlayerToTeamOneCommand="{Binding AddPlayerToTeamTwoCommand}"
+                        AddPlayerToTeamTwoCommand="{Binding AddPlayerToTeamTwoCommand}"
+                        RemovePlayerOfTeamOneCommand="{Binding RemovePlayerOfTeamOneCommand}"
+                        RemovePlayerOfTeamTwoCommand="{Binding RemovePlayerOfTeamTwoCommand}"/>
 
     </ContentPage.Resources>
 

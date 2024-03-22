@@ -1,5 +1,4 @@
 using CommunityToolkit.Mvvm.Input;
-using System.Windows.Input;
 
 namespace KnockKnockApp.Views.GameplayViews;
 
