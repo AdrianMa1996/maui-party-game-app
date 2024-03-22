@@ -6,6 +6,7 @@
              x:Name="this">
     <ContentView.Resources>
         <converters:IsItemInListMultiConverter x:Key="IsItemInListMultiConverter"/>
+        <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
     </ContentView.Resources>
     
     <Grid BindingContext="{x:Reference this}">
@@ -125,7 +126,7 @@
             </Grid>
         </ScrollView>
 
-        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="Red" Text="Spiel Starten" Command="{Binding GamecardTapGestureRecognizerCommand}"/>
+        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="Red" Text="Spiel Starten" Command="{Binding GamecardTapGestureRecognizerCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}"/>
 
     </Grid>
 </ContentView>
