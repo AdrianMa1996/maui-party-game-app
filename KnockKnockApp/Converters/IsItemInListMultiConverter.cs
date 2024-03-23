@@ -17,7 +17,7 @@ namespace KnockKnockApp.Converters
             var list1 = values[0] as IList;
             var list2 = values[1] as IList;
 
-            if (list1 != null)
+            if (list1 != null && list2 != null && list1.Count != 0 && list2.Count != 0)
             {
                 foreach (var item in list1)
                 {

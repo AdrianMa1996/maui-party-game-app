@@ -31,7 +31,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="TeamA}"/>
+            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="TeamA"/>
             <Button Grid.Row="0" Grid.Column="1" BackgroundColor="Green" Text="Nicht zugeordnete Spieler"/>
             <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Green" Text="TeamB"/>
 
