@@ -23,8 +23,8 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
 
             AllPlayers = _playerManagementService.GetAllPlayers();
             TeamlessPlayers = new ObservableCollection<Player>(_playerManagementService.GetAllPlayers());
-            TeamOnePlayers = new ObservableCollection<Player>();
-            TeamTwoPlayers = new ObservableCollection<Player>();
+            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
+            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
         }
 
         [ObservableProperty]

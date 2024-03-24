@@ -72,7 +72,7 @@ namespace KnockKnockApp.Services
                 var gameCard = await _gameCardRepository.GetGameCardByIdAsync(followUpCardID);
                 PlaceCardInCardDeck(gameCard, followUpInterval);
                 followUpCardID = gameCard.FollowUpCardID;
-                followUpInterval = gameCard.IntervalToFollowUp;
+                followUpInterval = followUpInterval + gameCard.IntervalToFollowUp;
             }
         }
 
@@ -107,10 +107,7 @@ namespace KnockKnockApp.Services
                 var cardSet = GetRandomActivatedCardSet();
                 int randomNumber = _random.Next(cardSet.GameCards.Count);
                 gameCard = cardSet.GameCards[randomNumber];
-                if (gameCard.RequiredPlayedCardCount <= _usedCards.Count && gameCard.RequiredPlayerCount <= _playerManagementService.GetAllPlayers().Count && !_usedCards.Contains(gameCard))
-                {
-                    isValidForPlay = true;
-                }
+                isValidForPlay = CheckIfGameCardIsValidCard(gameCard);
             }
 
             return gameCard;
@@ -142,6 +139,27 @@ namespace KnockKnockApp.Services
             }
 
             return null; // dürfte eigentlich nie passieren
+        }
+
+        private bool CheckIfGameCardIsValidCard(GameCard gameCard)
+        {
+            if (gameCard.RequiredPlayedCardCount <= _usedCards.Count)
+            {
+                if (!_usedCards.Contains(gameCard))
+                {
+                    if (gameCard.RequiredTotalPlayersCount <= _playerManagementService.GetAllPlayers().Count)
+                    {
+                        if (gameCard.RequiredTeamOnePlayersCount < _playerManagementService.GetTeamOnePlayers().Count && gameCard.RequiredTeamTwoPlayersCount < _playerManagementService.GetTeamTwoPlayers().Count)
+                        {
+                            return false;
+                        }
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

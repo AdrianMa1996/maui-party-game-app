@@ -8,14 +8,6 @@ namespace KnockKnockApp.Services
         private ObservableCollection<Player> allPlayers = [new Player("Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max"), new Player("Max Mustermann"), new Player("Mustermann"), new Player("Mustermann Max")];
         private ObservableCollection<Player> teamOnePlayers = [];
         private ObservableCollection<Player> teamTwoPlayers = [];
-        private ObservableCollection<Player> unassignedPlayers
-        {
-            get
-            {
-                var unassignedPlayersList = allPlayers.Where(player => !teamOnePlayers.Contains(player) && !teamTwoPlayers.Contains(player)).ToList();
-                return new ObservableCollection<Player>(unassignedPlayersList);
-            }
-        }
 
         public ObservableCollection<Player> GetAllPlayers()
         {
@@ -54,11 +46,6 @@ namespace KnockKnockApp.Services
         public void AddPlayerToTeamTwo(Guid playerId)
         {
             return;
-        }
-
-        public ObservableCollection<Player> GetUnassignedPlayers()
-        {
-            return unassignedPlayers;
         }
     }
 }
