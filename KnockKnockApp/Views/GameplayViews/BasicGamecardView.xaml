@@ -18,9 +18,9 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding LeaveGameModeCommand}"/>
-        <StackLayout Grid.Row="1" Grid.Column="1" BackgroundColor="Aqua">
-            <Label Text="{Binding GamecardTitle, FallbackValue='Gamecard Title'}" HorizontalTextAlignment="Center" BackgroundColor="YellowGreen"/>
-            <Label Text="{Binding GamecardText, FallbackValue='Gamecard Text'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="Brown"/>
+        <StackLayout Grid.Row="1" Grid.Column="1">
+            <Label Text="{Binding GamecardTitle, FallbackValue='Gamecard Title'}" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding GamecardText, FallbackValue='Gamecard Text'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
         </StackLayout>
         <Button Grid.Row="2" Grid.Column="2" BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End" Command="{Binding NavigateToManagePlayersCommand}"/>
     </Grid>

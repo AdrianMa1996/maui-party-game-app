@@ -30,7 +30,7 @@
 
     </ContentPage.Resources>
 
-    <ContentView>
+    <ContentView Content="{StaticResource BasicGamecardView}">
         <ContentView.Triggers>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
