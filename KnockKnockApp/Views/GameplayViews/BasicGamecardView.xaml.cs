@@ -36,6 +36,14 @@ public partial class BasicGamecardView : ContentView
         set => SetValue(GamecardTapGestureRecognizerCommandProperty, value);
     }
 
+    public static readonly BindableProperty NavigateToManagePlayersCommandProperty = BindableProperty.Create(nameof(NavigateToManagePlayersCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand NavigateToManagePlayersCommand
+    {
+        get { return (RelayCommand)GetValue(NavigateToManagePlayersCommandProperty); }
+        set { SetValue(NavigateToManagePlayersCommandProperty, value); }
+    }
+
     public static readonly BindableProperty LeaveGameModeCommandProperty = BindableProperty.Create(nameof(LeaveGameModeCommand), typeof(RelayCommand), typeof(BasicGamecardView));
 
     public RelayCommand LeaveGameModeCommand

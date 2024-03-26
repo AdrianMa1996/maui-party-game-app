@@ -3,22 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.BasicGamecardView"
              x:Name="this">
-    <Grid BindingContext="{x:Reference this}">
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="{Binding GamecardBackgroundColor}">
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding GamecardTapGestureRecognizerCommand}"/>
+        </Grid.GestureRecognizers>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-
-        <FlexLayout Grid.Row="0" BackgroundColor="{Binding GamecardBackgroundColor, FallbackValue='White'}" JustifyContent="SpaceBetween" Direction="Column">
-            <FlexLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GamecardTapGestureRecognizerCommand}"/>
-            </FlexLayout.GestureRecognizers>
-            <Button BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding LeaveGameModeCommand}"/>
-            <VerticalStackLayout HorizontalOptions="Center">
-                <Label Text="{Binding GamecardTitle, FallbackValue='Gamecard Title'}" HorizontalOptions="Center" />
-                <Label Text="{Binding GamecardText, FallbackValue='Gamecard Text'}" HorizontalOptions="Center" />
-            </VerticalStackLayout>
-            <Button BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End"/>
-        </FlexLayout>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding LeaveGameModeCommand}"/>
+        <StackLayout Grid.Row="1" Grid.Column="1" BackgroundColor="Aqua">
+            <Label Text="{Binding GamecardTitle, FallbackValue='Gamecard Title'}" HorizontalTextAlignment="Center" BackgroundColor="YellowGreen"/>
+            <Label Text="{Binding GamecardText, FallbackValue='Gamecard Text'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" BackgroundColor="Brown"/>
+        </StackLayout>
+        <Button Grid.Row="2" Grid.Column="2" BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End" Command="{Binding NavigateToManagePlayersCommand}"/>
     </Grid>
 </ContentView>

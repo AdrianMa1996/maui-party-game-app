@@ -14,7 +14,8 @@
                         GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
                         GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
                         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
-                        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}" />
+                        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"/>
 
         <controls:ManageTeamsView x:Key="ManageTeamsView" 
                         AllPlayers="{Binding AllPlayers}"
@@ -29,7 +30,7 @@
 
     </ContentPage.Resources>
 
-    <ContentView Content="{StaticResource BasicGamecardView}">
+    <ContentView>
         <ContentView.Triggers>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />

@@ -62,6 +62,12 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         }
 
         [RelayCommand]
+        public void NavigateToManagePlayers()
+        {
+            var xxx = 10;
+        }
+
+        [RelayCommand]
         public void NavigateToSelectGameMode()
         {
             Shell.Current.GoToAsync("..", false);
