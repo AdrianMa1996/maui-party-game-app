@@ -23,11 +23,9 @@ namespace KnockKnockApp.Models.Database
         Powerup,
         ManageTeams,
         PunishmentGame,
-        TeamBasic,
         TeamGame,
         TeamDare,
         TeamDuel,
-        TeamVerräterOderSolidarisch,
         Teamvergleich,
         TeamStimmtEureGeigen,
         TeamChampion
