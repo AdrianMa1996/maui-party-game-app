@@ -32,9 +32,13 @@
                         GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 
                         GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
                         GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
-                        GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
-                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"/>
+                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                        PointsTeamA="{Binding PointsTeamA, StringFormat=Now {0:c}!}"
+                        PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"
+                        GamecardPointValue="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat=Now {0:c}!}"
+                        PointsToTeamACommand="{Binding PointsToTeamACommand}"
+                        PointsToTeamBCommand="{Binding PointsToTeamBCommand}"/>
 
     </ContentPage.Resources>
 

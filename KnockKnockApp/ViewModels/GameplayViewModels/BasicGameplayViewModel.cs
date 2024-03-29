@@ -42,6 +42,12 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [ObservableProperty]
         private GameMode? currentGameMode;
 
+        [ObservableProperty]
+        public int pointsTeamA = 0;
+
+        [ObservableProperty]
+        public int pointsTeamB = 0;
+
         partial void OnCurrentGameModeChanged(GameMode? value)
         {
             SetupGameAndDrawCard();
@@ -59,6 +65,20 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
                 NavigateToSelectGameMode();
             }
             CurrentCard = nextCard;
+        }
+
+        [RelayCommand]
+        public async void PointsToTeamA()
+        {
+            PointsTeamA = PointsTeamA + CurrentCard.GameCardDetails.PointValue;
+            DisplayNextCardAsync();
+        }
+
+        [RelayCommand]
+        public async void PointsToTeamB()
+        {
+            PointsTeamB = PointsTeamB + CurrentCard.GameCardDetails.PointValue;
+            DisplayNextCardAsync();
         }
 
         [RelayCommand]
