@@ -52,6 +52,22 @@ public partial class BasicGamecardView : ContentView
         set { SetValue(LeaveGameModeCommandProperty, value); }
     }
 
+    public static readonly BindableProperty PointsTeamAProperty = BindableProperty.Create(nameof(PointsTeamA), typeof(string), typeof(BasicGamecardView), string.Empty);
+
+    public string PointsTeamA
+    {
+        get => (string)GetValue(PointsTeamAProperty);
+        set => SetValue(PointsTeamAProperty, value);
+    }
+
+    public static readonly BindableProperty PointsTeamBProperty = BindableProperty.Create(nameof(PointsTeamB), typeof(string), typeof(BasicGamecardView), string.Empty);
+
+    public string PointsTeamB
+    {
+        get => (string)GetValue(PointsTeamBProperty);
+        set => SetValue(PointsTeamBProperty, value);
+    }
+
     public BasicGamecardView()
 	{
 		InitializeComponent();

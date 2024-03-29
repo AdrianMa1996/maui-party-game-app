@@ -15,7 +15,9 @@
                         GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
                         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
-                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"/>
+                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                        PointsTeamA="{Binding PointsTeamA, StringFormat=Now {0:c}!}"
+                        PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"/>
 
         <controls:ManageTeamsView x:Key="ManageTeamsView" 
                         AllPlayers="{Binding AllPlayers}"
