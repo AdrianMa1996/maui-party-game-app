@@ -9,6 +9,7 @@ namespace KnockKnockApp.Models.Database
         public string Title { get; set; }
         public string Image { get; set; }
         public string DescriptionText { get; set; }
+        public bool IsTeamGameMode { get; set; }
         public bool IsPrime { get; set; }
         public int Language { get; set; } // 0 is default => EN
         public int Category { get; set; }

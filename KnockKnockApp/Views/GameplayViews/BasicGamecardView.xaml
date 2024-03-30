@@ -2,8 +2,13 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.BasicGamecardView"
-             x:Name="this">
-    <Grid BindingContext="{x:Reference this}" BackgroundColor="{Binding GamecardBackgroundColor}">
+             x:Name="this"
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters">
+    <ContentView.Resources>
+        <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
+        <converters:GameModeAndGameCardToIsShowingScoreMultiConverter x:Key="GameModeAndGameCardToIsShowingScoreMultiConverter"/>
+    </ContentView.Resources>
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="{Binding Gamecard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}">
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding GamecardTapGestureRecognizerCommand}"/>
         </Grid.GestureRecognizers>
@@ -19,6 +24,12 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.IsVisible>
+                <MultiBinding Converter="{StaticResource GameModeAndGameCardToIsShowingScoreMultiConverter}">
+                    <Binding Path="GameMode" />
+                    <Binding Path="Gamecard.CardSetDetails" />
+                </MultiBinding>
+            </Grid.IsVisible>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -35,8 +46,8 @@
 
         <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Red" Text="Close" HorizontalOptions="End" Command="{Binding LeaveGameModeCommand}"/>
         <StackLayout Grid.Row="1" Grid.Column="1">
-            <Label Text="{Binding GamecardTitle, FallbackValue='Gamecard Title'}" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding GamecardText, FallbackValue='Gamecard Text'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding Gamecard.CardSetDetails.Title, FallbackValue='Gamecard Title'}" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding Gamecard.GameCardDetails.CardText, FallbackValue='Gamecard Text'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
         </StackLayout>
         <Button Grid.Row="2" Grid.Column="2" BackgroundColor="Red" Text="Spieler ändern" HorizontalOptions="End" Command="{Binding NavigateToManagePlayersCommand}"/>
     </Grid>

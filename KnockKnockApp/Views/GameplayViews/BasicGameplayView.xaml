@@ -10,14 +10,14 @@
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
 
         <controls:BasicGamecardView x:Key="BasicGamecardView"
-                        GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 
-                        GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
-                        GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
                         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
                         PointsTeamA="{Binding PointsTeamA, StringFormat=Now {0:c}!}"
-                        PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"/>
+                        PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"
+                        Gamecard="{Binding CurrentCard}"
+                        GameMode="{Binding CurrentGameMode}">
+        </controls:BasicGamecardView>
 
         <controls:ManageTeamsView x:Key="ManageTeamsView" 
                         AllPlayers="{Binding AllPlayers}"
