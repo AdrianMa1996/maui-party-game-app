@@ -40,7 +40,8 @@
                         PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"
                         GamecardPointValue="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat=Now {0:c}!}"
                         PointsToTeamACommand="{Binding PointsToTeamACommand}"
-                        PointsToTeamBCommand="{Binding PointsToTeamBCommand}"/>
+                        PointsToTeamBCommand="{Binding PointsToTeamBCommand}"
+                        SkipCardCommand="{Binding DisplayNextCardAsyncCommand}"/>
 
     </ContentPage.Resources>
 

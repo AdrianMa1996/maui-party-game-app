@@ -84,6 +84,14 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(PointsTeamBProperty, value);
     }
 
+    public static readonly BindableProperty SkipCardCommandProperty = BindableProperty.Create(nameof(SkipCardCommand), typeof(RelayCommand), typeof(ScoreGamecardView));
+
+    public RelayCommand SkipCardCommand
+    {
+        get => (RelayCommand)GetValue(SkipCardCommandProperty);
+        set => SetValue(SkipCardCommandProperty, value);
+    }
+
     public ScoreGamecardView()
 	{
 		InitializeComponent();
