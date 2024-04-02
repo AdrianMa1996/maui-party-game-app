@@ -13,8 +13,8 @@
                         GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
-                        PointsTeamA="{Binding PointsTeamA, StringFormat=Now {0:c}!}"
-                        PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"
+                        PointsTeamA="{Binding TeamOne.GamePoints, StringFormat=Now {0:c}!}"
+                        PointsTeamB="{Binding TeamTwo.GamePoints, StringFormat=Now {0:c}!}"
                         Gamecard="{Binding CurrentCard}"
                         GameMode="{Binding CurrentGameMode}">
         </controls:BasicGamecardView>
@@ -36,11 +36,11 @@
                         GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
-                        PointsTeamA="{Binding PointsTeamA, StringFormat=Now {0:c}!}"
-                        PointsTeamB="{Binding PointsTeamB, StringFormat=Now {0:c}!}"
+                        PointsTeamA="{Binding TeamOne.GamePoints, StringFormat=Now {0:c}!}"
+                        PointsTeamB="{Binding TeamTwo.GamePoints, StringFormat=Now {0:c}!}"
                         GamecardPointValue="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat=Now {0:c}!}"
-                        PointsToTeamACommand="{Binding PointsToTeamACommand}"
-                        PointsToTeamBCommand="{Binding PointsToTeamBCommand}"
+                        PointsToTeamACommand="{Binding PointsToTeamOneCommand}"
+                        PointsToTeamBCommand="{Binding PointsToTeamTwoCommand}"
                         SkipCardCommand="{Binding DisplayNextCardAsyncCommand}"/>
 
     </ContentPage.Resources>

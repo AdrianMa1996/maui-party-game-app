@@ -14,17 +14,27 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         private readonly IDeviceOrientationService _deviceOrientationService;
         private readonly ICardManagementService _cardManagementService;
         private readonly IPlayerManagementService _playerManagementService;
+        private readonly ITeamManagementService _teamManagementService;
 
-        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService)
+        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService)
         {
             _deviceOrientationService = deviceOrientationService;
             _cardManagementService = cardManagementService;
             _playerManagementService = playerManagementService;
+            _teamManagementService = teamManagementService;
+
+            // setup TeamManagementService (und evtl die Team-Spieler vom PlayerManagementservice in den TeamManagementServiceverscheibenn)
+
+            TeamOne = _teamManagementService.GetTeamOne();
+            TeamTwo = _teamManagementService.GetTeamTwo();
 
             AllPlayers = _playerManagementService.GetAllPlayers();
             TeamlessPlayers = new ObservableCollection<Player>(_playerManagementService.GetAllPlayers());
             TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
+            TeamOnePlayers.Clear();
             TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
+            TeamTwoPlayers.Clear();
+            _teamManagementService = teamManagementService;
         }
 
         [ObservableProperty]
@@ -43,10 +53,10 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         private GameMode? currentGameMode;
 
         [ObservableProperty]
-        public int pointsTeamA = 0;
+        public Team teamOne;
 
         [ObservableProperty]
-        public int pointsTeamB = 0;
+        public Team teamTwo;
 
         partial void OnCurrentGameModeChanged(GameMode? value)
         {
@@ -68,16 +78,20 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         }
 
         [RelayCommand]
-        public async void PointsToTeamA()
+        public async void PointsToTeamOne()
         {
-            PointsTeamA = PointsTeamA + CurrentCard.GameCardDetails.PointValue;
+            _teamManagementService.AddGamePointsToTeamOne(CurrentCard.GameCardDetails.PointValue);
+            TeamOne = new Team("TeamOne", 0);
+            TeamOne = _teamManagementService.GetTeamOne();
             DisplayNextCardAsync();
         }
 
         [RelayCommand]
-        public async void PointsToTeamB()
+        public async void PointsToTeamTwo()
         {
-            PointsTeamB = PointsTeamB + CurrentCard.GameCardDetails.PointValue;
+            _teamManagementService.AddGamePointsToTeamTwo(CurrentCard.GameCardDetails.PointValue);
+            TeamTwo = new Team("TeamTwo", 0);
+            TeamTwo = _teamManagementService.GetTeamTwo();
             DisplayNextCardAsync();
         }
 
@@ -104,9 +118,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public void AddPlayerToTeamOne(object commandParameter)
         {
             var player = (Player)commandParameter;
-            var teamOnePlayerCopy = new ObservableCollection<Player>(TeamOnePlayers);
-            teamOnePlayerCopy.Add(player);
-            TeamOnePlayers = teamOnePlayerCopy;
+            _playerManagementService.AddPlayerToTeamOne(player);
+            TeamOnePlayers = new ObservableCollection<Player>();
+            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Remove(player);
             TeamlessPlayers = teamlessPlayersCopy;
@@ -116,9 +130,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public void AddPlayerToTeamTwo(object commandParameter)
         {
             var player = (Player)commandParameter;
-            var teamTwoPlayerCopy = new ObservableCollection<Player>(TeamTwoPlayers);
-            teamTwoPlayerCopy.Add(player);
-            TeamTwoPlayers = teamTwoPlayerCopy;
+            _playerManagementService.AddPlayerToTeamTwo(player);
+            TeamTwoPlayers = new ObservableCollection<Player>();
+            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Remove(player);
             TeamlessPlayers = teamlessPlayersCopy;
@@ -131,9 +145,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Add(player);
             TeamlessPlayers = teamlessPlayersCopy;
-            var teamOnePlayerCopy = new ObservableCollection<Player>(TeamOnePlayers);
-            teamOnePlayerCopy.Remove(player);
-            TeamOnePlayers = teamOnePlayerCopy;
+            _playerManagementService.RemovePlayerFromTeamOne(player);
+            TeamOnePlayers = new ObservableCollection<Player>();
+            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
         }
 
         [RelayCommand]
@@ -143,9 +157,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Add(player);
             TeamlessPlayers = teamlessPlayersCopy;
-            var teamTwoPlayerCopy = new ObservableCollection<Player>(TeamTwoPlayers);
-            teamTwoPlayerCopy.Remove(player);
-            TeamTwoPlayers = teamTwoPlayerCopy;
+            _playerManagementService.RemovePlayerFromTeamTwo(player);
+            TeamTwoPlayers = new ObservableCollection<Player>();
+            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
         }
     }
 }

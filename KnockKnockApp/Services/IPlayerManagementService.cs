@@ -9,8 +9,10 @@ namespace KnockKnockApp.Services
         public void AddPlayer(string playerName);
         public void RemovePlayer(Guid playerId);
         public ObservableCollection<Player> GetTeamOnePlayers();
-        public void AddPlayerToTeamOne(Guid playerId);
+        public void AddPlayerToTeamOne(Player player);
+        public void RemovePlayerFromTeamOne(Player player);
         public ObservableCollection<Player> GetTeamTwoPlayers();
-        public void AddPlayerToTeamTwo(Guid playerId);
+        public void AddPlayerToTeamTwo(Player player);
+        public void RemovePlayerFromTeamTwo(Player player);
     }
 }

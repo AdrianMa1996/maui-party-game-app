@@ -149,7 +149,7 @@ namespace KnockKnockApp.Services
                 {
                     if (gameCard.RequiredTotalPlayersCount <= _playerManagementService.GetAllPlayers().Count)
                     {
-                        if (gameCard.RequiredTeamOnePlayersCount < _playerManagementService.GetTeamOnePlayers().Count && gameCard.RequiredTeamTwoPlayersCount < _playerManagementService.GetTeamTwoPlayers().Count)
+                        if (gameCard.RequiredTeamOnePlayersCount > _playerManagementService.GetTeamOnePlayers().Count || gameCard.RequiredTeamTwoPlayersCount > _playerManagementService.GetTeamTwoPlayers().Count)
                         {
                             return false;
                         }

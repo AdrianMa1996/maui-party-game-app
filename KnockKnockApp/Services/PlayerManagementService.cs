@@ -33,9 +33,14 @@ namespace KnockKnockApp.Services
             return teamOnePlayers;
         }
 
-        public void AddPlayerToTeamOne(Guid playerId)
+        public void AddPlayerToTeamOne(Player player)
         {
-            return;
+            teamOnePlayers.Add(player);
+        }
+
+        public void RemovePlayerFromTeamOne(Player player)
+        {
+            _ = teamOnePlayers.Remove(player);
         }
 
         public ObservableCollection<Player> GetTeamTwoPlayers()
@@ -43,9 +48,14 @@ namespace KnockKnockApp.Services
             return teamTwoPlayers;
         }
 
-        public void AddPlayerToTeamTwo(Guid playerId)
+        public void AddPlayerToTeamTwo(Player player)
         {
-            return;
+            teamTwoPlayers.Add(player);
+        }
+
+        public void RemovePlayerFromTeamTwo(Player player)
+        {
+            _ = teamTwoPlayers.Remove(player);
         }
     }
 }
