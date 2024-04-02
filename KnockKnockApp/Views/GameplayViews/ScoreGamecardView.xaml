@@ -40,9 +40,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" BackgroundColor="Green" Text="{Binding GamecardPointValue}" Command="{Binding PointsToTeamACommand}"/>
-            <Button Grid.Column="1" BackgroundColor="Red" Text="{Binding GamecardPointValue}" Command="{Binding PointsToTeamBCommand}"/>
+            <Button Grid.Column="1" BackgroundColor="Gray" Text="Überspringen" Command="{Binding PointsToTeamACommand}"/>
+            <Button Grid.Column="2" BackgroundColor="Red" Text="{Binding GamecardPointValue}" Command="{Binding PointsToTeamBCommand}"/>
         </Grid>
     </Grid>
 </ContentView>

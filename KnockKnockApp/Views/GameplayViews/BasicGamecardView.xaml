@@ -24,12 +24,12 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="1">
-            <Grid.IsVisible>
+            <Grid.Opacity>
                 <MultiBinding Converter="{StaticResource GameModeAndGameCardToIsShowingScoreMultiConverter}">
                     <Binding Path="GameMode" />
                     <Binding Path="Gamecard.CardSetDetails" />
                 </MultiBinding>
-            </Grid.IsVisible>
+            </Grid.Opacity>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
