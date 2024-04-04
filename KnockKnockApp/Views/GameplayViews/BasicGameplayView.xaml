@@ -43,6 +43,10 @@
                         PointsToTeamBCommand="{Binding PointsToTeamTwoCommand}"
                         SkipCardCommand="{Binding DisplayNextCardAsyncCommand}"/>
 
+        <controls:PunishmentGameView x:Key="PunishmentGameView"
+                        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                        EndPunishmentGameCommand="{Binding DisplayNextCardAsyncCommand}"/>
+
     </ContentPage.Resources>
 
     <ContentView Content="{StaticResource BasicGamecardView}">
@@ -75,7 +79,7 @@
                 <Setter Property="Content" Value="{StaticResource ManageTeamsView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="PunishmentGame">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource PunishmentGameView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamGame">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
