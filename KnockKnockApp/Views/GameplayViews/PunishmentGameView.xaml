@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.PunishmentGameView"
              x:Name="this">
-    <Grid BindingContext="{x:Reference this}">
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="DarkViolet">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="10" />
@@ -26,11 +26,11 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackLayout Grid.Column="0" BackgroundColor="SpringGreen" Margin="5, 0"/>
-            <StackLayout Grid.Column="1" BackgroundColor="SpringGreen" Margin="5, 0"/>
-            <StackLayout Grid.Column="2" BackgroundColor="LightGray" Margin="5, 0"/>
-            <StackLayout Grid.Column="3" BackgroundColor="LightGray" Margin="5, 0"/>
-            <StackLayout Grid.Column="4" BackgroundColor="LightGray" Margin="5, 0"/>
+            <StackLayout x:Name="LedOne" Grid.Column="0" BackgroundColor="SpringGreen" Margin="5, 0"/>
+            <StackLayout x:Name="LedTwo" Grid.Column="1" BackgroundColor="SpringGreen" Margin="5, 0"/>
+            <StackLayout x:Name="LedThree" Grid.Column="2" BackgroundColor="LightGray" Margin="5, 0"/>
+            <StackLayout x:Name="LedFour" Grid.Column="3" BackgroundColor="LightGray" Margin="5, 0"/>
+            <StackLayout x:Name="LedFive" Grid.Column="4" BackgroundColor="LightGray" Margin="5, 0"/>
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1">
@@ -38,15 +38,32 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" x:Name="CurrentPokerCard" WidthRequest="124" HeightRequest="176" BackgroundColor="Gray"/>
-            <StackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+            <Image Grid.Column="0" x:Name="CurrentPokerCard" WidthRequest="124" HeightRequest="176"/>
+            <StackLayout x:Name="GameOverview" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                 <HorizontalStackLayout>
                     <Label FontSize="Large" Text="Klopfer im Spiel: "/>
-                    <Label FontSize="Large" Text="3"/>
+                    <Label x:Name="OverviewNumberOfKnockers" FontSize="Large"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <Label FontSize="Large" Text="Übrige Versuche: "/>
-                    <Label FontSize="Large" Text="3"/>
+                    <Label x:Name="RemainingAttempts" FontSize="Large"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <StackLayout x:Name="RestartPunishmentGameText" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                <HorizontalStackLayout>
+                    <Label FontSize="Large" Text="Das war leider falsch!"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label x:Name="RestartNumberOfKnockers"/>
+                    <Label Text=" Schlücke für das Verlierer-Team. Dannach gibt es noch eine Runde."/>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <StackLayout x:Name="EndPunishmentGameText" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
+                <HorizontalStackLayout>
+                    <Label FontSize="Large" Text="Ihr sied durchgekommen!"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Das Strafspiel ist beendet. Das Spiel ist beendet."/>
                 </HorizontalStackLayout>
             </StackLayout>
         </Grid>

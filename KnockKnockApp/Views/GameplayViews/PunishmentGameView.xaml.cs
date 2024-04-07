@@ -30,43 +30,73 @@ public partial class PunishmentGameView : ContentView
 
     private List<PokerCard> pokerCardDeck;
 
+    private int remainingAttempts;
+
+    private bool startNewAttempt;
+
     private bool isGameOver;
+
+    private Color grayLedColor = new Color((float)0.5, (float)0.5, (float)0.5);
+    private Color greenLedColor = new Color((float)0, (float)0.5, (float)0.5);
+    private Color redLedColor = new Color((float)1, (float)0, (float)0);
 
     private void Higher_Button_Clicked(object sender, EventArgs e)
     {
+        remainingAttempts = remainingAttempts - 1;
+        ShowNextPokerCard();
         return;
     }
 
     private void Same_Button_Clicked(object sender, EventArgs e)
     {
+        remainingAttempts = remainingAttempts - 1;
+        ShowNextPokerCard();
         return;
     }
 
     private void Deeper_Button_Clicked(object sender, EventArgs e)
     {
+        remainingAttempts = remainingAttempts - 1;
+        ShowNextPokerCard();
         return;
     }
 
     private void RestartPunishmentGame_Button_Clicked(object sender, EventArgs e)
     {
+        ShowNextPokerCard();
         return;
     }
 
     private void ShowNextPokerCard()
     {
-        currentPokerCard = pokerCardDeck[0]; // gib eine zufällige PokerKarte zurück und entferne sie aus dem pokerCardDeck
+        currentPokerCard = pokerCardDeck[5]; // gib eine zufällige PokerKarte zurück und entferne sie aus dem pokerCardDeck
         RefreshPunishmentGameView();
         return;
     }
 
     private void RefreshPunishmentGameView()
     {
+        LedOne.BackgroundColor = grayLedColor;
+        LedTwo.BackgroundColor = grayLedColor;
+        LedThree.BackgroundColor = grayLedColor;
+        LedFour.BackgroundColor = greenLedColor;
+        LedFive.BackgroundColor = redLedColor;
+
         CurrentPokerCard.Source = currentPokerCard.CardImage;
 
-        HigherButton.IsVisible = !isGameOver;
-        SameButton.IsVisible = !isGameOver;
-        DeeperButton.IsVisible = !isGameOver;
-        RestartPunishmentGameButton.IsVisible = isGameOver;
+        GameOverview.IsVisible = !isGameOver && !startNewAttempt;
+        OverviewNumberOfKnockers.Text = (6 - remainingAttempts).ToString();
+        RemainingAttempts.Text = remainingAttempts.ToString();
+
+        RestartPunishmentGameText.IsVisible = startNewAttempt;
+        RestartNumberOfKnockers.Text = (6 - remainingAttempts).ToString();
+
+        EndPunishmentGameText.IsVisible= isGameOver;
+
+        HigherButton.IsVisible = !isGameOver && !startNewAttempt;
+        SameButton.IsVisible = !isGameOver && !startNewAttempt;
+        DeeperButton.IsVisible = !isGameOver && !startNewAttempt;
+        RestartPunishmentGameButton.IsVisible = startNewAttempt;
         EndPunishmentGameButton.IsVisible = isGameOver;
         return;
     }
@@ -75,17 +105,64 @@ public partial class PunishmentGameView : ContentView
     {
         pokerCardDeck = new List<PokerCard>()
         {
-            new PokerCard(1, "dotnet_bot.svg"),
-            new PokerCard(1, "dotnet_bot.svg"),
-            new PokerCard(1, "dotnet_bot.svg"),
-            new PokerCard(1, "dotnet_bot.svg"),
-            new PokerCard(2, "dotnet_bot.svg"),
-            new PokerCard(2, "dotnet_bot.svg"),
-            new PokerCard(2, "dotnet_bot.svg"),
-            new PokerCard(2, "dotnet_bot.svg")
+            new PokerCard(1, "clubs_two.png"),
+            new PokerCard(2, "clubs_three.png"),
+            new PokerCard(3, "clubs_four.png"),
+            new PokerCard(4, "clubs_five.png"),
+            new PokerCard(5, "clubs_six.png"),
+            new PokerCard(6, "clubs_seven.png"),
+            new PokerCard(7, "clubs_eight.png"),
+            new PokerCard(8, "clubs_nine.png"),
+            new PokerCard(9, "clubs_ten.png"),
+            new PokerCard(10, "clubs_jack.png"),
+            new PokerCard(11, "clubs_queen.png"),
+            new PokerCard(12, "clubs_king.png"),
+            new PokerCard(13, "clubs_ass.png"),
+            new PokerCard(1, "diamonds_two.png"),
+            new PokerCard(2, "diamonds_three.png"),
+            new PokerCard(3, "diamonds_four.png"),
+            new PokerCard(4, "diamonds_five.png"),
+            new PokerCard(5, "diamonds_six.png"),
+            new PokerCard(6, "diamonds_seven.png"),
+            new PokerCard(7, "diamonds_eight.png"),
+            new PokerCard(8, "diamonds_nine.png"),
+            new PokerCard(9, "diamonds_ten.png"),
+            new PokerCard(10, "diamonds_jack.png"),
+            new PokerCard(11, "diamonds_queen.png"),
+            new PokerCard(12, "diamonds_king.png"),
+            new PokerCard(13, "diamonds_ass.png"),
+            new PokerCard(1, "hearts_two.png"),
+            new PokerCard(2, "hearts_three.png"),
+            new PokerCard(3, "hearts_four.png"),
+            new PokerCard(4, "hearts_five.png"),
+            new PokerCard(5, "hearts_six.png"),
+            new PokerCard(6, "hearts_seven.png"),
+            new PokerCard(7, "hearts_eight.png"),
+            new PokerCard(8, "hearts_nine.png"),
+            new PokerCard(9, "hearts_ten.png"),
+            new PokerCard(10, "hearts_jack.png"),
+            new PokerCard(11, "hearts_queen.png"),
+            new PokerCard(12, "hearts_queen.png"),
+            new PokerCard(13, "hearts_king.png"),
+            new PokerCard(1, "spades_two.png"),
+            new PokerCard(2, "spades_three.png"),
+            new PokerCard(3, "spades_four.png"),
+            new PokerCard(4, "spades_five.png"),
+            new PokerCard(5, "spades_six.png"),
+            new PokerCard(6, "spades_seven.png"),
+            new PokerCard(7, "spades_eight.png"),
+            new PokerCard(8, "spades_nine.png"),
+            new PokerCard(9, "spades_ten.png"),
+            new PokerCard(10, "spades_jack.png"),
+            new PokerCard(11, "spades_queen.png"),
+            new PokerCard(12, "spades_king.png"),
+            new PokerCard(13, "spades_ass.png")
         };
 
         isGameOver = false;
+        startNewAttempt = false;
+        remainingAttempts = 5;
+
         ShowNextPokerCard();
     }
 }

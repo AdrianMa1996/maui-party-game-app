@@ -94,6 +94,61 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\clubs_ass.png" />
+	  <None Remove="Resources\Images\clubs_eight.png" />
+	  <None Remove="Resources\Images\clubs_five.png" />
+	  <None Remove="Resources\Images\clubs_four.png" />
+	  <None Remove="Resources\Images\clubs_jack.png" />
+	  <None Remove="Resources\Images\clubs_king.png" />
+	  <None Remove="Resources\Images\clubs_nine.png" />
+	  <None Remove="Resources\Images\clubs_queen.png" />
+	  <None Remove="Resources\Images\clubs_seven.png" />
+	  <None Remove="Resources\Images\clubs_six.png" />
+	  <None Remove="Resources\Images\clubs_ten.png" />
+	  <None Remove="Resources\Images\clubs_three.png" />
+	  <None Remove="Resources\Images\clubs_two.png" />
+	  <None Remove="Resources\Images\diamonds_ass.png" />
+	  <None Remove="Resources\Images\diamonds_eight.png" />
+	  <None Remove="Resources\Images\diamonds_five.png" />
+	  <None Remove="Resources\Images\diamonds_four.png" />
+	  <None Remove="Resources\Images\diamonds_jack.png" />
+	  <None Remove="Resources\Images\diamonds_king.png" />
+	  <None Remove="Resources\Images\diamonds_nine.png" />
+	  <None Remove="Resources\Images\diamonds_queen.png" />
+	  <None Remove="Resources\Images\diamonds_seven.png" />
+	  <None Remove="Resources\Images\diamonds_six.png" />
+	  <None Remove="Resources\Images\diamonds_ten.png" />
+	  <None Remove="Resources\Images\diamonds_three.png" />
+	  <None Remove="Resources\Images\diamonds_two.png" />
+	  <None Remove="Resources\Images\hearts_ass.png" />
+	  <None Remove="Resources\Images\hearts_eight.png" />
+	  <None Remove="Resources\Images\hearts_five.png" />
+	  <None Remove="Resources\Images\hearts_four.png" />
+	  <None Remove="Resources\Images\hearts_jack.png" />
+	  <None Remove="Resources\Images\hearts_king.png" />
+	  <None Remove="Resources\Images\hearts_nine.png" />
+	  <None Remove="Resources\Images\hearts_queen.png" />
+	  <None Remove="Resources\Images\hearts_seven.png" />
+	  <None Remove="Resources\Images\hearts_six.png" />
+	  <None Remove="Resources\Images\hearts_ten.png" />
+	  <None Remove="Resources\Images\hearts_three.png" />
+	  <None Remove="Resources\Images\hearts_two.png" />
+	  <None Remove="Resources\Images\spades_ass.png" />
+	  <None Remove="Resources\Images\spades_eight.png" />
+	  <None Remove="Resources\Images\spades_five.png" />
+	  <None Remove="Resources\Images\spades_four.png" />
+	  <None Remove="Resources\Images\spades_jack.png" />
+	  <None Remove="Resources\Images\spades_king.png" />
+	  <None Remove="Resources\Images\spades_nine.png" />
+	  <None Remove="Resources\Images\spades_queen.png" />
+	  <None Remove="Resources\Images\spades_seven.png" />
+	  <None Remove="Resources\Images\spades_six.png" />
+	  <None Remove="Resources\Images\spades_ten.png" />
+	  <None Remove="Resources\Images\spades_three.png" />
+	  <None Remove="Resources\Images\spades_two.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.14" />
