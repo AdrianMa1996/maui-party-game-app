@@ -42,45 +42,122 @@ public partial class PunishmentGameView : ContentView
 
     private void Higher_Button_Clicked(object sender, EventArgs e)
     {
-        remainingAttempts = remainingAttempts - 1;
-        ShowNextPokerCard();
-        return;
+        var nextPokerCard = GetNextPokerCard();
+        if (nextPokerCard.CardValue > currentPokerCard.CardValue)
+        {
+            remainingAttempts = remainingAttempts - 1;
+        }
+        else
+        {
+            startNewAttempt = true;
+        }
+
+        currentPokerCard = nextPokerCard;
+        RefreshPunishmentGameView();
     }
 
     private void Same_Button_Clicked(object sender, EventArgs e)
     {
-        remainingAttempts = remainingAttempts - 1;
-        ShowNextPokerCard();
-        return;
+        var nextPokerCard = GetNextPokerCard();
+        if (nextPokerCard.CardValue == currentPokerCard.CardValue)
+        {
+            remainingAttempts = remainingAttempts - 1;
+        }
+        else
+        {
+            startNewAttempt = true;
+        }
+
+        currentPokerCard = nextPokerCard;
+        RefreshPunishmentGameView();
     }
 
     private void Deeper_Button_Clicked(object sender, EventArgs e)
     {
-        remainingAttempts = remainingAttempts - 1;
-        ShowNextPokerCard();
-        return;
+        var nextPokerCard = GetNextPokerCard();
+        if (nextPokerCard.CardValue < currentPokerCard.CardValue)
+        {
+            remainingAttempts = remainingAttempts - 1;
+        }
+        else
+        {
+            startNewAttempt = true;
+        }
+
+        currentPokerCard = nextPokerCard;
+        RefreshPunishmentGameView();
     }
 
     private void RestartPunishmentGame_Button_Clicked(object sender, EventArgs e)
     {
-        ShowNextPokerCard();
-        return;
+        SetupNewPunishmentGame();
     }
 
-    private void ShowNextPokerCard()
+    private PokerCard GetNextPokerCard()
     {
-        currentPokerCard = pokerCardDeck[5]; // gib eine zufällige PokerKarte zurück und entferne sie aus dem pokerCardDeck
-        RefreshPunishmentGameView();
-        return;
+        var nextPokerCard = pokerCardDeck[new Random().Next(pokerCardDeck.Count)];
+        pokerCardDeck.Remove(nextPokerCard);
+        return nextPokerCard;
     }
 
     private void RefreshPunishmentGameView()
     {
-        LedOne.BackgroundColor = grayLedColor;
-        LedTwo.BackgroundColor = grayLedColor;
-        LedThree.BackgroundColor = grayLedColor;
-        LedFour.BackgroundColor = greenLedColor;
-        LedFive.BackgroundColor = redLedColor;
+        switch (remainingAttempts)
+        {
+            case 5:
+                LedOne.BackgroundColor = grayLedColor;
+                LedTwo.BackgroundColor = grayLedColor;
+                LedThree.BackgroundColor = grayLedColor;
+                LedFour.BackgroundColor = grayLedColor;
+                LedFive.BackgroundColor = grayLedColor;
+                break;
+            case 4:
+                LedOne.BackgroundColor = greenLedColor;
+                LedTwo.BackgroundColor = grayLedColor;
+                LedThree.BackgroundColor = grayLedColor;
+                LedFour.BackgroundColor = grayLedColor;
+                LedFive.BackgroundColor = grayLedColor;
+                break;
+            case 3:
+                LedOne.BackgroundColor = greenLedColor;
+                LedTwo.BackgroundColor = greenLedColor;
+                LedThree.BackgroundColor = grayLedColor;
+                LedFour.BackgroundColor = grayLedColor;
+                LedFive.BackgroundColor = grayLedColor;
+                break;
+            case 2:
+                LedOne.BackgroundColor = greenLedColor;
+                LedTwo.BackgroundColor = greenLedColor;
+                LedThree.BackgroundColor = greenLedColor;
+                LedFour.BackgroundColor = grayLedColor;
+                LedFive.BackgroundColor = grayLedColor;
+                break;
+            case 1:
+                LedOne.BackgroundColor = greenLedColor;
+                LedTwo.BackgroundColor = greenLedColor;
+                LedThree.BackgroundColor = greenLedColor;
+                LedFour.BackgroundColor = greenLedColor;
+                LedFive.BackgroundColor = grayLedColor;
+                break;
+            case 0:
+                LedOne.BackgroundColor = greenLedColor;
+                LedTwo.BackgroundColor = greenLedColor;
+                LedThree.BackgroundColor = greenLedColor;
+                LedFour.BackgroundColor = greenLedColor;
+                LedFive.BackgroundColor = greenLedColor;
+                isGameOver = true;
+                break;
+
+        }
+
+        if (startNewAttempt)
+        {
+            LedOne.BackgroundColor = redLedColor;
+            LedTwo.BackgroundColor = redLedColor;
+            LedThree.BackgroundColor = redLedColor;
+            LedFour.BackgroundColor = redLedColor;
+            LedFive.BackgroundColor = redLedColor;
+        }
 
         CurrentPokerCard.Source = currentPokerCard.CardImage;
 
@@ -91,13 +168,13 @@ public partial class PunishmentGameView : ContentView
         RestartPunishmentGameText.IsVisible = startNewAttempt;
         RestartNumberOfKnockers.Text = (6 - remainingAttempts).ToString();
 
-        EndPunishmentGameText.IsVisible= isGameOver;
+        EndPunishmentGameText.IsVisible= isGameOver && !startNewAttempt;
 
         HigherButton.IsVisible = !isGameOver && !startNewAttempt;
         SameButton.IsVisible = !isGameOver && !startNewAttempt;
         DeeperButton.IsVisible = !isGameOver && !startNewAttempt;
         RestartPunishmentGameButton.IsVisible = startNewAttempt;
-        EndPunishmentGameButton.IsVisible = isGameOver;
+        EndPunishmentGameButton.IsVisible = isGameOver && !startNewAttempt;
         return;
     }
 
@@ -163,7 +240,8 @@ public partial class PunishmentGameView : ContentView
         startNewAttempt = false;
         remainingAttempts = 5;
 
-        ShowNextPokerCard();
+        currentPokerCard = GetNextPokerCard();
+        RefreshPunishmentGameView();
     }
 }
 

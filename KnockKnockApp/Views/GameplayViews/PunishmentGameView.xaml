@@ -74,13 +74,13 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="HigherButton" Grid.Column="0" BackgroundColor="Green" Text="Höher" Clicked="Higher_Button_Clicked"/>
+            <Button x:Name="HigherButton" Grid.Column="0" BackgroundColor="Blue" Text="Höher" Clicked="Higher_Button_Clicked"/>
             <Button x:Name="SameButton" Grid.Column="1" BackgroundColor="Gray" Text="Gleich" Clicked="Same_Button_Clicked"/>
             <Button x:Name="DeeperButton" Grid.Column="2" BackgroundColor="Orange" Text="Tiefer" Clicked="Deeper_Button_Clicked"/>
 
-            <Button x:Name="EndPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" Text="Neuer Versuch"/>
+            <Button x:Name="EndPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Green" Text="Weiter" Command="{Binding EndPunishmentGameCommand}"/>
 
-            <Button x:Name="RestartPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Blue" Text="Weiter" Clicked="RestartPunishmentGame_Button_Clicked"/>
+            <Button x:Name="RestartPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" Text="Neuer Versuch" Clicked="RestartPunishmentGame_Button_Clicked"/>
         </Grid>
     </Grid>
 </ContentView>
