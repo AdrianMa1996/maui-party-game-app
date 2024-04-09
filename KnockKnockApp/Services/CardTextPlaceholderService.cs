@@ -1,4 +1,5 @@
 ﻿using KnockKnockApp.Models;
+using KnockKnockApp.Models.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,11 +37,11 @@ namespace KnockKnockApp.Services
             return;
         }
 
-        public string ResolveTextPlaceholders(string text)
+        public GameCard ResolveTextPlaceholders(GameCard gameCard)
         {
             // Regex, um die Platzhalter zu finden
             var placeholderRegex = new Regex(@"\{Player(\d+)\}");
-            var matches = placeholderRegex.Matches(text);
+            var matches = placeholderRegex.Matches(gameCard.CardText);
 
             foreach (Match match in matches)
             {
@@ -51,11 +52,11 @@ namespace KnockKnockApp.Services
                 {
                     // Ersetzen des Platzhalters durch den Spielername, wenn vorhanden
                     string playerName = shuffledAllPlayersList[playerNumber].Name;
-                    text = text.Replace(match.Value, playerName);
+                    gameCard.CardText = gameCard.CardText.Replace(match.Value, playerName);
                 }
             }
 
-            return text;
+            return gameCard;
         }
     }
 }

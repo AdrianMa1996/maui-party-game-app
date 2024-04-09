@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KnockKnockApp.Models.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace KnockKnockApp.Services
     public interface ICardTextPlaceholderService
     {
         public void SetupAndShuffleLists();
-        public string ResolveTextPlaceholders(string text);
+        public GameCard ResolveTextPlaceholders(GameCard gameCard);
     }
 }

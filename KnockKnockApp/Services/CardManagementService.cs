@@ -97,7 +97,7 @@ namespace KnockKnockApp.Services
                     cardDepth = cardDepth - 1;
                 }
 
-                gameCard.CardText = _cardTextPlaceholderService.ResolveTextPlaceholders(gameCard.CardText);
+                gameCard = _cardTextPlaceholderService.ResolveTextPlaceholders(gameCard);
                 _cardDeck.Push(gameCard); // Problem: Karte wird eventuell hinter der Spiel-Ende karte gepushed
 
                 while (tempStack.Count > 0)
