@@ -21,6 +21,7 @@ namespace KnockKnockApp
             // Services
             builder.Services.AddSingleton<IPlayerManagementService, PlayerManagementService>();
             builder.Services.AddSingleton<ITeamManagementService, TeamManagementService>();
+            builder.Services.AddSingleton<ICardTextPlaceholderService, CardTextPlaceholderService>();
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
             builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();

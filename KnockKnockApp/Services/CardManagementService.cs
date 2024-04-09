@@ -11,6 +11,7 @@ namespace KnockKnockApp.Services
         private readonly IGameCardMapper _gameCardMapper;
         private readonly IGameCardRepository _gameCardRepository;
         private readonly IPlayerManagementService _playerManagementService;
+        private readonly ICardTextPlaceholderService _cardTextPlaceholderService;
 
         private Random _random = new Random();
 
@@ -18,12 +19,13 @@ namespace KnockKnockApp.Services
         private Stack<GameCard?> _cardDeck = new();
         private List<GameCard> _usedCards = [];
 
-        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService)
+        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService)
         {
             _gameModeMapper = gameModeMapper;
             _gameCardMapper = gameCardMapper;
             _gameCardRepository = gameCardRepository;
             _playerManagementService = playerManagementService;
+            _cardTextPlaceholderService = cardTextPlaceholderService;
         }
 
         public async Task SetupAsync(GameMode gameMode)
@@ -34,12 +36,16 @@ namespace KnockKnockApp.Services
 
             InitializeCardDeckWithNullCards();
 
+            _cardTextPlaceholderService.SetupAndShuffleLists();
+
             await PlaceFollowUpCardsAsync(_gameModeDto.GameModeDetails.StartingCardID);
             await PlaceFollowUpCardsAsync(_gameModeDto.GameModeDetails.FinisherCardID, _cardDeck.Count);
         }
 
         public async Task<GameCardDto?> DrawNextCardAsync()
         {
+            _cardTextPlaceholderService.SetupAndShuffleLists();
+
             if (_cardDeck.Count == 0) // wenn _cardDeck ist empty: Spielende (return null)
             {
                 return null;
@@ -49,7 +55,9 @@ namespace KnockKnockApp.Services
             if (gameCard == null)
             {
                 gameCard = GetRandomCard();
+                PlaceCardInCardDeck(gameCard);
                 await PlaceFollowUpCardsAsync(gameCard.FollowUpCardID, gameCard.IntervalToFollowUp);
+                gameCard = _cardDeck.Pop();
             }
 
             _usedCards.Add(gameCard);
@@ -89,6 +97,7 @@ namespace KnockKnockApp.Services
                     cardDepth = cardDepth - 1;
                 }
 
+                gameCard.CardText = _cardTextPlaceholderService.ResolveTextPlaceholders(gameCard.CardText);
                 _cardDeck.Push(gameCard); // Problem: Karte wird eventuell hinter der Spiel-Ende karte gepushed
 
                 while (tempStack.Count > 0)
