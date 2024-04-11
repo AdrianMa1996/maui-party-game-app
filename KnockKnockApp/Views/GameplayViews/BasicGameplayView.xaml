@@ -82,13 +82,13 @@
                 <Setter Property="Content" Value="{StaticResource PunishmentGameView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamGame">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamDare">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamDuel">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Teamvergleich">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
@@ -96,8 +96,11 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamStimmtEureGeigen">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampion">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampionPreparation">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampion">
+                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
         </ContentView.Triggers>
     </ContentView>

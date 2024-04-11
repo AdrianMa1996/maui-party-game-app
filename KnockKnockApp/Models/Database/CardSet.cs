@@ -28,6 +28,7 @@ namespace KnockKnockApp.Models.Database
         TeamDuel,
         Teamvergleich,
         TeamStimmtEureGeigen,
+        TeamChampionPreparation,
         TeamChampion
     }
 }

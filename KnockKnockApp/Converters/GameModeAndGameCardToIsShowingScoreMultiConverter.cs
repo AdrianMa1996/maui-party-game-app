@@ -50,6 +50,8 @@ namespace KnockKnockApp.Converters
                         return gameMode.IsTeamGameMode;
                     case CardSetCategory.TeamStimmtEureGeigen:
                         return gameMode.IsTeamGameMode;
+                    case CardSetCategory.TeamChampionPreparation:
+                        return gameMode.IsTeamGameMode;
                     case CardSetCategory.TeamChampion:
                         return gameMode.IsTeamGameMode;
                     default:
