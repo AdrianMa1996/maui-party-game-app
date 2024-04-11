@@ -30,9 +30,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
 
             AllPlayers = _playerManagementService.GetAllPlayers();
             TeamlessPlayers = new ObservableCollection<Player>(_playerManagementService.GetAllPlayers());
-            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
+            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
             TeamOnePlayers.Clear();
-            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
+            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
             TeamTwoPlayers.Clear();
             _teamManagementService = teamManagementService;
         }
@@ -118,9 +118,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public void AddPlayerToTeamOne(object commandParameter)
         {
             var player = (Player)commandParameter;
-            _playerManagementService.AddPlayerToTeamOne(player);
+            TeamOnePlayers.Add(player);
             TeamOnePlayers = new ObservableCollection<Player>();
-            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
+            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Remove(player);
             TeamlessPlayers = teamlessPlayersCopy;
@@ -130,9 +130,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public void AddPlayerToTeamTwo(object commandParameter)
         {
             var player = (Player)commandParameter;
-            _playerManagementService.AddPlayerToTeamTwo(player);
+            TeamTwoPlayers.Add(player);
             TeamTwoPlayers = new ObservableCollection<Player>();
-            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
+            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Remove(player);
             TeamlessPlayers = teamlessPlayersCopy;
@@ -145,9 +145,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Add(player);
             TeamlessPlayers = teamlessPlayersCopy;
-            _playerManagementService.RemovePlayerFromTeamOne(player);
+            TeamOnePlayers.Remove(player);
             TeamOnePlayers = new ObservableCollection<Player>();
-            TeamOnePlayers = _playerManagementService.GetTeamOnePlayers();
+            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
         }
 
         [RelayCommand]
@@ -157,9 +157,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
             teamlessPlayersCopy.Add(player);
             TeamlessPlayers = teamlessPlayersCopy;
-            _playerManagementService.RemovePlayerFromTeamTwo(player);
+            TeamTwoPlayers.Remove(player);
             TeamTwoPlayers = new ObservableCollection<Player>();
-            TeamTwoPlayers = _playerManagementService.GetTeamTwoPlayers();
+            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
         }
     }
 }

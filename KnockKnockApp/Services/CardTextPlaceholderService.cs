@@ -32,8 +32,8 @@ namespace KnockKnockApp.Services
         {
             shuffledAllPlayersList = _playerManagementService.GetAllPlayers().ToList().OrderBy(x => _random.Next()).ToList();
             shuffledTeamsList = new List<Team>() { _teamManagementService.GetTeamOne(), _teamManagementService.GetTeamTwo() }.OrderBy(x => _random.Next()).ToList();
-            shuffledTeamOnePlayersList = _playerManagementService.GetTeamOnePlayers().ToList().OrderBy(x => _random.Next()).ToList();
-            shuffledTeamTwoPlayersList = _playerManagementService.GetTeamTwoPlayers().ToList().OrderBy(x => _random.Next()).ToList();
+            shuffledTeamOnePlayersList = _teamManagementService.GetTeamOne().TeamMembers.ToList().OrderBy(x => _random.Next()).ToList();
+            shuffledTeamTwoPlayersList = _teamManagementService.GetTeamTwo().TeamMembers.ToList().OrderBy(x => _random.Next()).ToList();
             return;
         }
 

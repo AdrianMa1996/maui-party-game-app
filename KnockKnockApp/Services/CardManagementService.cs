@@ -11,6 +11,7 @@ namespace KnockKnockApp.Services
         private readonly IGameCardMapper _gameCardMapper;
         private readonly IGameCardRepository _gameCardRepository;
         private readonly IPlayerManagementService _playerManagementService;
+        private readonly ITeamManagementService _teamManagementService;
         private readonly ICardTextPlaceholderService _cardTextPlaceholderService;
 
         private Random _random = new Random();
@@ -19,13 +20,14 @@ namespace KnockKnockApp.Services
         private Stack<GameCard?> _cardDeck = new();
         private List<GameCard> _usedCards = [];
 
-        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService)
+        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService, ITeamManagementService teamManagementService)
         {
             _gameModeMapper = gameModeMapper;
             _gameCardMapper = gameCardMapper;
             _gameCardRepository = gameCardRepository;
             _playerManagementService = playerManagementService;
             _cardTextPlaceholderService = cardTextPlaceholderService;
+            _teamManagementService = teamManagementService;
         }
 
         public async Task SetupAsync(GameMode gameMode)
@@ -158,7 +160,7 @@ namespace KnockKnockApp.Services
                 {
                     if (gameCard.RequiredTotalPlayersCount <= _playerManagementService.GetAllPlayers().Count)
                     {
-                        if (gameCard.RequiredTeamOnePlayersCount > _playerManagementService.GetTeamOnePlayers().Count || gameCard.RequiredTeamTwoPlayersCount > _playerManagementService.GetTeamTwoPlayers().Count)
+                        if (gameCard.RequiredTeamOnePlayersCount > _teamManagementService.GetTeamOne().TeamMembers.Count || gameCard.RequiredTeamTwoPlayersCount > _teamManagementService.GetTeamTwo().TeamMembers.Count)
                         {
                             return false;
                         }
