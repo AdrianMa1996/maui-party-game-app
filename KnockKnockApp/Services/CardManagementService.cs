@@ -62,6 +62,9 @@ namespace KnockKnockApp.Services
                 gameCard = _cardDeck.Pop();
             }
 
+            gameCard = _cardTextPlaceholderService.ResolveWinningTeamPlaceholders(gameCard);
+            gameCard = _cardTextPlaceholderService.ResolveLosingTeamPlaceholders(gameCard);
+
             _usedCards.Add(gameCard);
 
             return await _gameCardMapper.ConvertToDtoAsync(gameCard);
@@ -99,7 +102,12 @@ namespace KnockKnockApp.Services
                     cardDepth = cardDepth - 1;
                 }
 
-                gameCard = _cardTextPlaceholderService.ResolveTextPlaceholders(gameCard);
+                gameCard = _cardTextPlaceholderService.ResolvePlayerPlaceholders(gameCard);
+                gameCard = _cardTextPlaceholderService.ResolvePointValuePlaceholders(gameCard);
+                gameCard = _cardTextPlaceholderService.ResolveTeamPlaceholders(gameCard);
+                gameCard = _cardTextPlaceholderService.ResolvePlayerTeam1Placeholders(gameCard);
+                gameCard = _cardTextPlaceholderService.ResolvePlayerTeam2Placeholders(gameCard);
+
                 _cardDeck.Push(gameCard); // Problem: Karte wird eventuell hinter der Spiel-Ende karte gepushed
 
                 while (tempStack.Count > 0)
