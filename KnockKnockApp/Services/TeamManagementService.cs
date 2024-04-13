@@ -10,11 +10,19 @@ namespace KnockKnockApp.Services
 {
     class TeamManagementService : ITeamManagementService
     {
-        private Team teamOne = new Team("TeamA", 0);
-        private Team teamTwo = new Team("TeamB", 0);
+        private Team teamOne;
+        private Team teamTwo;
 
-        private Team? winningTeam;
-        private Team? losingTeam;
+        private Team winningTeam;
+        private Team losingTeam;
+
+        public void SetupTeamManagementService()
+        {
+            teamOne = new Team("TeamA", 0);
+            teamTwo = new Team("TeamB", 0);
+            resetLosingAndWinningTeams();
+            return;
+        }
 
         public Team GetTeamOne()
         {

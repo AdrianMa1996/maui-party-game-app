@@ -9,6 +9,7 @@ namespace KnockKnockApp.Services
 {
     public interface ITeamManagementService
     {
+        public void SetupTeamManagementService();
         public Team GetTeamOne();
         public void AddGamePointsToTeamOne(int gamePoints);
         public Team GetTeamTwo();

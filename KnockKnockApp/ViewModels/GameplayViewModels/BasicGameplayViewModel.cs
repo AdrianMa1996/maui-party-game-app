@@ -23,7 +23,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             _playerManagementService = playerManagementService;
             _teamManagementService = teamManagementService;
 
-            // setup TeamManagementService (und evtl die Team-Spieler vom PlayerManagementservice in den TeamManagementServiceverscheibenn)
+            _teamManagementService.SetupTeamManagementService();
 
             TeamOne = _teamManagementService.GetTeamOne();
             TeamTwo = _teamManagementService.GetTeamTwo();
@@ -31,9 +31,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             AllPlayers = _playerManagementService.GetAllPlayers();
             TeamlessPlayers = new ObservableCollection<Player>(_playerManagementService.GetAllPlayers());
             TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
-            TeamOnePlayers.Clear();
             TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
-            TeamTwoPlayers.Clear();
             _teamManagementService = teamManagementService;
         }
 
