@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Services;
 using System.Collections.ObjectModel;
-using System.Globalization;
 
 namespace KnockKnockApp.ViewModels.PopupViewModels
 {
@@ -13,7 +12,6 @@ namespace KnockKnockApp.ViewModels.PopupViewModels
         public LanguageSettingsViewModel(ILocalizationService localizationService)
         {
             LocalizationService = localizationService;
-
             Localizations = LocalizationService.GetLocalizations();
         }
 
@@ -23,15 +21,10 @@ namespace KnockKnockApp.ViewModels.PopupViewModels
         [ObservableProperty]
         public ObservableCollection<Localization> localizations;
 
-        [ObservableProperty]
-        public string textBeispiel = "Das ist das Textbeispiel";
-
         [RelayCommand]
         public void ChangeLocalization(Localization localization)
         {
-            var switchToCulture = new CultureInfo("nl-NL");
-
-            LocalizationService.SetCulture(switchToCulture);
+            LocalizationService.SetCulture(localization.Culture);
         }
     }
 }

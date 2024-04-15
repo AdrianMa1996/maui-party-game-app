@@ -61,11 +61,20 @@ namespace KnockKnockApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hello, World123 Default !.
+        ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string _1 {
             get {
                 return ResourceManager.GetString("1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter player name.
+        /// </summary>
+        internal static string _2 {
+            get {
+                return ResourceManager.GetString("2", resourceCulture);
             }
         }
     }

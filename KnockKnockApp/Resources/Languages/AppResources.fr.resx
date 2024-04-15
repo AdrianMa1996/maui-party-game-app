@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="1" xml:space="preserve">
-    <value>Language</value>
+    <value>Langue</value>
   </data>
   <data name="2" xml:space="preserve">
-    <value>Enter player name</value>
+    <value>Entrez le nom du joueur</value>
   </data>
 </root>

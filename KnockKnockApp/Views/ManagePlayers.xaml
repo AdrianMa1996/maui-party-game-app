@@ -52,7 +52,7 @@
             HorizontalOptions="Center" />
 
             <Entry 
-            Placeholder="Spielername eingeben"
+            Placeholder="{Binding LocalizationService[2], Mode=OneWay}"
             x:Name="SpielerNameEntry"
             Keyboard="Plain"
             IsSpellCheckEnabled="False"

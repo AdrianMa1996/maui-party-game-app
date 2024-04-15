@@ -15,8 +15,7 @@ namespace KnockKnockApp.Services
         private ObservableCollection<Localization> localizations = [
             new Localization("Deutschland", new CultureInfo("de-DE")), 
             new Localization("Frankreich", new CultureInfo("fr-FR")),
-            new Localization("Großbritannien", new CultureInfo("en-GB")),
-            new Localization("Niederlande", new CultureInfo("nl-NL"))];
+            new Localization("Großbritannien", new CultureInfo("en-GB"))];
 
         public LocalizationService()
         {

@@ -6,13 +6,19 @@
            xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
            CanBeDismissedByTappingOutsideOfPopup="False"
            VerticalOptions="Fill" HorizontalOptions="Fill">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding LocalizationService[1], Mode=OneWay}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="Close" Clicked="CloseButton_Clicked" />
-        <ScrollView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding LocalizationService[1], Mode=OneWay}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Button Grid.Row="0" Grid.Column="1" Text="Close" Clicked="CloseButton_Clicked" />
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <VerticalStackLayout x:Name="LocalizationList" BindableLayout.ItemsSource="{Binding Localizations}" >
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -32,5 +38,5 @@
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
         </ScrollView>
-    </VerticalStackLayout>
+    </Grid>
 </mct:Popup>

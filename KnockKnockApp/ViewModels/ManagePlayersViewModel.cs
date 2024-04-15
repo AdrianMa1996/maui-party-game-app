@@ -14,14 +14,18 @@ namespace KnockKnockApp.ViewModels
         private readonly IPopupService _popupService;
         private readonly LanguageSettingsViewModel _languageSettingsViewModel;
 
-        public ManagePlayersViewModel(IPlayerManagementService playerManagementService, IPopupService popupService, LanguageSettingsViewModel languageSettingsViewModel)
+        public ManagePlayersViewModel(ILocalizationService localizationService, IPlayerManagementService playerManagementService, IPopupService popupService, LanguageSettingsViewModel languageSettingsViewModel)
         {
+            LocalizationService = localizationService;
             _playerManagementService = playerManagementService;
             _popupService = popupService;
             _languageSettingsViewModel = languageSettingsViewModel;
 
             AllPlayers = _playerManagementService.GetAllPlayers();
         }
+
+        [ObservableProperty]
+        public ILocalizationService localizationService;
 
         [ObservableProperty]
         public ObservableCollection<Player> allPlayers;
