@@ -42,14 +42,14 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
             builder.Services.AddSingleton<ManagePlayers>();
-            builder.Services.AddSingleton<SelectGameModeView>();
+            builder.Services.AddTransient<SelectGameModeView>();
             builder.Services.AddTransient<BasicGameplayView>();
             builder.Services.AddTransient<GameModeSettingsView>();
             // Popups
             builder.Services.AddTransientPopup<LanguageSettingsView, LanguageSettingsViewModel>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
-            builder.Services.AddSingleton<SelectGameModeViewModel>();
+            builder.Services.AddTransient<SelectGameModeViewModel>();
             builder.Services.AddTransient<BasicGameplayViewModel>();
             builder.Services.AddTransient<GameModeSettingsViewModel>();
 

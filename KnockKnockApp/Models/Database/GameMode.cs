@@ -11,7 +11,7 @@ namespace KnockKnockApp.Models.Database
         public string DescriptionText { get; set; }
         public bool IsTeamGameMode { get; set; }
         public bool IsPrime { get; set; }
-        public int Language { get; set; } // 0 is default => EN
+        public string Language { get; set; }
         public int Category { get; set; }
         public int NumberOfGameCards { get; set; }
         public int StartingCardID { get; set; }
