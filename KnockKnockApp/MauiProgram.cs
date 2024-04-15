@@ -1,10 +1,13 @@
-﻿using KnockKnockApp.Mapper;
+﻿using CommunityToolkit.Maui;
+using KnockKnockApp.Mapper;
 using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using KnockKnockApp.ViewModels;
 using KnockKnockApp.ViewModels.GameplayViewModels;
+using KnockKnockApp.ViewModels.PopupViewModels;
 using KnockKnockApp.Views;
 using KnockKnockApp.Views.GameplayViews;
+using KnockKnockApp.Views.PopupViews;
 using Microsoft.Extensions.Logging;
 
 namespace KnockKnockApp
@@ -16,6 +19,9 @@ namespace KnockKnockApp
             var builder = MauiApp.CreateBuilder();
             builder.UseMauiApp<App>();
 
+            // Initialize the .NET MAUI Community Toolkit by adding the below line of code
+            builder.UseMauiCommunityToolkit();
+
             UpdateLocalDatabaseIfOutdated();
 
             // Services
@@ -26,6 +32,7 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
             builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();
             builder.Services.AddTransient<ICardManagementService, CardManagementService>();
+            builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
 
             builder.Services.AddSingleton<IGameCardMapper, GameCardMapper>();
             builder.Services.AddSingleton<IGameModeMapper, GameModeMapper>();
@@ -38,6 +45,8 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<SelectGameModeView>();
             builder.Services.AddTransient<BasicGameplayView>();
             builder.Services.AddTransient<GameModeSettingsView>();
+            // Popups
+            builder.Services.AddTransientPopup<LanguageSettingsView, LanguageSettingsViewModel>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddSingleton<SelectGameModeViewModel>();

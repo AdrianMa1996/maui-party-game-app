@@ -1,7 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Services;
+using KnockKnockApp.ViewModels.PopupViewModels;
 using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels
@@ -9,10 +11,14 @@ namespace KnockKnockApp.ViewModels
     public partial class ManagePlayersViewModel : ObservableObject
     {
         private readonly IPlayerManagementService _playerManagementService;
+        private readonly IPopupService _popupService;
+        private readonly LanguageSettingsViewModel _languageSettingsViewModel;
 
-        public ManagePlayersViewModel(IPlayerManagementService playerManagementService)
+        public ManagePlayersViewModel(IPlayerManagementService playerManagementService, IPopupService popupService, LanguageSettingsViewModel languageSettingsViewModel)
         {
             _playerManagementService = playerManagementService;
+            _popupService = popupService;
+            _languageSettingsViewModel = languageSettingsViewModel;
 
             AllPlayers = _playerManagementService.GetAllPlayers();
         }
@@ -43,6 +49,12 @@ namespace KnockKnockApp.ViewModels
         public void NavigateToSelectGameMode()
         {
             AppShell.Current.GoToAsync("SelectGameModeView", true);
+        }
+
+        [RelayCommand]
+        public void DisplayLanguageSettings(Localization localization)
+        {
+            _popupService.ShowPopup(_languageSettingsViewModel);
         }
     }
 }

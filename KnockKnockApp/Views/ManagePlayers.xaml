@@ -4,7 +4,7 @@
              x:Class="KnockKnockApp.Views.ManagePlayers"
              Title="ManagePlayers"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -44,9 +44,14 @@
 
         </ScrollView>
 
-        <FlexLayout Direction="Row" AlignItems="End">
+        <FlexLayout Grid.Row="1" Direction="Row">
+            <Button
+            x:Name="SpracheÄndernBtn"
+            Text="Sprache"
+            Command="{Binding DisplayLanguageSettingsCommand}"
+            HorizontalOptions="Center" />
+
             <Entry 
-            Grid.Row="1"
             Placeholder="Spielername eingeben"
             x:Name="SpielerNameEntry"
             Keyboard="Plain"
@@ -71,5 +76,5 @@
         </FlexLayout>
 
     </Grid>
-    
+
 </ContentPage>
