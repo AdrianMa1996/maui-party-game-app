@@ -94,6 +94,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\BowlbyOneSC-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Calibri.ttf" />
 	  <None Remove="Resources\Images\clubs_ass.png" />
 	  <None Remove="Resources\Images\clubs_eight.png" />
 	  <None Remove="Resources\Images\clubs_five.png" />
@@ -135,6 +137,7 @@
 	  <None Remove="Resources\Images\hearts_ten.png" />
 	  <None Remove="Resources\Images\hearts_three.png" />
 	  <None Remove="Resources\Images\hearts_two.png" />
+	  <None Remove="Resources\Images\icon_close.png" />
 	  <None Remove="Resources\Images\logo_basic_ohne_hintergrund.png" />
 	  <None Remove="Resources\Images\logo_ohne_hintergrund.png" />
 	  <None Remove="Resources\Images\spades_ass.png" />

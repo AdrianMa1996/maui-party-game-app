@@ -27,14 +27,12 @@
             <FlexLayout x:Name="ListPlayers" BindableLayout.ItemsSource="{Binding AllPlayers}" Wrap="Wrap" AlignContent="End">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="0,0,0,6" HeightRequest="20" HorizontalOptions="StartAndExpand">
-                            <Frame Padding="2" BackgroundColor="#f1f1f1" CornerRadius="5" HorizontalOptions="StartAndExpand">
-                                <FlexLayout Direction="Row" BackgroundColor="Bisque" AlignItems="Center">
-                                    <Label Text="{Binding Name}"/>
-                                    <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
-                                </FlexLayout>
-                            </Frame>
-                        </Grid>
+                        <Frame Margin="0,0,0,6" Padding="2" HeightRequest="20" BackgroundColor="#f1f1f1" CornerRadius="5">
+                            <FlexLayout Direction="Row" BackgroundColor="Bisque" AlignItems="Center">
+                                <Label Text="{Binding Name}" FontSize="Body"/>
+                                <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
+                            </FlexLayout>
+                        </Frame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </FlexLayout>
@@ -45,16 +43,20 @@
             <Button
             x:Name="SpracheÄndernBtn"
             Text="Sprache"
+            FontSize="Body"
+            FontAttributes="Bold"
             Command="{Binding DisplayLanguageSettingsCommand}"
             HorizontalOptions="Center" />
 
             <Entry 
             Placeholder="{Binding LocalizationService[2], Mode=OneWay}"
+            BackgroundColor="White"
             x:Name="SpielerNameEntry"
             Keyboard="Plain"
             IsSpellCheckEnabled="False"
             IsTextPredictionEnabled="False"
-            Text="{Binding SpielerNameEntryText}"/>
+            Text="{Binding SpielerNameEntryText}"
+            FontAttributes="Bold"/>
 
             <Button
             x:Name="SpielerHinzufügenBtn"

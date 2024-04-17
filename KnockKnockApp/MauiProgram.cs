@@ -55,8 +55,8 @@ namespace KnockKnockApp
 
             builder.ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("Calibri.ttf", "Calibri");
+                fonts.AddFont("BowlbyOneSC-Regular.ttf", "BowlbyOneSC");
             });
 
 #if DEBUG
