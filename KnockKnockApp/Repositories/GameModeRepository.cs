@@ -22,7 +22,7 @@ namespace KnockKnockApp.Repositories
 
         public async Task<List<GameMode>> GetGameModesAsync()
         {
-            var cultureCode = _localizationService.GetCulture().Name;
+            var cultureCode = _localizationService.GetCurrentLocalization().Culture.Name;
             var gameModeList = await _dbConnection.Table<GameMode>().Where(gameMode => gameMode.Language == cultureCode).ToListAsync();
             if (gameModeList.Count == 0)
             {

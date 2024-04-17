@@ -10,30 +10,30 @@ namespace KnockKnockApp.Services
     [ObservableObject]
     public partial class LocalizationService : ILocalizationService
     {
-        private CultureInfo _culture;
+        private Localization _currentLocalization;
 
         private ObservableCollection<Localization> localizations = [
-            new Localization("Deutschland", new CultureInfo("de-DE")), 
-            new Localization("Frankreich", new CultureInfo("fr-FR")),
-            new Localization("Großbritannien", new CultureInfo("en-GB"))];
+            new Localization("Deutschland", new CultureInfo("de-DE"), "flag_germany.png"),
+            new Localization("Großbritannien", new CultureInfo("en-GB"), "flag_united_kingdom.png")];
 
         public LocalizationService()
         {
-            _culture = CultureInfo.CurrentCulture;
+            var currentCultureInfo = CultureInfo.CurrentCulture;
+            _currentLocalization = localizations.FirstOrDefault(l => l.Culture.Equals(currentCultureInfo)) ?? localizations.FirstOrDefault(l => l.Culture.Name == "en-GB");
         }
 
         public object this[string resourceKey]
-            => AppResources.ResourceManager.GetObject(resourceKey, _culture) ?? Array.Empty<byte>();
+            => AppResources.ResourceManager.GetObject(resourceKey, _currentLocalization.Culture) ?? Array.Empty<byte>();
 
-        public void SetCulture(CultureInfo culture)
+        public void SetCurrentLocalization(Localization localization)
         {
-            _culture = culture;
+            _currentLocalization = localization;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(null));
         }
 
-        public CultureInfo GetCulture()
+        public Localization GetCurrentLocalization()
         {
-            return _culture;
+            return _currentLocalization;
         }
 
         public ObservableCollection<Localization> GetLocalizations()

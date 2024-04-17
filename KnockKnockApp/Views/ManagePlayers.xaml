@@ -5,46 +5,43 @@
              Title="ManagePlayers"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
 
-    <Grid>
+    <Grid BackgroundColor="#3D006C" >
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0">
-            <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0">
+        <Frame Grid.Row="0" HorizontalOptions="End" WidthRequest="68" HeightRequest="68" CornerRadius="34">
+            <Frame Grid.Row="0" WidthRequest="60" HeightRequest="60" Padding="0" CornerRadius="30" IsClippedToBounds="True">
+                <Image Source="{Binding LocalizationService[3], Mode=OneWay}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DisplayLanguageSettingsCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Frame>
 
-                <FlexLayout x:Name="ListPlayers"
-                BindableLayout.ItemsSource="{Binding AllPlayers}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="StartAndExpand"
-                Wrap="Wrap">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,0,0,6"
-                            HeightRequest="20"
-                            HorizontalOptions="StartAndExpand">
-                                <Frame Padding="2"
-                                BackgroundColor="#f1f1f1"
-                                CornerRadius="5"
-                                HorizontalOptions="StartAndExpand">
-                                    <FlexLayout Direction="Row" BackgroundColor="Bisque" AlignItems="Center">
-                                        <Label Text="{Binding Name}"/>
-                                        <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
-                                    </FlexLayout>
-                                </Frame>
-                            </Grid>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>
+        <Image Grid.Row="0" Grid.RowSpan="3" Source="logo_basic_ohne_hintergrund.png" VerticalOptions="Start" WidthRequest="300" HeightRequest="300"/>
 
-            </VerticalStackLayout>
+        <ScrollView Grid.Row="1">
+            <FlexLayout x:Name="ListPlayers" BindableLayout.ItemsSource="{Binding AllPlayers}" Wrap="Wrap" AlignContent="End">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,6" HeightRequest="20" HorizontalOptions="StartAndExpand">
+                            <Frame Padding="2" BackgroundColor="#f1f1f1" CornerRadius="5" HorizontalOptions="StartAndExpand">
+                                <FlexLayout Direction="Row" BackgroundColor="Bisque" AlignItems="Center">
+                                    <Label Text="{Binding Name}"/>
+                                    <Button Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}" MaximumWidthRequest="25"/>
+                                </FlexLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
 
         </ScrollView>
 
-        <FlexLayout Grid.Row="1" Direction="Row">
+        <FlexLayout Grid.Row="2" Direction="Row" BackgroundColor="LightGray">
             <Button
             x:Name="SpracheÄndernBtn"
             Text="Sprache"

@@ -9,13 +9,15 @@ namespace KnockKnockApp.Models
 {
     public class Localization
     {
-        public Localization(string name, CultureInfo culture)
+        public Localization(string name, CultureInfo culture, string flagImage)
         {
             Name = name;
             Culture = culture;
+            FlagImage = flagImage;
         }
 
         public string Name { get; set; }
         public CultureInfo Culture { get; set; }
+        public string FlagImage { get; set; }
     }
 }

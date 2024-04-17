@@ -77,5 +77,23 @@ namespace KnockKnockApp.Resources.Languages {
                 return ResourceManager.GetString("2", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to flag_united_kingdom.png.
+        /// </summary>
+        internal static string _3 {
+            get {
+                return ResourceManager.GetString("3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Großbritannien.
+        /// </summary>
+        internal static string _4 {
+            get {
+                return ResourceManager.GetString("4", resourceCulture);
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace KnockKnockApp.ViewModels.PopupViewModels
         [RelayCommand]
         public void ChangeLocalization(Localization localization)
         {
-            LocalizationService.SetCulture(localization.Culture);
+            LocalizationService.SetCurrentLocalization(localization);
         }
     }
 }

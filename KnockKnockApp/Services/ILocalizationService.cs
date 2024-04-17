@@ -6,8 +6,8 @@ namespace KnockKnockApp.Services
 {
     public interface ILocalizationService
     {
-        public void SetCulture(CultureInfo culture);
-        public CultureInfo GetCulture();
+        public void SetCurrentLocalization(Localization localization);
+        public Localization GetCurrentLocalization();
         public ObservableCollection<Localization> GetLocalizations();
     }
 }
