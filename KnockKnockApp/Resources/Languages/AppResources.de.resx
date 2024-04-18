@@ -129,4 +129,7 @@
   <data name="4" xml:space="preserve">
     <value>Deutschland</value>
   </data>
+  <data name="5" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
 </root>

@@ -95,5 +95,14 @@ namespace KnockKnockApp.Resources.Languages {
                 return ResourceManager.GetString("4", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        internal static string _5 {
+            get {
+                return ResourceManager.GetString("5", resourceCulture);
+            }
+        }
     }
 }

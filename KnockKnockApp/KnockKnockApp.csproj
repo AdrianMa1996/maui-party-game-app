@@ -137,7 +137,7 @@
 	  <None Remove="Resources\Images\hearts_ten.png" />
 	  <None Remove="Resources\Images\hearts_three.png" />
 	  <None Remove="Resources\Images\hearts_two.png" />
-	  <None Remove="Resources\Images\icon_close.png" />
+	  <None Remove="Resources\Images\icon_close_black.png" />
 	  <None Remove="Resources\Images\logo_basic_ohne_hintergrund.png" />
 	  <None Remove="Resources\Images\logo_ohne_hintergrund.png" />
 	  <None Remove="Resources\Images\spades_ass.png" />

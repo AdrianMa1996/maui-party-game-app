@@ -39,40 +39,23 @@
 
         </ScrollView>
 
-        <FlexLayout Grid.Row="2" Direction="Row" BackgroundColor="LightGray">
-            <Button
-            x:Name="SpracheÄndernBtn"
-            Text="Sprache"
-            FontSize="Body"
-            FontAttributes="Bold"
-            Command="{Binding DisplayLanguageSettingsCommand}"
-            HorizontalOptions="Center" />
+        <Grid Grid.Row="2" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-            <Entry 
-            Placeholder="{Binding LocalizationService[2], Mode=OneWay}"
-            BackgroundColor="White"
-            x:Name="SpielerNameEntry"
-            Keyboard="Plain"
-            IsSpellCheckEnabled="False"
-            IsTextPredictionEnabled="False"
-            Text="{Binding SpielerNameEntryText}"
-            FontAttributes="Bold"/>
+            <Button Grid.Column="0" Text="Sprache" FontSize="Body" FontAttributes="Bold" Command="{Binding DisplayLanguageSettingsCommand}" HorizontalOptions="Center" />
 
-            <Button
-            x:Name="SpielerHinzufügenBtn"
-            Text="Spieler"
-            SemanticProperties.Hint="Counts the number of times you click"
-            Command="{Binding AddPlayerCommand}"
-            HorizontalOptions="Center" />
+            <Entry Grid.Column="1" x:Name="SpielerNameEntry" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" BackgroundColor="White" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" FontAttributes="Bold"/>
 
-            <Button
-            x:Name="SeiteWechselnBtn"
-            Text="Seite"
-            SemanticProperties.Hint="Wechselt die Seite zu SelectGameMode"
-            Command="{Binding NavigateToSelectGameModeCommand}"
-            HorizontalOptions="Center" />
+            <Button Grid.Column="2" BackgroundColor="LightGray" Text="Spieler" SemanticProperties.Hint="Counts the number of times you click" Command="{Binding AddPlayerCommand}" HorizontalOptions="Center" />
 
-        </FlexLayout>
+            <Button Grid.Column="3" BackgroundColor="#279EFF" Text="Seite" SemanticProperties.Hint="Wechselt die Seite zu SelectGameMode" Command="{Binding NavigateToSelectGameModeCommand}" HorizontalOptions="Center" />
+
+        </Grid>
 
     </Grid>
 

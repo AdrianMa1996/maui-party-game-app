@@ -18,29 +18,34 @@
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding LocalizationService[1], Mode=OneWay}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" FontFamily="BowlbyOneSC" Margin="0,35,0,10"/>
 
-        <ImageButton Grid.Row="0" Grid.Column="1" Clicked="CloseButton_Clicked" Source="icon_close.png" VerticalOptions="Start" WidthRequest="20" HeightRequest="20" Margin="0,15,15,0"/>
+        <ImageButton Grid.Row="0" Grid.Column="1" Clicked="CloseButton_Clicked" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="25" HeightRequest="25" Margin="0,15,15,0"/>
 
 
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            <VerticalStackLayout x:Name="LocalizationList" BindableLayout.ItemsSource="{Binding Localizations}" >
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Frame  BackgroundColor="#C8C8C8" Margin="30,8" Padding="0,10" CornerRadius="10" IsClippedToBounds="True">
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.ChangeLocalizationCommand, Source={x:Reference LocalizationList}}" CommandParameter="{Binding .}"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
+            <VerticalStackLayout>
+                <VerticalStackLayout x:Name="LocalizationList" BindableLayout.ItemsSource="{Binding Localizations}" >
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame  BackgroundColor="#C8C8C8" Margin="30,8" Padding="0,10" CornerRadius="10" IsClippedToBounds="True">
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.ChangeLocalizationCommand, Source={x:Reference LocalizationList}}" CommandParameter="{Binding .}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                <Image Grid.Column="0" Source="{Binding FlagImage}" WidthRequest="40" HeightRequest="40" Margin="30,0,10,0"/>
-                                <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
-                            </Grid>
-                        </Frame>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+                                    <Image Grid.Column="0" Source="{Binding FlagImage}" WidthRequest="40" HeightRequest="40" Margin="30,0,10,0"/>
+                                    <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" FontSize="Large" FontAttributes="Bold"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <Button Clicked="CloseButton_Clicked" Text="{Binding LocalizationService[5], Mode=OneWay}" FontSize="Large" FontAttributes="Bold" Margin="30,8" Padding="0,17" CornerRadius="10" BackgroundColor="#279EFF"/>
+
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
