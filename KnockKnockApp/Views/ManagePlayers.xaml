@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <Frame Grid.Row="0" HorizontalOptions="End" WidthRequest="68" HeightRequest="68" CornerRadius="34">
-            <Frame Grid.Row="0" WidthRequest="60" HeightRequest="60" Padding="0" CornerRadius="30" IsClippedToBounds="True">
+            <Frame WidthRequest="60" HeightRequest="60" Padding="0" CornerRadius="30" IsClippedToBounds="True">
                 <Image Source="{Binding LocalizationService[3], Mode=OneWay}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding DisplayLanguageSettingsCommand}"/>
@@ -47,13 +47,25 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Text="Sprache" FontSize="Body" FontAttributes="Bold" Command="{Binding DisplayLanguageSettingsCommand}" HorizontalOptions="Center" />
+            <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True">
+                <Image Source="icon_player_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+            </Frame>
 
-            <Entry Grid.Column="1" x:Name="SpielerNameEntry" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" BackgroundColor="White" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" FontAttributes="Bold"/>
+            <Entry Grid.Column="1" x:Name="SpielerNameEntry" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" />
 
-            <Button Grid.Column="2" BackgroundColor="LightGray" Text="Spieler" SemanticProperties.Hint="Counts the number of times you click" Command="{Binding AddPlayerCommand}" HorizontalOptions="Center" />
+            <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1">
+                <Image Source="icon_plus_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddPlayerCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
 
-            <Button Grid.Column="3" BackgroundColor="#279EFF" Text="Seite" SemanticProperties.Hint="Wechselt die Seite zu SelectGameMode" Command="{Binding NavigateToSelectGameModeCommand}" HorizontalOptions="Center" />
+            <Frame Grid.Column="3" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF">
+                <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
 
         </Grid>
 
