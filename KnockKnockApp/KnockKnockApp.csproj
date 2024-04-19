@@ -77,10 +77,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#3D006C" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#3D006C" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -139,6 +139,8 @@
 	  <None Remove="Resources\Images\hearts_two.png" />
 	  <None Remove="Resources\Images\icon_arrow_right_white.png" />
 	  <None Remove="Resources\Images\icon_close_black.png" />
+	  <None Remove="Resources\Images\icon_close_gray.png" />
+	  <None Remove="Resources\Images\icon_close_lightgray.png" />
 	  <None Remove="Resources\Images\icon_player_gray.png" />
 	  <None Remove="Resources\Images\icon_plus_gray.png" />
 	  <None Remove="Resources\Images\logo_basic_ohne_hintergrund.png" />
