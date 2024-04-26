@@ -70,7 +70,8 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             var nextCard = await _cardManagementService.DrawNextCardAsync();
             if (nextCard == null)
             {
-                NavigateToSelectGameMode();
+                Shell.Current.GoToAsync("..", false);
+                _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
             }
             CurrentCard = nextCard;
         }
@@ -100,10 +101,14 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         }
 
         [RelayCommand]
-        public void NavigateToSelectGameMode()
+        public async void NavigateToSelectGameMode()
         {
-            Shell.Current.GoToAsync("..", false);
-            _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
+            var answer = await Application.Current.MainPage.DisplayAlert("Partie verlassen?", "Seid ihr sicher, dass ihr die Partie verlassen wollt?", "Yes", "No");
+            if (answer)
+            {
+                Shell.Current.GoToAsync("..", false);
+                _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
+            }
         }
 
         public async void SetupGameAndDrawCard()
