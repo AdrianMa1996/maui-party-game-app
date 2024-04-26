@@ -132,4 +132,7 @@
   <data name="5" xml:space="preserve">
     <value>Schließen</value>
   </data>
+  <data name="6" xml:space="preserve">
+    <value>Spieler</value>
+  </data>
 </root>

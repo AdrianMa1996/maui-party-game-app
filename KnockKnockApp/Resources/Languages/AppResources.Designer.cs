@@ -104,5 +104,14 @@ namespace KnockKnockApp.Resources.Languages {
                 return ResourceManager.GetString("5", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to players.
+        /// </summary>
+        internal static string _6 {
+            get {
+                return ResourceManager.GetString("6", resourceCulture);
+            }
+        }
     }
 }

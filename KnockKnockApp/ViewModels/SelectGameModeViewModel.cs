@@ -14,8 +14,9 @@ namespace KnockKnockApp.ViewModels
         private readonly IGameModeRepository _gameModeRepository;
         private readonly IPlayerManagementService _playerManagementService;
 
-        public SelectGameModeViewModel(IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService)
+        public SelectGameModeViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService)
         {
+            LocalizationService = localizationService;
             _deviceOrientationService = deviceOrientationService;
             _gameModeRepository = gameModeRepository;
             _playerManagementService = playerManagementService;
@@ -24,6 +25,9 @@ namespace KnockKnockApp.ViewModels
 
             RefreshGameModeCollection();
         }
+
+        [ObservableProperty]
+        public ILocalizationService localizationService;
 
         [ObservableProperty]
         public ObservableCollection<GameMode> gameModeCollection = new ObservableCollection<GameMode>();

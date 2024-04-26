@@ -4,7 +4,7 @@
              x:Class="KnockKnockApp.Views.SelectGameModeView"
              Title="SelectGameModeView"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
-    <Grid>
+    <Grid BackgroundColor="#3D006C" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -12,31 +12,42 @@
 
         <ScrollView Grid.Row="0">
 
-            <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="30" Padding="0,30">
+            <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="20" Padding="20">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <FlexLayout BackgroundColor="Beige">
-                            <FlexLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}"/>
-                            </FlexLayout.GestureRecognizers>
-                            <HorizontalStackLayout  BackgroundColor="Coral">
-                                <VerticalStackLayout>
-                                    <Image Source="dotnet_bot.svg" WidthRequest="100" HeightRequest="100"/>
-                                </VerticalStackLayout>
-                                <VerticalStackLayout>
-                                    <Label TextColor="DarkBlue" Text="{Binding Title}"/>
-                                    <Label TextColor="DarkSlateGray" Text="{Binding DescriptionText}" WidthRequest="100"/>
-                                </VerticalStackLayout>
-                                <FlexLayout BackgroundColor="Gray" JustifyContent="Center">
-                                    <FlexLayout.GestureRecognizers>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="{Binding Image}" WidthRequest="70" HeightRequest="70" Margin="0,0,20,0"/>
+
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Column="0" Grid.Row="0" FontFamily="BowlbyOneSC" TextColor="#FF8000" Text="{Binding Title}"/>
+                                <Image Grid.Column="1" Grid.Row="0" Source="icon_settings_white.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameModeSettingsCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}"/>
-                                    </FlexLayout.GestureRecognizers>
-                                    <HorizontalStackLayout Padding="0,15,0,15">
-                                        <Label Margin="0,0,0,0">Einstellungen</Label>
-                                    </HorizontalStackLayout>
-                                </FlexLayout>
-                            </HorizontalStackLayout>
-                        </FlexLayout>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" TextColor="White" Text="{Binding DescriptionText}"/>
+
+                            </Grid>
+
+                        </Grid>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
@@ -48,8 +59,9 @@
                 <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
             </FlexLayout.GestureRecognizers>
             <HorizontalStackLayout Padding="0,15,0,15">
-                <Label Margin="0,0,2,0" Text="{Binding AllPlayers.Count, StringFormat=Now {0:c}!}"/>
-                <Label Margin="0,0,0,0">Spieler</Label>
+                <Label Text="{Binding AllPlayers.Count, StringFormat=Now {0:c}!}"/>
+                <Label Text=" "/>
+                <Label Text="{Binding LocalizationService[6], Mode=OneWay}"/>
             </HorizontalStackLayout>
         </FlexLayout>
 
