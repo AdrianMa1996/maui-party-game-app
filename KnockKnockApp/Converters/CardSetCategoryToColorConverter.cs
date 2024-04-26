@@ -15,31 +15,31 @@ namespace KnockKnockApp.Converters
                 switch (category)
                 {
                     case CardSetCategory.Basic:
-                        color = GetColorFromResources("Basic");
+                        color = GetColorFromResources("PurpleCardColor");
                         break;
                     case CardSetCategory.Information:
-                        color = GetColorFromResources("Information");
+                        color = GetColorFromResources("GrayCardColor");
                         break;
                     case CardSetCategory.Game:
-                        color = GetColorFromResources("Game");
+                        color = GetColorFromResources("GreenCardColor");
                         break;
                     case CardSetCategory.Dare:
-                        color = GetColorFromResources("Dare");
+                        color = GetColorFromResources("BlueCardColor");
                         break;
                     case CardSetCategory.Duel:
-                        color = GetColorFromResources("Duel");
+                        color = GetColorFromResources("YellowCardColor");
                         break;
                     case CardSetCategory.Rule:
-                        color = GetColorFromResources("Rule");
+                        color = GetColorFromResources("RedCardColor");
                         break;
                     case CardSetCategory.Curse:
-                        color = GetColorFromResources("Curse");
+                        color = GetColorFromResources("PinkCardColor");
                         break;
                     case CardSetCategory.Powerup:
-                        color = GetColorFromResources("Powerup");
+                        color = GetColorFromResources("OrangeCardColor");
                         break;
                     default:
-                        color = GetColorFromResources("Basic");
+                        color = GetColorFromResources("PurpleCardColor");
                         break;
                 }
 

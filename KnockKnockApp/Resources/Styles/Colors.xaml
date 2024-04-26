@@ -31,14 +31,14 @@
 
     <!-- BackgroundColors of GameCards -->
 
-    <Color x:Key="Basic">#512BD4</Color>
-    <Color x:Key="Information">#ac99ea</Color>
-    <Color x:Key="Game">#242424</Color>
-    <Color x:Key="Dare">#DFD8F7</Color>
-    <Color x:Key="Duel">#9880e5</Color>
-    <Color x:Key="Rule">#2B0B98</Color>
-    <Color x:Key="Curse">#9880e5</Color>
-    <Color x:Key="Powerup">#2B0B98</Color>
+    <Color x:Key="PurpleCardColor">#3D006C</Color>
+    <Color x:Key="GrayCardColor">#212121</Color>
+    <Color x:Key="GreenCardColor">#61B300</Color>
+    <Color x:Key="BlueCardColor">#001DCC</Color>
+    <Color x:Key="YellowCardColor">#E6B200</Color>
+    <Color x:Key="RedCardColor">#D90000</Color>
+    <Color x:Key="PinkCardColor">#B30081</Color>
+    <Color x:Key="OrangeCardColor">#CC4401</Color>
 
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
