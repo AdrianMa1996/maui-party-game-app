@@ -5,19 +5,58 @@
            x:Class="KnockKnockApp.Views.PopupViews.ManagePlayersPopupView"
            xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
            CanBeDismissedByTappingOutsideOfPopup="False"
-           VerticalOptions="Fill" HorizontalOptions="Fill">
-    <Grid BackgroundColor="White">
+           VerticalOptions="Fill" HorizontalOptions="Fill" Color="Transparent">
+    <Grid BackgroundColor="#3D006C" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="123123" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" FontFamily="BowlbyOneSC" Margin="0,35,0,10"/>
+        <ImageButton Grid.Row="0" Clicked="CloseButton_Clicked" Source="icon_close_lightgray.png" HorizontalOptions="End" VerticalOptions="Start" WidthRequest="25" HeightRequest="25" Margin="0,15,20,0"/>
 
-        <ImageButton Grid.Row="0" Grid.Column="1" Clicked="CloseButton_Clicked" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="25" HeightRequest="25" Margin="0,15,15,0"/>
+        <ScrollView Grid.Row="1" Padding="10,0">
+            <FlexLayout x:Name="ListPlayers" BindableLayout.ItemsSource="{Binding AllPlayers}" Wrap="Wrap" AlignContent="End">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="2,0,2,10" Padding="10,0,9,0" HeightRequest="35" BackgroundColor="White" CornerRadius="8">
+                            <FlexLayout Direction="Row" BackgroundColor="White" AlignItems="Center">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" Margin="0,0,5,0"/>
+                                <ImageButton Source="icon_close_lightgray.png" Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}" MaximumWidthRequest="13"/>
+                            </FlexLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+
+        </ScrollView>
+
+        <Grid Grid.Row="2" BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="20,0,10,0" Padding="0" CornerRadius="10" IsClippedToBounds="True">
+                <Image Source="icon_player_gray.png" Aspect="AspectFill" HeightRequest="18" WidthRequest="18"/>
+            </Frame>
+
+            <Entry Grid.Column="1" x:Name="SpielerNameEntry" MaxLength="15" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" />
+
+            <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1">
+                <Image Source="icon_plus_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddPlayerCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame Grid.Column="3" WidthRequest="30" HeightRequest="30" Margin="0,0,20,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF">
+                <ImageButton Source="icon_ok_white.png" Clicked="CloseButton_Clicked" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+            </Frame>
+
+        </Grid>
+
     </Grid>
 </mct:Popup>
