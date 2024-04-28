@@ -39,7 +39,7 @@ namespace KnockKnockApp.Converters
                         color = GetColorFromResources("OrangeCardColor");
                         break;
                     case CardSetCategory.GameOver:
-                        color = GetColorFromResources("PurpleCardColor");
+                        color = GetColorFromResources("GrayCardColor");
                         break;
                     default:
                         color = GetColorFromResources("PurpleCardColor");
