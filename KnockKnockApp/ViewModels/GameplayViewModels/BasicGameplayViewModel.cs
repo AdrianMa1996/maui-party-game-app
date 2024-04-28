@@ -1,9 +1,12 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Models.DTOs;
 using KnockKnockApp.Services;
+using KnockKnockApp.ViewModels.PopupViewModels;
 using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels.GameplayViewModels
@@ -15,13 +18,17 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         private readonly ICardManagementService _cardManagementService;
         private readonly IPlayerManagementService _playerManagementService;
         private readonly ITeamManagementService _teamManagementService;
+        private readonly IPopupService _popupService;
+        private readonly ManagePlayersPopupViewModel _managePlayersPopupViewModel;
 
-        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService)
+        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService, IPopupService popupService, ManagePlayersPopupViewModel managePlayersPopupViewModel)
         {
             _deviceOrientationService = deviceOrientationService;
             _cardManagementService = cardManagementService;
             _playerManagementService = playerManagementService;
             _teamManagementService = teamManagementService;
+            _popupService = popupService;
+            _managePlayersPopupViewModel = managePlayersPopupViewModel;
 
             _teamManagementService.SetupTeamManagementService();
 
@@ -97,7 +104,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [RelayCommand]
         public void NavigateToManagePlayers()
         {
-            var xxx = 10;
+            _popupService.ShowPopup(_managePlayersPopupViewModel);
         }
 
         [RelayCommand]

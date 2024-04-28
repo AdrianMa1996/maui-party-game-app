@@ -47,6 +47,7 @@ namespace KnockKnockApp
             builder.Services.AddTransient<GameModeSettingsView>();
             // Popups
             builder.Services.AddTransientPopup<LanguageSettingsView, LanguageSettingsViewModel>();
+            builder.Services.AddTransientPopup<ManagePlayersPopupView, ManagePlayersPopupViewModel>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddTransient<SelectGameModeViewModel>();

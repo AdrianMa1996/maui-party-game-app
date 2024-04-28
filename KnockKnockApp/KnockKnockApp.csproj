@@ -212,6 +212,9 @@
 	  <MauiXaml Update="Views\PopupViews\LanguageSettingsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PopupViews\ManagePlayersPopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SelectGameModeView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
