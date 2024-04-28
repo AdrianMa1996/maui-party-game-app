@@ -19,6 +19,7 @@ namespace KnockKnockApp.Services
         private GameModeDto? _gameModeDto;
         private Stack<GameCard?> _cardDeck = new();
         private List<GameCard> _usedCards = [];
+        private bool isGameOver = false;
 
         public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService, ITeamManagementService teamManagementService)
         {
@@ -48,7 +49,7 @@ namespace KnockKnockApp.Services
         {
             _cardTextPlaceholderService.SetupAndShuffleLists();
 
-            if (_cardDeck.Count == 0) // wenn _cardDeck ist empty: Spielende (return null)
+            if (_cardDeck.Count == 0 || isGameOver) // wenn _cardDeck ist empty: Spielende (return null)
             {
                 return null;
             }
@@ -66,6 +67,13 @@ namespace KnockKnockApp.Services
             gameCard = _cardTextPlaceholderService.ResolveLosingTeamPlaceholders(gameCard);
 
             _usedCards.Add(gameCard);
+
+            var gameCardDto = await _gameCardMapper.ConvertToDtoAsync(gameCard);
+
+            if (gameCardDto.CardSetDetails.Category == CardSetCategory.GameOver)
+            {
+                isGameOver = true;
+            }
 
             return await _gameCardMapper.ConvertToDtoAsync(gameCard);
         }

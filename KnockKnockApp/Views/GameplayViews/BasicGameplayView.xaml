@@ -102,6 +102,9 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampion">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOver">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
         </ContentView.Triggers>
     </ContentView>
 

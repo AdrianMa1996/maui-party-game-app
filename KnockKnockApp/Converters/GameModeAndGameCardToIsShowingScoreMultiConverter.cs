@@ -54,6 +54,8 @@ namespace KnockKnockApp.Converters
                         return gameMode.IsTeamGameMode;
                     case CardSetCategory.TeamChampion:
                         return gameMode.IsTeamGameMode;
+                    case CardSetCategory.GameOver:
+                        return false;
                     default:
                         return false;
                 }
