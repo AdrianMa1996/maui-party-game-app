@@ -31,8 +31,8 @@
 
     <!-- Colors of Teams -->
 
-    <Color x:Key="TeamOneColor">Green</Color>
-    <Color x:Key="TeamTwoColor">Red</Color>
+    <Color x:Key="TeamOneColor">#008000</Color>
+    <Color x:Key="TeamTwoColor">#FF0000</Color>
 
     <!-- BackgroundColors of GameCards -->
 
