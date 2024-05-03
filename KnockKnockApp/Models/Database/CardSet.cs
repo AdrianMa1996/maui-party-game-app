@@ -26,8 +26,8 @@ namespace KnockKnockApp.Models.Database
         TeamGame,
         TeamDare,
         TeamDuel,
-        Teamvergleich,
-        TeamStimmtEureGeigen,
+        TeamComparison,
+        TeamTuneYourViolins,
         TeamChampionPreparation,
         TeamChampion,
         GameOver

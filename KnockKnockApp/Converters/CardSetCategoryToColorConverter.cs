@@ -14,11 +14,11 @@ namespace KnockKnockApp.Converters
 
                 switch (category)
                 {
-                    case CardSetCategory.Basic:
-                        color = GetColorFromResources("PurpleCardColor");
-                        break;
                     case CardSetCategory.Information:
                         color = GetColorFromResources("GrayCardColor");
+                        break;
+                    case CardSetCategory.Basic:
+                        color = GetColorFromResources("PurpleCardColor");
                         break;
                     case CardSetCategory.Game:
                         color = GetColorFromResources("GreenCardColor");
@@ -37,6 +37,33 @@ namespace KnockKnockApp.Converters
                         break;
                     case CardSetCategory.Powerup:
                         color = GetColorFromResources("OrangeCardColor");
+                        break;
+                    case CardSetCategory.ManageTeams:
+                        color = GetColorFromResources("GrayCardColor");
+                        break;
+                    case CardSetCategory.PunishmentGame:
+                        color = GetColorFromResources("GrayCardColor");
+                        break;
+                    case CardSetCategory.TeamGame:
+                        color = GetColorFromResources("GreenCardColor");
+                        break;
+                    case CardSetCategory.TeamDare:
+                        color = GetColorFromResources("BlueCardColor");
+                        break;
+                    case CardSetCategory.TeamDuel:
+                        color = GetColorFromResources("OrangeCardColor");
+                        break;
+                    case CardSetCategory.TeamComparison:
+                        color = GetColorFromResources("RedCardColor");
+                        break;
+                    case CardSetCategory.TeamTuneYourViolins:
+                        color = GetColorFromResources("PinkCardColor");
+                        break;
+                    case CardSetCategory.TeamChampionPreparation:
+                        color = GetColorFromResources("YellowCardColor");
+                        break;
+                    case CardSetCategory.TeamChampion:
+                        color = GetColorFromResources("YellowCardColor");
                         break;
                     case CardSetCategory.GameOver:
                         color = GetColorFromResources("GrayCardColor");

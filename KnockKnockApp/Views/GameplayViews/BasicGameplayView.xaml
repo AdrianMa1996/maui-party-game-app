@@ -92,10 +92,10 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamDuel">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Teamvergleich">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamComparison">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamStimmtEureGeigen">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamTuneYourViolins">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampionPreparation">

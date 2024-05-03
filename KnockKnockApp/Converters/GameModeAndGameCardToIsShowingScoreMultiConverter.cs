@@ -46,9 +46,9 @@ namespace KnockKnockApp.Converters
                         return gameMode.IsTeamGameMode;
                     case CardSetCategory.TeamDuel:
                         return gameMode.IsTeamGameMode;
-                    case CardSetCategory.Teamvergleich:
+                    case CardSetCategory.TeamComparison:
                         return gameMode.IsTeamGameMode;
-                    case CardSetCategory.TeamStimmtEureGeigen:
+                    case CardSetCategory.TeamTuneYourViolins:
                         return gameMode.IsTeamGameMode;
                     case CardSetCategory.TeamChampionPreparation:
                         return gameMode.IsTeamGameMode;
