@@ -138,10 +138,13 @@
 	  <None Remove="Resources\Images\hearts_ten.png" />
 	  <None Remove="Resources\Images\hearts_three.png" />
 	  <None Remove="Resources\Images\hearts_two.png" />
+	  <None Remove="Resources\Images\icon_arrow_double_left_white.png" />
+	  <None Remove="Resources\Images\icon_arrow_double_right_white.png" />
 	  <None Remove="Resources\Images\icon_arrow_right_white.png" />
 	  <None Remove="Resources\Images\icon_close_black.png" />
 	  <None Remove="Resources\Images\icon_close_gray.png" />
 	  <None Remove="Resources\Images\icon_close_lightgray.png" />
+	  <None Remove="Resources\Images\icon_dice_white.png" />
 	  <None Remove="Resources\Images\icon_ok_white.png" />
 	  <None Remove="Resources\Images\icon_player_gray.png" />
 	  <None Remove="Resources\Images\icon_plus_gray.png" />

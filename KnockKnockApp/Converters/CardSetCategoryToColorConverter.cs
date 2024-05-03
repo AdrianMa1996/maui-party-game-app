@@ -42,7 +42,7 @@ namespace KnockKnockApp.Converters
                         color = GetColorFromResources("GrayCardColor");
                         break;
                     default:
-                        color = GetColorFromResources("PurpleCardColor");
+                        color = GetColorFromResources("GrayCardColor");
                         break;
                 }
 
