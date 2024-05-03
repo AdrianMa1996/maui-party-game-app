@@ -29,6 +29,11 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+    <!-- Colors of Teams -->
+
+    <Color x:Key="TeamOneColor">Green</Color>
+    <Color x:Key="TeamTwoColor">Red</Color>
+
     <!-- BackgroundColors of GameCards -->
 
     <Color x:Key="PurpleCardColor">#3D006C</Color>

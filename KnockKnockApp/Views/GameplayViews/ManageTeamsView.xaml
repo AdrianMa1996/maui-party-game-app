@@ -11,16 +11,25 @@
 
     <Grid BindingContext="{x:Reference this}" BackgroundColor="#212121">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Frame Grid.Row="0" Grid.Column="2" WidthRequest="30" HeightRequest="30" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1" HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="icon_close_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding LeaveGameModeCommand}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
@@ -31,25 +40,25 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" BackgroundColor="Green" Text="TeamA" CornerRadius="0"/>
+            <Label Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="TeamA" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
             <Frame Grid.Row="0" Grid.Column="1" HeightRequest="30" Margin="10" Padding="8,0,8,0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="Center" VerticalOptions="Center" >
 
                 <HorizontalStackLayout>
                     <Image Source="icon_dice_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
-                    <Label Text="zufällige Teameinteilung" TextColor="White" FontAttributes="Bold"  VerticalTextAlignment="Center" Margin="8,0,0,0" />
+                    <Label Text="zufällige Teameinteilung" TextColor="White" FontAttributes="Bold" VerticalTextAlignment="Center" Margin="8,0,0,0" />
                 </HorizontalStackLayout>
-                
+
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding DistributePlayersRandomlyAmongTeamsCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
-
-            <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Red" Text="TeamB" CornerRadius="0"/>
+            
+            <Label Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="TeamB" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         </Grid>
 
-        <ScrollView Grid.Row="1" Grid.Column="0">
+        <ScrollView Grid.Row="1" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -61,7 +70,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Frame Grid.Column="0" BackgroundColor="Green" CornerRadius="0" Padding="3,0,3,3">
+                <Frame Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" CornerRadius="0" Padding="3,0,3,3">
                     <VerticalStackLayout Grid.Column="0" BackgroundColor="#212121" Spacing="5" Padding="10,10,10,10">
                         <BindableLayout.ItemsSource>
                             <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
@@ -136,7 +145,7 @@
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>
 
-                <Frame Grid.Column="2" BackgroundColor="Red" CornerRadius="0" Padding="3,0,3,3">
+                <Frame Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" CornerRadius="0" Padding="3,0,3,3">
                     <VerticalStackLayout Grid.Column="2" BackgroundColor="#212121" Spacing="5" Padding="10,10,10,10">
                         <BindableLayout.ItemsSource>
                             <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
@@ -177,7 +186,7 @@
             </Grid>
         </ScrollView>
 
-        <Button Grid.Row="2" Grid.Column="0" BackgroundColor="#279EFF" Text="Spiel starten" TextColor="White" FontAttributes="Bold" Command="{Binding StartGameCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}" CornerRadius="0"/>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#279EFF" Text="Spiel starten" TextColor="White" FontAttributes="Bold" Command="{Binding StartGameCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}" CornerRadius="0"/>
 
     </Grid>
 </ContentView>

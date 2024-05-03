@@ -24,6 +24,7 @@
                         TeamlessPlayers="{Binding TeamlessPlayers}"
                         TeamOnePlayers="{Binding TeamOnePlayers}"
                         TeamTwoPlayers="{Binding TeamTwoPlayers}"
+                        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         StartGameCommand="{Binding DisplayNextCardAsyncCommand}"
                         AddPlayerToTeamOneCommand="{Binding AddPlayerToTeamTwoCommand}"
                         AddPlayerToTeamTwoCommand="{Binding AddPlayerToTeamTwoCommand}"

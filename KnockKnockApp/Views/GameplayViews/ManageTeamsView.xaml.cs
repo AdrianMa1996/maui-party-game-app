@@ -38,6 +38,14 @@ public partial class ManageTeamsView : ContentView
         set => SetValue(TeamTwoPlayersProperty, value);
     }
 
+    public static readonly BindableProperty LeaveGameModeCommandProperty = BindableProperty.Create(nameof(LeaveGameModeCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand LeaveGameModeCommand
+    {
+        get { return (RelayCommand)GetValue(LeaveGameModeCommandProperty); }
+        set { SetValue(LeaveGameModeCommandProperty, value); }
+    }
+
     public static readonly BindableProperty StartGameCommandProperty = BindableProperty.Create(nameof(StartGameCommand), typeof(RelayCommand), typeof(BasicGamecardView));
 
     public RelayCommand StartGameCommand
