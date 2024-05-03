@@ -78,6 +78,14 @@ public partial class ManageTeamsView : ContentView
         set => SetValue(RemovePlayerOfTeamTwoCommandProperty, value);
     }
 
+    public static readonly BindableProperty DistributePlayersRandomlyAmongTeamsCommandProperty = BindableProperty.Create(nameof(DistributePlayersRandomlyAmongTeamsCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand DistributePlayersRandomlyAmongTeamsCommand
+    {
+        get => (RelayCommand)GetValue(DistributePlayersRandomlyAmongTeamsCommandProperty);
+        set => SetValue(DistributePlayersRandomlyAmongTeamsCommandProperty, value);
+    }
+
     public ManageTeamsView()
 	{
 		InitializeComponent();

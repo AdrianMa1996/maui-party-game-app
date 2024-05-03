@@ -171,5 +171,30 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             TeamTwoPlayers = new ObservableCollection<Player>();
             TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
         }
+
+        [RelayCommand]
+        public void DistributePlayersRandomlyAmongTeams()
+        {
+            Random random = new Random();
+            var allPlayersShuffled = new ObservableCollection<Player>(AllPlayers).OrderBy(x => random.Next()).ToList();
+            TeamOnePlayers.Clear();
+            TeamTwoPlayers.Clear();
+
+            for (int i = 0; i < allPlayersShuffled.Count; i++)
+            {
+                if (i % 2 == 0)
+                    TeamOnePlayers.Add(allPlayersShuffled[i]);
+                else
+                    TeamTwoPlayers.Add(allPlayersShuffled[i]);
+            }
+
+            TeamOnePlayers = new ObservableCollection<Player>();
+            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
+
+            TeamTwoPlayers = new ObservableCollection<Player>();
+            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
+
+            TeamlessPlayers = new ObservableCollection<Player>();
+        }
     }
 }

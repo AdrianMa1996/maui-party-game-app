@@ -28,7 +28,8 @@
                         AddPlayerToTeamOneCommand="{Binding AddPlayerToTeamTwoCommand}"
                         AddPlayerToTeamTwoCommand="{Binding AddPlayerToTeamTwoCommand}"
                         RemovePlayerOfTeamOneCommand="{Binding RemovePlayerOfTeamOneCommand}"
-                        RemovePlayerOfTeamTwoCommand="{Binding RemovePlayerOfTeamTwoCommand}"/>
+                        RemovePlayerOfTeamTwoCommand="{Binding RemovePlayerOfTeamTwoCommand}"
+                        DistributePlayersRandomlyAmongTeamsCommand="{Binding DistributePlayersRandomlyAmongTeamsCommand}"/>
 
         <controls:ScoreGamecardView x:Key="ScoreGamecardView" 
                         GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 

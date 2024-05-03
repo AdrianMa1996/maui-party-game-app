@@ -6,8 +6,6 @@ namespace KnockKnockApp.Services
     class PlayerManagementService : IPlayerManagementService
     {
         private ObservableCollection<Player> allPlayers = [new Player("Adrian"), new Player("Tim"), new Player("Kevin"), new Player("Laurenz")];
-        private ObservableCollection<Player> teamOnePlayers = [];
-        private ObservableCollection<Player> teamTwoPlayers = [];
 
         public ObservableCollection<Player> GetAllPlayers()
         {

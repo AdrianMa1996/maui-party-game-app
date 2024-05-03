@@ -41,7 +41,7 @@
                 </HorizontalStackLayout>
                 
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding StartGameCommand}"/>
+                    <TapGestureRecognizer Command="{Binding DistributePlayersRandomlyAmongTeamsCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
 
