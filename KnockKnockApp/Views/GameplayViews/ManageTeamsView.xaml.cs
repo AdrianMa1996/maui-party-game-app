@@ -98,4 +98,18 @@ public partial class ManageTeamsView : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private async void this_Loaded(object sender, EventArgs e)
+    {
+        await Task.Run(() =>
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                if (Resources.TryGetValue("ManageTeamsContent", out var grid))
+                {
+                    ManageTeamsContentView.Content = grid as View;
+                }
+            });
+        });
+    }
 }

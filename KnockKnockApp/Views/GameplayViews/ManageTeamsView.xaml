@@ -3,65 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.ManageTeamsView"
              xmlns:converters="clr-namespace:KnockKnockApp.Converters"
-             x:Name="this">
+             x:Name="this" 
+             Loaded="this_Loaded">
     <ContentView.Resources>
         <converters:IsItemInListMultiConverter x:Key="IsItemInListMultiConverter"/>
         <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
-    </ContentView.Resources>
+        <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
 
-    <Grid BindingContext="{x:Reference this}" BackgroundColor="#212121">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="50" />
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="50"/>
-        </Grid.ColumnDefinitions>
-
-        <Frame Grid.Row="0" Grid.Column="2" WidthRequest="30" HeightRequest="30" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1" HorizontalOptions="Center" VerticalOptions="Center">
-            <Image Source="icon_close_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding LeaveGameModeCommand}"/>
-            </Frame.GestureRecognizers>
-        </Frame>
-
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid x:Key="ManageTeamsContent">
             <Grid.RowDefinitions>
-                <RowDefinition/>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="TeamA" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-
-            <Frame Grid.Row="0" Grid.Column="1" HeightRequest="30" Margin="10" Padding="8,0,8,0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="Center" VerticalOptions="Center" >
-
-                <HorizontalStackLayout>
-                    <Image Source="icon_dice_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
-                    <Label Text="zufällige Teameinteilung" TextColor="White" FontAttributes="Bold" VerticalTextAlignment="Center" Margin="8,0,0,0" />
-                </HorizontalStackLayout>
-
+            <Frame Grid.Row="0" Grid.Column="2" WidthRequest="30" HeightRequest="30" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="icon_close_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding DistributePlayersRandomlyAmongTeamsCommand}"/>
+                    <TapGestureRecognizer Command="{Binding LeaveGameModeCommand}"/>
                 </Frame.GestureRecognizers>
             </Frame>
-            
-            <Label Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="TeamB" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-        </Grid>
-
-        <ScrollView Grid.Row="1" Grid.Column="1">
-            <Grid>
+            <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -70,92 +41,80 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Frame Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" CornerRadius="0" Padding="3,0,3,3">
-                    <VerticalStackLayout Grid.Column="0" BackgroundColor="#212121" Spacing="5" Padding="10,10,10,10">
-                        <BindableLayout.ItemsSource>
-                            <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
-                                <Binding Path="AllPlayers" />
-                                <Binding Path="TeamOnePlayers" />
-                            </MultiBinding>
-                        </BindableLayout.ItemsSource>
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout>
-                                    <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Opacity="{Binding IsInList}">
-                                        <Grid BackgroundColor="White" IsVisible="{Binding IsInList}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="TeamA" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                                            <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="#404040" FontAttributes="Bold"/>
+                <Frame Grid.Row="0" Grid.Column="1" HeightRequest="30" Margin="10" Padding="8,0,8,0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="Center" VerticalOptions="Center" >
 
-                                            <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="End" >
-                                                <Image Source="icon_arrow_double_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
-                                                <Frame.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.RemovePlayerOfTeamOneCommand}" CommandParameter="{Binding Player}"/>
-                                                </Frame.GestureRecognizers>
-                                            </Frame>
-                                        </Grid>
-                                    </Frame>
-                                </StackLayout>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <Image Source="icon_dice_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                        <Label Text="zufällige Teameinteilung" TextColor="White" FontAttributes="Bold" VerticalTextAlignment="Center" Margin="8,0,0,0" />
+                    </HorizontalStackLayout>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DistributePlayersRandomlyAmongTeamsCommand}"/>
+                    </Frame.GestureRecognizers>
                 </Frame>
 
-                <VerticalStackLayout Grid.Column="1" Spacing="5" Padding="10,10,10,10">
-                    <BindableLayout.ItemsSource>
-                        <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
-                            <Binding Path="AllPlayers" />
-                            <Binding Path="TeamlessPlayers" />
-                        </MultiBinding>
-                    </BindableLayout.ItemsSource>
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Opacity="{Binding IsInList}">
-                                    <Grid BackgroundColor="White" IsVisible="{Binding IsInList}">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="TeamB" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
-                                        <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="Start" >
-                                            <Image Source="icon_arrow_double_left_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.AddPlayerToTeamOneCommand}" CommandParameter="{Binding Player}"/>
-                                            </Frame.GestureRecognizers>
+            </Grid>
+
+            <ScrollView Grid.Row="1" Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" CornerRadius="0" Padding="3,0,3,3">
+                        <VerticalStackLayout Grid.Column="0" BackgroundColor="#212121" Spacing="5" Padding="10,10,10,10">
+                            <BindableLayout.ItemsSource>
+                                <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
+                                    <Binding Path="AllPlayers" />
+                                    <Binding Path="TeamOnePlayers" />
+                                </MultiBinding>
+                            </BindableLayout.ItemsSource>
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Opacity="{Binding IsInList}">
+                                            <Grid BackgroundColor="White" IsVisible="{Binding IsInList}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="#404040" FontAttributes="Bold"/>
+
+                                                <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="End" >
+                                                    <Image Source="icon_arrow_double_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.RemovePlayerOfTeamOneCommand}" CommandParameter="{Binding Player}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+                                            </Grid>
                                         </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                                        <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="#404040" FontAttributes="Bold"/>
-
-                                        <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="End" >
-                                            <Image Source="icon_arrow_double_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.AddPlayerToTeamTwoCommand}" CommandParameter="{Binding Player}"/>
-                                            </Frame.GestureRecognizers>
-                                        </Frame>
-                                    </Grid>
-                                </Frame>
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </VerticalStackLayout>
-
-                <Frame Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" CornerRadius="0" Padding="3,0,3,3">
-                    <VerticalStackLayout Grid.Column="2" BackgroundColor="#212121" Spacing="5" Padding="10,10,10,10">
+                    <VerticalStackLayout Grid.Column="1" Spacing="5" Padding="10,10,10,10">
                         <BindableLayout.ItemsSource>
                             <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
                                 <Binding Path="AllPlayers" />
-                                <Binding Path="TeamTwoPlayers" />
+                                <Binding Path="TeamlessPlayers" />
                             </MultiBinding>
                         </BindableLayout.ItemsSource>
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-
                                 <StackLayout>
                                     <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Opacity="{Binding IsInList}">
                                         <Grid BackgroundColor="White" IsVisible="{Binding IsInList}">
@@ -168,25 +127,74 @@
                                             <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="Start" >
                                                 <Image Source="icon_arrow_double_left_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
                                                 <Frame.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.RemovePlayerOfTeamTwoCommand}" CommandParameter="{Binding Player}"/>
+                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.AddPlayerToTeamOneCommand}" CommandParameter="{Binding Player}"/>
                                                 </Frame.GestureRecognizers>
                                             </Frame>
 
                                             <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="#404040" FontAttributes="Bold"/>
 
+                                            <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="End" >
+                                                <Image Source="icon_arrow_double_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.AddPlayerToTeamTwoCommand}" CommandParameter="{Binding Player}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
                                         </Grid>
                                     </Frame>
                                 </StackLayout>
-                                
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </VerticalStackLayout>
-                </Frame>
 
-            </Grid>
-        </ScrollView>
+                    <Frame Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" CornerRadius="0" Padding="3,0,3,3">
+                        <VerticalStackLayout Grid.Column="2" BackgroundColor="#212121" Spacing="5" Padding="10,10,10,10">
+                            <BindableLayout.ItemsSource>
+                                <MultiBinding Converter="{StaticResource IsItemInListMultiConverter}">
+                                    <Binding Path="AllPlayers" />
+                                    <Binding Path="TeamTwoPlayers" />
+                                </MultiBinding>
+                            </BindableLayout.ItemsSource>
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
 
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#279EFF" Text="Spiel starten" TextColor="White" FontAttributes="Bold" Command="{Binding StartGameCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}" CornerRadius="0"/>
+                                    <StackLayout>
+                                        <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Opacity="{Binding IsInList}">
+                                            <Grid BackgroundColor="White" IsVisible="{Binding IsInList}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
 
+                                                <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF" HorizontalOptions="Start" >
+                                                    <Image Source="icon_arrow_double_left_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference this}, Path=BindingContext.RemovePlayerOfTeamTwoCommand}" CommandParameter="{Binding Player}"/>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+
+                                                <Label Grid.Column="1" Text="{Binding Player.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="#404040" FontAttributes="Bold"/>
+
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </Grid>
+            </ScrollView>
+
+            <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#279EFF" Text="Spiel starten" TextColor="White" FontAttributes="Bold" Command="{Binding StartGameCommand}" IsEnabled="{Binding TeamlessPlayers.Count, Converter={StaticResource InvertedBoolConverter}}" CornerRadius="0"/>
+
+        </Grid>
+    </ContentView.Resources>
+
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="{StaticResource GrayCardColor}">
+        <ContentView x:Name="ManageTeamsContentView" Grid.Row="0" BackgroundColor="Transparent">
+            <ActivityIndicator IsRunning="True" Color="{StaticResource White}" VerticalOptions="Center" HorizontalOptions="Center" />
+        </ContentView>
     </Grid>
 </ContentView>
