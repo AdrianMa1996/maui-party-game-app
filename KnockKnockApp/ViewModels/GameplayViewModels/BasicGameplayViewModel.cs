@@ -36,6 +36,14 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             TeamTwo = _teamManagementService.GetTeamTwo();
 
             AllPlayers = _playerManagementService.GetAllPlayers();
+
+            foreach (var player in AllPlayers)
+            {
+                player.IsTeamlessPlayer = true;
+                player.IsTeamOnePlayer = false;
+                player.IsTeamTwoPlayer = false;
+            }
+
             TeamlessPlayers = new ObservableCollection<Player>(_playerManagementService.GetAllPlayers());
             TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
             TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
@@ -128,48 +136,56 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public void AddPlayerToTeamOne(object commandParameter)
         {
             var player = (Player)commandParameter;
-            TeamOnePlayers.Add(player);
-            TeamOnePlayers = new ObservableCollection<Player>();
-            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
-            var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
-            teamlessPlayersCopy.Remove(player);
-            TeamlessPlayers = teamlessPlayersCopy;
+
+            AllPlayers.First(x => x.Id == player.Id).IsTeamlessPlayer = false;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamOnePlayer = true;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamTwoPlayer = false;
+
+            TeamOne.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamOnePlayer == true));
+            TeamTwo.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamTwoPlayer == true));
+            TeamlessPlayers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamlessPlayer == true));
         }
 
         [RelayCommand]
         public void AddPlayerToTeamTwo(object commandParameter)
         {
             var player = (Player)commandParameter;
-            TeamTwoPlayers.Add(player);
-            TeamTwoPlayers = new ObservableCollection<Player>();
-            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
-            var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
-            teamlessPlayersCopy.Remove(player);
-            TeamlessPlayers = teamlessPlayersCopy;
+
+            AllPlayers.First(x => x.Id == player.Id).IsTeamlessPlayer = false;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamOnePlayer = false;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamTwoPlayer = true;
+
+            TeamOne.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamOnePlayer == true));
+            TeamTwo.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamTwoPlayer == true));
+            TeamlessPlayers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamlessPlayer == true));
         }
 
         [RelayCommand]
         public void RemovePlayerOfTeamOne(object commandParameter)
         {
             var player = (Player)commandParameter;
-            var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
-            teamlessPlayersCopy.Add(player);
-            TeamlessPlayers = teamlessPlayersCopy;
-            TeamOnePlayers.Remove(player);
-            TeamOnePlayers = new ObservableCollection<Player>();
-            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
+
+            AllPlayers.First(x => x.Id == player.Id).IsTeamlessPlayer = true;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamOnePlayer = false;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamTwoPlayer = false;
+
+            TeamOne.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamOnePlayer == true));
+            TeamTwo.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamTwoPlayer == true));
+            TeamlessPlayers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamlessPlayer == true));
         }
 
         [RelayCommand]
         public void RemovePlayerOfTeamTwo(object commandParameter)
         {
             var player = (Player)commandParameter;
-            var teamlessPlayersCopy = new ObservableCollection<Player>(TeamlessPlayers);
-            teamlessPlayersCopy.Add(player);
-            TeamlessPlayers = teamlessPlayersCopy;
-            TeamTwoPlayers.Remove(player);
-            TeamTwoPlayers = new ObservableCollection<Player>();
-            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
+
+            AllPlayers.First(x => x.Id == player.Id).IsTeamlessPlayer = true;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamOnePlayer = false;
+            AllPlayers.First(x => x.Id == player.Id).IsTeamTwoPlayer = false;
+
+            TeamOne.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamOnePlayer == true));
+            TeamTwo.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamTwoPlayer == true));
+            TeamlessPlayers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamlessPlayer == true));
         }
 
         [RelayCommand]
@@ -183,18 +199,22 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             for (int i = 0; i < allPlayersShuffled.Count; i++)
             {
                 if (i % 2 == 0)
-                    TeamOnePlayers.Add(allPlayersShuffled[i]);
+                {
+                    AllPlayers.First(x => x.Id == allPlayersShuffled[i].Id).IsTeamlessPlayer = false;
+                    AllPlayers.First(x => x.Id == allPlayersShuffled[i].Id).IsTeamOnePlayer = true;
+                    AllPlayers.First(x => x.Id == allPlayersShuffled[i].Id).IsTeamTwoPlayer = false;
+                }
                 else
-                    TeamTwoPlayers.Add(allPlayersShuffled[i]);
+                {
+                    AllPlayers.First(x => x.Id == allPlayersShuffled[i].Id).IsTeamlessPlayer = false;
+                    AllPlayers.First(x => x.Id == allPlayersShuffled[i].Id).IsTeamOnePlayer = false;
+                    AllPlayers.First(x => x.Id == allPlayersShuffled[i].Id).IsTeamTwoPlayer = true;
+                }
             }
 
-            TeamOnePlayers = new ObservableCollection<Player>();
-            TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
-
-            TeamTwoPlayers = new ObservableCollection<Player>();
-            TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
-
-            TeamlessPlayers = new ObservableCollection<Player>();
+            TeamOne.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamOnePlayer == true));
+            TeamTwo.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamTwoPlayer == true));
+            TeamlessPlayers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamlessPlayer == true));
         }
     }
 }
