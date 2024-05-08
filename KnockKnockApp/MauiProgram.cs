@@ -43,6 +43,7 @@ namespace KnockKnockApp
             // Views
             builder.Services.AddSingleton<ManagePlayers>();
             builder.Services.AddTransient<SelectGameModeView>();
+            builder.Services.AddTransient<LoadingBasicGameplayView>();
             builder.Services.AddTransient<BasicGameplayView>();
             builder.Services.AddTransient<GameModeSettingsView>();
             // Popups

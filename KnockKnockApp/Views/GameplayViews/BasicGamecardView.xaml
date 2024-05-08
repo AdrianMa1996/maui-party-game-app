@@ -59,8 +59,8 @@
             </Frame.GestureRecognizers>
         </Frame>
         <StackLayout Grid.Row="1" Grid.Column="1">
-            <Label Text="{Binding Gamecard.CardSetDetails.Title, FallbackValue='Gamecard Title'}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32"/>
-            <Label Text="{Binding Gamecard.GameCardDetails.CardText, FallbackValue='Gamecard Text'}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
+            <Label Text="{Binding Gamecard.CardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32"/>
+            <Label Text="{Binding Gamecard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
         </StackLayout>
     </Grid>
 </ContentView>

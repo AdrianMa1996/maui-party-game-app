@@ -194,7 +194,7 @@
 
     <Grid BindingContext="{x:Reference this}" BackgroundColor="{StaticResource GrayCardColor}">
         <ContentView x:Name="ManageTeamsContentView" Grid.Row="0" BackgroundColor="Transparent">
-            <ActivityIndicator IsRunning="True" Color="{StaticResource White}" VerticalOptions="Center" HorizontalOptions="Center" />
+            <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center" />
         </ContentView>
     </Grid>
 </ContentView>

@@ -8,8 +8,9 @@ namespace KnockKnockApp
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("SelectGameModeView", typeof(SelectGameModeView));
-            Routing.RegisterRoute("SelectGameModeView/BasicGameplayView", typeof(BasicGameplayView));
+            Routing.RegisterRoute($"{nameof(SelectGameModeView)}", typeof(SelectGameModeView));
+            Routing.RegisterRoute($"{nameof(SelectGameModeView)}/{nameof(BasicGameplayView)}", typeof(BasicGameplayView));
+            Routing.RegisterRoute($"{nameof(SelectGameModeView)}/{nameof(LoadingBasicGameplayView)}", typeof(LoadingBasicGameplayView));
             Routing.RegisterRoute("SelectGameModeView/GameModeSettingsView", typeof(GameModeSettingsView));
         }
     }

@@ -48,7 +48,7 @@ namespace KnockKnockApp.ViewModels
             {
                 { "GameMode", gameMode }
             };
-            AppShell.Current.GoToAsync("BasicGameplayView", false, navParam);
+            AppShell.Current.GoToAsync("LoadingBasicGameplayView", false, navParam);
             _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Landscape);
         }
 
