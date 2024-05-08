@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
 
         <ContentView x:Name="GameModeAndCardSetBindingContentView" Grid.Row="0" >
-            <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" />
+            <ActivityIndicator IsRunning="True" Color="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Center" />
         </ContentView>
 
         <FlexLayout Grid.Row="1" BackgroundColor="Gray" JustifyContent="Center">

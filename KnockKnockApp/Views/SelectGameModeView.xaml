@@ -3,15 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.SelectGameModeView"
              Title="SelectGameModeView"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
-    <Grid BackgroundColor="#3D006C" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
+             NavigatedTo="ContentPage_NavigatedTo">
 
-        <ScrollView Grid.Row="0">
-
+    <ContentPage.Resources>
+        <ScrollView x:Key="GameModeCollectionView">
             <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="20" Padding="20">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -51,8 +47,18 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
-
         </ScrollView>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource Violet}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentView x:Name="GameModeContentView" Grid.Row="0" >
+            <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </ContentView>
 
         <FlexLayout Grid.Row="1" BackgroundColor="Gray" JustifyContent="Center">
             <FlexLayout.GestureRecognizers>
