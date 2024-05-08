@@ -3,34 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameModeSettingsView"
              Title="GameModeSettingsView"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
-    <Grid>
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels" 
+             NavigatedTo="ContentPage_NavigatedTo">
+
+    <ContentPage.Resources>
+        <CollectionView x:Key="GameModeAndCardSetBindingCollectionView" ItemsSource="{Binding GameModeAndCardSetBindingCollection}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" TextColor="DarkBlue" Text="{Binding Title}"/>
+                        <CheckBox Grid.Column="2"  IsChecked="{Binding IsActivated}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="Coral">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ScrollView Grid.Row="0">
-
-            <VerticalStackLayout x:Name="CardSetList" BindableLayout.ItemsSource="{Binding GameModeAndCardSetBindingCollection}" Spacing="30" Padding="0,30">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid  BackgroundColor="Coral">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Source="dotnet_bot.svg" WidthRequest="100" HeightRequest="100"/>
-                            <Label Grid.Column="1" TextColor="DarkBlue" Text="{Binding Title}"/>
-                            <CheckBox Grid.Column="2"  IsChecked="{Binding IsActivated}"/>
-                        </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </VerticalStackLayout>
-
-        </ScrollView>
+        <ContentView x:Name="GameModeAndCardSetBindingContentView" Grid.Row="0" >
+            <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" />
+        </ContentView>
 
         <FlexLayout Grid.Row="1" BackgroundColor="Gray" JustifyContent="Center">
             <FlexLayout.GestureRecognizers>
@@ -41,6 +44,5 @@
                 <Label Margin="0,0,0,0">- Einstellungen verlassen</Label>
             </HorizontalStackLayout>
         </FlexLayout>
-
     </Grid>
 </ContentPage>

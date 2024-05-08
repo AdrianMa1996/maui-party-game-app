@@ -11,4 +11,18 @@ public partial class GameModeSettingsView : ContentPage
         BindingContext = _viewModel = viewModel;
         InitializeComponent();
     }
+
+    private async void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+        await Task.Run(() =>
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                if (Resources.TryGetValue("GameModeAndCardSetBindingCollectionView", out var grid))
+                {
+                    GameModeAndCardSetBindingContentView.Content = grid as View;
+                }
+            });
+        });
+    }
 }
