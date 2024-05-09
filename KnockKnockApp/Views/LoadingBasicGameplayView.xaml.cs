@@ -29,6 +29,7 @@ public partial class LoadingBasicGameplayView : ContentPage
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
+                Task.Delay(50);
                 var navParam = new Dictionary<string, object>
                 {
                     { "GameMode", gameMode }
