@@ -11,7 +11,7 @@
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
 
         <controls:BasicGamecardView x:Key="BasicGamecardView"
-                        GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardAsyncCommand}" 
+                        GamecardTapGestureRecognizerCommand="{Binding DisplayNextCardCommand}" 
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
                         PointsTeamA="{Binding TeamOne.GamePoints, StringFormat=Now {0:c}!}"
@@ -26,29 +26,60 @@
                         TeamOnePlayers="{Binding TeamOnePlayers}"
                         TeamTwoPlayers="{Binding TeamTwoPlayers}"
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
-                        StartGameCommand="{Binding DisplayNextCardAsyncCommand}"
+                        StartGameCommand="{Binding DisplayNextCardCommand}"
                         AddPlayerToTeamOneCommand="{Binding AddPlayerToTeamTwoCommand}"
                         AddPlayerToTeamTwoCommand="{Binding AddPlayerToTeamTwoCommand}"
                         RemovePlayerOfTeamOneCommand="{Binding RemovePlayerOfTeamOneCommand}"
                         RemovePlayerOfTeamTwoCommand="{Binding RemovePlayerOfTeamTwoCommand}"
                         DistributePlayersRandomlyAmongTeamsCommand="{Binding DistributePlayersRandomlyAmongTeamsCommand}"/>
 
+        <controls:TeamBasicGamecardView x:Key="TeamBasicGamecardView" 
+                       CurrentCard="{Binding CurrentCard}"
+                       CurrentGameMode="{Binding CurrentGameMode}"
+                       TeamOne="{Binding TeamOne}"
+                       TeamTwo="{Binding TeamTwo}"
+                       NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                       NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                       PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                       PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                       DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+
         <controls:ScoreGamecardView x:Key="ScoreGamecardView" 
-                        GamecardTitle="{Binding CurrentCard.CardSetDetails.Title}" 
-                        GamecardText="{Binding CurrentCard.GameCardDetails.CardText}" 
-                        GamecardBackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}" 
-                        LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                        CurrentCard="{Binding CurrentCard}"
+                        CurrentGameMode="{Binding CurrentGameMode}"
+                        TeamOne="{Binding TeamOne}"
+                        TeamTwo="{Binding TeamTwo}"
+                        NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
-                        PointsTeamA="{Binding TeamOne.GamePoints, StringFormat=Now {0:c}!}"
-                        PointsTeamB="{Binding TeamTwo.GamePoints, StringFormat=Now {0:c}!}"
-                        GamecardPointValue="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat=Now {0:c}!}"
-                        PointsToTeamACommand="{Binding PointsToTeamOneCommand}"
-                        PointsToTeamBCommand="{Binding PointsToTeamTwoCommand}"
-                        SkipCardCommand="{Binding DisplayNextCardAsyncCommand}"/>
+                        PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                        PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+
+        <controls:StartTimeBombGamecardView x:Key="StartTimeBombGamecardView" 
+                        CurrentCard="{Binding CurrentCard}"
+                        CurrentGameMode="{Binding CurrentGameMode}"
+                        TeamOne="{Binding TeamOne}"
+                        TeamTwo="{Binding TeamTwo}"
+                        NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                        PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                        PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+
+        <controls:TimeBombGamecardView x:Key="TimeBombGamecardView" 
+                        CurrentCard="{Binding CurrentCard}"
+                        CurrentGameMode="{Binding CurrentGameMode}"
+                        TeamOne="{Binding TeamOne}"
+                        TeamTwo="{Binding TeamTwo}"
+                        NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                        PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                        PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
 
         <controls:PunishmentGameView x:Key="PunishmentGameView"
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
-                        EndPunishmentGameCommand="{Binding DisplayNextCardAsyncCommand}"/>
+                        EndPunishmentGameCommand="{Binding DisplayNextCardCommand}"/>
 
     </ContentPage.Resources>
 
@@ -100,13 +131,29 @@
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampionPreparation">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampion">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOver">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TimeBomb">
+                <Setter Property="Content" Value="{StaticResource TimeBombGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamThemedGamePreparation">
+                <Setter Property="Content" Value="{StaticResource StartTimeBombGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamThemedGameScoring">
+                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampionIntroduction">
+                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamBasic">
+                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
             </DataTrigger>
         </ContentView.Triggers>
     </ContentView>

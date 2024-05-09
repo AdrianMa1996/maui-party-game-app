@@ -30,6 +30,11 @@ namespace KnockKnockApp.Models.Database
         TeamTuneYourViolins,
         TeamChampionPreparation,
         TeamChampion,
-        GameOver
+        GameOver,
+        TimeBomb,
+        TeamThemedGamePreparation,
+        TeamThemedGameScoring,
+        TeamChampionIntroduction,
+        TeamBasic
     }
 }

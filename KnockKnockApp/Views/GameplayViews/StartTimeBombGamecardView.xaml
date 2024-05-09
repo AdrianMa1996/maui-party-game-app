@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KnockKnockApp.Views.GameplayViews.ScoreGamecardView"
+             x:Class="KnockKnockApp.Views.GameplayViews.StartTimeBombGamecardView"
              x:Name="this"
              xmlns:converters="clr-namespace:KnockKnockApp.Converters">
     <ContentView.Resources>
@@ -52,9 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat=Now {0:c}!}" Command="{Binding PointsToTeamOneCommand}" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
-            <Button Grid.Column="1" BackgroundColor="{StaticResource Blue}" Text="Überspringen" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
-            <Button Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat=Now {0:c}!}" Command="{Binding PointsToTeamTwoCommand}" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="Zeitbombe starten" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>

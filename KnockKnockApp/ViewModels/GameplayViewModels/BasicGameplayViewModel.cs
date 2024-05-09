@@ -80,7 +80,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         private GameCardDto? currentCard;
 
         [RelayCommand]
-        public async void DisplayNextCardAsync()
+        public async void DisplayNextCard()
         {
             var nextCard = await _cardManagementService.DrawNextCardAsync();
             if (nextCard == null)
@@ -97,7 +97,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             _teamManagementService.AddGamePointsToTeamOne(CurrentCard.GameCardDetails.PointValue);
             TeamOne = new Team("TeamOne", 0);
             TeamOne = _teamManagementService.GetTeamOne();
-            DisplayNextCardAsync();
+            DisplayNextCard();
         }
 
         [RelayCommand]
@@ -106,7 +106,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             _teamManagementService.AddGamePointsToTeamTwo(CurrentCard.GameCardDetails.PointValue);
             TeamTwo = new Team("TeamTwo", 0);
             TeamTwo = _teamManagementService.GetTeamTwo();
-            DisplayNextCardAsync();
+            DisplayNextCard();
         }
 
         [RelayCommand]

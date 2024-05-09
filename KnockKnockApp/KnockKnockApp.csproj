@@ -210,6 +210,21 @@
 	  <MauiXaml Update="Views\GameplayViews\ScoreGamecardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\GameplayViews\StartStopWatchGamecardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GameplayViews\StartTimeBombGamecardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GameplayViews\StopWatchGamecardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GameplayViews\TeamBasicGamecardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GameplayViews\TimeBombGamecardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\LoadingBasicGameplayView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

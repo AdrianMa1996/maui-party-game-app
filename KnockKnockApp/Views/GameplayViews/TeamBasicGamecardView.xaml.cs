@@ -5,9 +5,9 @@ using KnockKnockApp.Models.DTOs;
 
 namespace KnockKnockApp.Views.GameplayViews;
 
-public partial class ScoreGamecardView : ContentView
+public partial class TeamBasicGamecardView : ContentView
 {
-    public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(ScoreGamecardView));
+    public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(TeamBasicGamecardView));
 
     public GameCardDto CurrentCard
     {
@@ -15,7 +15,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(CurrentCardProperty, value);
     }
 
-    public static readonly BindableProperty CurrentGameModeProperty = BindableProperty.Create(nameof(CurrentGameMode), typeof(GameMode), typeof(ScoreGamecardView));
+    public static readonly BindableProperty CurrentGameModeProperty = BindableProperty.Create(nameof(CurrentGameMode), typeof(GameMode), typeof(TeamBasicGamecardView));
 
     public GameMode CurrentGameMode
     {
@@ -23,7 +23,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(CurrentGameModeProperty, value);
     }
 
-    public static readonly BindableProperty TeamOneProperty = BindableProperty.Create(nameof(TeamOne), typeof(Team), typeof(ScoreGamecardView));
+    public static readonly BindableProperty TeamOneProperty = BindableProperty.Create(nameof(TeamOne), typeof(Team), typeof(TeamBasicGamecardView));
 
     public Team TeamOne
     {
@@ -31,7 +31,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(TeamOneProperty, value);
     }
 
-    public static readonly BindableProperty TeamTwoProperty = BindableProperty.Create(nameof(TeamTwo), typeof(Team), typeof(ScoreGamecardView));
+    public static readonly BindableProperty TeamTwoProperty = BindableProperty.Create(nameof(TeamTwo), typeof(Team), typeof(TeamBasicGamecardView));
 
     public Team TeamTwo
     {
@@ -39,7 +39,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(TeamTwoProperty, value);
     }
 
-    public static readonly BindableProperty PointsToTeamOneCommandProperty = BindableProperty.Create(nameof(PointsToTeamOneCommand), typeof(RelayCommand), typeof(ScoreGamecardView));
+    public static readonly BindableProperty PointsToTeamOneCommandProperty = BindableProperty.Create(nameof(PointsToTeamOneCommand), typeof(RelayCommand), typeof(TeamBasicGamecardView));
 
     public RelayCommand PointsToTeamOneCommand
     {
@@ -47,7 +47,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(PointsToTeamOneCommandProperty, value);
     }
 
-    public static readonly BindableProperty PointsToTeamTwoCommandProperty = BindableProperty.Create(nameof(PointsToTeamTwoCommand), typeof(RelayCommand), typeof(ScoreGamecardView));
+    public static readonly BindableProperty PointsToTeamTwoCommandProperty = BindableProperty.Create(nameof(PointsToTeamTwoCommand), typeof(RelayCommand), typeof(TeamBasicGamecardView));
 
     public RelayCommand PointsToTeamTwoCommand
     {
@@ -55,7 +55,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(PointsToTeamTwoCommandProperty, value);
     }
 
-    public static readonly BindableProperty NavigateToManagePlayersCommandProperty = BindableProperty.Create(nameof(NavigateToManagePlayersCommand), typeof(RelayCommand), typeof(ScoreGamecardView));
+    public static readonly BindableProperty NavigateToManagePlayersCommandProperty = BindableProperty.Create(nameof(NavigateToManagePlayersCommand), typeof(RelayCommand), typeof(TeamBasicGamecardView));
 
     public RelayCommand NavigateToManagePlayersCommand
     {
@@ -63,7 +63,7 @@ public partial class ScoreGamecardView : ContentView
         set { SetValue(NavigateToManagePlayersCommandProperty, value); }
     }
 
-    public static readonly BindableProperty NavigateToSelectGameModeCommandProperty = BindableProperty.Create(nameof(NavigateToSelectGameModeCommand), typeof(RelayCommand), typeof(ScoreGamecardView));
+    public static readonly BindableProperty NavigateToSelectGameModeCommandProperty = BindableProperty.Create(nameof(NavigateToSelectGameModeCommand), typeof(RelayCommand), typeof(TeamBasicGamecardView));
 
     public RelayCommand NavigateToSelectGameModeCommand
     {
@@ -71,7 +71,7 @@ public partial class ScoreGamecardView : ContentView
         set { SetValue(NavigateToSelectGameModeCommandProperty, value); }
     }
 
-    public static readonly BindableProperty DisplayNextCardCommandProperty = BindableProperty.Create(nameof(DisplayNextCardCommand), typeof(RelayCommand), typeof(ScoreGamecardView));
+    public static readonly BindableProperty DisplayNextCardCommandProperty = BindableProperty.Create(nameof(DisplayNextCardCommand), typeof(RelayCommand), typeof(TeamBasicGamecardView));
 
     public RelayCommand DisplayNextCardCommand
     {
@@ -79,7 +79,7 @@ public partial class ScoreGamecardView : ContentView
         set => SetValue(DisplayNextCardCommandProperty, value);
     }
 
-    public ScoreGamecardView()
+    public TeamBasicGamecardView()
 	{
 		InitializeComponent();
 	}
