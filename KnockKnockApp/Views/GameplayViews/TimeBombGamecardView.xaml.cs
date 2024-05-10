@@ -82,4 +82,86 @@ public partial class TimeBombGamecardView : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private bool isTicking;
+    private int minGameLength = 20000;
+    private int maxGameLength = 50000;
+
+    private async void this_Loaded(object sender, EventArgs e)
+    {
+        int timeUntilExplosion = Random.Shared.Next(minGameLength, maxGameLength);
+
+        var timeBombAnimation = new Animation(v => TimeBombImage.Scale = v, 1, 1.5);
+        timeBombAnimation.Commit(this, "TimeBombAnimation", 16, 2000, Easing.Linear, (v, c) => TimeBombImage.Scale = 1, () => true);
+        isTicking = true;
+
+        await Task.Run(async () =>
+        {
+            VibratePhone();
+            await Task.Delay(timeUntilExplosion);
+            if (isTicking)
+            {
+                await LetTimeBombExplode();
+            }
+        });
+    }
+
+    private async void TimeBombExplodeButton_Clicked(object sender, EventArgs e)
+    {
+        if (isTicking)
+        {
+            await LetTimeBombExplode();
+        }
+    }
+
+    private async Task LetTimeBombExplode()
+    {
+        TimeSpan vibrationLength = TimeSpan.FromMilliseconds(2000);
+
+        await Task.Run(async () =>
+        {
+            isTicking = false;
+            this.AbortAnimation("TimeBombAnimation");
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                TimeBombImage.Source = "image_bomb_explosion.png";
+                MainGrid.BackgroundColor = GetColorFromResources("RedCardColor");
+                ExplodeButton.IsVisible = false;
+            });
+            await Task.Delay(750);
+            Vibration.Default.Vibrate(vibrationLength);
+            await Task.Delay(3000);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                DisplayNextCardCommand.Execute(null);
+            });
+        });
+    }
+
+    private async void VibratePhone()
+    {
+        TimeSpan tickVibrationLength = TimeSpan.FromMilliseconds(50);
+
+        await Task.Run(async () =>
+        {
+            while (isTicking)
+            {
+                Vibration.Default.Vibrate(tickVibrationLength);
+                await Task.Delay(333);
+                Vibration.Default.Vibrate(tickVibrationLength);
+                await Task.Delay(666);
+            }
+        });
+    }
+
+    private Color GetColorFromResources(string key)
+    {
+        var color = Colors.White;
+        if (App.Current.Resources.TryGetValue(key, out var colorvalue))
+        {
+            color = (Color)colorvalue;
+        }
+
+        return color;
+    }
 }
