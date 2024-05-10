@@ -128,7 +128,7 @@ public partial class TimeBombGamecardView : ContentView
                 MainGrid.BackgroundColor = GetColorFromResources("RedCardColor");
                 ExplodeButton.IsVisible = false;
             });
-            await Task.Delay(750);
+            await Task.Delay(50);
             Vibration.Default.Vibrate(vibrationLength);
             await Task.Delay(3000);
             MainThread.BeginInvokeOnMainThread(() =>
@@ -148,6 +148,10 @@ public partial class TimeBombGamecardView : ContentView
             {
                 Vibration.Default.Vibrate(tickVibrationLength);
                 await Task.Delay(333);
+                if (!isTicking)
+                {
+                    break;
+                }
                 Vibration.Default.Vibrate(tickVibrationLength);
                 await Task.Delay(666);
             }
