@@ -68,6 +68,21 @@ namespace KnockKnockApp.Converters
                     case CardSetCategory.GameOver:
                         color = GetColorFromResources("GrayCardColor");
                         break;
+                    case CardSetCategory.TimeBomb:
+                        color = GetColorFromResources("YellowCardColor");
+                        break;
+                    case CardSetCategory.TeamThemedGamePreparation:
+                        color = GetColorFromResources("GreenCardColor");
+                        break;
+                    case CardSetCategory.TeamThemedGameScoring:
+                        color = GetColorFromResources("GreenCardColor");
+                        break;
+                    case CardSetCategory.TeamChampionIntroduction:
+                        color = GetColorFromResources("YellowCardColor");
+                        break;
+                    case CardSetCategory.TeamBasic:
+                        color = GetColorFromResources("PurpleCardColor");
+                        break;
                     default:
                         color = GetColorFromResources("GrayCardColor");
                         break;
