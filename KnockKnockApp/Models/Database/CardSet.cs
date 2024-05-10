@@ -35,6 +35,9 @@ namespace KnockKnockApp.Models.Database
         TeamThemedGamePreparation,
         TeamThemedGameScoring,
         TeamChampionIntroduction,
-        TeamBasic
+        TeamBasic,
+        PantomimePreparation,
+        StopWatch,
+        PantomimeScoring
     }
 }

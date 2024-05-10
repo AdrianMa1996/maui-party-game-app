@@ -83,6 +83,15 @@ namespace KnockKnockApp.Converters
                     case CardSetCategory.TeamBasic:
                         color = GetColorFromResources("PurpleCardColor");
                         break;
+                    case CardSetCategory.PantomimePreparation:
+                        color = GetColorFromResources("PinkCardColor");
+                        break;
+                    case CardSetCategory.StopWatch:
+                        color = GetColorFromResources("YellowCardColor");
+                        break;
+                    case CardSetCategory.PantomimeScoring:
+                        color = GetColorFromResources("PinkCardColor");
+                        break;
                     default:
                         color = GetColorFromResources("GrayCardColor");
                         break;

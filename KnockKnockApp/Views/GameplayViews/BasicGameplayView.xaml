@@ -77,6 +77,28 @@
                         PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
                         DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
 
+        <controls:StartStopWatchGamecardView x:Key="StartStopWatchGamecardView" 
+                       CurrentCard="{Binding CurrentCard}"
+                       CurrentGameMode="{Binding CurrentGameMode}"
+                       TeamOne="{Binding TeamOne}"
+                       TeamTwo="{Binding TeamTwo}"
+                       NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                       NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                       PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                       PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                       DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+
+        <controls:StopWatchGamecardView x:Key="StopWatchGamecardView" 
+                       CurrentCard="{Binding CurrentCard}"
+                       CurrentGameMode="{Binding CurrentGameMode}"
+                       TeamOne="{Binding TeamOne}"
+                       TeamTwo="{Binding TeamTwo}"
+                       NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                       NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                       PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                       PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                       DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+
         <controls:PunishmentGameView x:Key="PunishmentGameView"
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
                         EndPunishmentGameCommand="{Binding DisplayNextCardCommand}"/>
@@ -139,7 +161,6 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOver">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
-
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TimeBomb">
                 <Setter Property="Content" Value="{StaticResource TimeBombGamecardView}" />
             </DataTrigger>
@@ -154,6 +175,15 @@
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamBasic">
                 <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="PantomimePreparation">
+                <Setter Property="Content" Value="{StaticResource StartStopWatchGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="StopWatch">
+                <Setter Property="Content" Value="{StaticResource StopWatchGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="PantomimeScoring">
+                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
         </ContentView.Triggers>
     </ContentView>
