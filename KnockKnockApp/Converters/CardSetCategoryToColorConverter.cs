@@ -87,7 +87,7 @@ namespace KnockKnockApp.Converters
                         color = GetColorFromResources("PinkCardColor");
                         break;
                     case CardSetCategory.StopWatch:
-                        color = GetColorFromResources("YellowCardColor");
+                        color = GetColorFromResources("PinkCardColor");
                         break;
                     case CardSetCategory.PantomimeScoring:
                         color = GetColorFromResources("PinkCardColor");

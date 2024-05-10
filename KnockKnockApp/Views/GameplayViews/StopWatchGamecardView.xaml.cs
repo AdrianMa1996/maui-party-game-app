@@ -83,4 +83,50 @@ public partial class StopWatchGamecardView : ContentView
 	{
 		InitializeComponent();
 	}
+
+    private bool isRunning;
+    private int stopWatchTime = 30000;
+
+    private async void this_Loaded(object sender, EventArgs e)
+    {
+        isRunning = true;
+
+        await Task.Run(async () =>
+        {
+            await Task.Delay(stopWatchTime);
+            if (isRunning)
+            {
+                await LetTimeBombExplode();
+            }
+        });
+    }
+
+    private async void EndStopWatchButton_Clicked(object sender, EventArgs e)
+    {
+        if (isRunning)
+        {
+            await LetTimeBombExplode();
+        }
+    }
+
+    private async Task LetTimeBombExplode()
+    {
+        TimeSpan vibrationLength = TimeSpan.FromMilliseconds(1500);
+
+        await Task.Run(async () =>
+        {
+            isRunning = false;
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                // Timer auf 00:00 setzem
+            });
+            await Task.Delay(50);
+            Vibration.Default.Vibrate(vibrationLength);
+            await Task.Delay(3000);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                DisplayNextCardCommand.Execute(null);
+            });
+        });
+    }
 }
