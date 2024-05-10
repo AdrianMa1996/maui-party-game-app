@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
@@ -84,41 +85,57 @@ public partial class StopWatchGamecardView : ContentView
 		InitializeComponent();
 	}
 
-    private bool isRunning;
-    private int stopWatchTime = 30000;
+    IDispatcherTimer timer;
+    private int stopWatchTime = 30;
+    private int currentStopWatchTime;
+    TimeSpan tickVibrationLength = TimeSpan.FromMilliseconds(50);
 
     private async void this_Loaded(object sender, EventArgs e)
     {
-        isRunning = true;
-
-        await Task.Run(async () =>
+        MainThread.BeginInvokeOnMainThread(() =>
         {
-            await Task.Delay(stopWatchTime);
-            if (isRunning)
-            {
-                await LetTimeBombExplode();
-            }
+            StopWatchLabel.Text = stopWatchTime.ToString();
         });
+        currentStopWatchTime = stopWatchTime;
+        timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromMilliseconds(1000);
+        timer.Tick += (s, e) =>
+        {
+            Vibration.Default.Vibrate(tickVibrationLength);
+            currentStopWatchTime--;
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                StopWatchLabel.Text = currentStopWatchTime.ToString();
+            });
+            if (currentStopWatchTime <= 0)
+            {
+                timer.Stop();
+                _ = LetStopWatchStop();
+            }
+        };
+
+        timer.Start();
     }
 
     private async void EndStopWatchButton_Clicked(object sender, EventArgs e)
     {
-        if (isRunning)
+        if (timer.IsRunning)
         {
-            await LetTimeBombExplode();
+            await LetStopWatchStop();
         }
     }
 
-    private async Task LetTimeBombExplode()
+    private async Task LetStopWatchStop()
     {
         TimeSpan vibrationLength = TimeSpan.FromMilliseconds(1500);
 
         await Task.Run(async () =>
         {
-            isRunning = false;
+            timer.Stop();
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                // Timer auf 00:00 setzem
+                StopWatchLabel.Text = "0";
+                StopWatchLabel.TextColor = GetColorFromResources("RedCardColor");
             });
             await Task.Delay(50);
             Vibration.Default.Vibrate(vibrationLength);
@@ -128,5 +145,16 @@ public partial class StopWatchGamecardView : ContentView
                 DisplayNextCardCommand.Execute(null);
             });
         });
+    }
+
+    private Color GetColorFromResources(string key)
+    {
+        var color = Colors.White;
+        if (App.Current.Resources.TryGetValue(key, out var colorvalue))
+        {
+            color = (Color)colorvalue;
+        }
+
+        return color;
     }
 }

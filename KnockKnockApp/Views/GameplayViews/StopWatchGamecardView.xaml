@@ -43,8 +43,7 @@
         </Frame>
 
         <StackLayout Grid.Row="1" Grid.Column="1">
-            <Label Text="{Binding CurrentCard.CardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32"/>
-            <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
+            <Label x:Name="StopWatchLabel" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32"/>
         </StackLayout>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
@@ -53,7 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="EndStopWatchButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Violet}" Text="Zeitbombe vorzeitig anhalten" Clicked="EndStopWatchButton_Clicked" FontAttributes="Bold" TextColor="Gold" CornerRadius="0"/>
+            <Button x:Name="EndStopWatchButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Violet}" Text="Stopuhr vorzeitig anhalten" Clicked="EndStopWatchButton_Clicked" FontAttributes="Bold" TextColor="Gold" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>
