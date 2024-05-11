@@ -43,7 +43,11 @@
         </Frame>
 
         <StackLayout Grid.Row="1" Grid.Column="1">
-            <Label x:Name="StopWatchLabel" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32"/>
+            <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24" Margin="0,30,0,0"/>
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                <Label x:Name="StopWatchLabel" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HorizontalOptions="Center"/>
+                <Label FontFamily="BowlbyOneSC" Text=" Sekunden" TextColor="White" FontSize="32" HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
         </StackLayout>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">

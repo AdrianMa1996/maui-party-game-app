@@ -135,7 +135,6 @@ public partial class StopWatchGamecardView : ContentView
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 StopWatchLabel.Text = "0";
-                StopWatchLabel.TextColor = GetColorFromResources("RedCardColor");
             });
             await Task.Delay(50);
             Vibration.Default.Vibrate(vibrationLength);
