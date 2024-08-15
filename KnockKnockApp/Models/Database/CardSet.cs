@@ -13,31 +13,33 @@ namespace KnockKnockApp.Models.Database
 
     public enum CardSetCategory
     {
+        // Information
         Information,
+        GameOver,
+        // Normal
         Basic,
+        Duel,
         Game,
         Dare,
-        Duel,
         Rule,
-        Curse,
+        Powerdown,
         Powerup,
+        // Team-Information
         ManageTeams,
         PunishmentGame,
-        TeamGame,
-        TeamDare,
-        TeamDuel,
-        TeamComparison,
-        TeamTuneYourViolins,
-        TeamChampionPreparation,
-        TeamChampion,
-        GameOver,
-        TimeBomb,
-        TeamThemedGamePreparation,
-        TeamThemedGameScoring,
-        TeamChampionIntroduction,
+        // Team
         TeamBasic,
-        PantomimePreparation,
+        TimeBombPreparation,
+        TimeBomb,
+        TimeBombScoring,
+        TeamDare,
+        TeamTuneYourViolins,
+        StopWatchPreparation,
         StopWatch,
-        PantomimeScoring
+        StopWatchScoring,
+        // KnockKnockGlas
+        KnockKnockGlasTrinken,
+        KnockKnockGlasBefüllen,
+        KnockKnockGlasWeitergeben
     }
 }

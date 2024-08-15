@@ -110,7 +110,13 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOver">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Basic">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Duel">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Game">
@@ -119,13 +125,10 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Dare">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Duel">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
-            </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Rule">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Curse">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Powerdown">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Powerup">
@@ -137,53 +140,41 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="PunishmentGame">
                 <Setter Property="Content" Value="{StaticResource PunishmentGameView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamGame">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamBasic">
+                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TimeBombPreparation">
+                <Setter Property="Content" Value="{StaticResource StartTimeBombGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TimeBomb">
+                <Setter Property="Content" Value="{StaticResource TimeBombGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TimeBombScoring">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamDare">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamDuel">
-                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamComparison">
-                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
-            </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamTuneYourViolins">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampionPreparation">
-                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampion">
-                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOver">
-                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TimeBomb">
-                <Setter Property="Content" Value="{StaticResource TimeBombGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamThemedGamePreparation">
-                <Setter Property="Content" Value="{StaticResource StartTimeBombGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamThemedGameScoring">
-                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamChampionIntroduction">
-                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="TeamBasic">
-                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
-            </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="PantomimePreparation">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="StopWatchPreparation">
                 <Setter Property="Content" Value="{StaticResource StartStopWatchGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="StopWatch">
                 <Setter Property="Content" Value="{StaticResource StopWatchGamecardView}" />
             </DataTrigger>
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="PantomimeScoring">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="StopWatchScoring">
                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="KnockKnockGlasTrinken">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="KnockKnockGlasBefüllen">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="KnockKnockGlasWeitergeben">
+                <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
         </ContentView.Triggers>
     </ContentView>
