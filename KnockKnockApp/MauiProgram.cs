@@ -29,6 +29,7 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<ITeamManagementService, TeamManagementService>();
             builder.Services.AddSingleton<ICardTextPlaceholderService, CardTextPlaceholderService>();
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
+            builder.Services.AddSingleton<ISubscriptionManagementService, SubscriptionManagementService>();
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
             builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();
             builder.Services.AddTransient<ICardManagementService, CardManagementService>();
@@ -49,6 +50,7 @@ namespace KnockKnockApp
             // Popups
             builder.Services.AddTransientPopup<LanguageSettingsView, LanguageSettingsViewModel>();
             builder.Services.AddTransientPopup<ManagePlayersPopupView, ManagePlayersPopupViewModel>();
+            builder.Services.AddTransientPopup<PurchasePrimePopupView, PurchasePrimePopupViewModel>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddTransient<SelectGameModeViewModel>();
