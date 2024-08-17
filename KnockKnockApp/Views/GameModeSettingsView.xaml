@@ -10,16 +10,30 @@
         <CollectionView x:Key="GameModeAndCardSetBindingCollectionView" ItemsSource="{Binding GameModeAndCardSetBindingCollection}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <ContentView>
+                        <ContentView.Triggers>
+                            <MultiTrigger TargetType="ContentView">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding IsDisableable}" Value="false" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Grid/>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                        </ContentView.Triggers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" TextColor="DarkBlue" Text="{Binding Title}"/>
-                        <CheckBox Grid.Column="2"  IsChecked="{Binding IsActivated}"/>
-                    </Grid>
+                            <Label Grid.Column="1" TextColor="DarkBlue" Text="{Binding Title}"/>
+                            <CheckBox Grid.Column="2"  IsChecked="{Binding IsActivated}"/>
+                        </Grid>
+                    </ContentView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
