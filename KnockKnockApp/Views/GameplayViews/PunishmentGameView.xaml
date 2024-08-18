@@ -2,8 +2,12 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.PunishmentGameView"
-             x:Name="this">
-    <Grid BindingContext="{x:Reference this}" BackgroundColor="DarkViolet">
+             x:Name="this"
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters">
+    <ContentView.Resources>
+        <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
+    </ContentView.Resources>
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="{Binding CurrentCard.CardSetDetails.Category, Converter={StaticResource CardSetCategoryToColorConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="10" />
@@ -16,7 +20,12 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Red" Text="Close" Command="{Binding LeaveGameModeCommand}"/>
+        <Frame Grid.Row="0" Grid.Column="2" WidthRequest="30" HeightRequest="30" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1" HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="icon_close_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding LeaveGameModeCommand}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
@@ -26,11 +35,11 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackLayout x:Name="LedOne" Grid.Column="0" BackgroundColor="SpringGreen" Margin="5, 0"/>
-            <StackLayout x:Name="LedTwo" Grid.Column="1" BackgroundColor="SpringGreen" Margin="5, 0"/>
-            <StackLayout x:Name="LedThree" Grid.Column="2" BackgroundColor="LightGray" Margin="5, 0"/>
-            <StackLayout x:Name="LedFour" Grid.Column="3" BackgroundColor="LightGray" Margin="5, 0"/>
-            <StackLayout x:Name="LedFive" Grid.Column="4" BackgroundColor="LightGray" Margin="5, 0"/>
+            <StackLayout x:Name="LedOne" Grid.Column="0" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
+            <StackLayout x:Name="LedTwo" Grid.Column="1" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
+            <StackLayout x:Name="LedThree" Grid.Column="2" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
+            <StackLayout x:Name="LedFour" Grid.Column="3" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
+            <StackLayout x:Name="LedFive" Grid.Column="4" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1">
@@ -41,29 +50,29 @@
             <Image Grid.Column="0" x:Name="CurrentPokerCard" WidthRequest="124" HeightRequest="176"/>
             <StackLayout x:Name="GameOverview" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                 <HorizontalStackLayout>
-                    <Label FontSize="Large" Text="Klopfer im Spiel: "/>
-                    <Label x:Name="OverviewNumberOfKnockers" FontSize="Large"/>
+                    <Label Text="Klopfer im Spiel: " TextColor="White" FontSize="24"/>
+                    <Label x:Name="OverviewNumberOfKnockers" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <Label FontSize="Large" Text="Übrige Versuche: "/>
-                    <Label x:Name="RemainingAttempts" FontSize="Large"/>
+                    <Label Text="Übrige Versuche: " TextColor="White" FontSize="24"/>
+                    <Label x:Name="RemainingAttempts" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
             </StackLayout>
             <StackLayout x:Name="RestartPunishmentGameText" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                 <HorizontalStackLayout>
-                    <Label FontSize="Large" Text="Das war leider falsch!"/>
+                    <Label Text="Das war leider falsch!" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <Label x:Name="RestartNumberOfKnockers"/>
-                    <Label Text=" Schlücke für das Verlierer-Team. Dannach gibt es noch eine Runde."/>
+                    <Label x:Name="RestartNumberOfKnockers" TextColor="White" FontSize="24"/>
+                    <Label Text=" Schlücke für das Verlierer-Team." TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
             </StackLayout>
             <StackLayout x:Name="EndPunishmentGameText" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                 <HorizontalStackLayout>
-                    <Label FontSize="Large" Text="Ihr sied durchgekommen!"/>
+                    <Label Text="Ihr sied durchgekommen!" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <Label Text="Das Strafspiel ist beendet. Das Spiel ist beendet."/>
+                    <Label Text="Das Strafspiel ist beendet." TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
             </StackLayout>
         </Grid>
@@ -74,13 +83,13 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="HigherButton" Grid.Column="0" BackgroundColor="Blue" Text="Höher" Clicked="Higher_Button_Clicked"/>
-            <Button x:Name="SameButton" Grid.Column="1" BackgroundColor="Gray" Text="Gleich" Clicked="Same_Button_Clicked"/>
-            <Button x:Name="DeeperButton" Grid.Column="2" BackgroundColor="Orange" Text="Tiefer" Clicked="Deeper_Button_Clicked"/>
+            <Button x:Name="HigherButton" Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="Höher" Clicked="Higher_Button_Clicked" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
+            <Button x:Name="SameButton" Grid.Column="1" BackgroundColor="{StaticResource Blue}" Text="Gleich" Clicked="Same_Button_Clicked" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
+            <Button x:Name="DeeperButton" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="Tiefer" Clicked="Deeper_Button_Clicked" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
 
-            <Button x:Name="EndPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Green" Text="Weiter" Command="{Binding EndPunishmentGameCommand}"/>
+            <Button x:Name="EndPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource TeamOneColor}" Text="Weiter" Command="{Binding EndPunishmentGameCommand}"/>
 
-            <Button x:Name="RestartPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" Text="Neuer Versuch" Clicked="RestartPunishmentGame_Button_Clicked"/>
+            <Button x:Name="RestartPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource TeamTwoColor}" Text="Neuer Versuch" Clicked="RestartPunishmentGame_Button_Clicked"/>
         </Grid>
     </Grid>
 </ContentView>
