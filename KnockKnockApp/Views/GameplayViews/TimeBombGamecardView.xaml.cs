@@ -84,11 +84,15 @@ public partial class TimeBombGamecardView : ContentView
 	}
 
     private bool isTicking;
-    private int minGameLength = 20000;
-    private int maxGameLength = 50000;
+    private int minGameLength = 15000;
+    private int maxGameLength = 30000;
 
     private async void this_Loaded(object sender, EventArgs e)
     {
+        TimeBombImage.Source = "image_time_bomb.png";
+        MainGrid.BackgroundColor = GetColorFromResources("GreenCardColor");
+        ExplodeButton.IsVisible = true;
+
         int timeUntilExplosion = Random.Shared.Next(minGameLength, maxGameLength);
 
         var timeBombAnimation = new Animation(v => TimeBombImage.Scale = v, 1, 1.5);

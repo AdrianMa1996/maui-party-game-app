@@ -19,7 +19,9 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <Image Grid.Row="0" Grid.Column="1" x:Name="TimeBombImage" Source="image_time_bomb.png" HeightRequest="170" WidthRequest="170"/>
+        <Label Grid.Row="0" Grid.Column="1" x:Name="CardTextLabel" Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24" Margin="0,30,0,0"/>
+
+        <Image Grid.Row="0" Grid.Column="1" x:Name="TimeBombImage" Source="image_time_bomb.png" HeightRequest="150" WidthRequest="150" Margin="0,50,0,0"/>
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>

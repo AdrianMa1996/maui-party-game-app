@@ -41,6 +41,12 @@ namespace KnockKnockApp.Converters
                     case CardSetCategory.Powerup:
                         color = GetColorFromResources("OrangeCardColor");
                         break;
+                    case CardSetCategory.InformationTeams:
+                        color = GetColorFromResources("GrayCardColor");
+                        break;
+                    case CardSetCategory.GameOverTeams:
+                        color = GetColorFromResources("GrayCardColor");
+                        break;
                     case CardSetCategory.ManageTeams:
                         color = GetColorFromResources("GrayCardColor");
                         break;

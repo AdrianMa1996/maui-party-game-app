@@ -42,12 +42,9 @@
             </Frame.GestureRecognizers>
         </Frame>
 
-        <StackLayout Grid.Row="1" Grid.Column="1">
+        <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand">
             <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24" Margin="0,30,0,0"/>
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                <Label x:Name="StopWatchLabel" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HorizontalOptions="Center"/>
-                <Label FontFamily="BowlbyOneSC" Text=" Sekunden" TextColor="White" FontSize="32" HorizontalOptions="Center"/>
-            </HorizontalStackLayout>
+            <Label x:Name="StopWatchLabel" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">

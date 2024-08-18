@@ -25,6 +25,8 @@ namespace KnockKnockApp.Models.Database
         Powerdown,
         Powerup,
         // Team-Information
+        InformationTeams,
+        GameOverTeams,
         ManageTeams,
         PunishmentGame,
         // Team

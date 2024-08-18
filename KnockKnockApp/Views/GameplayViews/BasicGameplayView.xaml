@@ -134,6 +134,12 @@
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Powerup">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="InformationTeams">
+                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOverTeams">
+                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+            </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="ManageTeams">
                 <Setter Property="Content" Value="{StaticResource ManageTeamsView}" />
             </DataTrigger>

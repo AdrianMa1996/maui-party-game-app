@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
@@ -94,7 +93,7 @@ public partial class StopWatchGamecardView : ContentView
     {
         MainThread.BeginInvokeOnMainThread(() =>
         {
-            StopWatchLabel.Text = stopWatchTime.ToString();
+            StopWatchLabel.Text = stopWatchTime.ToString("D2") + " Sekunden";
         });
         currentStopWatchTime = stopWatchTime;
         timer = Dispatcher.CreateTimer();
@@ -105,7 +104,7 @@ public partial class StopWatchGamecardView : ContentView
             currentStopWatchTime--;
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                StopWatchLabel.Text = currentStopWatchTime.ToString();
+                StopWatchLabel.Text = currentStopWatchTime.ToString("D2") + " Sekunden";
             });
             if (currentStopWatchTime <= 0)
             {
@@ -134,7 +133,7 @@ public partial class StopWatchGamecardView : ContentView
             timer.Stop();
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                StopWatchLabel.Text = "0";
+                StopWatchLabel.Text = "00" + " Sekunden";
             });
             await Task.Delay(50);
             Vibration.Default.Vibrate(vibrationLength);
