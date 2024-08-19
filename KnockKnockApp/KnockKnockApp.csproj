@@ -224,6 +224,9 @@
 	  <MauiXaml Update="Views\GameplayViews\TeamBasicGamecardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\GameplayViews\TeamBasicWithoutScoreGamecardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\GameplayViews\TimeBombGamecardView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

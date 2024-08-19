@@ -44,6 +44,17 @@
                        PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
 
+        <controls:TeamBasicWithoutScoreGamecardView x:Key="TeamBasicWithoutScoreGamecardView" 
+                      CurrentCard="{Binding CurrentCard}"
+                      CurrentGameMode="{Binding CurrentGameMode}"
+                      TeamOne="{Binding TeamOne}"
+                      TeamTwo="{Binding TeamTwo}"
+                      NavigateToSelectGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
+                      NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
+                      PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
+                      PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
+                      DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+
         <controls:ScoreGamecardView x:Key="ScoreGamecardView" 
                         CurrentCard="{Binding CurrentCard}"
                         CurrentGameMode="{Binding CurrentGameMode}"
@@ -105,7 +116,7 @@
 
     </ContentPage.Resources>
 
-    <ContentView Content="{StaticResource BasicGamecardView}">
+    <ContentView>
         <ContentView.Triggers>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
@@ -135,10 +146,10 @@
                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="InformationTeams">
-                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource TeamBasicWithoutScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GameOverTeams">
-                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+                <Setter Property="Content" Value="{StaticResource TeamBasicWithoutScoreGamecardView}" />
             </DataTrigger>
             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="ManageTeams">
                 <Setter Property="Content" Value="{StaticResource ManageTeamsView}" />
