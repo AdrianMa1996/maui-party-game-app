@@ -95,6 +95,7 @@ public partial class StopWatchGamecardView : ContentView
         {
             StopWatchLabel.Text = stopWatchTime.ToString("D2") + " Sekunden";
         });
+        EndStopWatchButton.IsVisible = true;
         currentStopWatchTime = stopWatchTime;
         timer = Dispatcher.CreateTimer();
         timer.Interval = TimeSpan.FromMilliseconds(1000);
@@ -134,6 +135,7 @@ public partial class StopWatchGamecardView : ContentView
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 StopWatchLabel.Text = "00" + " Sekunden";
+                EndStopWatchButton.IsVisible = false;
             });
             await Task.Delay(50);
             Vibration.Default.Vibrate(vibrationLength);
