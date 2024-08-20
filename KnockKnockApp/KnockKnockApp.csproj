@@ -125,6 +125,12 @@
 	  <None Remove="Resources\Images\flag_germany.png" />
 	  <None Remove="Resources\Images\flag_united_kingdom.png" />
 	  <None Remove="Resources\Images\game_mode_example.png" />
+	  <None Remove="Resources\Images\game_mode_icon_einstieg.png" />
+	  <None Remove="Resources\Images\game_mode_icon_express.png" />
+	  <None Remove="Resources\Images\game_mode_icon_gewagt.png" />
+	  <None Remove="Resources\Images\game_mode_icon_gruppenkrieg.png" />
+	  <None Remove="Resources\Images\game_mode_icon_heisergruppenkrieg.png" />
+	  <None Remove="Resources\Images\game_mode_icon_knockknockglas.png" />
 	  <None Remove="Resources\Images\hearts_ass.png" />
 	  <None Remove="Resources\Images\hearts_eight.png" />
 	  <None Remove="Resources\Images\hearts_five.png" />
