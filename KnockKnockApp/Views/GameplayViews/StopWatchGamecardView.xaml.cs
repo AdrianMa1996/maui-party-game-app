@@ -7,7 +7,13 @@ namespace KnockKnockApp.Views.GameplayViews;
 
 public partial class StopWatchGamecardView : ContentView
 {
-    public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(StopWatchGamecardView));
+    public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(StopWatchGamecardView), propertyChanged: OnGamecardChanged);
+
+    static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        StopWatchGamecardView gamecardView = (StopWatchGamecardView)bindable;
+        gamecardView.AnimateCardText();
+    }
 
     public GameCardDto CurrentCard
     {
@@ -156,5 +162,25 @@ public partial class StopWatchGamecardView : ContentView
         }
 
         return color;
+    }
+
+    public async void AnimateCardText()
+    {
+        await Task.Run(async () =>
+        {
+            var animation = new Animation();
+            var singleAnimationDuration = 1.0 / 2.0;
+
+            for (int i = 0; i < 1; i++)
+            {
+                // pan right
+                animation.Add(i * 2 * singleAnimationDuration, (i * 2 + 1) * singleAnimationDuration, new Animation(v => CardTextStackLayout.TranslationX = v, 0, 15, Easing.CubicOut));
+                // pan left
+                animation.Add((i * 2 + 1) * singleAnimationDuration, (i * 2 + 2) * singleAnimationDuration, new Animation(v => CardTextStackLayout.TranslationX = v, 15, -15, Easing.CubicOut));
+            }
+            // return to starting position
+            animation.Add(1 - singleAnimationDuration, 1, new Animation(v => CardTextStackLayout.TranslationX = v, -15, 0, Easing.CubicOut));
+            animation.Commit(this, "CardTextSwingAnimation", length: 250, easing: Easing.CubicOut);
+        });
     }
 }
