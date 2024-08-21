@@ -56,7 +56,7 @@
                                     </Setter>
                                 </MultiTrigger>
                             </ContentView.Triggers>
-                            <Grid BackgroundColor="Green">
+                            <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}" />
                                 </Grid.GestureRecognizers>
