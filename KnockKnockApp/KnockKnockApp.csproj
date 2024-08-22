@@ -249,7 +249,7 @@
 	  <MauiXaml Update="Views\PopupViews\ManagePlayersPopupView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\PopupViews\PurchasePrimePopupView.xaml">
+	  <MauiXaml Update="Views\PurchasePrimeView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SelectGameModeView.xaml">

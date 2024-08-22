@@ -5,7 +5,6 @@ using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
-using KnockKnockApp.ViewModels.PopupViewModels;
 using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels
@@ -17,19 +16,13 @@ namespace KnockKnockApp.ViewModels
         private readonly IPlayerManagementService _playerManagementService;
         private readonly ISubscriptionManagementService _subscriptionManagementService;
 
-        private readonly IPopupService _popupService;
-        private readonly PurchasePrimePopupViewModel _purchasePrimePopupViewModel;
-
-        public SelectGameModeViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService, ISubscriptionManagementService subscriptionManagementService, IPopupService popupService, PurchasePrimePopupViewModel purchasePrimePopupViewModel)
+        public SelectGameModeViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService, ISubscriptionManagementService subscriptionManagementService, IPopupService popupService)
         {
             LocalizationService = localizationService;
             _deviceOrientationService = deviceOrientationService;
             _gameModeRepository = gameModeRepository;
             _playerManagementService = playerManagementService;
             _subscriptionManagementService = subscriptionManagementService;
-
-            _popupService = popupService;
-            _purchasePrimePopupViewModel = purchasePrimePopupViewModel;
 
             AccountInformation = _subscriptionManagementService.GetAccountInformation();
 
@@ -80,7 +73,7 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void OpenSubscriptionPopup()
         {
-            _popupService.ShowPopup(_purchasePrimePopupViewModel);
+            AppShell.Current.GoToAsync("PurchasePrimeView", false);
         }
 
         [RelayCommand]

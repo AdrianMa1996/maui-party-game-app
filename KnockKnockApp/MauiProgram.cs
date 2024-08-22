@@ -47,15 +47,16 @@ namespace KnockKnockApp
             builder.Services.AddTransient<LoadingBasicGameplayView>();
             builder.Services.AddTransient<BasicGameplayView>();
             builder.Services.AddTransient<GameModeSettingsView>();
+            builder.Services.AddTransient<PurchasePrimeView>();
             // Popups
             builder.Services.AddTransientPopup<LanguageSettingsView, LanguageSettingsViewModel>();
             builder.Services.AddTransientPopup<ManagePlayersPopupView, ManagePlayersPopupViewModel>();
-            builder.Services.AddTransientPopup<PurchasePrimePopupView, PurchasePrimePopupViewModel>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddTransient<SelectGameModeViewModel>();
             builder.Services.AddTransient<BasicGameplayViewModel>();
             builder.Services.AddTransient<GameModeSettingsViewModel>();
+            builder.Services.AddTransient<PurchasePrimeViewModel>();
 
             builder.ConfigureFonts(fonts =>
             {
