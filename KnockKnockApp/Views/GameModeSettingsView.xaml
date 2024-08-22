@@ -7,56 +7,77 @@
              NavigatedTo="ContentPage_NavigatedTo">
 
     <ContentPage.Resources>
-        <CollectionView x:Key="GameModeAndCardSetBindingCollectionView" ItemsSource="{Binding GameModeAndCardSetBindingCollection}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <ContentView>
-                        <ContentView.Triggers>
-                            <MultiTrigger TargetType="ContentView">
-                                <MultiTrigger.Conditions>
-                                    <BindingCondition Binding="{Binding IsDisableable}" Value="false" />
-                                </MultiTrigger.Conditions>
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Grid/>
-                                    </Setter.Value>
-                                </Setter>
-                            </MultiTrigger>
-                        </ContentView.Triggers>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+        <Grid x:Key="GameModeAndCardSetBindingCollectionView" Margin="40,20,40,0">
+            <Label Text="Für diesen Spielmodus gibt es keine Kartenkategorien, die angepasst werden können." HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+            <CollectionView ItemsSource="{Binding GameModeAndCardSetBindingCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <ContentView.Triggers>
+                                <MultiTrigger TargetType="ContentView">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding IsDisableable}" Value="false" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Content">
+                                        <Setter.Value>
+                                            <Grid/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </MultiTrigger>
+                            </ContentView.Triggers>
+                            <Grid Padding="0, 0, 0, 10" BackgroundColor="{StaticResource Violet}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="1" TextColor="DarkBlue" Text="{Binding Title}"/>
-                            <CheckBox Grid.Column="2"  IsChecked="{Binding IsActivated}"/>
-                        </Grid>
-                    </ContentView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                <Label Grid.Column="0" Text="{Binding Title}" TextColor="White" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <CheckBox Grid.Column="1"  IsChecked="{Binding IsActivated}" Color="White" VerticalOptions="Center"/>
+                            </Grid>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="Coral">
+    <Grid BackgroundColor="{StaticResource Violet}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ContentView x:Name="GameModeAndCardSetBindingContentView" Grid.Row="0" >
-            <ActivityIndicator IsRunning="True" Color="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Center" />
+        <VerticalStackLayout Grid.Row="0" Margin="40,25,40,0">
+            <Label Text="{Binding CurrentGameMode.Title}" Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="26" LineHeight="0.8"/>
+            <Label Text="Hier kannst du den Spielmodus anpassen, indem du bestimmte Kartenkategorien ein- oder ausschaltest." Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+        </VerticalStackLayout>
+
+        <ContentView x:Name="GameModeAndCardSetBindingContentView" Grid.Row="1" >
+            <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center" />
         </ContentView>
 
-        <FlexLayout Grid.Row="1" BackgroundColor="Gray" JustifyContent="Center">
-            <FlexLayout.GestureRecognizers>
+        <Grid Grid.Row="2" BackgroundColor="{StaticResource Gray900}" Padding="5">
+            <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeCommand}"/>
-            </FlexLayout.GestureRecognizers>
-            <HorizontalStackLayout Padding="0,15,0,15">
-                <Label Margin="0,0,2,0" Text="{Binding CurrentGameMode.Title}"/>
-                <Label Margin="0,0,0,0">- Einstellungen verlassen</Label>
+            </Grid.GestureRecognizers>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="20,0,0,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Black}" VerticalOptions="Center" HorizontalOptions="Start">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeCommand}"/>
+                </Frame.GestureRecognizers>
+                <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
+            </Frame>
+
+            <HorizontalStackLayout Grid.Column="0" Grid.ColumnSpan="2" Padding="0,15,0,15" HorizontalOptions="Center">
+                <Label Text="speichern und verlassen" TextColor="White" FontSize="18" FontAttributes="Bold" />
             </HorizontalStackLayout>
-        </FlexLayout>
+        </Grid>
+
+
     </Grid>
 </ContentPage>
