@@ -156,6 +156,7 @@
 	  <None Remove="Resources\Images\icon_player_gray.png" />
 	  <None Remove="Resources\Images\icon_plus_gray.png" />
 	  <None Remove="Resources\Images\icon_settings_white.png" />
+	  <None Remove="Resources\Images\icon_star_gold.png" />
 	  <None Remove="Resources\Images\image_bomb_explosion.png" />
 	  <None Remove="Resources\Images\image_time_bomb.png" />
 	  <None Remove="Resources\Images\logo_basic_ohne_hintergrund.png" />
