@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>KnockKnock</ApplicationTitle>
+		<ApplicationTitle>Knock Knock</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.knockknockapp</ApplicationId>
