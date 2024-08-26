@@ -108,7 +108,7 @@
             <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </ContentView>
 
-        <Grid Grid.Row="1" BackgroundColor="{StaticResource Gray900}" Padding="5">
+        <Grid Grid.Row="1" BackgroundColor="{StaticResource Gray700}" Padding="5">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
             </Grid.GestureRecognizers>
@@ -117,7 +117,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="20,0,0,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Black}" VerticalOptions="Center" HorizontalOptions="Start">
+            <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="20,0,0,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Gray950}" VerticalOptions="Center" HorizontalOptions="Start">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
                 </Frame.GestureRecognizers>
