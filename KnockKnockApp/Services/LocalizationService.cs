@@ -13,13 +13,13 @@ namespace KnockKnockApp.Services
         private Localization _currentLocalization;
 
         private ObservableCollection<Localization> localizations = [
-            new Localization("Deutschland", new CultureInfo("de-DE"), "flag_germany.png"),
-            new Localization("Großbritannien", new CultureInfo("en-GB"), "flag_united_kingdom.png")];
+            new Localization("Deutschland", new CultureInfo("de-DE"), "flag_germany.png")];
+        // new Localization("Großbritannien", new CultureInfo("en-GB"), "flag_united_kingdom.png")];
 
         public LocalizationService()
         {
             var currentCultureInfo = CultureInfo.CurrentCulture;
-            _currentLocalization = localizations.FirstOrDefault(l => l.Culture.Equals(currentCultureInfo)) ?? localizations.FirstOrDefault(l => l.Culture.Name == "en-GB");
+            _currentLocalization = localizations.FirstOrDefault(l => l.Culture.Equals(currentCultureInfo)) ?? localizations.FirstOrDefault(l => l.Culture.Name == "de-DE");
         }
 
         public object this[string resourceKey]
