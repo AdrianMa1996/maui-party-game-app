@@ -4,11 +4,10 @@ using KnockKnockApp.Models;
 using KnockKnockApp.Services;
 using System.Collections.ObjectModel;
 
-namespace KnockKnockApp.ViewModels.PopupViewModels
+namespace KnockKnockApp.ViewModels
 {
     public partial class LanguageSettingsViewModel : ObservableObject
     {
-
         public LanguageSettingsViewModel(ILocalizationService localizationService)
         {
             LocalizationService = localizationService;
@@ -25,6 +24,13 @@ namespace KnockKnockApp.ViewModels.PopupViewModels
         public void ChangeLocalization(Localization localization)
         {
             LocalizationService.SetCurrentLocalization(localization);
+            Shell.Current.GoToAsync("..", false);
+        }
+
+        [RelayCommand]
+        public void NavigateToManagePlayers()
+        {
+            Shell.Current.GoToAsync("..", false);
         }
     }
 }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-           xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
-           x:Class="KnockKnockApp.Views.PopupViews.LanguageSettingsView"
-           xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
-           CanBeDismissedByTappingOutsideOfPopup="False"
-           VerticalOptions="Fill" HorizontalOptions="Fill">
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KnockKnockApp.Views.LanguageSettingsView"
+             Title="LanguageSettingsView"
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,7 +16,7 @@
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding LocalizationService[1], Mode=OneWay}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title" FontFamily="BowlbyOneSC" Margin="0,35,0,10"/>
 
-        <ImageButton Grid.Row="0" Grid.Column="1" Clicked="CloseButton_Clicked" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="25" HeightRequest="25" Margin="0,15,15,0"/>
+        <ImageButton Grid.Row="0" Grid.Column="1" Command="{Binding NavigateToManagePlayersCommand}" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="25" HeightRequest="25" Margin="0,15,15,0"/>
 
 
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
@@ -44,9 +42,9 @@
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>
 
-                <Button Clicked="CloseButton_Clicked" Text="{Binding LocalizationService[5], Mode=OneWay}" FontSize="Large" FontAttributes="Bold" Margin="30,8" Padding="0,17" CornerRadius="10" BackgroundColor="#279EFF"/>
+                <Button Command="{Binding NavigateToManagePlayersCommand}" Text="{Binding LocalizationService[5], Mode=OneWay}" FontSize="Large" FontAttributes="Bold" Margin="30,8" Padding="0,17" CornerRadius="10" BackgroundColor="#279EFF"/>
 
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
-</mct:Popup>
+</ContentPage>

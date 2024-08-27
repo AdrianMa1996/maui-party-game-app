@@ -58,7 +58,7 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void DisplayLanguageSettings(Localization localization)
         {
-            _popupService.ShowPopup(_languageSettingsViewModel);
+            AppShell.Current.GoToAsync("LanguageSettingsView", false);
         }
     }
 }
