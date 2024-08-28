@@ -117,7 +117,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [RelayCommand]
         public async void NavigateToSelectGameMode()
         {
-            var answer = await Application.Current.MainPage.DisplayAlert("Partie verlassen?", "Seid ihr sicher, dass ihr die Partie verlassen wollt?", "Yes", "No");
+            var answer = await Application.Current.MainPage.DisplayAlert("Seid ihr sicher, dass ihr die Partie verlassen wollt?", "", "Ja", "Nein");
             if (answer)
             {
                 Shell.Current.GoToAsync("..", false);
