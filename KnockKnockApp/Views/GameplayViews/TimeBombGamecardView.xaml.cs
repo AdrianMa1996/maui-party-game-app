@@ -118,7 +118,8 @@ public partial class TimeBombGamecardView : ContentView
 
     private async void TimeBombExplodeButton_Clicked(object sender, EventArgs e)
     {
-        if (isTicking)
+        var answer = await Application.Current.MainPage.DisplayAlert("Zeitbombe vorzeitig anhalten?", "Seid ihr sicher, dass ihr die Zeitbombe vorzeitig anhalten wollt?", "Ja", "Nein");
+        if (isTicking && answer)
         {
             await LetTimeBombExplode();
         }
