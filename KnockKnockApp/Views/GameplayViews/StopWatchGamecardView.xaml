@@ -53,7 +53,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="EndStopWatchButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Violet}" Text="Stopuhr vorzeitig anhalten" Clicked="EndStopWatchButton_Clicked" FontAttributes="Bold" TextColor="Gold" CornerRadius="0"/>
+            <Button x:Name="EndStopWatchButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Violet}" Text="Timer vorzeitig anhalten" Clicked="EndStopWatchButton_Clicked" FontAttributes="Bold" TextColor="Gold" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>
