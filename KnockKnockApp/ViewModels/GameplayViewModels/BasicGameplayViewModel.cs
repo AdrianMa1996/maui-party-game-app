@@ -6,7 +6,6 @@ using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Models.DTOs;
 using KnockKnockApp.Services;
-using KnockKnockApp.ViewModels.PopupViewModels;
 using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels.GameplayViewModels
@@ -18,17 +17,14 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         private readonly ICardManagementService _cardManagementService;
         private readonly IPlayerManagementService _playerManagementService;
         private readonly ITeamManagementService _teamManagementService;
-        private readonly IPopupService _popupService;
-        private readonly ManagePlayersPopupViewModel _managePlayersPopupViewModel;
 
-        public BasicGameplayViewModel(IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService, IPopupService popupService, ManagePlayersPopupViewModel managePlayersPopupViewModel)
+        public BasicGameplayViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService)
         {
+            LocalizationService = localizationService;
             _deviceOrientationService = deviceOrientationService;
             _cardManagementService = cardManagementService;
             _playerManagementService = playerManagementService;
             _teamManagementService = teamManagementService;
-            _popupService = popupService;
-            _managePlayersPopupViewModel = managePlayersPopupViewModel;
 
             _teamManagementService.SetupTeamManagementService();
 
@@ -49,6 +45,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
             _teamManagementService = teamManagementService;
         }
+
+        [ObservableProperty]
+        public ILocalizationService localizationService;
 
         [ObservableProperty]
         public ObservableCollection<Player> allPlayers;
@@ -112,7 +111,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [RelayCommand]
         public void NavigateToManagePlayers()
         {
-            _popupService.ShowPopup(_managePlayersPopupViewModel);
+            ShowManagePlayersPopup = true;
         }
 
         [RelayCommand]
@@ -215,6 +214,49 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             TeamOne.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamOnePlayer == true));
             TeamTwo.TeamMembers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamTwoPlayer == true));
             TeamlessPlayers = new ObservableCollection<Player>(AllPlayers.Where(x => x.IsTeamlessPlayer == true));
+        }
+
+        [ObservableProperty]
+        public bool showManagePlayersPopup = false;
+
+        public event EventHandler ShowManagePlayersRequested;
+        public event EventHandler HideManagePlayersRequested;
+
+        partial void OnShowManagePlayersPopupChanged(bool value)
+        {
+            if (value)
+            {
+                ShowManagePlayersRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                HideManagePlayersRequested?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        [ObservableProperty]
+        public string spielerNameEntryText = string.Empty;
+
+        [RelayCommand]
+        public void RemovePlayer(object commandParameter)
+        {
+            var player = (Player)commandParameter;
+            var playerId = player.Id;
+            _playerManagementService.RemovePlayer(playerId);
+        }
+
+        [RelayCommand]
+        public void AddPlayer()
+        {
+            var playerName = SpielerNameEntryText;
+            _playerManagementService.AddPlayer(playerName);
+            SpielerNameEntryText = string.Empty;
+        }
+
+        [RelayCommand]
+        public void HideManagePlayers()
+        {
+            ShowManagePlayersPopup = false;
         }
     }
 }

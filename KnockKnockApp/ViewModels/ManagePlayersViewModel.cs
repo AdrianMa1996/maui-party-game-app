@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Services;
-using KnockKnockApp.ViewModels.PopupViewModels;
 using System.Collections.ObjectModel;
 
 namespace KnockKnockApp.ViewModels

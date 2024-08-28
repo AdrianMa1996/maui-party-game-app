@@ -4,10 +4,8 @@ using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using KnockKnockApp.ViewModels;
 using KnockKnockApp.ViewModels.GameplayViewModels;
-using KnockKnockApp.ViewModels.PopupViewModels;
 using KnockKnockApp.Views;
 using KnockKnockApp.Views.GameplayViews;
-using KnockKnockApp.Views.PopupViews;
 using Microsoft.Extensions.Logging;
 
 namespace KnockKnockApp
@@ -49,8 +47,6 @@ namespace KnockKnockApp
             builder.Services.AddTransient<GameModeSettingsView>();
             builder.Services.AddTransient<PurchasePrimeView>();
             builder.Services.AddTransient<LanguageSettingsView>();
-            // Popups
-            builder.Services.AddTransientPopup<ManagePlayersPopupView, ManagePlayersPopupViewModel>();
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddTransient<SelectGameModeViewModel>();
