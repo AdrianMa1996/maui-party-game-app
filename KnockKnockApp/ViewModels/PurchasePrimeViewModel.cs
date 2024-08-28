@@ -29,5 +29,17 @@ namespace KnockKnockApp.ViewModels
             _subscriptionManagementService.PurchaseSubscription();
             Shell.Current.GoToAsync("..", false);
         }
+
+        [RelayCommand]
+        public void OpenTermsOfUse()
+        {
+            Launcher.OpenAsync("https://www.google.de/");
+        }
+
+        [RelayCommand]
+        public void OpenPrivacyPolicy()
+        {
+            Launcher.OpenAsync("https://www.bing.com/");
+        }
     }
 }
