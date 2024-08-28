@@ -52,7 +52,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="Nächste Karte" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>
