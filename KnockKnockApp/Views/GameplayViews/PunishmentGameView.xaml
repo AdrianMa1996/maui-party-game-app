@@ -54,7 +54,7 @@
                     <Label x:Name="OverviewNumberOfKnockers" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <Label Text="Übrige Versuche: " TextColor="White" FontSize="24"/>
+                    <Label Text="Übrige Runden: " TextColor="White" FontSize="24"/>
                     <Label x:Name="RemainingAttempts" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
             </StackLayout>
@@ -63,16 +63,17 @@
                     <Label Text="Das war leider falsch!" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
+                    <Label Text="Alle Verlierer müssen " TextColor="White" FontSize="24"/>
                     <Label x:Name="RestartNumberOfKnockers" TextColor="White" FontSize="24"/>
-                    <Label Text=" Schlücke für das Verlierer-Team." TextColor="White" FontSize="24"/>
+                    <Label Text=" Mal klopfen" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
             </StackLayout>
             <StackLayout x:Name="EndPunishmentGameText" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                 <HorizontalStackLayout>
-                    <Label Text="Ihr sied durchgekommen!" TextColor="White" FontSize="24"/>
+                    <Label Text="Ihr seid durchgekommen!" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
-                    <Label Text="Das Strafspiel ist beendet." TextColor="White" FontSize="24"/>
+                    <Label Text="Das Strafspiel ist beendet" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
             </StackLayout>
         </Grid>
