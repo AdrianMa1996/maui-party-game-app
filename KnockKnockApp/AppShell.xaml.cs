@@ -11,6 +11,8 @@ namespace KnockKnockApp
             Routing.RegisterRoute($"{nameof(SelectGameModeView)}", typeof(SelectGameModeView));
             Routing.RegisterRoute($"{nameof(LanguageSettingsView)}", typeof(LanguageSettingsView));
             Routing.RegisterRoute($"{nameof(PurchasePrimeView)}", typeof(PurchasePrimeView));
+            Routing.RegisterRoute($"{nameof(TermsOfUseView)}", typeof(TermsOfUseView));
+            Routing.RegisterRoute($"{nameof(PrivacyPolicyView)}", typeof(PrivacyPolicyView));
             Routing.RegisterRoute($"{nameof(SelectGameModeView)}/{nameof(BasicGameplayView)}", typeof(BasicGameplayView));
             Routing.RegisterRoute($"{nameof(SelectGameModeView)}/{nameof(LoadingBasicGameplayView)}", typeof(LoadingBasicGameplayView));
             Routing.RegisterRoute("SelectGameModeView/GameModeSettingsView", typeof(GameModeSettingsView));

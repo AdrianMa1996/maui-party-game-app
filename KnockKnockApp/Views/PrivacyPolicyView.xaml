@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KnockKnockApp.Views.PrivacyPolicyView"
+             Title="PrivacyPolicyView">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <ImageButton Grid.Row="0" Grid.Column="1" Command="{Binding ClosePrivacyPolicyCommand}" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="20" HeightRequest="20" Margin="0,20,20,0"/>
+
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="25">
+            <VerticalStackLayout>
+                <Label Text="Datenschutz-Bestimmungen" FontSize="18" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gray900}" LineHeight="0.8" Margin="0,5,0,15"/>
+                <Label TextColor="{StaticResource Gray900}" Text="Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzbestimmungen erklären, wie wir Informationen in unserer Trinkspiel-App sammeln, verwenden und schützen. Durch die Nutzung der App stimmen Sie den in diesen Datenschutzbestimmungen beschriebenen Praktiken zu.&#10;&#10;KEINE ERHEBUNG PERSÖNLICHER DATEN DURCH DIE APP&#10;&#10;Unsere App sammelt keine persönlichen Daten von Ihnen. Sämtliche Daten, die durch die Nutzung der App entstehen, werden ausschließlich lokal auf Ihrem Gerät gespeichert und verwaltet. Wir haben keinen Zugriff auf diese lokal gespeicherten Daten und es erfolgt keine Übertragung dieser Daten an uns oder an Dritte.&#10;&#10;DATEN VON ITUNES UND PLAYSTORE&#10;&#10;Wir erhalten nur die Informationen, die uns von iTunes oder dem Google Playstore bereitgestellt werden, wie z.B. aggregierte und anonymisierte Daten, die uns helfen, die Nutzung unserer App zu verstehen und zu verbessern. Diese Daten umfassen beispielsweise die Anzahl der Downloads, Absturzberichte und andere allgemeine App-Nutzungsstatistiken. Diese Informationen sind jedoch nicht mit einzelnen Benutzern verknüpft.&#10;&#10;NUTZUNG DER ERHALTENEN DATEN&#10;&#10;Die Daten, die wir von iTunes und dem Playstore erhalten, werden ausschließlich für die Analyse der App-Nutzung und zur Verbesserung unserer Dienste verwendet. Wir verarbeiten diese Daten anonym und verwenden sie nicht, um Rückschlüsse auf individuelle Nutzer zu ziehen.&#10;&#10;KEINE WEITERGABE VON DATEN&#10;&#10;Da wir keine persönlichen Daten von Ihnen sammeln, gibt es auch keine Weitergabe oder den Verkauf solcher Daten an Dritte. Die anonymisierten Informationen, die wir von iTunes oder dem Playstore erhalten, werden nur intern verwendet und nicht an Dritte weitergegeben.&#10;&#10;SICHERHEIT DER DATEN&#10;&#10;Da alle Nutzerdaten lokal auf Ihrem Gerät gespeichert werden und wir keinen Zugriff darauf haben, sind Sie selbst für die Sicherheit und den Schutz dieser Daten verantwortlich. Wir empfehlen Ihnen, geeignete Sicherheitsmaßnahmen zu ergreifen, um Ihre Daten zu schützen, insbesondere bei der Nutzung mobiler Geräte.&#10;&#10;ÄNDERUNGEN DER DATENSCHUTZBESTIMMUNGEN&#10;&#10;Wir behalten uns das Recht vor, diese Datenschutzbestimmungen jederzeit zu ändern. Änderungen werden auf dieser Seite veröffentlicht und treten mit ihrer Veröffentlichung in Kraft. Es liegt in Ihrer Verantwortung, die Datenschutzbestimmungen regelmäßig zu überprüfen, um über etwaige Änderungen informiert zu sein.&#10;&#10;KONTAKTINFORMATION&#10;&#10;Sollten Sie Fragen oder Bedenken bezüglich dieser Datenschutzbestimmungen haben, können Sie uns jederzeit unter mrxa.software.systems@gmail.com erreichen."/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

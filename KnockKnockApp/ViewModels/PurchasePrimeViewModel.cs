@@ -33,13 +33,13 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void OpenTermsOfUse()
         {
-            Launcher.OpenAsync("https://www.google.de/");
+            AppShell.Current.GoToAsync("TermsOfUseView", false);
         }
 
         [RelayCommand]
         public void OpenPrivacyPolicy()
         {
-            Launcher.OpenAsync("https://www.bing.com/");
+            AppShell.Current.GoToAsync("PrivacyPolicyView", false);
         }
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KnockKnockApp.Views.TermsOfUseView"
+             Title="TermsOfUseView">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <ImageButton Grid.Row="0" Grid.Column="1" Command="{Binding CloseTermsOfUseCommand}" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="20" HeightRequest="20" Margin="0,20,20,0"/>
+
+        <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="25">
+            <VerticalStackLayout>
+                <Label Text="Nutzungsbedingungen" FontSize="18" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gray900}" LineHeight="0.8" Margin="0,5,0,15"/>
+                <Label TextColor="{StaticResource Gray900}" Text="Durch das Herunterladen und die Nutzung dieser App erklären Sie sich mit den nachstehenden Bedingungen einverstanden. Bitte lesen Sie diese sorgfältig durch. Sollten Sie diesen Bedingungen nicht zustimmen, bitten wir Sie, die App nicht zu verwenden.&#10;&#10;ABONNEMENTS UND KÄUFE INNERHALB DER APP&#10;&#10;Sie haben die Möglichkeit, ein Abonnement abzuschließen, um auf exklusive Premium-Funktionen und unbegrenzte Inhalte zuzugreifen. Die Preise für Abonnements und In-App-Käufe können sich jederzeit ohne vorherige Ankündigung ändern. Wir bieten gelegentlich Sonderpreise und zeitlich begrenzte Angebote an. Aufgrund des besonderen Charakters solcher Aktionen sind Preisanpassungen, rückwirkende Rabatte oder Erstattungen für vorherige Käufe ausgeschlossen. Die Zahlung für Ihr Abonnement oder In-App-Käufe erfolgt direkt über Ihr iTunes- oder Playstore-Konto nach Bestätigung des Kaufs.&#10;&#10;AUTOMATISCHE VERLÄNGERUNG VON ABONNEMENTS&#10;&#10;Ihr Abonnement wird automatisch verlängert, sofern Sie die automatische Verlängerung nicht mindestens 24 Stunden vor dem Ende des aktuellen Abonnementzeitraums deaktivieren. Die Kosten für die Verlängerung werden innerhalb von 24 Stunden vor Ablauf des aktuellen Zeitraums in Rechnung gestellt und dem von Ihnen ausgewählten Abonnementplan entsprechend berechnet. Sie können Ihre Abonnementeinstellungen verwalten und die automatische Verlängerung deaktivieren, indem Sie die Einstellungen in Ihrem iTunes- oder Playstore-Konto aufrufen. Eine Kündigung des aktuellen Abonnements während des laufenden Abonnementzeitraums ist nicht möglich.&#10;&#10;KÜNDIGUNG DES ABONNEMENTS&#10;&#10;Sie können Ihr Abonnement jederzeit über die Einstellungen in Ihrem iTunes- oder Playstore-Konto beenden. Um eine weitere Berechnung für den nächsten Abrechnungszeitraum zu vermeiden, muss die Kündigung mindestens 24 Stunden vor Ablauf des aktuellen Abonnements erfolgen. Weitere Informationen zur Kündigung finden Sie im Supportbereich von iTunes oder Playstore.&#10;&#10;HAFTUNGSAUSSCHLUSS&#10;&#10;Die Nutzung der Trinkspiel-App erfolgt auf eigene Gefahr. Wir übernehmen keine Verantwortung für mögliche Schäden oder negative Folgen, die durch den Alkoholkonsum oder die Teilnahme an den vorgeschlagenen Spielen entstehen könnten. Trinken Sie bitte verantwortungsvoll und beachten Sie die gesetzlichen Vorschriften in Ihrem Land.&#10;&#10;ÄNDERUNGEN DER NUTZUNGSBEDINGUNGEN&#10;&#10;Wir behalten uns das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern. Etwaige Änderungen werden auf dieser Seite veröffentlicht und treten mit ihrer Veröffentlichung in Kraft. Es liegt in Ihrer Verantwortung, die Nutzungsbedingungen regelmäßig zu überprüfen, um über etwaige Änderungen informiert zu sein.&#10;&#10;KONTAKTINFORMATION&#10;&#10;Sollten Sie Fragen zu diesen Nutzungsbedingungen haben, können Sie uns jederzeit unter mrxa.software.systems@gmail.com erreichen."/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
