@@ -64,6 +64,8 @@
                 </HorizontalStackLayout>
                 <HorizontalStackLayout>
                     <Label Text="Alle Verlierer müssen " TextColor="White" FontSize="24"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
                     <Label x:Name="RestartNumberOfKnockers" TextColor="White" FontSize="24"/>
                     <Label Text=" Mal klopfen" TextColor="White" FontSize="24"/>
                 </HorizontalStackLayout>
