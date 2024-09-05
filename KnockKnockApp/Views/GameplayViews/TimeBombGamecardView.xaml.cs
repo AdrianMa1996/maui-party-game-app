@@ -95,13 +95,15 @@ public partial class TimeBombGamecardView : ContentView
 
     private async void this_Loaded(object sender, EventArgs e)
     {
-        TimeBombImage.Source = "image_time_bomb.png";
+        TimeBombImage.IsVisible = true;
+        TimeBombExplosionImage.IsVisible = false;
+        // TimeBombImage.Source = "image_time_bomb.png";
         MainGrid.BackgroundColor = GetColorFromResources("GreenCardColor");
         ExplodeButton.IsVisible = true;
 
         int timeUntilExplosion = Random.Shared.Next(minGameLength, maxGameLength);
 
-        var timeBombAnimation = new Animation(v => TimeBombImage.Scale = v, 1, 1.5);
+        var timeBombAnimation = new Animation(v => TimeBombImage.Scale = v, 1, 1.3);
         timeBombAnimation.Commit(this, "TimeBombAnimation", 16, 2000, Easing.Linear, (v, c) => TimeBombImage.Scale = 1, () => true);
         isTicking = true;
 
@@ -135,7 +137,9 @@ public partial class TimeBombGamecardView : ContentView
             this.AbortAnimation("TimeBombAnimation");
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                TimeBombImage.Source = "image_bomb_explosion.png";
+                // TimeBombImage.Source = "image_bomb_explosion.png";
+                TimeBombImage.IsVisible = false;
+                TimeBombExplosionImage.IsVisible = true;
                 MainGrid.BackgroundColor = GetColorFromResources("RedCardColor");
                 ExplodeButton.IsVisible = false;
             });
