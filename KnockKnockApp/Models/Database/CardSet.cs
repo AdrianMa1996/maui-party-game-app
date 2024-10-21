@@ -39,6 +39,8 @@ namespace KnockKnockApp.Models.Database
         StopWatchPreparation,
         StopWatch,
         StopWatchScoring,
+        GuessingGame,
+        GuessingGameScoring,
         // KnockKnockGlas
         KnockKnockGlasTrinken,
         KnockKnockGlasBefüllen,

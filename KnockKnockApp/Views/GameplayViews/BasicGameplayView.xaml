@@ -243,6 +243,12 @@
                             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="StopWatchScoring">
                                 <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
                             </DataTrigger>
+                            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GuessingGame">
+                                <Setter Property="Content" Value="{StaticResource TeamBasicGamecardView}" />
+                            </DataTrigger>
+                            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="GuessingGameScoring">
+                                <Setter Property="Content" Value="{StaticResource ScoreGamecardView}" />
+                            </DataTrigger>
                             <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="KnockKnockGlasTrinken">
                                 <Setter Property="Content" Value="{StaticResource BasicGamecardView}" />
                             </DataTrigger>

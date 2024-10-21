@@ -80,6 +80,12 @@ namespace KnockKnockApp.Converters
                     case CardSetCategory.StopWatchScoring:
                         color = GetColorFromResources("PinkCardColor");
                         break;
+                    case CardSetCategory.GuessingGame:
+                        color = GetColorFromResources("OrangeCardColor");
+                        break;
+                    case CardSetCategory.GuessingGameScoring:
+                        color = GetColorFromResources("OrangeCardColor");
+                        break;
                     case CardSetCategory.KnockKnockGlasTrinken:
                         color = GetColorFromResources("RedCardColor");
                         break;
