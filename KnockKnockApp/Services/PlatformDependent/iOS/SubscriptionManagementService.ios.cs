@@ -6,7 +6,7 @@ namespace KnockKnockApp.Services
     {
         public partial void PurchaseSubscription()
         {
-            //ignore
+            AccountInformation.IsPrimeSubscriptionActive = true;
         }
 
         public partial AccountInformation GetAccountInformation()

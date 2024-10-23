@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameModeSettingsView"
              Title="GameModeSettingsView"
+             Shell.NavBarIsVisible="False"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels" 
              NavigatedTo="ContentPage_NavigatedTo">
 

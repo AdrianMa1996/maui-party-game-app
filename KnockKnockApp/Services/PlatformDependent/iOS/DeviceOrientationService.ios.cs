@@ -1,4 +1,5 @@
-﻿using UIKit;
+﻿using Foundation;
+using UIKit;
 
 namespace KnockKnockApp.Services
 {
@@ -14,7 +15,34 @@ namespace KnockKnockApp.Services
         public partial void SetDeviceOrientation(DisplayOrientation displayOrientation)
         {
             if (_iosDisplayOrientationMap.TryGetValue(displayOrientation, out var iosOrientation))
-                UIApplication.SharedApplication.SetStatusBarOrientation(iosOrientation, true);
+            {
+                if (UIDevice.CurrentDevice.CheckSystemVersion(16, 0))
+                {
+                    var scene = (UIApplication.SharedApplication.ConnectedScenes.ToArray()[0] as UIWindowScene);
+                    if (scene != null)
+                    {
+                        UIInterfaceOrientationMask NewOrientation;
+                        scene.Title = "";
+                        if (iosOrientation == UIInterfaceOrientation.Portrait)
+                        {
+                            NewOrientation = UIInterfaceOrientationMask.Portrait;
+                            scene.Title = "PerformPortraitOrientation";
+                        }
+                        else
+                        {
+                            NewOrientation = UIInterfaceOrientationMask.LandscapeLeft;
+                            scene.Title = "PerformLandscapeOrientation";
+                        }
+
+                        scene.RequestGeometryUpdate(
+                            new UIWindowSceneGeometryPreferencesIOS(NewOrientation), error => { System.Diagnostics.Debug.WriteLine(error.ToString()); });
+                    }
+                }
+                else
+                {
+                    UIDevice.CurrentDevice.SetValueForKey(new NSNumber((int)iosOrientation), new NSString("orientation"));
+                }
+            }
         }
     }
 }

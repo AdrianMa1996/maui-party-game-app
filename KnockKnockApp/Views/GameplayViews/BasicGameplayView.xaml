@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.GameplayViews.BasicGameplayView"
              Title="BasicGameplayView"
+             Shell.NavBarIsVisible="False"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.GameplayViewModels"
              xmlns:controls="clr-namespace:KnockKnockApp.Views.GameplayViews"
              xmlns:converters="clr-namespace:KnockKnockApp.Converters"

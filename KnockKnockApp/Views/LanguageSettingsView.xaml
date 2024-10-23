@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.LanguageSettingsView"
              Title="LanguageSettingsView"
+             Shell.NavBarIsVisible="False"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
