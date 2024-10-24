@@ -25,7 +25,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             _cardManagementService = cardManagementService;
             _playerManagementService = playerManagementService;
             _teamManagementService = teamManagementService;
-
+#if IOS
+            keyboardHeight = new GridLength(0.58, GridUnitType.Star);
+#endif
             _teamManagementService.SetupTeamManagementService();
 
             TeamOne = _teamManagementService.GetTeamOne();
@@ -48,6 +50,9 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
 
         [ObservableProperty]
         public ILocalizationService localizationService;
+
+        [ObservableProperty]
+        public GridLength keyboardHeight = new GridLength(0);
 
         [ObservableProperty]
         public ObservableCollection<Player> allPlayers;

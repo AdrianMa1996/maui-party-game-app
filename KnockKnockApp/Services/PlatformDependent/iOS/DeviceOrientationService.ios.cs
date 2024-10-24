@@ -34,8 +34,13 @@ namespace KnockKnockApp.Services
                             scene.Title = "PerformLandscapeOrientation";
                         }
 
-                        scene.RequestGeometryUpdate(
-                            new UIWindowSceneGeometryPreferencesIOS(NewOrientation), error => { System.Diagnostics.Debug.WriteLine(error.ToString()); });
+                        scene.RequestGeometryUpdate(new UIWindowSceneGeometryPreferencesIOS(NewOrientation), error => { System.Diagnostics.Debug.WriteLine(error.ToString()); });
+
+                        var test = UIApplication.SharedApplication.KeyWindow?.RootViewController;
+                        if(test != null)
+                        {
+                            test.SetNeedsUpdateOfSupportedInterfaceOrientations();
+                        }
                     }
                 }
                 else

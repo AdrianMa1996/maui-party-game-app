@@ -14,7 +14,14 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <ImageButton Grid.Row="0" Grid.Column="1" Command="{Binding CloseTermsOfUseCommand}" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="20" HeightRequest="20" Margin="0,20,20,0"/>
+        <!--<ImageButton Grid.Row="0" Grid.Column="1" Command="{Binding CloseTermsOfUseCommand}" Source="icon_close_black.png" VerticalOptions="Start" WidthRequest="20" HeightRequest="20" Margin="0,20,20,0"/>-->
+
+        <Frame Grid.Row="0" Grid.Column="1" WidthRequest="20" HeightRequest="20" CornerRadius="0" Margin="0,20,20,0" Padding="0" IsClippedToBounds="True" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="Transparent">
+            <Image Source="icon_close_black.png" WidthRequest="20" HeightRequest="20" Aspect="AspectFill"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseTermsOfUseCommand}" />
+            </Frame.GestureRecognizers>
+        </Frame>
 
         <ScrollView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="25">
             <VerticalStackLayout>
