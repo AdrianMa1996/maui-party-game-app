@@ -42,7 +42,7 @@
         </Frame>
 
         <StackLayout x:Name="CardTextStackLayout" Grid.Row="1" Grid.Column="1">
-            <Label Text="{Binding CurrentCard.CardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32"/>
+            <Label Text="{Binding CurrentCard.CardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HeightRequest="55"/>
             <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
         </StackLayout>
 

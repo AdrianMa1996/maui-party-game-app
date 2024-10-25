@@ -103,6 +103,7 @@ public partial class ManageTeamsView : ContentView
     {
         await Task.Run(() =>
         {
+            Task.Delay(200).Wait();
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 if (Resources.TryGetValue("ManageTeamsContent", out var grid))

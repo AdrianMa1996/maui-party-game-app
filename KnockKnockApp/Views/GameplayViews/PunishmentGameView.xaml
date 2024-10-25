@@ -90,9 +90,9 @@
             <Button x:Name="SameButton" Grid.Column="1" BackgroundColor="{StaticResource Blue}" Text="Gleich" Clicked="Same_Button_Clicked" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
             <Button x:Name="DeeperButton" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="Tiefer" Clicked="Deeper_Button_Clicked" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
 
-            <Button x:Name="EndPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource TeamOneColor}" Text="Weiter" Command="{Binding EndPunishmentGameCommand}"/>
+            <Button x:Name="EndPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource TeamOneColor}" Text="Weiter" Command="{Binding EndPunishmentGameCommand}" TextColor="White"/>
 
-            <Button x:Name="RestartPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource TeamTwoColor}" Text="Neuer Versuch" Clicked="RestartPunishmentGame_Button_Clicked"/>
+            <Button x:Name="RestartPunishmentGameButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource TeamTwoColor}" Text="Neuer Versuch" Clicked="RestartPunishmentGame_Button_Clicked" TextColor="White"/>
         </Grid>
     </Grid>
 </ContentView>

@@ -135,7 +135,7 @@
                                     <DataTemplate>
                                         <Frame Margin="2,0,2,10" Padding="10,0,9,0" HeightRequest="35" BackgroundColor="White" CornerRadius="8">
                                             <FlexLayout Direction="Row" BackgroundColor="White" AlignItems="Center">
-                                                <Label Text="{Binding Name}" FontAttributes="Bold" Margin="0,0,5,0"/>
+                                                <Label Text="{Binding Name}" FontAttributes="Bold" Margin="0,0,5,0" TextColor="Black"/>
                                                 <Frame HeightRequest="13" WidthRequest="13" CornerRadius="0" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent">
                                                     <Image Source="icon_close_lightgray.png" HeightRequest="13" WidthRequest="13" Aspect="AspectFill" />
                                                     <Frame.GestureRecognizers>
@@ -169,7 +169,7 @@
                                 <Image Source="icon_player_gray.png" Aspect="AspectFill" HeightRequest="18" WidthRequest="18"/>
                             </Frame>
 
-                            <Entry Grid.Column="1" x:Name="SpielerNameEntry" Margin="10" MaxLength="15" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" TextColor="Black"/>
+                            <Entry Grid.Column="1" x:Name="SpielerNameEntry" Margin="10" MaxLength="10" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" TextColor="Black"/>
 
                             <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1">
                                 <Image Source="icon_plus_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
