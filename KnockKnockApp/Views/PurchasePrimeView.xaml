@@ -49,7 +49,7 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,30,35">
-            <Label Text="Nur 2,99€ pro Woche" HorizontalOptions="Center" Margin="0,0,0,15" TextColor="{StaticResource Gold}" FontAttributes="Bold"/>
+            <Label Text="Nur 1,99€ pro Woche" HorizontalOptions="Center" Margin="0,0,0,15" TextColor="{StaticResource Gold}" FontAttributes="Bold"/>
             <Button Command="{Binding BuyPrimeSubscriptionCommand}" Text="STARTEN" FontFamily="BowlbyOneSC" FontSize="30" TextColor="{StaticResource Gold}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Violet}"/>
             <Button Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,20,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseCommand}"/>
             <Button Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyCommand}"/>
