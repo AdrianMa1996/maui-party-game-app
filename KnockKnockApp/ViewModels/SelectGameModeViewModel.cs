@@ -26,6 +26,11 @@ namespace KnockKnockApp.ViewModels
 
             AccountInformation = _subscriptionManagementService.GetAccountInformation();
 
+            Task.Run(() =>
+            {
+                _ = _subscriptionManagementService.UpdateAccountInformation();
+            });
+
             AllPlayers = _playerManagementService.GetAllPlayers();
 
             RefreshGameModeCollection();

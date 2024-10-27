@@ -24,10 +24,11 @@ namespace KnockKnockApp.ViewModels
         }
 
         [RelayCommand]
-        public void BuyPrimeSubscription()
+        public async Task BuyPrimeSubscription()
         {
-            _subscriptionManagementService.PurchaseSubscription();
-            Shell.Current.GoToAsync("..", false);
+            await _subscriptionManagementService.PurchaseSubscription();
+            _ = _subscriptionManagementService.UpdateAccountInformation();
+            await Shell.Current.GoToAsync("..", false);
         }
 
         [RelayCommand]

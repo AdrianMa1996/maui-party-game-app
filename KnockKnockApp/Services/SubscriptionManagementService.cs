@@ -11,8 +11,9 @@ namespace KnockKnockApp.Services
         [ObservableProperty]
         public AccountInformation accountInformation = new AccountInformation();
 
-        public partial void PurchaseSubscription();
         public partial AccountInformation GetAccountInformation();
+        public partial Task<bool> PurchaseSubscription();
+        public partial Task UpdateAccountInformation();
 
         //private async Task<bool> CheckItem(string productId, string payload)
         //{

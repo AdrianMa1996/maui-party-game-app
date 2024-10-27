@@ -4,14 +4,19 @@ namespace KnockKnockApp.Services
 {
     public partial class SubscriptionManagementService
     {
-        public partial void PurchaseSubscription()
+        public partial async Task<bool> PurchaseSubscription()
         {
-            //ignore
+            return true;
         }
 
         public partial AccountInformation GetAccountInformation()
         {
             return AccountInformation;
+        }
+
+        public partial async Task UpdateAccountInformation()
+        {
+            return;
         }
     }
 }

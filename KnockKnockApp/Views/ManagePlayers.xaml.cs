@@ -7,13 +7,20 @@ public partial class ManagePlayers : ContentPage
 {
     private readonly ManagePlayersViewModel _viewModel;
     private readonly IDeviceOrientationService _deviceOrientationService;
+    private readonly ISubscriptionManagementService _subscriptionManagementService;
 
-    public ManagePlayers(ManagePlayersViewModel viewModel, IDeviceOrientationService deviceOrientationService)
+    public ManagePlayers(ManagePlayersViewModel viewModel, IDeviceOrientationService deviceOrientationService, ISubscriptionManagementService subscriptionManagementService)
     {
         BindingContext = _viewModel = viewModel;
         _deviceOrientationService = deviceOrientationService;
+        _subscriptionManagementService = subscriptionManagementService;
         InitializeComponent();
         Loaded += OnPageLoaded;
+
+        Task.Run(() =>
+        {
+            _ = _subscriptionManagementService.UpdateAccountInformation();
+        });
     }
 
     protected override void OnAppearing()
