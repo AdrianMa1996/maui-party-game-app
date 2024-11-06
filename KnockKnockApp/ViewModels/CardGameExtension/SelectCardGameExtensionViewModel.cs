@@ -40,7 +40,7 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
             {
                 { "Extension", extension }
             };
-            AppShell.Current.GoToAsync("XXXXX", false, navParam);
+            AppShell.Current.GoToAsync("ExtensionGameplayView", false, navParam);
         }
 
         [RelayCommand]

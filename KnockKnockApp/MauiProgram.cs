@@ -48,6 +48,7 @@ namespace KnockKnockApp
             builder.Services.AddTransient<SelectCardGameExtensionView>();
             builder.Services.AddTransient<LoadingBasicGameplayView>();
             builder.Services.AddTransient<BasicGameplayView>();
+            builder.Services.AddTransient<ExtensionGameplayView>();
             builder.Services.AddTransient<GameModeSettingsView>();
             builder.Services.AddTransient<PurchasePrimeView>();
             builder.Services.AddTransient<TermsOfUseView>();
@@ -58,6 +59,7 @@ namespace KnockKnockApp
             builder.Services.AddTransient<SelectGameModeViewModel>();
             builder.Services.AddTransient<SelectCardGameExtensionViewModel>();
             builder.Services.AddTransient<BasicGameplayViewModel>();
+            builder.Services.AddTransient<ExtensionGameplayViewModel>();
             builder.Services.AddTransient<GameModeSettingsViewModel>();
             builder.Services.AddTransient<PurchasePrimeViewModel>();
             builder.Services.AddTransient<TermsOfUseViewModel>();

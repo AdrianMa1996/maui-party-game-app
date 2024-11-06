@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KnockKnockApp.Views.CardGameExtension.ExtensionGameplayView"
+             Title="ExtensionGameplayView"
+             Shell.NavBarIsVisible="False"
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.CardGameExtension"
+             xmlns:controls="clr-namespace:KnockKnockApp.Views.CardGameExtension"
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters"
+             BackgroundColor="{StaticResource GrayCardColor}">
+    <ContentPage.Resources>
+        <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
+
+        <controls:ExtensionCompletionView x:Key="ExtensionCompletionView"
+                    NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
+                    CurrentExtension="{Binding CurrentExtension}">
+        </controls:ExtensionCompletionView>
+
+    </ContentPage.Resources>
+
+    <ContentView>
+        <ContentView.Triggers>
+            <!--<DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
+                <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
+            </DataTrigger>-->
+
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentExtension.Language}" Value="de-DE">
+                <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
+            </DataTrigger>
+            
+        </ContentView.Triggers>
+    </ContentView>
+</ContentPage>
