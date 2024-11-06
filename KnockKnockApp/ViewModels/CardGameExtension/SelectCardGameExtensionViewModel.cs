@@ -7,16 +7,16 @@ using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using System.Collections.ObjectModel;
 
-namespace KnockKnockApp.ViewModels
+namespace KnockKnockApp.ViewModels.CardGameExtension
 {
-    public partial class SelectGameModeViewModel : ObservableObject
+    public partial class SelectCardGameExtensionViewModel : ObservableObject
     {
         private readonly IDeviceOrientationService _deviceOrientationService;
         private readonly IGameModeRepository _gameModeRepository;
         private readonly IPlayerManagementService _playerManagementService;
         private readonly ISubscriptionManagementService _subscriptionManagementService;
 
-        public SelectGameModeViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService, ISubscriptionManagementService subscriptionManagementService, IPopupService popupService)
+        public SelectCardGameExtensionViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService, ISubscriptionManagementService subscriptionManagementService, IPopupService popupService)
         {
             LocalizationService = localizationService;
             _deviceOrientationService = deviceOrientationService;
@@ -82,9 +82,9 @@ namespace KnockKnockApp.ViewModels
         }
 
         [RelayCommand]
-        public void NavigateToManagePlayers()
+        public void NavigateToSelectGameModeView()
         {
-            Shell.Current.GoToAsync("..", true);
+            Shell.Current.GoToAsync("..", false);
         }
 
         [RelayCommand]

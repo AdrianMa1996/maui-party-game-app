@@ -101,15 +101,34 @@
 
     <Grid BackgroundColor="{StaticResource Violet}" >
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ContentView x:Name="GameModeContentView" Grid.Row="0" >
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource Gray700}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Gray500}" Padding="5,20,0,20">
+                <Label Text="Ohne Kartenspiel" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Gray700}" Padding="0,20,5,20">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToSelectCardGameExpansionCommand}"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Mit Kartenspiel" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+            </StackLayout>
+        </Grid>
+
+        <ContentView x:Name="GameModeContentView" Grid.Row="1" >
             <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </ContentView>
 
-        <Grid Grid.Row="1" BackgroundColor="{StaticResource Gray700}" Padding="5">
+        <Grid Grid.Row="2" BackgroundColor="{StaticResource Gray700}" Padding="5">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
             </Grid.GestureRecognizers>

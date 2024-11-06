@@ -1,4 +1,5 @@
 ﻿using KnockKnockApp.Views;
+using KnockKnockApp.Views.CardGameExtension;
 using KnockKnockApp.Views.GameplayViews;
 
 namespace KnockKnockApp
@@ -9,6 +10,7 @@ namespace KnockKnockApp
         {
             InitializeComponent();
             Routing.RegisterRoute($"{nameof(SelectGameModeView)}", typeof(SelectGameModeView));
+            Routing.RegisterRoute($"{nameof(SelectCardGameExtensionView)}", typeof(SelectCardGameExtensionView));
             Routing.RegisterRoute($"{nameof(LanguageSettingsView)}", typeof(LanguageSettingsView));
             Routing.RegisterRoute($"{nameof(PurchasePrimeView)}", typeof(PurchasePrimeView));
             Routing.RegisterRoute($"{nameof(TermsOfUseView)}", typeof(TermsOfUseView));

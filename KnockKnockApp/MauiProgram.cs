@@ -3,8 +3,10 @@ using KnockKnockApp.Mapper;
 using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using KnockKnockApp.ViewModels;
+using KnockKnockApp.ViewModels.CardGameExtension;
 using KnockKnockApp.ViewModels.GameplayViewModels;
 using KnockKnockApp.Views;
+using KnockKnockApp.Views.CardGameExtension;
 using KnockKnockApp.Views.GameplayViews;
 using Microsoft.Extensions.Logging;
 
@@ -42,6 +44,7 @@ namespace KnockKnockApp
             // Views
             builder.Services.AddSingleton<ManagePlayers>();
             builder.Services.AddTransient<SelectGameModeView>();
+            builder.Services.AddTransient<SelectCardGameExtensionView>();
             builder.Services.AddTransient<LoadingBasicGameplayView>();
             builder.Services.AddTransient<BasicGameplayView>();
             builder.Services.AddTransient<GameModeSettingsView>();
@@ -52,6 +55,7 @@ namespace KnockKnockApp
             // ViewModels
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddTransient<SelectGameModeViewModel>();
+            builder.Services.AddTransient<SelectCardGameExtensionViewModel>();
             builder.Services.AddTransient<BasicGameplayViewModel>();
             builder.Services.AddTransient<GameModeSettingsViewModel>();
             builder.Services.AddTransient<PurchasePrimeViewModel>();
