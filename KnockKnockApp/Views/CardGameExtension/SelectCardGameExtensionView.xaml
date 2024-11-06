@@ -8,13 +8,13 @@
              NavigatedTo="ContentPage_NavigatedTo">
     
     <ContentPage.Resources>
-        <CollectionView x:Key="ExtensionCollectionView" x:Name="ExtensionCollectionView" ItemsSource="{Binding GameModeCollection}" ItemsLayout="VerticalGrid, 2" Margin="15">
+        <CollectionView x:Key="ExtensionCollectionView" x:Name="ExtensionCollectionView" ItemsSource="{Binding ExtensionCollection}" ItemsLayout="VerticalGrid, 2" Margin="15">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
                         <Frame CornerRadius="10" Padding="0,20,0,20" IsClippedToBounds="True" BackgroundColor="#FF8000" Margin="5">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference ExtensionCollectionView}}" CommandParameter="{Binding .}" />
+                                <TapGestureRecognizer Command="{Binding BindingContext.NavigateToExtensionGameplayCommand, Source={x:Reference ExtensionCollectionView}}" CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
 
                             <StackLayout>

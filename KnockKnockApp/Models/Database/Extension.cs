@@ -2,7 +2,7 @@
 
 namespace KnockKnockApp.Models.Database
 {
-    class Extension
+    public class Extension
     {
         [PrimaryKey]
         public int ExtensionID { get; set; }

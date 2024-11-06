@@ -31,6 +31,7 @@ namespace KnockKnockApp
             builder.Services.AddSingleton<IDeviceOrientationService, DeviceOrientationService>();
             builder.Services.AddSingleton<ISubscriptionManagementService, SubscriptionManagementService>();
             builder.Services.AddSingleton<IGameModeRepository, GameModeRepository>();
+            builder.Services.AddSingleton<IExtensionRepository, ExtensionRepository>();
             builder.Services.AddSingleton<IGameModeAndCardSetBindingRepository, GameModeAndCardSetBindingRepository>();
             builder.Services.AddTransient<ICardManagementService, CardManagementService>();
             builder.Services.AddSingleton<ILocalizationService, LocalizationService>();

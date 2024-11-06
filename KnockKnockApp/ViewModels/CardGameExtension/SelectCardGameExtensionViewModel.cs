@@ -11,86 +11,42 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
 {
     public partial class SelectCardGameExtensionViewModel : ObservableObject
     {
-        private readonly IDeviceOrientationService _deviceOrientationService;
-        private readonly IGameModeRepository _gameModeRepository;
-        private readonly IPlayerManagementService _playerManagementService;
-        private readonly ISubscriptionManagementService _subscriptionManagementService;
+        private readonly IExtensionRepository _extensionRepository;
 
-        public SelectCardGameExtensionViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, IGameModeRepository gameModeRepository, IPlayerManagementService playerManagementService, ISubscriptionManagementService subscriptionManagementService, IPopupService popupService)
+        public SelectCardGameExtensionViewModel(ILocalizationService localizationService, IExtensionRepository extensionRepository)
         {
             LocalizationService = localizationService;
-            _deviceOrientationService = deviceOrientationService;
-            _gameModeRepository = gameModeRepository;
-            _playerManagementService = playerManagementService;
-            _subscriptionManagementService = subscriptionManagementService;
+            _extensionRepository = extensionRepository;
 
-            AccountInformation = _subscriptionManagementService.GetAccountInformation();
-
-            Task.Run(() =>
-            {
-                _ = _subscriptionManagementService.UpdateAccountInformation();
-            });
-
-            AllPlayers = _playerManagementService.GetAllPlayers();
-
-            RefreshGameModeCollection();
+            RefreshExtensionCollection();
         }
 
         [ObservableProperty]
         public ILocalizationService localizationService;
 
         [ObservableProperty]
-        public AccountInformation accountInformation;
-
-        [ObservableProperty]
-        public ObservableCollection<GameMode> gameModeCollection = new ObservableCollection<GameMode>();
-
-        [ObservableProperty]
-        public ObservableCollection<Player> allPlayers;
+        public ObservableCollection<Extension> extensionCollection = new ObservableCollection<Extension>();
 
         [RelayCommand]
-        public async void RefreshGameModeCollection()
+        public async void RefreshExtensionCollection()
         {
-            GameModeCollection = new ObservableCollection<GameMode>(await _gameModeRepository.GetGameModesAsync());
+            ExtensionCollection = new ObservableCollection<Extension>(await _extensionRepository.GetExtensionsAsync());
         }
 
         [RelayCommand]
-        public void NavigateToGameplay(GameMode gameMode)
+        public void NavigateToExtensionGameplay(Extension extension)
         {
             var navParam = new Dictionary<string, object>
             {
-                { "GameMode", gameMode }
+                { "Extension", extension }
             };
-            AppShell.Current.GoToAsync("LoadingBasicGameplayView", false, navParam);
-            _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Landscape);
-        }
-
-        [RelayCommand]
-        public void NavigateToGameModeSettings(GameMode gameMode)
-        {
-            var navParam = new Dictionary<string, object>
-            {
-                { "GameMode", gameMode }
-            };
-            AppShell.Current.GoToAsync("GameModeSettingsView", true, navParam);
-        }
-
-        [RelayCommand]
-        public void OpenSubscriptionPopup()
-        {
-            AppShell.Current.GoToAsync("PurchasePrimeView", false);
+            AppShell.Current.GoToAsync("XXXXX", false, navParam);
         }
 
         [RelayCommand]
         public void NavigateToSelectGameModeView()
         {
             Shell.Current.GoToAsync("..", false);
-        }
-
-        [RelayCommand]
-        public void NavigateToSelectCardGameExpansion()
-        {
-            AppShell.Current.GoToAsync("SelectCardGameExtensionView", false);
         }
     }
 }
