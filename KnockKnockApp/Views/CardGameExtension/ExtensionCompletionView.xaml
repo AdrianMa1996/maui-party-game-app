@@ -7,7 +7,7 @@
     <ContentView.Resources>
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
     </ContentView.Resources>
-    <Grid BindingContext="{x:Reference this}" BackgroundColor="Green"> <!--hier brauchen wir den Converter-->
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="Gray"> <!--hier brauchen wir den Converter-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
@@ -27,12 +27,8 @@
         </Frame>
 
         <StackLayout x:Name="CardTextStackLayout" Grid.Row="1" Grid.Column="1">
-            <!--<Label Text="{Binding CurrentCard.CardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HeightRequest="55"/>
-            <Label Text="{Binding CurrentCard.GameCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>-->
-
-            <Label Text="{Binding CurrentExtension.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HeightRequest="55"/>
-            <Label Text="Das ist eine Karte, mach dies und das und jende. Viel Glcük" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
-
+            <Label Text="{Binding CurrentCard.ExtensionCardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HeightRequest="55"/>
+            <Label Text="{Binding CurrentCard.ExtensionCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
         </StackLayout>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
@@ -41,7 +37,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="Weiter" Command="{Binding NavigateToSelectCardGameExtensionCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>

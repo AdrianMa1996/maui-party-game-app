@@ -13,7 +13,9 @@
 
         <controls:ExtensionCompletionView x:Key="ExtensionCompletionView"
                     NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
-                    CurrentExtension="{Binding CurrentExtension}">
+                    CurrentExtension="{Binding CurrentExtension}"
+                    DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+                    CurrentCard="{Binding CurrentCard}">
         </controls:ExtensionCompletionView>
 
     </ContentPage.Resources>
