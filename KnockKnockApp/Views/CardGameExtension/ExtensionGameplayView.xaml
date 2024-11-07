@@ -12,24 +12,76 @@
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
 
         <controls:ExtensionCompletionView x:Key="ExtensionCompletionView"
-                    NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
-                    CurrentExtension="{Binding CurrentExtension}"
-                    DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
-                    CurrentCard="{Binding CurrentCard}">
+            NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
+            CurrentExtension="{Binding CurrentExtension}"
+            DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+            CurrentCard="{Binding CurrentCard}">
         </controls:ExtensionCompletionView>
+
+        <controls:ExtensionMimePreperationView x:Key="ExtensionMimePreperationView"
+            NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
+            CurrentExtension="{Binding CurrentExtension}"
+            DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+            CurrentCard="{Binding CurrentCard}">
+        </controls:ExtensionMimePreperationView>
+
+        <controls:ExtensionMimeView x:Key="ExtensionMimeView"
+            NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
+            CurrentExtension="{Binding CurrentExtension}"
+            DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+            CurrentCard="{Binding CurrentCard}">
+        </controls:ExtensionMimeView>
+
+        <controls:ExtensionTimeBombPreparationView x:Key="ExtensionTimeBombPreparationView"
+            NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
+            CurrentExtension="{Binding CurrentExtension}"
+            DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+            CurrentCard="{Binding CurrentCard}">
+        </controls:ExtensionTimeBombPreparationView>
+
+        <controls:ExtensionTimeBombView x:Key="ExtensionTimeBombView"
+            NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
+            CurrentExtension="{Binding CurrentExtension}"
+            DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+            CurrentCard="{Binding CurrentCard}">
+        </controls:ExtensionTimeBombView>
 
     </ContentPage.Resources>
 
     <ContentView>
         <ContentView.Triggers>
-            <!--<DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.CardSetDetails.Category}" Value="Information">
-                <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
-            </DataTrigger>-->
 
-            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentExtension.Language}" Value="de-DE">
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="ThemedGamePreparation">
+                <Setter Property="Content" Value="{StaticResource ExtensionTimeBombPreparationView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="ThemedGame">
+                <Setter Property="Content" Value="{StaticResource ExtensionTimeBombView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="ThemedGameCompletion">
                 <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
             </DataTrigger>
-            
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="RhymingGamePreparation">
+                <Setter Property="Content" Value="{StaticResource ExtensionTimeBombPreparationView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="RhymingGame">
+                <Setter Property="Content" Value="{StaticResource ExtensionTimeBombView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="RhymingGameCompletion">
+                <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="MimePreparation">
+                <Setter Property="Content" Value="{StaticResource ExtensionMimePreperationView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="Mime">
+                <Setter Property="Content" Value="{StaticResource ExtensionMimeView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="MimeCompletion">
+                <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
+            </DataTrigger>
+            <DataTrigger TargetType="ContentView" Binding="{Binding CurrentCard.ExtensionCardSetDetails.Category}" Value="GameRule">
+                <Setter Property="Content" Value="{StaticResource ExtensionCompletionView}" />
+            </DataTrigger>
+
         </ContentView.Triggers>
     </ContentView>
 </ContentPage>

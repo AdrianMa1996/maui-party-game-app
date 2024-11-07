@@ -5,9 +5,9 @@
              x:Name="this"
              xmlns:converters="clr-namespace:KnockKnockApp.Converters">
     <ContentView.Resources>
-        <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
+        <converters:ExtensionCardSetCategoryToColorConverter x:Key="ExtensionCardSetCategoryToColorConverter"/>
     </ContentView.Resources>
-    <Grid BindingContext="{x:Reference this}" BackgroundColor="Gray"> <!--hier brauchen wir den Converter-->
+    <Grid BindingContext="{x:Reference this}" BackgroundColor="{Binding CurrentCard.ExtensionCardSetDetails.Category, Converter={StaticResource ExtensionCardSetCategoryToColorConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
@@ -37,7 +37,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="ExtensionCompletionView: Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>
