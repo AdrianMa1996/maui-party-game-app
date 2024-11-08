@@ -132,6 +132,7 @@
 	  <None Remove="Resources\Images\game_mode_icon_gruppenkrieg.png" />
 	  <None Remove="Resources\Images\game_mode_icon_heisergruppenkrieg.png" />
 	  <None Remove="Resources\Images\game_mode_icon_knockknockglas.png" />
+	  <None Remove="Resources\Images\game_rule_extension_icon.png" />
 	  <None Remove="Resources\Images\hearts_ass.png" />
 	  <None Remove="Resources\Images\hearts_eight.png" />
 	  <None Remove="Resources\Images\hearts_five.png" />
@@ -162,6 +163,8 @@
 	  <None Remove="Resources\Images\image_time_bomb.png" />
 	  <None Remove="Resources\Images\logo_basic_ohne_hintergrund.png" />
 	  <None Remove="Resources\Images\logo_ohne_hintergrund.png" />
+	  <None Remove="Resources\Images\mime_extension_icon.png" />
+	  <None Remove="Resources\Images\rhyming_game_extension_icon.png" />
 	  <None Remove="Resources\Images\spades_ass.png" />
 	  <None Remove="Resources\Images\spades_eight.png" />
 	  <None Remove="Resources\Images\spades_five.png" />
@@ -175,6 +178,7 @@
 	  <None Remove="Resources\Images\spades_ten.png" />
 	  <None Remove="Resources\Images\spades_three.png" />
 	  <None Remove="Resources\Images\spades_two.png" />
+	  <None Remove="Resources\Images\themed_game_extension_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>

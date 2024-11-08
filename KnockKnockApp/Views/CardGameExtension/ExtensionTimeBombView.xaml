@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.CardGameExtension.ExtensionTimeBombView"
              x:Name="this"
-             xmlns:converters="clr-namespace:KnockKnockApp.Converters">
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters"
+             Loaded="this_Loaded">
     <ContentView.Resources>
         <converters:ExtensionCardSetCategoryToColorConverter x:Key="ExtensionCardSetCategoryToColorConverter"/>
     </ContentView.Resources>
-    <Grid BindingContext="{x:Reference this}" BackgroundColor="{Binding CurrentCard.ExtensionCardSetDetails.Category, Converter={StaticResource ExtensionCardSetCategoryToColorConverter}}">
+    <Grid x:Name="MainGrid" BindingContext="{x:Reference this}" BackgroundColor="{Binding CurrentCard.ExtensionCardSetDetails.Category, Converter={StaticResource ExtensionCardSetCategoryToColorConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
@@ -26,10 +27,11 @@
             </Frame.GestureRecognizers>
         </Frame>
 
-        <StackLayout x:Name="CardTextStackLayout" Grid.Row="1" Grid.Column="1">
-            <Label Text="{Binding CurrentCard.ExtensionCardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HeightRequest="55"/>
-            <Label Text="{Binding CurrentCard.ExtensionCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
-        </StackLayout>
+        <Label Grid.Row="1" Grid.Column="1" x:Name="CardTextLabel" Text="{Binding CurrentCard.ExtensionCardDetails.CardText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24" Margin="0,10,0,0"/>
+
+        <Image Grid.Row="1" Grid.Column="1" x:Name="TimeBombImage" Source="image_time_bomb.png" HeightRequest="140" WidthRequest="140" Margin="0,50,0,0" RotationY="180"/>
+
+        <Image Grid.Row="1" Grid.Column="1" x:Name="TimeBombExplosionImage" Source="image_bomb_explosion.png" HeightRequest="230" WidthRequest="230" Margin="0,50,0,0"/>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
@@ -37,7 +39,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="ExtensionTimeBombView: Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button x:Name="ExplodeButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource RedCardColor}" Text="Zeitbombe vorzeitig anhalten" Clicked="TimeBombExplodeButton_Clicked" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>

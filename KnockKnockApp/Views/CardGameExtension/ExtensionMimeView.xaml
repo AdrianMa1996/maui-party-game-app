@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KnockKnockApp.Views.CardGameExtension.ExtensionMimeView"
              x:Name="this"
-             xmlns:converters="clr-namespace:KnockKnockApp.Converters">
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters"
+             Loaded="this_Loaded">
     <ContentView.Resources>
         <converters:ExtensionCardSetCategoryToColorConverter x:Key="ExtensionCardSetCategoryToColorConverter"/>
     </ContentView.Resources>
@@ -27,8 +28,8 @@
         </Frame>
 
         <StackLayout x:Name="CardTextStackLayout" Grid.Row="1" Grid.Column="1">
-            <Label Text="{Binding CurrentCard.ExtensionCardSetDetails.Title}" HorizontalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HeightRequest="55"/>
-            <Label Text="{Binding CurrentCard.ExtensionCardDetails.CardText}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24"/>
+            <Label Text="{Binding CurrentCard.ExtensionCardDetails.CardText}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" TextColor="White" FontSize="24" Margin="0,30,0,0"/>
+            <Label x:Name="StopWatchLabel" FontFamily="BowlbyOneSC" TextColor="White" FontSize="32" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
@@ -37,7 +38,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="ExtensionMimeView: Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button x:Name="EndStopWatchButton" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Violet}" Text="Timer vorzeitig anhalten" Clicked="EndStopWatchButton_Clicked" FontAttributes="Bold" TextColor="Gold" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>

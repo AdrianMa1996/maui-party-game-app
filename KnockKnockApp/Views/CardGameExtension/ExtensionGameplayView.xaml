@@ -7,7 +7,7 @@
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels.CardGameExtension"
              xmlns:controls="clr-namespace:KnockKnockApp.Views.CardGameExtension"
              xmlns:converters="clr-namespace:KnockKnockApp.Converters"
-             BackgroundColor="{StaticResource GrayCardColor}">
+             BackgroundColor="{StaticResource PurpleCardColor}">
     <ContentPage.Resources>
         <converters:CardSetCategoryToColorConverter x:Key="CardSetCategoryToColorConverter"/>
 

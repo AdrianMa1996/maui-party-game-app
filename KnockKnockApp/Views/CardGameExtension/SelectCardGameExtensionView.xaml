@@ -33,6 +33,7 @@
     <Grid BackgroundColor="#3D006C" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -42,19 +43,24 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Gray700}" Padding="5,20,0,20">
+            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Gold}" Padding="5,20,0,20">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeViewCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Ohne Kartenspiel" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                <Label Text="Nur mit App" TextColor="{StaticResource Violet}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
             </StackLayout>
 
-            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Gray500}" Padding="0,20,5,20">
-                <Label Text="Mit Kartenspiel" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Violet}" Padding="0,20,5,20">
+                <Label Text="Mit Kartenspiel" TextColor="{StaticResource Gold}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
             </StackLayout>
         </Grid>
 
-        <ContentView x:Name="CardGameExtensionContentView" Grid.Row="1" >
+        <VerticalStackLayout Grid.Row="1" Margin="40,25,40,0">
+            <Label Text="Hier findet ihr die Erweiterungen von unserem KnockKnock-Kartenspiel." Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>
+            <!--<Label Text="(Jetzt erhältlich auf Amazon)" Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>-->
+        </VerticalStackLayout>
+
+        <ContentView x:Name="CardGameExtensionContentView" Grid.Row="2" >
             <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </ContentView>
 

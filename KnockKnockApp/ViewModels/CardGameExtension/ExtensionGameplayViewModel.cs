@@ -47,11 +47,7 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
         [RelayCommand]
         public async void NavigateToSelectCardGameExtension()
         {
-            var answer = await Application.Current.MainPage.DisplayAlert("Partie verlassen?", "Seid ihr sicher, dass ihr die Partie verlassen wollt?", "Ja", "Nein");
-            if (answer)
-            {
-                Shell.Current.GoToAsync("..", false);
-            }
+            Shell.Current.GoToAsync("..", false);
         }
 
         public async void SetupExtensionAndDrawCard()

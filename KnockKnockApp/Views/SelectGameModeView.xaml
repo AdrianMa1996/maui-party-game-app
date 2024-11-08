@@ -112,15 +112,15 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Gray500}" Padding="5,20,0,20">
-                <Label Text="Ohne Kartenspiel" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Violet}" Padding="5,20,0,20">
+                <Label Text="Nur mit App" TextColor="{StaticResource Gold}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
             </StackLayout>
 
-            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Gray700}" Padding="0,20,5,20">
+            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Gold}" Padding="0,20,5,20">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToSelectCardGameExpansionCommand}"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Mit Kartenspiel" TextColor="White" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                <Label Text="Mit Kartenspiel" TextColor="{StaticResource Violet}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
             </StackLayout>
         </Grid>
 

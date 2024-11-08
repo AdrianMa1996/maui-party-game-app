@@ -37,7 +37,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="ExtensionMimePreperationView: Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Violet}" Text="Timer starten" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="Gold" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>

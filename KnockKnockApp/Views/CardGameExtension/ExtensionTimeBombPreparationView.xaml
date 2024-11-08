@@ -37,7 +37,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource Blue}" Text="ExtensionTimeBombPreparationView: Weiter" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="{StaticResource YellowCardColor}" Text="Zeitbombe starten" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
         </Grid>
     </Grid>
 </ContentView>
