@@ -5,7 +5,7 @@ namespace KnockKnockApp.Services
 {
     public partial class SubscriptionManagementService
     {
-        private static string productId = "6737452190";
+        private static string productId = "XXXX";
 
         public partial AccountInformation GetAccountInformation()
         {
@@ -14,8 +14,14 @@ namespace KnockKnockApp.Services
 
         public partial async Task<bool> PurchaseSubscription()
         {
-            var billing = CrossInAppBilling.Current;
             var returnValue = false;
+
+            if (CrossInAppBilling.IsSupported == false)
+            {
+                return returnValue;
+            }
+
+            var billing = CrossInAppBilling.Current;
             try
             {
                 var connected = await billing.ConnectAsync();
@@ -59,6 +65,11 @@ namespace KnockKnockApp.Services
         public partial async Task UpdateAccountInformation()
         {
             // AccountInformation.IsPrimeSubscriptionActive = true;
+
+            if (CrossInAppBilling.IsSupported == false)
+            {
+                return;
+            }
 
             var billing = CrossInAppBilling.Current;
             try
