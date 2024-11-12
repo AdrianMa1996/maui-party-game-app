@@ -37,27 +37,23 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" BackgroundColor="{StaticResource Gray700}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <HorizontalStackLayout Grid.Row="0" Margin="5,20,0,0">
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToWelcomePageViewCommand}"/>
+            </HorizontalStackLayout.GestureRecognizers>
+            <Frame Grid.Column="0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Start">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToWelcomePageViewCommand}"/>
+                </Frame.GestureRecognizers>
+                <HorizontalStackLayout Margin="10,5,10,5">
+                    <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
+                    <Label Text="ZURÜCK" VerticalOptions="Center" Margin="5,0,0,0" FontFamily="BowlbyOneSC" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </HorizontalStackLayout>
 
-            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Gold}" Padding="5,20,0,20">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeViewCommand}"/>
-                </StackLayout.GestureRecognizers>
-                <Label Text="Nur mit App" TextColor="{StaticResource Violet}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-            </StackLayout>
-
-            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Violet}" Padding="0,20,5,20">
-                <Label Text="Mit Kartenspiel" TextColor="{StaticResource Gold}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-            </StackLayout>
-        </Grid>
-
-        <VerticalStackLayout Grid.Row="1" Margin="40,25,40,0">
-            <Label Text="Hier findet ihr die Erweiterungen von unserem KnockKnock-Kartenspiel." Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>
-            <!--<Label Text="(Jetzt erhältlich auf Amazon)" Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"/>-->
+        <VerticalStackLayout Grid.Row="1" Margin="15,0,15,0">
+            <Label Text="So funktioniert's: Holt euch euer KnockKnock-Kartenspiel und folgt der beiliegenden Anleitung. Wenn ihr eine Karte zieht, die ein Minispiel in der App erfordert, könnt ihr hier das passende Spiel auswählen." FontSize="20"  Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" LineHeight="1.1"/>
         </VerticalStackLayout>
 
         <ContentView x:Name="CardGameExtensionContentView" Grid.Row="2" >

@@ -9,6 +9,7 @@ namespace KnockKnockApp
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute($"{nameof(ManagePlayers)}", typeof(ManagePlayers));
             Routing.RegisterRoute($"{nameof(SelectGameModeView)}", typeof(SelectGameModeView));
             Routing.RegisterRoute($"{nameof(SelectCardGameExtensionView)}", typeof(SelectCardGameExtensionView));
             Routing.RegisterRoute($"{nameof(LanguageSettingsView)}", typeof(LanguageSettingsView));

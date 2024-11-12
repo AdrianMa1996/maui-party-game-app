@@ -54,6 +54,12 @@ namespace KnockKnockApp.ViewModels
         }
 
         [RelayCommand]
+        public void NavigateToWelcomePageView()
+        {
+            AppShell.Current.GoToAsync("..", true);
+        }
+
+        [RelayCommand]
         public void NavigateToSelectGameMode()
         {
             AppShell.Current.GoToAsync("SelectGameModeView", true);

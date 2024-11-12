@@ -14,6 +14,21 @@
             <RowDefinition Height="{Binding KeyboardHeight}"/>
         </Grid.RowDefinitions>
 
+        <HorizontalStackLayout Margin="5,20,25,25">
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToWelcomePageViewCommand}"/>
+            </HorizontalStackLayout.GestureRecognizers>
+            <Frame Grid.Column="0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Start">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToWelcomePageViewCommand}"/>
+                </Frame.GestureRecognizers>
+                <HorizontalStackLayout Margin="10,5,10,5">
+                    <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
+                    <Label Text="ZURÜCK" VerticalOptions="Center" Margin="5,0,0,0" FontFamily="BowlbyOneSC" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </HorizontalStackLayout>
+
         <Image Grid.Row="0" Grid.RowSpan="3" Source="logo_basic_ohne_hintergrund.png" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="50,70,50,0"/>
 
         <!--<Frame Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="End" VerticalOptions="End" WidthRequest="34" HeightRequest="34" CornerRadius="17" Padding="0" Margin="0,15,20,400" BackgroundColor="White">

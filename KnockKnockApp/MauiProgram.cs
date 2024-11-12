@@ -50,6 +50,7 @@ namespace KnockKnockApp
             // Helpers
             builder.Services.AddSingleton<IServiceProvider, ServiceProvider>();
             // Views
+            builder.Services.AddSingleton<WelcomePageView>();
             builder.Services.AddSingleton<ManagePlayers>();
             builder.Services.AddTransient<SelectGameModeView>();
             builder.Services.AddTransient<SelectCardGameExtensionView>();
@@ -62,6 +63,7 @@ namespace KnockKnockApp
             builder.Services.AddTransient<PrivacyPolicyView>();
             builder.Services.AddTransient<LanguageSettingsView>();
             // ViewModels
+            builder.Services.AddSingleton<WelcomePageViewModel>();
             builder.Services.AddSingleton<ManagePlayersViewModel>();
             builder.Services.AddTransient<SelectGameModeViewModel>();
             builder.Services.AddTransient<SelectCardGameExtensionViewModel>();

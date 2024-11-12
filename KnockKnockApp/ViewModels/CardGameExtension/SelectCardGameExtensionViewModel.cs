@@ -44,9 +44,9 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
         }
 
         [RelayCommand]
-        public void NavigateToSelectGameModeView()
+        public void NavigateToWelcomePageView()
         {
-            Shell.Current.GoToAsync("..", false);
+            Shell.Current.GoToAsync("..", true);
         }
     }
 }

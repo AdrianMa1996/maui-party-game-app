@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <ScrollView x:Key="GameModeCollectionView">
-            <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="10" Padding="25">
+            <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="10" Padding="25,20,25,25">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -106,23 +106,20 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" BackgroundColor="{StaticResource Gray700}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <StackLayout Grid.Column="0"  BackgroundColor="{StaticResource Violet}" Padding="5,20,0,20">
-                <Label Text="Nur mit App" TextColor="{StaticResource Gold}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-            </StackLayout>
-
-            <StackLayout Grid.Column="1"  BackgroundColor="{StaticResource Gold}" Padding="0,20,5,20">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToSelectCardGameExpansionCommand}"/>
-                </StackLayout.GestureRecognizers>
-                <Label Text="Mit Kartenspiel" TextColor="{StaticResource Violet}" FontSize="18" FontAttributes="Bold" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-            </StackLayout>
-        </Grid>
+        <HorizontalStackLayout Grid.Row="0" Margin="5,20,0,0">
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
+            </HorizontalStackLayout.GestureRecognizers>
+            <Frame Grid.Column="0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Start">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
+                </Frame.GestureRecognizers>
+                <HorizontalStackLayout Margin="10,5,10,5">
+                    <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
+                    <Label Text="ZURÜCK" VerticalOptions="Center" Margin="5,0,0,0" FontFamily="BowlbyOneSC" TextColor="White"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </HorizontalStackLayout>
 
         <ContentView x:Name="GameModeContentView" Grid.Row="1" >
             <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
@@ -136,13 +133,6 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Frame Grid.Column="0" WidthRequest="30" HeightRequest="30" Margin="20,0,0,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Gray950}" VerticalOptions="Center" HorizontalOptions="Start">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
-                </Frame.GestureRecognizers>
-                <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
-            </Frame>
 
             <HorizontalStackLayout Grid.Column="0" Grid.ColumnSpan="2" Padding="0,15,0,15" HorizontalOptions="Center">
                 <Label Text="{Binding AllPlayers.Count, StringFormat=Now {0:c}!}" TextColor="White" FontSize="18" FontAttributes="Bold"/>
