@@ -115,8 +115,8 @@
                     <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
                 </Frame.GestureRecognizers>
                 <HorizontalStackLayout Margin="10,5,10,5">
-                    <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
-                    <Label Text="ZURÜCK" VerticalOptions="Center" Margin="5,0,0,0" FontFamily="BowlbyOneSC" TextColor="White"/>
+                    <Image Source="icon_arrow_right_gold.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
+                    <Label Text="ZURÜCK" VerticalOptions="Center" Margin="5,0,0,0" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}"/>
                 </HorizontalStackLayout>
             </Frame>
         </HorizontalStackLayout>

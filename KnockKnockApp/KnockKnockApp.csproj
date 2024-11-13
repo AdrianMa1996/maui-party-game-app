@@ -148,6 +148,7 @@
 	  <None Remove="Resources\Images\hearts_two.png" />
 	  <None Remove="Resources\Images\icon_arrow_double_left_white.png" />
 	  <None Remove="Resources\Images\icon_arrow_double_right_white.png" />
+	  <None Remove="Resources\Images\icon_arrow_right_gold.png" />
 	  <None Remove="Resources\Images\icon_arrow_right_white.png" />
 	  <None Remove="Resources\Images\icon_close_black.png" />
 	  <None Remove="Resources\Images\icon_close_gray.png" />
