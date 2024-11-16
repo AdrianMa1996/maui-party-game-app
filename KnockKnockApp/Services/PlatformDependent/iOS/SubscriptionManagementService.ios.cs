@@ -5,7 +5,7 @@ namespace KnockKnockApp.Services
 {
     public partial class SubscriptionManagementService
     {
-        private static string productId = "XXXX";
+        private static string productId = "knockknock_premium_weekly";
 
         public partial AccountInformation GetAccountInformation()
         {

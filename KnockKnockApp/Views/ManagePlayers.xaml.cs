@@ -34,12 +34,21 @@ public partial class ManagePlayers : ContentPage
     private void OnPageLoaded(object sender, EventArgs e)
     {
         SpielerNameEntry.IsEnabled = true;
-        SpielerNameEntry.Focus();
+        Task.Run(() =>
+        {
+            Task.Delay(200).Wait();
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                SpielerNameEntry.Focus();
+            });
+        });
     }
 
     protected override async void OnDisappearing()
     {
         base.OnDisappearing();
+#if ANDROID
         SpielerNameEntry.IsEnabled = false;
+#endif
     }
 }

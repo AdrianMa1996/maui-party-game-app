@@ -20,7 +20,7 @@ namespace KnockKnockApp.ViewModels
             _popupService = popupService;
             _languageSettingsViewModel = languageSettingsViewModel;
 #if IOS
-            keyboardHeight = new GridLength(0.58, GridUnitType.Star);
+            keyboardHeight = new GridLength(0.51, GridUnitType.Star);
 #endif
             AllPlayers = _playerManagementService.GetAllPlayers();
         }
