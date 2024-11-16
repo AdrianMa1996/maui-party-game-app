@@ -17,6 +17,9 @@ namespace KnockKnockApp.ViewModels
         [ObservableProperty]
         public ILocalizationService localizationService;
 
+        [ObservableProperty]
+        public bool isLoading = false;
+
         [RelayCommand]
         public void NavigateToSelectGameMode()
         {
@@ -26,9 +29,20 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public async Task BuyPrimeSubscription()
         {
+            IsLoading = true;
             await _subscriptionManagementService.PurchaseSubscription();
-            _ = _subscriptionManagementService.UpdateAccountInformation();
+            await _subscriptionManagementService.UpdateAccountInformation();
             await Shell.Current.GoToAsync("..", false);
+            IsLoading = false;
+        }
+
+        [RelayCommand]
+        public async Task RestorePurchases()
+        {
+            IsLoading = true;
+            await _subscriptionManagementService.UpdateAccountInformation();
+            await Shell.Current.GoToAsync("..", false);
+            IsLoading = false;
         }
 
         [RelayCommand]

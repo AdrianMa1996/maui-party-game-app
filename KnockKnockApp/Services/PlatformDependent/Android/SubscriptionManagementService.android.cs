@@ -14,14 +14,14 @@ namespace KnockKnockApp.Services
 
         public partial async Task<bool> PurchaseSubscription()
         {
-            await Task.Delay(1000);
+            await Task.Delay(3000);
             testBool = true;
             return true;
         }
 
         public partial async Task UpdateAccountInformation()
         {
-            await Task.Delay(1000);
+            await Task.Delay(3000);
             if (testBool)
             {
                 AccountInformation.IsPrimeSubscriptionActive = true;

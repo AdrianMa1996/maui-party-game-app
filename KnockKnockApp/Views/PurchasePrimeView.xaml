@@ -4,7 +4,12 @@
              x:Class="KnockKnockApp.Views.PurchasePrimeView"
              Title="PurchasePrimeView"
              Shell.NavBarIsVisible="False"
-             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
+             xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels"
+             xmlns:converters="clr-namespace:KnockKnockApp.Converters">
+    <ContentPage.Resources>
+        <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+    </ContentPage.Resources>
+    
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -48,11 +53,13 @@
             </VerticalStackLayout>
         </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,30,35">
+        <VerticalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,30,35" HeightRequest="230">
             <Label Text="Nur 1,99€ pro Woche" HorizontalOptions="Center" Margin="0,0,0,15" TextColor="{StaticResource Gold}" FontAttributes="Bold"/>
-            <Button Command="{Binding BuyPrimeSubscriptionCommand}" Text="STARTEN" FontFamily="BowlbyOneSC" FontSize="30" TextColor="{StaticResource Gold}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Violet}"/>
-            <Button Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,20,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseCommand}"/>
-            <Button Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyCommand}"/>
+            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="True" Color="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"/>
+            <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Command="{Binding BuyPrimeSubscriptionCommand}" Text="STARTEN" FontFamily="BowlbyOneSC" FontSize="30" TextColor="{StaticResource Gold}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Violet}"/>
+            <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Text="EINKÄUFE WIEDERHERSTELLEN" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,20,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding RestorePurchasesCommand}"/>
+            <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseCommand}"/>
+            <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyCommand}"/>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

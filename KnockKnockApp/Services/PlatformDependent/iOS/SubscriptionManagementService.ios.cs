@@ -83,11 +83,24 @@ namespace KnockKnockApp.Services
 
                 //get purchase
                 var purchaseList = await billing.GetPurchasesAsync(ItemType.Subscription);
-                var purchase = purchaseList.FirstOrDefault(p => p.ProductId == productId);
 
-                if (purchase != null && purchase.State == PurchaseState.Purchased)
+                if (purchaseList?.Any(p => p.ProductId == productId) ?? false)
                 {
-                    AccountInformation.IsPrimeSubscriptionActive = true;
+                    var sortedPurchaseList = purchaseList.Where(p => p.ProductId == productId).OrderByDescending(i => i.TransactionDateUtc).ToList();
+                    var recentPurchase = sortedPurchaseList[0];
+                    if (recentPurchase != null)
+                    {
+                        if (recentPurchase.TransactionDateUtc.AddDays(10) > DateTime.UtcNow)
+                        {
+                            AccountInformation.IsPrimeSubscriptionActive = true;
+                        }
+
+                        // Für Sanbox-Test (Sandbox weekly ca alle 3min)
+                        //if (recentPurchase.TransactionDateUtc.AddMinutes(1) > DateTime.UtcNow)
+                        //{
+                        //    AccountInformation.IsPrimeSubscriptionActive = true;
+                        //}
+                    }
                 }
             }
             catch (Exception ex)
