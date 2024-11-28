@@ -96,7 +96,7 @@ namespace KnockKnockApp.Services
                         }
 
                         // Für Sanbox-Test (Sandbox weekly ca alle 3min)
-                        //if (recentPurchase.TransactionDateUtc.AddMinutes(1) > DateTime.UtcNow)
+                        //if (recentPurchase.TransactionDateUtc.AddMinutes(10) > DateTime.UtcNow)
                         //{
                         //    AccountInformation.IsPrimeSubscriptionActive = true;
                         //}

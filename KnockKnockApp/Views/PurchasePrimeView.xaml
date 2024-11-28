@@ -53,7 +53,7 @@
             </VerticalStackLayout>
         </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,30,35" HeightRequest="230">
+        <VerticalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,30,35" MinimumHeightRequest="200">
             <Label Text="Nur 1,99€ pro Woche" HorizontalOptions="Center" Margin="0,0,0,15" TextColor="{StaticResource Gold}" FontAttributes="Bold"/>
             <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="True" Color="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,20,0,0"/>
             <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Command="{Binding BuyPrimeSubscriptionCommand}" Text="STARTEN" FontFamily="BowlbyOneSC" FontSize="30" TextColor="{StaticResource Gold}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Violet}"/>
