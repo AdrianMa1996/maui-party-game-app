@@ -28,5 +28,17 @@ namespace KnockKnockApp.ViewModels
         {
             AppShell.Current.GoToAsync("SelectCardGameExtensionView", true);
         }
+
+        [RelayCommand]
+        public async Task OpenTermsOfUseUrl()
+        {
+            await Launcher.OpenAsync("https://knockknock-partygame.com/knockknock-app/nutzungsbedingungen");
+        }
+
+        [RelayCommand]
+        public async Task OpenPrivacyPolicyUrl()
+        {
+            await Launcher.OpenAsync("https://knockknock-partygame.com/knockknock-app/datenschutzbestimmungen");
+        }
     }
 }

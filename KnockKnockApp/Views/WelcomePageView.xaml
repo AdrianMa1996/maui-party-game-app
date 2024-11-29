@@ -18,8 +18,10 @@
             <Label Text="Spielt die App zusammen mit unserem KnockKnock-Kartenspiel für das volle Erlebnis!" VerticalOptions="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1" />
             <Button Command="{Binding NavigateToSelectCardGameExtensionCommand}" Text="Mit Kartenspiel" FontFamily="BowlbyOneSC" FontSize="22" TextColor="{StaticResource Violet}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Gold}" Margin="0,10,0,20"/>
             <Label Text="Oder" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="26" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" LineHeight="0.8" Margin="0,0,0,0"/>
-            <Label Text="Habt ihr das Kartenspiel gerade nicht zur Hand? Kein Problem! Hier könnt ihr auch ohne das Kartenspiel spielen. Tragt alle Mitspieler ein, wählt einen Spielmodi und startet direkt durch." VerticalOptions="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1"/>
+            <Label Text="Habt ihr das Kartenspiel gerade nicht zur Hand? Kein Problem! Hier könnt ihr auch ohne das Kartenspiel spielen." VerticalOptions="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1"/>
             <Button Command="{Binding NavigateToManagePlayersCommand}" Text="Ohne Kartenspiel" FontFamily="BowlbyOneSC" FontSize="22" TextColor="{StaticResource Violet}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Gold}" Margin="0,10,0,0"/>
+            <Button Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,20,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseUrlCommand}"/>
+            <Button Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyUrlCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>
