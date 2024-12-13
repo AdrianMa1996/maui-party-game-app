@@ -32,6 +32,9 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <Frame Grid.Column="0" WidthRequest="80" HeightRequest="80" CornerRadius="17" Padding="0" Margin="0,0,20,40" Opacity="0.5" IsClippedToBounds="True">
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding BindingContext.OpenSubscriptionPopupCommand, Source={x:Reference GameModesList}}"/>
+                                                    </Frame.GestureRecognizers>
                                                     <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 </Frame>
 
@@ -69,6 +72,9 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Frame Grid.Column="0" WidthRequest="80" HeightRequest="80" CornerRadius="17" Padding="0" Margin="0,0,20,40" IsClippedToBounds="True">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameplayCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}" />
+                                    </Frame.GestureRecognizers>
                                     <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                 </Frame>
 

@@ -24,7 +24,7 @@
 		<ApplicationTitle>Knock Knock</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.knockknockapp</ApplicationId>
+		<ApplicationId>com.knockknock-partygame.knockknockapp</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
