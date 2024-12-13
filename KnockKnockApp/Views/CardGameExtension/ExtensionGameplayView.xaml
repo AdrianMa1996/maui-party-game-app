@@ -26,6 +26,7 @@
         </controls:ExtensionMimePreperationView>
 
         <controls:ExtensionMimeView x:Key="ExtensionMimeView"
+            IsGameRunning="{Binding IsGameRunning}"
             NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
             CurrentExtension="{Binding CurrentExtension}"
             DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
@@ -40,6 +41,7 @@
         </controls:ExtensionTimeBombPreparationView>
 
         <controls:ExtensionTimeBombView x:Key="ExtensionTimeBombView"
+            IsGameRunning="{Binding IsGameRunning}"
             NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
             CurrentExtension="{Binding CurrentExtension}"
             DisplayNextCardCommand="{Binding DisplayNextCardCommand}"

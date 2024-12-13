@@ -79,6 +79,7 @@
                         DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
 
         <controls:TimeBombGamecardView x:Key="TimeBombGamecardView" 
+                        IsGameRunning="{Binding IsGameRunning}"
                         CurrentCard="{Binding CurrentCard}"
                         CurrentGameMode="{Binding CurrentGameMode}"
                         TeamOne="{Binding TeamOne}"
@@ -101,6 +102,7 @@
                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
 
         <controls:StopWatchGamecardView x:Key="StopWatchGamecardView" 
+                       IsGameRunning="{Binding IsGameRunning}"
                        CurrentCard="{Binding CurrentCard}"
                        CurrentGameMode="{Binding CurrentGameMode}"
                        TeamOne="{Binding TeamOne}"

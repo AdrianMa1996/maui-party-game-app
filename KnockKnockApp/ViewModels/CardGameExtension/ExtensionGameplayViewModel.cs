@@ -15,6 +15,7 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
         {
             LocalizationService = localizationService;
             _extensionCardManagementService = extensionCardManagementService;
+            isGameRunning = true;
         }
 
         [ObservableProperty]
@@ -30,6 +31,9 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
 
         [ObservableProperty]
         private ExtensionCardDto? currentCard;
+
+        [ObservableProperty]
+        private bool isGameRunning;
 
         [RelayCommand]
         public async void DisplayNextCard()
@@ -47,6 +51,7 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
         [RelayCommand]
         public async void NavigateToSelectCardGameExtension()
         {
+            IsGameRunning = false;
             Shell.Current.GoToAsync("..", false);
         }
 

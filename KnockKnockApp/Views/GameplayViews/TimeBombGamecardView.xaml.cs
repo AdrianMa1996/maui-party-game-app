@@ -7,6 +7,23 @@ namespace KnockKnockApp.Views.GameplayViews;
 
 public partial class TimeBombGamecardView : ContentView
 {
+    public static readonly BindableProperty IsGameRunningProperty = BindableProperty.Create(nameof(IsGameRunning), typeof(bool), typeof(TimeBombGamecardView), propertyChanged: OnIsGameRunningChanged);
+
+    static void OnIsGameRunningChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        TimeBombGamecardView extensionTimeBombView = (TimeBombGamecardView)bindable;
+        if (extensionTimeBombView.isTicking && (bool)newValue == false)
+        {
+            _ = extensionTimeBombView.LetTimeBombExplode();
+        }
+    }
+
+    public bool IsGameRunning
+    {
+        get => (bool)GetValue(IsGameRunningProperty);
+        set => SetValue(IsGameRunningProperty, value);
+    }
+
     public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(TimeBombGamecardView), propertyChanged: OnGamecardChanged);
 
     static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
@@ -143,13 +160,16 @@ public partial class TimeBombGamecardView : ContentView
                 MainGrid.BackgroundColor = GetColorFromResources("RedCardColor");
                 ExplodeButton.IsVisible = false;
             });
-            await Task.Delay(50);
-            Vibration.Default.Vibrate(vibrationLength);
-            await Task.Delay(3000);
-            MainThread.BeginInvokeOnMainThread(() =>
+            if (IsGameRunning)
             {
-                DisplayNextCardCommand.Execute(null);
-            });
+                await Task.Delay(50);
+                Vibration.Default.Vibrate(vibrationLength);
+                await Task.Delay(3000);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayNextCardCommand.Execute(null);
+                });
+            }
         });
     }
 

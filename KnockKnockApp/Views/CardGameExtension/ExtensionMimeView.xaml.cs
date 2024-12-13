@@ -6,6 +6,23 @@ namespace KnockKnockApp.Views.CardGameExtension;
 
 public partial class ExtensionMimeView : ContentView
 {
+    public static readonly BindableProperty IsGameRunningProperty = BindableProperty.Create(nameof(IsGameRunning), typeof(bool), typeof(ExtensionMimeView), propertyChanged: OnIsGameRunningChanged);
+
+    static void OnIsGameRunningChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        ExtensionMimeView extensionMimeView = (ExtensionMimeView)bindable;
+        if (extensionMimeView.timer != null && extensionMimeView.timer.IsRunning && (bool)newValue == false)
+        {
+            _ = extensionMimeView.LetStopWatchStop();
+        }
+    }
+
+    public bool IsGameRunning
+    {
+        get => (bool)GetValue(IsGameRunningProperty);
+        set => SetValue(IsGameRunningProperty, value);
+    }
+
     public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(ExtensionCardDto), typeof(ExtensionMimeView), propertyChanged: OnGamecardChanged);
 
     static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
@@ -103,13 +120,16 @@ public partial class ExtensionMimeView : ContentView
                 StopWatchLabel.Text = "00" + " Sekunden";
                 EndStopWatchButton.IsVisible = false;
             });
-            await Task.Delay(50);
-            Vibration.Default.Vibrate(vibrationLength);
-            await Task.Delay(3000);
-            MainThread.BeginInvokeOnMainThread(() =>
+            if (IsGameRunning)
             {
-                DisplayNextCardCommand.Execute(null);
-            });
+                await Task.Delay(50);
+                Vibration.Default.Vibrate(vibrationLength);
+                await Task.Delay(3000);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayNextCardCommand.Execute(null);
+                });
+            }
         });
     }
 

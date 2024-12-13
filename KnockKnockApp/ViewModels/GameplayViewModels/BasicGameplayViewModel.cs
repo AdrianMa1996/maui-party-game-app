@@ -46,10 +46,15 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             TeamOnePlayers = _teamManagementService.GetTeamOne().TeamMembers;
             TeamTwoPlayers = _teamManagementService.GetTeamTwo().TeamMembers;
             _teamManagementService = teamManagementService;
+
+            isGameRunning = true;
         }
 
         [ObservableProperty]
         public ILocalizationService localizationService;
+
+        [ObservableProperty]
+        private bool isGameRunning;
 
         [ObservableProperty]
         public GridLength keyboardHeight = new GridLength(0);
@@ -125,6 +130,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             var answer = await Application.Current.MainPage.DisplayAlert("Partie verlassen?", "Seid ihr sicher, dass ihr die Partie verlassen wollt?", "Ja", "Nein");
             if (answer)
             {
+                IsGameRunning = false;
                 Shell.Current.GoToAsync("..", false);
                 _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
             }
