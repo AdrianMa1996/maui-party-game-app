@@ -14,7 +14,7 @@ public partial class TimeBombGamecardView : ContentView
         TimeBombGamecardView extensionTimeBombView = (TimeBombGamecardView)bindable;
         if (extensionTimeBombView.isTicking && (bool)newValue == false)
         {
-            _ = extensionTimeBombView.LetTimeBombExplode();
+            // _ = extensionTimeBombView.LetTimeBombExplode();
         }
     }
 
