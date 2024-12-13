@@ -1,14 +1,17 @@
 using KnockKnockApp.ViewModels;
+using KnockKnockApp.Services;
 
 namespace KnockKnockApp.Views;
 
 public partial class SelectGameModeView : ContentPage
 {
     private readonly SelectGameModeViewModel _viewModel;
+    private readonly IDeviceOrientationService _deviceOrientationService;
 
-    public SelectGameModeView(SelectGameModeViewModel viewModel)
+    public SelectGameModeView(SelectGameModeViewModel viewModel, IDeviceOrientationService deviceOrientationService)
 	{
         BindingContext = _viewModel = viewModel;
+        _deviceOrientationService = deviceOrientationService;
         InitializeComponent();
 	}
 
@@ -24,5 +27,11 @@ public partial class SelectGameModeView : ContentPage
                 }
             });
         });
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
     }
 }

@@ -30,4 +30,10 @@ public partial class BasicGameplayView : ContentPage
         _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Landscape);
         SpielerNameEntry.IsEnabled = false;
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        _viewModel.NavigateToSelectGameMode();
+        return true;
+    }
 }

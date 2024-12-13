@@ -11,4 +11,10 @@ public partial class ExtensionGameplayView : ContentPage
         BindingContext = _viewModel = viewModel;
         InitializeComponent();
 	}
+
+    protected override bool OnBackButtonPressed()
+    {
+        _viewModel.NavigateToSelectCardGameExtension();
+        return true;
+    }
 }
