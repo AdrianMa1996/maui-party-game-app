@@ -102,7 +102,7 @@ public partial class ExtensionMimeView : ContentView
     private async void EndStopWatchButton_Clicked(object sender, EventArgs e)
     {
         var answer = await Application.Current.MainPage.DisplayAlert("Timer vorzeitig anhalten?", "Seid ihr sicher, dass ihr den Timer vorzeitig anhalten wollt?", "Ja", "Nein");
-        if (timer.IsRunning && !answer)
+        if (timer.IsRunning && answer)
         {
             await LetStopWatchStop();
         }
