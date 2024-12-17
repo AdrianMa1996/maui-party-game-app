@@ -12,6 +12,17 @@
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" Grid.RowSpan="2" Margin="10,10,10,0" VerticalOptions="Start">
+            <Frame Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenInformationPopupCommand}"/>
+                </Frame.GestureRecognizers>
+                <HorizontalStackLayout Margin="15">
+                    <Image Source="icon_information_gold.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" />
+                </HorizontalStackLayout>
+            </Frame>
+        </Grid>
+
         <Image Grid.Row="1" Source="logo_basic_ohne_hintergrund.png" Aspect="AspectFit" Margin="0,10,0,30" VerticalOptions="End" MaximumHeightRequest="130"/>
 
         <StackLayout Grid.Row="2" Margin="30,0,30,0">
@@ -20,8 +31,124 @@
             <Label Text="Oder" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="26" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" LineHeight="0.8" Margin="0,0,0,0"/>
             <Label Text="Habt ihr das Kartenspiel gerade nicht zur Hand? Kein Problem! Hier könnt ihr auch ohne das Kartenspiel spielen." VerticalOptions="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1"/>
             <Button Command="{Binding NavigateToManagePlayersCommand}" Text="Ohne Kartenspiel" FontFamily="BowlbyOneSC" FontSize="22" TextColor="{StaticResource Violet}" Padding="0,20" CornerRadius="15" BackgroundColor="{StaticResource Gold}" Margin="0,10,0,0"/>
-            <Button Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,20,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseUrlCommand}"/>
-            <Button Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyUrlCommand}"/>
         </StackLayout>
+
+        <Grid Grid.RowSpan="10" Grid.ColumnSpan="10" IsVisible="{Binding IsWarningMessageVisible}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="400"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" Opacity="0.4">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseWarningMessageCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Border Grid.Column="1" Grid.Row="1" BackgroundColor="{StaticResource Violet}" Stroke="{StaticResource Gold}" StrokeThickness="5" StrokeShape="RoundRectangle 15,15,15,15" Padding="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{x:Null}"/>
+                </Border.GestureRecognizers>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" VerticalOptions="End" Margin="15,0,0,0" FontSize="24" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" LineHeight="0.8">Achtung</Label>
+                        <StackLayout Grid.Column="1" Padding="15">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseWarningMessageCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="icon_close_lightgray.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" Aspect="AspectFill"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <ScrollView Grid.Row="1" Margin="15,0,10,15">
+                        <StackLayout>
+                            <Label FontSize="20" TextColor="White" LineHeight="1.1">Der Missbrauch von Alkohol ist gesundheitsschädlich. Den Anweisungen des Spiels zu folgen, ist nicht verpflichtend, und ihr solltet nur Getränke konsumieren, die für euch legal sind. Bitte denkt daran, dass ihr die App auf eigene Verantwortung nutzt und selbst für die Konsequenzen des Alkoholkonsums verantwortlich seid.</Label>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <Button Grid.Row="2" Command="{Binding CloseWarningMessageCommand}" Text="Verstanden" FontFamily="BowlbyOneSC" FontSize="20" TextColor="{StaticResource Violet}" Margin="0,0,0,15" Padding="15,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Grid>
+                
+            </Border>
+            
+        </Grid>
+
+        <Grid Grid.RowSpan="10" Grid.ColumnSpan="10" IsVisible="{Binding IsInformationPopupVisible}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="400"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" Opacity="0.4">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseInformationPopupCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Border Grid.Column="1" Grid.Row="1" BackgroundColor="{StaticResource Violet}" Stroke="{StaticResource Gold}" StrokeThickness="5" StrokeShape="RoundRectangle 15,15,15,15" Padding="0">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{x:Null}"/>
+                </Border.GestureRecognizers>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" VerticalOptions="End" Margin="15,0,0,0" FontSize="24" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" LineHeight="0.8">Informationen</Label>
+                        <StackLayout Grid.Column="1" Padding="15">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseInformationPopupCommand}" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="icon_close_lightgray.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" Aspect="AspectFill"/>
+                        </StackLayout>
+                    </Grid>
+
+                    <ScrollView Grid.Row="1" Margin="15,0,10,15">
+                        <StackLayout>
+                            <Button Grid.Row="2" Command="{Binding OpenTermsOfUseUrlCommand}" Text="Nutzungsbedingungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,10,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
+                            <Button Grid.Row="2" Command="{Binding OpenPrivacyPolicyUrlCommand}" Text="Datenschutzbestimmungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,0,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
+                            <Label FontSize="20" FontAttributes="Bold" TextColor="White" LineHeight="1.1" HorizontalTextAlignment="Center" Margin="0,10,0,0">Kontakt</Label>
+                            <Label FontSize="16" TextColor="White" LineHeight="1.1" HorizontalTextAlignment="Center">contact@knockknock-partygame.com</Label>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <Button Grid.Row="2" Command="{Binding CloseInformationPopupCommand}" Text="schließen" FontFamily="BowlbyOneSC" FontSize="20" TextColor="{StaticResource Violet}" Margin="0,0,0,15" Padding="15,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
     </Grid>
 </ContentPage>

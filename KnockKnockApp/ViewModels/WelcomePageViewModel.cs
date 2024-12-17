@@ -12,10 +12,18 @@ namespace KnockKnockApp.ViewModels
         public WelcomePageViewModel(ILocalizationService localizationService)
         {
             LocalizationService = localizationService;
+            IsWarningMessageVisible = true;
+            IsInformationPopupVisible = false;
         }
 
         [ObservableProperty]
         public ILocalizationService localizationService;
+
+        [ObservableProperty]
+        public bool isWarningMessageVisible;
+
+        [ObservableProperty]
+        public bool isInformationPopupVisible;
 
         [RelayCommand]
         public void NavigateToManagePlayers()
@@ -39,6 +47,24 @@ namespace KnockKnockApp.ViewModels
         public async Task OpenPrivacyPolicyUrl()
         {
             await Launcher.OpenAsync("https://knockknock-partygame.com/knockknock-app/datenschutzbestimmungen");
+        }
+
+        [RelayCommand]
+        public void CloseWarningMessage()
+        {
+            IsWarningMessageVisible = false;
+        }
+
+        [RelayCommand]
+        public void OpenInformationPopup()
+        {
+            IsInformationPopupVisible = true;
+        }
+
+        [RelayCommand]
+        public void CloseInformationPopup()
+        {
+            IsInformationPopupVisible = false;
         }
     }
 }

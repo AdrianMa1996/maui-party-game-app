@@ -154,6 +154,7 @@
 	  <None Remove="Resources\Images\icon_close_gray.png" />
 	  <None Remove="Resources\Images\icon_close_lightgray.png" />
 	  <None Remove="Resources\Images\icon_dice_white.png" />
+	  <None Remove="Resources\Images\icon_information_gold.png" />
 	  <None Remove="Resources\Images\icon_lock_gold_violet.png" />
 	  <None Remove="Resources\Images\icon_ok_white.png" />
 	  <None Remove="Resources\Images\icon_player_gray.png" />
