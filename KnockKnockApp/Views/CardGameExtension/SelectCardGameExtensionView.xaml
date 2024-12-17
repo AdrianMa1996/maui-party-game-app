@@ -37,20 +37,17 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <HorizontalStackLayout Grid.Row="0" Margin="5,20,0,0">
-            <HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding NavigateToWelcomePageViewCommand}"/>
-            </HorizontalStackLayout.GestureRecognizers>
-            <Frame Grid.Column="0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Start">
+        <Grid Grid.Row="0" Margin="10,20,10,0">
+            <Frame Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Violet}" VerticalOptions="Center" HorizontalOptions="Start">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToWelcomePageViewCommand}"/>
                 </Frame.GestureRecognizers>
-                <HorizontalStackLayout Margin="10,5,10,5">
-                    <Image Source="icon_arrow_right_gold.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15" Rotation="180"/>
-                    <Label Text="ZURÜCK" VerticalOptions="Center" Margin="5,0,0,0" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}"/>
+                <HorizontalStackLayout Margin="10">
+                    <Image Source="icon_arrow_right_gold.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" Rotation="180"/>
                 </HorizontalStackLayout>
             </Frame>
-        </HorizontalStackLayout>
+            <Label Text="Kartenspiel" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" FontSize="26" LineHeight="0.8"/>
+        </Grid>
 
         <VerticalStackLayout Grid.Row="1" Margin="15,0,15,0">
             <Label Text="So funktioniert's: Holt euch euer KnockKnock-Kartenspiel und folgt der beiliegenden Anleitung. Wenn ihr eine Karte zieht, die ein Minispiel in der App erfordert, könnt ihr hier das passende Spiel auswählen." FontSize="20"  Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" LineHeight="1.1"/>
