@@ -157,7 +157,7 @@ public partial class TimeBombGamecardView : ContentView
                 // TimeBombImage.Source = "image_bomb_explosion.png";
                 TimeBombImage.IsVisible = false;
                 TimeBombExplosionImage.IsVisible = true;
-                MainGrid.BackgroundColor = GetColorFromResources("RedCardColor");
+                // MainGrid.BackgroundColor = GetColorFromResources("RedCardColor");
                 ExplodeButton.IsVisible = false;
             });
             if (IsGameRunning)
