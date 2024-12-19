@@ -50,7 +50,7 @@
                                                         <RowDefinition Height="Auto"/>
                                                     </Grid.RowDefinitions>
 
-                                                    <Label Grid.Column="0" Grid.Row="0" FontFamily="BowlbyOneSC" TextColor="#FF8000" Text="{Binding Title}"/>
+                                                    <Label Grid.Column="0" Grid.Row="0" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" Text="{Binding Title}"/>
                                                     <Image Grid.Column="1" Grid.Row="0" Source="icon_settings_white.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="End">
                                                     </Image>
                                                     <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" TextColor="White" Text="{Binding DescriptionText}"/>
@@ -88,7 +88,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <Label Grid.Column="0" Grid.Row="0" FontFamily="BowlbyOneSC" TextColor="#FF8000" Text="{Binding Title}"/>
+                                    <Label Grid.Column="0" Grid.Row="0" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" Text="{Binding Title}"/>
                                     <Image Grid.Column="1" Grid.Row="0" Source="icon_settings_white.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="End">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameModeSettingsCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}"/>

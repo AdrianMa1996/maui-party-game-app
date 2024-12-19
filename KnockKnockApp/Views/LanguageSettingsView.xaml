@@ -29,7 +29,7 @@
                 <VerticalStackLayout x:Name="LocalizationList" BindableLayout.ItemsSource="{Binding Localizations}" >
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Frame  BackgroundColor="#C8C8C8" Margin="30,8" Padding="0,10" CornerRadius="10" IsClippedToBounds="True">
+                            <Frame  BackgroundColor="{StaticResource Gray300}" Margin="30,8" Padding="0,10" CornerRadius="10" IsClippedToBounds="True">
                                 <Grid>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding BindingContext.ChangeLocalizationCommand, Source={x:Reference LocalizationList}}" CommandParameter="{Binding .}"/>
@@ -47,7 +47,7 @@
                     </BindableLayout.ItemTemplate>
                 </VerticalStackLayout>
 
-                <Button Command="{Binding NavigateToManagePlayersCommand}" Text="{Binding LocalizationService[5], Mode=OneWay}" FontSize="Large" FontAttributes="Bold" Margin="30,8" Padding="0,17" CornerRadius="10" BackgroundColor="#279EFF"/>
+                <Button Command="{Binding NavigateToManagePlayersCommand}" Text="{Binding LocalizationService[5], Mode=OneWay}" FontSize="Large" FontAttributes="Bold" Margin="30,8" Padding="0,17" CornerRadius="10" BackgroundColor="{StaticResource Blue}"/>
 
             </VerticalStackLayout>
         </ScrollView>

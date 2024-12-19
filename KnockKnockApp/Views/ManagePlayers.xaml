@@ -6,7 +6,7 @@
              Shell.NavBarIsVisible="False"
              xmlns:viewmodels="clr-namespace:KnockKnockApp.ViewModels">
 
-    <Grid BackgroundColor="#3D006C" >
+    <Grid BackgroundColor="{StaticResource Violet}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="{Binding KeyboardHeight}"/>
@@ -67,14 +67,14 @@
 
                 <Entry Grid.Column="1" x:Name="SpielerNameEntry" MinimumHeightRequest="65" Margin="10,0,10,0" MaxLength="10" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" TextColor="Black" />
 
-                <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#E1E1E1">
+                <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Gray100}">
                     <Image Source="icon_plus_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AddPlayerCommand}"/>
                     </Frame.GestureRecognizers>
                 </Frame>
 
-                <Frame Grid.Column="3" WidthRequest="30" HeightRequest="30" Margin="0,0,20,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="#279EFF">
+                <Frame Grid.Column="3" WidthRequest="30" HeightRequest="30" Margin="0,0,20,0" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Blue}">
                     <Image Source="icon_arrow_right_white.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToSelectGameModeCommand}"/>

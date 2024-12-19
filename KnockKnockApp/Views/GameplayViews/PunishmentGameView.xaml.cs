@@ -24,6 +24,12 @@ public partial class PunishmentGameView : ContentView
 	{
         InitializeComponent();
         SetupNewPunishmentGame();
+
+        grayLedColor = GetColorFromResources("Gray300");
+        greenLedColor = GetColorFromResources("TeamOneColor");
+        redLedColor = GetColorFromResources("TeamTwoColor");
+
+        RefreshPunishmentGameView();
     }
 
     private PokerCard currentPokerCard;
@@ -36,9 +42,11 @@ public partial class PunishmentGameView : ContentView
 
     private bool isGameOver;
 
-    private Color grayLedColor = new Color((float)0.675, (float)0.675, (float)0.675);
-    private Color greenLedColor = new Color((float)0, (float)0.502, (float)0);
-    private Color redLedColor = new Color((float)1, (float)0, (float)0);
+    private Color grayLedColor;
+    private Color greenLedColor;
+    private Color redLedColor;
+
+    // GetColorFromResources
 
     private void Higher_Button_Clicked(object sender, EventArgs e)
     {
@@ -242,6 +250,17 @@ public partial class PunishmentGameView : ContentView
 
         currentPokerCard = GetNextPokerCard();
         RefreshPunishmentGameView();
+    }
+
+    private Color GetColorFromResources(string key)
+    {
+        var color = Colors.White;
+        if (App.Current.Resources.TryGetValue(key, out var colorvalue))
+        {
+            color = (Color)colorvalue;
+        }
+
+        return color;
     }
 }
 

@@ -15,7 +15,7 @@
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
-    <Color x:Key="Blue">#279EFF</Color>
+    <Color x:Key="Blue">#1A73E8</Color>
     <Color x:Key="Gold">#FF8000</Color>
     <Color x:Key="Violet">#3D006C</Color>
 
@@ -33,15 +33,15 @@
     <!-- Colors of Teams -->
 
     <Color x:Key="TeamOneColor">#008000</Color>
-    <Color x:Key="TeamTwoColor">#FF0000</Color>
+    <Color x:Key="TeamTwoColor">#C70000</Color>
 
     <!-- BackgroundColors of GameCards -->
 
     <Color x:Key="PurpleCardColor">#3D006C</Color>
     <Color x:Key="GrayCardColor">#212121</Color>
-    <Color x:Key="GreenCardColor">#61B300</Color>
+    <Color x:Key="GreenCardColor">#579E00</Color>
     <Color x:Key="BlueCardColor">#001DCC</Color>
-    <Color x:Key="YellowCardColor">#E6B200</Color>
+    <Color x:Key="YellowCardColor">#B38900</Color>
     <Color x:Key="RedCardColor">#D90000</Color>
     <Color x:Key="PinkCardColor">#B30081</Color>
     <Color x:Key="OrangeCardColor">#CC4401</Color>

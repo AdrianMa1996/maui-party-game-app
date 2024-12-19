@@ -12,14 +12,14 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <ContentView>
-                        <Frame CornerRadius="10" Padding="0,20,0,20" IsClippedToBounds="True" BackgroundColor="#FF8000" Margin="5">
+                        <Frame CornerRadius="10" Padding="0,20,0,20" IsClippedToBounds="True" BackgroundColor="{StaticResource Gold}" Margin="5">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding BindingContext.NavigateToExtensionGameplayCommand, Source={x:Reference ExtensionCollectionView}}" CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
 
                             <StackLayout>
                                 <Image Grid.Row="0" Source="{Binding Image}" WidthRequest="100" HeightRequest="100"/>
-                                <Label Grid.Row="1" FontFamily="BowlbyOneSC" TextColor="#3D006C" Text="{Binding Title}" HorizontalTextAlignment="Center"/>
+                                <Label Grid.Row="1" FontFamily="BowlbyOneSC" TextColor="{StaticResource Violet}" Text="{Binding Title}" HorizontalTextAlignment="Center"/>
                             </StackLayout>
                             
                         </Frame>
@@ -30,7 +30,7 @@
 
     </ContentPage.Resources>
 
-    <Grid BackgroundColor="#3D006C" >
+    <Grid BackgroundColor="{StaticResource Violet}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
