@@ -60,7 +60,7 @@ namespace KnockKnockApp.Services
 
         private void resetLosingAndWinningTeams()
         {
-            if (teamOne.GamePoints >= teamTwo.GamePoints)
+            if (teamOne.GamePoints <= teamTwo.GamePoints)
             {
                 winningTeam = teamOne;
                 losingTeam = teamTwo;
