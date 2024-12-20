@@ -31,7 +31,7 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="Auto" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Label Grid.Column="0" Text="{Binding Title}" TextColor="White" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                    <Label Grid.Column="0" Text="{Binding Title}" TextColor="White" FontSize="18" FontAttributes="Bold" TextTransform="Uppercase" VerticalOptions="Center"/>
                                                     <CheckBox Grid.Column="1"  IsChecked="{Binding IsActivated}" Color="White" VerticalOptions="Center"/>
                                                 </Grid>
                                             </Setter.Value>
