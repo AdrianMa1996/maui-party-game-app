@@ -55,7 +55,7 @@
 
             <Grid Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}">
                 <Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding PointsToTeamOneCommand}"/>
+                    <TapGestureRecognizer Command="{Binding PointsToTeamTwoCommand}"/>
                 </Grid.GestureRecognizers>
                 <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
                     <Label Text="{Binding CurrentCard.GameCardDetails.PointValue}" TextColor="White" FontAttributes="Bold"/>
