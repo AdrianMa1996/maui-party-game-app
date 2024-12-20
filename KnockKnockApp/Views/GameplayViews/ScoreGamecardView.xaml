@@ -25,13 +25,13 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="TeamA" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center" Padding="30, 7"/>
+            <Label Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="{Binding TeamOne.Name}" TextColor="White" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Center" Padding="30, 7"/>
             <HorizontalStackLayout Grid.Column="1" BackgroundColor="{StaticResource Gray950}" HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
                 <Label Grid.Column="0" Text="{Binding TeamOne.GamePoints, StringFormat=Now {0:c}!}" TextColor="White" FontAttributes="Bold" WidthRequest="30" HorizontalTextAlignment="End"/>
                 <Label Grid.Column="0" Text=" : " TextColor="White" FontAttributes="Bold"/>
                 <Label Grid.Column="0" Text="{Binding TeamTwo.GamePoints, StringFormat=Now {0:c}!}" TextColor="White" FontAttributes="Bold" WidthRequest="30" HorizontalTextAlignment="Start"/>
             </HorizontalStackLayout>
-            <Label Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="TeamB" TextColor="White" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Padding="30, 7"/>
+            <Label Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="{Binding TeamTwo.Name}" TextColor="White" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center" Padding="30, 7"/>
         </Grid>
 
         <Frame Grid.Row="0" Grid.Column="2" WidthRequest="30" HeightRequest="30" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Gray100}" HorizontalOptions="Center" VerticalOptions="Center">
@@ -52,9 +52,38 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat='{0} Punkte für TeamA'}" Command="{Binding PointsToTeamOneCommand}" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
-            <Button Grid.Column="1" BackgroundColor="{StaticResource Blue}" Text="Überspringen" Command="{Binding DisplayNextCardCommand}" FontAttributes="Bold" TextColor="White" CornerRadius="0"/>
-            <Button Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="{Binding CurrentCard.GameCardDetails.PointValue, StringFormat='{0} Punkte für TeamB'}" Command="{Binding PointsToTeamTwoCommand}" TextColor="White" FontAttributes="Bold" CornerRadius="0"/>
+
+            <Grid Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PointsToTeamOneCommand}"/>
+                </Grid.GestureRecognizers>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="{Binding CurrentCard.GameCardDetails.PointValue}" TextColor="White" FontAttributes="Bold"/>
+                    <Label Text=" Punkte für " TextColor="White" FontAttributes="Bold"/>
+                    <Label Text="{Binding TeamOne.Name}" TextColor="White" FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+            </Grid>
+
+            <Grid Grid.Column="1" BackgroundColor="{StaticResource Blue}">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DisplayNextCardCommand}"/>
+                </Grid.GestureRecognizers>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Überspringen" TextColor="White" FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+            </Grid>
+
+            <Grid Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PointsToTeamTwoCommand}"/>
+                </Grid.GestureRecognizers>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="{Binding CurrentCard.GameCardDetails.PointValue}" TextColor="White" FontAttributes="Bold"/>
+                    <Label Text=" Punkte für " TextColor="White" FontAttributes="Bold"/>
+                    <Label Text="{Binding TeamTwo.Name}" TextColor="White" FontAttributes="Bold"/>
+                </HorizontalStackLayout>
+            </Grid>
+
         </Grid>
     </Grid>
 </ContentView>

@@ -23,6 +23,8 @@
 
         <controls:ManageTeamsView x:Key="ManageTeamsView" 
                         AllPlayers="{Binding AllPlayers}"
+                        TeamOne="{Binding TeamOne}"
+                        TeamTwo="{Binding TeamTwo}"
                         TeamlessPlayers="{Binding TeamlessPlayers}"
                         TeamOnePlayers="{Binding TeamOnePlayers}"
                         TeamTwoPlayers="{Binding TeamTwoPlayers}"

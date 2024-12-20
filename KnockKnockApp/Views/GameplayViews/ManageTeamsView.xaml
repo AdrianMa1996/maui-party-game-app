@@ -40,7 +40,21 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}" Text="TeamA" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="{StaticResource TeamOneColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="TeamOneNameEntry" Grid.Column="1" Opacity="0" InputTransparent="True" MinimumWidthRequest="50" MaxLength="10" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding TeamOne.Name}"/>
+                    <HorizontalStackLayout Grid.Column="1">
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FocusTeamOneNameEntry"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label Text="{Binding TeamOne.Name}" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Image Source="icon_edit_white.png" Aspect="AspectFill" HeightRequest="20" WidthRequest="20" Margin="10,0,0,0"/>
+                    </HorizontalStackLayout>
+                </Grid>
 
                 <Frame Grid.Row="0" Grid.Column="1" HeightRequest="30" Margin="10" Padding="8,0,8,0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Blue}" HorizontalOptions="Center" VerticalOptions="Center" >
 
@@ -54,7 +68,21 @@
                     </Frame.GestureRecognizers>
                 </Frame>
 
-                <Label Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}" Text="TeamB" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Grid Grid.Row="0" Grid.Column="2" BackgroundColor="{StaticResource TeamTwoColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="TeamTwoNameEntry" Grid.Column="1" Opacity="0" InputTransparent="True" MinimumWidthRequest="50" MaxLength="10" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding TeamTwo.Name}"/>
+                    <HorizontalStackLayout Grid.Column="1">
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FocusTeamTwoNameEntry"/>
+                        </HorizontalStackLayout.GestureRecognizers>
+                        <Label Text="{Binding TeamTwo.Name}" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Image Source="icon_edit_white.png" Aspect="AspectFill" HeightRequest="20" WidthRequest="20" Margin="10,0,0,0"/>
+                    </HorizontalStackLayout>
+                </Grid>
 
             </Grid>
 

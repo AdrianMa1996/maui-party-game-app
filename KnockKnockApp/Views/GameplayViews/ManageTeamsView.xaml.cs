@@ -14,6 +14,22 @@ public partial class ManageTeamsView : ContentView
         set => SetValue(AllPlayersProperty, value);
     }
 
+    public static readonly BindableProperty TeamOneProperty = BindableProperty.Create(nameof(TeamOne), typeof(Team), typeof(ManageTeamsView));
+
+    public Team TeamOne
+    {
+        get => (Team)GetValue(TeamOneProperty);
+        set => SetValue(TeamOneProperty, value);
+    }
+
+    public static readonly BindableProperty TeamTwoProperty = BindableProperty.Create(nameof(TeamTwo), typeof(Team), typeof(ManageTeamsView));
+
+    public Team TeamTwo
+    {
+        get => (Team)GetValue(TeamTwoProperty);
+        set => SetValue(TeamTwoProperty, value);
+    }
+
     public static readonly BindableProperty TeamlessPlayersProperty = BindableProperty.Create(nameof(TeamlessPlayers), typeof(ObservableCollection<Player>), typeof(ManageTeamsView));
 
     public ObservableCollection<Player> TeamlessPlayers
@@ -112,5 +128,17 @@ public partial class ManageTeamsView : ContentView
                 }
             });
         });
+    }
+
+    private void FocusTeamOneNameEntry(object sender, TappedEventArgs e)
+    {
+        TeamOneNameEntry.IsEnabled = true;
+        TeamOneNameEntry.Focus();
+    }
+
+    private void FocusTeamTwoNameEntry(object sender, TappedEventArgs e)
+    {
+        TeamTwoNameEntry.IsEnabled = true;
+        TeamTwoNameEntry.Focus();
     }
 }
