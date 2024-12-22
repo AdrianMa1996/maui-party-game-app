@@ -45,7 +45,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" Opacity="0.4">
+            <StackLayout Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" Opacity="0.3">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding CloseWarningMessageCommand}"/>
                 </StackLayout.GestureRecognizers>
@@ -102,7 +102,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" Opacity="0.4">
+            <StackLayout Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Black" Opacity="0.3">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding CloseInformationPopupCommand}"/>
                 </StackLayout.GestureRecognizers>
