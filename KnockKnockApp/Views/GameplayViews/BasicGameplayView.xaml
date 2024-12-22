@@ -134,27 +134,33 @@
                         </Grid.RowDefinitions>
 
                         <ScrollView Grid.Row="1" Padding="10,0">
-                            <FlexLayout x:Name="ListPlayers" BindableLayout.ItemsSource="{Binding AllPlayers}" Wrap="Wrap" AlignContent="End">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Frame Margin="2,0,2,10" Padding="10,0,9,0" HeightRequest="35" BackgroundColor="White" CornerRadius="8">
-                                            <FlexLayout Direction="Row" BackgroundColor="White" AlignItems="Center">
-                                                <Label Text="{Binding Name}" FontAttributes="Bold" Margin="0,0,5,0" TextColor="Black"/>
-                                                <Frame HeightRequest="13" WidthRequest="13" CornerRadius="0" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent">
-                                                    <Image Source="icon_close_lightgray.png" HeightRequest="13" WidthRequest="13" Aspect="AspectFill" />
-                                                    <Frame.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}"/>
-                                                    </Frame.GestureRecognizers>
-                                                </Frame>
-                                            </FlexLayout>
-                                        </Frame>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </FlexLayout>
-
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="Trage die Mitspieler in das Textfeld ein und füge sie mit einem Klick auf das Pluszeichen der Spielerliste hinzu." Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1" Margin="15,15,15,0"/>
+                                <FlexLayout x:Name="ListPlayers" Grid.Row="1" BindableLayout.ItemsSource="{Binding AllPlayers}" Wrap="Wrap" AlignContent="End">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame Margin="2,0,2,10" Padding="10,0,9,0" HeightRequest="35" BackgroundColor="White" CornerRadius="8">
+                                                <FlexLayout Direction="Row" BackgroundColor="White" AlignItems="Center">
+                                                    <Label Text="{Binding Name}" TextColor="Black" FontAttributes="Bold" Margin="0,0,5,0"/>
+                                                    <Frame HeightRequest="13" WidthRequest="13" CornerRadius="0" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent">
+                                                        <Image Source="icon_close_lightgray.png" HeightRequest="13" WidthRequest="13" Aspect="AspectFill"/>
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}"/>
+                                                        </Frame.GestureRecognizers>
+                                                    </Frame>
+                                                </FlexLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
+                            </Grid>
                         </ScrollView>
 
-                        <Frame Grid.Row="1" WidthRequest="20" HeightRequest="20" CornerRadius="0" Margin="0,20,20,0" Padding="0" IsClippedToBounds="True" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="Transparent" >
+                        <Frame Grid.Row="0" WidthRequest="20" HeightRequest="20" CornerRadius="0" Margin="0,20,20,0" Padding="0" IsClippedToBounds="True" HorizontalOptions="End" VerticalOptions="Start" BackgroundColor="Transparent" >
                             <Image Source="icon_close_lightgray.png" WidthRequest="20" HeightRequest="20" Aspect="AspectFill" />
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding HideManagePlayersCommand}" />
