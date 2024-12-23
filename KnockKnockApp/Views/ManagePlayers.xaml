@@ -72,7 +72,7 @@
                     <Image Source="icon_player_gray.png" Aspect="AspectFill" HeightRequest="18" WidthRequest="18"/>
                 </Frame>
 
-                <Entry Grid.Column="1" x:Name="SpielerNameEntry" MinimumHeightRequest="65" Margin="10,0,10,0" MaxLength="10" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" TextColor="Black" />
+                <Entry Grid.Column="1" x:Name="SpielerNameEntry" MinimumHeightRequest="65" Margin="10,0,10,0" MaxLength="10" Placeholder="{Binding LocalizationService[2], Mode=OneWay}" Keyboard="Plain" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" Text="{Binding SpielerNameEntryText}" VerticalOptions="Center" TextColor="Black" ReturnType="Next" ReturnCommand="{Binding AddPlayerCommand}"/>
 
                 <Frame Grid.Column="2" WidthRequest="30" HeightRequest="30" Margin="10" Padding="0" CornerRadius="10" IsClippedToBounds="True" BackgroundColor="{StaticResource Gray100}">
                     <Image Source="icon_plus_gray.png" Aspect="AspectFill" HeightRequest="15" WidthRequest="15"/>
