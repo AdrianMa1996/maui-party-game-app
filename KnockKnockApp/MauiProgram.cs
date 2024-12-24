@@ -9,6 +9,8 @@ using KnockKnockApp.Views;
 using KnockKnockApp.Views.CardGameExtension;
 using KnockKnockApp.Views.GameplayViews;
 using Microsoft.Extensions.Logging;
+using SQLite;
+using KnockKnockApp.Models.Database;
 
 namespace KnockKnockApp
 {
@@ -95,7 +97,9 @@ namespace KnockKnockApp
             var lastWriteTimeAppDataDir = File.GetLastWriteTime(FileSystem.Current.AppDataDirectory);
             var lastWriteTimeLocalDb = File.GetLastWriteTime(dbPath);
 
-            if (lastWriteTimeAppDataDir > lastWriteTimeLocalDb)
+            var ConnectedAppBuildOfDatabase = GetWithDatabaseConnectedAppBuildString();
+
+            if (lastWriteTimeAppDataDir > lastWriteTimeLocalDb || ConnectedAppBuildOfDatabase != AppInfo.Current.BuildString)
             {
                 using var databaseFileStream = FileSystem.OpenAppPackageFileAsync("database.sqlite").Result;
 
@@ -104,6 +108,38 @@ namespace KnockKnockApp
                     databaseFileStream.CopyTo(databaseMemoryStream);
                     File.WriteAllBytes(dbPath, databaseMemoryStream.ToArray());
                 }
+
+                try
+                {
+                    using (var dbConnection = new SQLiteConnection(dbPath))
+                    {
+                        var databaseInfo = dbConnection.Find<DatabaseInfo>(1);
+                        databaseInfo.ConnectedAppBuild = AppInfo.Current.BuildString;
+                        dbConnection.Update(databaseInfo);
+                    }
+                }
+                catch
+                {
+                    // do nothing
+                }
+            }
+        }
+
+        private static string GetWithDatabaseConnectedAppBuildString()
+        {
+            try
+            {
+                string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.sqlite");
+
+                using (var dbConnection = new SQLiteConnection(dbPath))
+                {
+                    var databaseInfo = dbConnection.Find<DatabaseInfo>(1);
+                    return databaseInfo.ConnectedAppBuild;
+                }
+            }
+            catch 
+            { 
+                return string.Empty;
             }
         }
     }
