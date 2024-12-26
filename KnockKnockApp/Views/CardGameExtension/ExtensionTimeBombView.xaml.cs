@@ -13,7 +13,7 @@ public partial class ExtensionTimeBombView : ContentView
         ExtensionTimeBombView extensionTimeBombView = (ExtensionTimeBombView)bindable;
         if (extensionTimeBombView.isTicking && (bool)newValue == false)
         {
-            // _ = extensionTimeBombView.LetTimeBombExplode();
+            _ = extensionTimeBombView.LetTimeBombExplode();
         }
     }
 

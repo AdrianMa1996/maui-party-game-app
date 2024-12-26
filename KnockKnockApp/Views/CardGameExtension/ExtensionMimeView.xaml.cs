@@ -92,7 +92,7 @@ public partial class ExtensionMimeView : ContentView
             if (currentStopWatchTime <= 0)
             {
                 timer.Stop();
-                // _ = LetStopWatchStop();
+                _ = LetStopWatchStop();
             }
         };
 

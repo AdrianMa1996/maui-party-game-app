@@ -137,7 +137,7 @@
                     <ScrollView Grid.Row="1" Margin="15,0,10,15">
                         <StackLayout>
                             <Button Grid.Row="2" Command="{Binding OpenTermsOfUseUrlCommand}" Text="Nutzungsbedingungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,10,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
-                            <Button Grid.Row="2" Command="{Binding OpenTermsOfUseUrlCommand}" Text="Datenschutzbestimmungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,0,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
+                            <Button Grid.Row="2" Command="{Binding OpenPrivacyPolicyUrlCommand}" Text="Datenschutzbestimmungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,0,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
                             <Label FontSize="20" FontAttributes="Bold" TextColor="White" LineHeight="1.1" HorizontalTextAlignment="Center" Margin="0,10,0,0">Kontakt</Label>
                             <Label FontSize="16" TextColor="White" LineHeight="1.1" HorizontalTextAlignment="Center">contact@knockknock-partygame.com</Label>
                         </StackLayout>
