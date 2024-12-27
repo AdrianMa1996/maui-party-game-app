@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Models.DTOs;
+using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 
 namespace KnockKnockApp.ViewModels.CardGameExtension
@@ -10,16 +11,26 @@ namespace KnockKnockApp.ViewModels.CardGameExtension
     public partial class ExtensionGameplayViewModel : ObservableObject
     {
         private readonly IExtensionCardManagementService _extensionCardManagementService;
+        private readonly ISettingsRepository _settingsRepository;
 
-        public ExtensionGameplayViewModel(ILocalizationService localizationService, IExtensionCardManagementService extensionCardManagementService)
+        public ExtensionGameplayViewModel(ILocalizationService localizationService, IExtensionCardManagementService extensionCardManagementService, ISettingsRepository settingsRepository)
         {
             LocalizationService = localizationService;
             _extensionCardManagementService = extensionCardManagementService;
+            _settingsRepository = settingsRepository;
             isGameRunning = true;
+
+            Task.Run(async () =>
+            {
+                Settings = await _settingsRepository.GetSettingsAsync();
+            });
         }
 
         [ObservableProperty]
         public ILocalizationService localizationService;
+
+        [ObservableProperty]
+        public Settings settings;
 
         [ObservableProperty]
         private Extension? currentExtension;

@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
+using KnockKnockApp.Models.Database;
+using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using System.Collections.ObjectModel;
 
@@ -9,15 +11,26 @@ namespace KnockKnockApp.ViewModels
 {
     public partial class WelcomePageViewModel : ObservableObject
     {
-        public WelcomePageViewModel(ILocalizationService localizationService)
+        private readonly ISettingsRepository _settingsRepository;
+
+        public WelcomePageViewModel(ILocalizationService localizationService, ISettingsRepository settingsRepository)
         {
             LocalizationService = localizationService;
+            _settingsRepository = settingsRepository;
             IsWarningMessageVisible = true;
             IsInformationPopupVisible = false;
+
+            Task.Run(async () =>
+            {
+                Settings = await _settingsRepository.GetSettingsAsync();
+            });
         }
 
         [ObservableProperty]
         public ILocalizationService localizationService;
+
+        [ObservableProperty]
+        public Settings settings;
 
         [ObservableProperty]
         public bool isWarningMessageVisible;
@@ -65,6 +78,7 @@ namespace KnockKnockApp.ViewModels
         public void CloseInformationPopup()
         {
             IsInformationPopupVisible = false;
+            _settingsRepository.UpdateSettingsAsync(Settings);
         }
     }
 }

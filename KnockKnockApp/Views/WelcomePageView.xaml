@@ -136,6 +136,14 @@
 
                     <ScrollView Grid.Row="1" Margin="15,0,10,15">
                         <StackLayout>
+                            <Grid Padding="0, 0, 0, 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="Vibration" TextColor="White" FontSize="18" FontAttributes="Bold" TextTransform="Uppercase" VerticalOptions="Center"/>
+                                <CheckBox Grid.Column="1" IsChecked="{Binding Settings.IsVibrationActivated}" Color="White" VerticalOptions="Center"/>
+                            </Grid>
                             <Button Grid.Row="2" Command="{Binding OpenTermsOfUseUrlCommand}" Text="Nutzungsbedingungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,10,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
                             <Button Grid.Row="2" Command="{Binding OpenPrivacyPolicyUrlCommand}" Text="Datenschutzbestimmungen" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource Violet}" Margin="0,0,5,10" Padding="20,5" CornerRadius="10" BackgroundColor="{StaticResource Gold}" />
                             <Label FontSize="20" FontAttributes="Bold" TextColor="White" LineHeight="1.1" HorizontalTextAlignment="Center" Margin="0,10,0,0">Kontakt</Label>

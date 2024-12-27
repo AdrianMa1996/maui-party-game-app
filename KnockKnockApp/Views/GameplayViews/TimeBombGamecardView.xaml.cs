@@ -24,6 +24,14 @@ public partial class TimeBombGamecardView : ContentView
         set => SetValue(IsGameRunningProperty, value);
     }
 
+    public static readonly BindableProperty SettingsProperty = BindableProperty.Create(nameof(Settings), typeof(Settings), typeof(TimeBombGamecardView));
+
+    public Settings Settings
+    {
+        get => (Settings)GetValue(SettingsProperty);
+        set => SetValue(SettingsProperty, value);
+    }
+
     public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(TimeBombGamecardView), propertyChanged: OnGamecardChanged);
 
     static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
@@ -163,7 +171,10 @@ public partial class TimeBombGamecardView : ContentView
             if (IsGameRunning)
             {
                 await Task.Delay(50);
-                Vibration.Default.Vibrate(vibrationLength);
+                if (Settings.IsVibrationActivated == true)
+                {
+                    Vibration.Default.Vibrate(vibrationLength);
+                }
                 await Task.Delay(3000);
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
@@ -181,13 +192,19 @@ public partial class TimeBombGamecardView : ContentView
         {
             while (isTicking)
             {
-                Vibration.Default.Vibrate(tickVibrationLength);
+                if (Settings.IsVibrationActivated == true)
+                {
+                    Vibration.Default.Vibrate(tickVibrationLength);
+                }
                 await Task.Delay(333);
                 if (!isTicking)
                 {
                     break;
                 }
-                Vibration.Default.Vibrate(tickVibrationLength);
+                if (Settings.IsVibrationActivated == true)
+                {
+                    Vibration.Default.Vibrate(tickVibrationLength);
+                }
                 await Task.Delay(666);
             }
         });

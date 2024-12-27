@@ -30,7 +30,8 @@
             NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
             CurrentExtension="{Binding CurrentExtension}"
             DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
-            CurrentCard="{Binding CurrentCard}">
+            CurrentCard="{Binding CurrentCard}"
+            Settings="{Binding Settings}">
         </controls:ExtensionMimeView>
 
         <controls:ExtensionTimeBombPreparationView x:Key="ExtensionTimeBombPreparationView"
@@ -45,7 +46,8 @@
             NavigateToSelectCardGameExtensionCommand="{Binding NavigateToSelectCardGameExtensionCommand}"
             CurrentExtension="{Binding CurrentExtension}"
             DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
-            CurrentCard="{Binding CurrentCard}">
+            CurrentCard="{Binding CurrentCard}"
+            Settings="{Binding Settings}">
         </controls:ExtensionTimeBombView>
 
     </ContentPage.Resources>

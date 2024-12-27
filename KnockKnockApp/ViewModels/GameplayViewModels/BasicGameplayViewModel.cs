@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Models.DTOs;
+using KnockKnockApp.Repositories;
 using KnockKnockApp.Services;
 using System.Collections.ObjectModel;
 
@@ -17,14 +18,16 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         private readonly ICardManagementService _cardManagementService;
         private readonly IPlayerManagementService _playerManagementService;
         private readonly ITeamManagementService _teamManagementService;
+        private readonly ISettingsRepository _settingsRepository;
 
-        public BasicGameplayViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService)
+        public BasicGameplayViewModel(ILocalizationService localizationService, IDeviceOrientationService deviceOrientationService, ICardManagementService cardManagementService, IPlayerManagementService playerManagementService, ITeamManagementService teamManagementService, ISettingsRepository settingsRepository)
         {
             LocalizationService = localizationService;
             _deviceOrientationService = deviceOrientationService;
             _cardManagementService = cardManagementService;
             _playerManagementService = playerManagementService;
             _teamManagementService = teamManagementService;
+            _settingsRepository = settingsRepository;
 #if IOS
             keyboardHeight = new GridLength(0.58, GridUnitType.Star);
 #endif
@@ -48,10 +51,18 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
             _teamManagementService = teamManagementService;
 
             isGameRunning = true;
+
+            Task.Run(async () =>
+            {
+                Settings = await _settingsRepository.GetSettingsAsync();
+            });
         }
 
         [ObservableProperty]
         public ILocalizationService localizationService;
+
+        [ObservableProperty]
+        public Settings settings;
 
         [ObservableProperty]
         private bool isGameRunning;

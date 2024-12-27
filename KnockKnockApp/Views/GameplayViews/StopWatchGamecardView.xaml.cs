@@ -24,6 +24,14 @@ public partial class StopWatchGamecardView : ContentView
         set => SetValue(IsGameRunningProperty, value);
     }
 
+    public static readonly BindableProperty SettingsProperty = BindableProperty.Create(nameof(Settings), typeof(Settings), typeof(StopWatchGamecardView));
+
+    public Settings Settings
+    {
+        get => (Settings)GetValue(SettingsProperty);
+        set => SetValue(SettingsProperty, value);
+    }
+
     public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(StopWatchGamecardView), propertyChanged: OnGamecardChanged);
 
     static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
@@ -124,7 +132,10 @@ public partial class StopWatchGamecardView : ContentView
         timer.Interval = TimeSpan.FromMilliseconds(1000);
         timer.Tick += (s, e) =>
         {
-            Vibration.Default.Vibrate(tickVibrationLength);
+            if (Settings.IsVibrationActivated == true)
+            {
+                Vibration.Default.Vibrate(tickVibrationLength);
+            }
             currentStopWatchTime--;
             MainThread.BeginInvokeOnMainThread(() =>
             {
@@ -164,7 +175,10 @@ public partial class StopWatchGamecardView : ContentView
             if (IsGameRunning)
             {
                 await Task.Delay(50);
-                Vibration.Default.Vibrate(vibrationLength);
+                if (Settings.IsVibrationActivated == true)
+                {
+                    Vibration.Default.Vibrate(vibrationLength);
+                }
                 await Task.Delay(3000);
                 MainThread.BeginInvokeOnMainThread(() =>
                 {

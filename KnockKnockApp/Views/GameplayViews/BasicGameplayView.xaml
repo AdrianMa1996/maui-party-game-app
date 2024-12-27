@@ -90,7 +90,8 @@
                         NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
                         PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
                         PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
-                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+                        DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+                        Settings="{Binding Settings}"/>
 
         <controls:StartStopWatchGamecardView x:Key="StartStopWatchGamecardView" 
                        CurrentCard="{Binding CurrentCard}"
@@ -113,7 +114,8 @@
                        NavigateToManagePlayersCommand="{Binding NavigateToManagePlayersCommand}"
                        PointsToTeamOneCommand="{Binding PointsToTeamOneCommand}"
                        PointsToTeamTwoCommand="{Binding PointsToTeamTwoCommand}"
-                       DisplayNextCardCommand="{Binding DisplayNextCardCommand}"/>
+                       DisplayNextCardCommand="{Binding DisplayNextCardCommand}"
+                       Settings="{Binding Settings}"/>
 
         <controls:PunishmentGameView x:Key="PunishmentGameView"
                         LeaveGameModeCommand="{Binding NavigateToSelectGameModeCommand}"
