@@ -47,7 +47,7 @@
                                     <FlexLayout Direction="Row" BackgroundColor="White" AlignItems="Center">
                                         <Label Text="{Binding Name}" TextColor="Black" FontAttributes="Bold" Margin="0,0,5,0"/>
                                         <Frame HeightRequest="13" WidthRequest="13" CornerRadius="0" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent">
-                                            <Image Source="icon_close_lightgray.png" HeightRequest="13" WidthRequest="13" Aspect="AspectFill"/>
+                                            <Image Source="icon_close_gray.png" HeightRequest="13" WidthRequest="13" Aspect="AspectFill"/>
                                             <Frame.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference ListPlayers}}" CommandParameter="{Binding .}"/>
                                             </Frame.GestureRecognizers>
