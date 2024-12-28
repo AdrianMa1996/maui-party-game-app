@@ -89,6 +89,13 @@
                                     </Grid.RowDefinitions>
 
                                     <Label Grid.Column="0" Grid.Row="0" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" Text="{Binding Title}"/>
+
+                                    <StackLayout Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" HeightRequest="50" WidthRequest="50" HorizontalOptions="End" VerticalOptions="Start">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameModeSettingsCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    
                                     <Image Grid.Column="1" Grid.Row="0" Source="icon_settings_white.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20" HorizontalOptions="End">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.NavigateToGameModeSettingsCommand, Source={x:Reference GameModesList}}" CommandParameter="{Binding .}"/>
