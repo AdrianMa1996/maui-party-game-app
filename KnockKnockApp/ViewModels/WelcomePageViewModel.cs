@@ -17,7 +17,7 @@ namespace KnockKnockApp.ViewModels
         {
             LocalizationService = localizationService;
             _settingsRepository = settingsRepository;
-            IsWarningMessageVisible = true;
+            IsWarningMessageVisible = false;
             IsInformationPopupVisible = false;
 
             Task.Run(async () =>
