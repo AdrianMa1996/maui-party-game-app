@@ -80,5 +80,11 @@ namespace KnockKnockApp.ViewModels
             IsInformationPopupVisible = false;
             _settingsRepository.UpdateSettingsAsync(Settings);
         }
+
+        [RelayCommand]
+        public async Task OpenAmazonKnockKnockCardGame()
+        {
+            await Launcher.OpenAsync("https://www.amazon.de/dp/B0F9LGCDMJ");
+        }
     }
 }
