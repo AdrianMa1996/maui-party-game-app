@@ -20,41 +20,59 @@ namespace KnockKnockApp.Converters
                     case CardSetCategory.GameOver:
                         color = GetColorFromResources("GrayCardColor");
                         break;
-                    case CardSetCategory.Basic:
-                        color = GetColorFromResources("PurpleCardColor");
-                        break;
-                    case CardSetCategory.Duel:
-                        color = GetColorFromResources("YellowCardColor");
-                        break;
-                    case CardSetCategory.Game:
-                        color = GetColorFromResources("GreenCardColor");
-                        break;
-                    case CardSetCategory.Dare:
-                        color = GetColorFromResources("BlueCardColor");
-                        break;
-                    case CardSetCategory.Rule:
-                        color = GetColorFromResources("RedCardColor");
-                        break;
-                    case CardSetCategory.Powerdown:
-                        color = GetColorFromResources("PinkCardColor");
-                        break;
-                    case CardSetCategory.Powerup:
-                        color = GetColorFromResources("OrangeCardColor");
-                        break;
-                    case CardSetCategory.InformationTeams:
-                        color = GetColorFromResources("GrayCardColor");
-                        break;
-                    case CardSetCategory.GameOverTeams:
-                        color = GetColorFromResources("GrayCardColor");
-                        break;
                     case CardSetCategory.ManageTeams:
                         color = GetColorFromResources("GrayCardColor");
                         break;
                     case CardSetCategory.PunishmentGame:
                         color = GetColorFromResources("GrayCardColor");
                         break;
-                    case CardSetCategory.TeamBasic:
+                    case CardSetCategory.PurpleCard:
                         color = GetColorFromResources("PurpleCardColor");
+                        break;
+                    case CardSetCategory.PurpleCardScoring:
+                        color = GetColorFromResources("PurpleCardColor");
+                        break;
+                    case CardSetCategory.YellowCard:
+                        color = GetColorFromResources("YellowCardColor");
+                        break;
+                    case CardSetCategory.YellowCardScoring:
+                        color = GetColorFromResources("YellowCardColor");
+                        break;
+                    case CardSetCategory.GreenCard:
+                        color = GetColorFromResources("GreenCardColor");
+                        break;
+                    case CardSetCategory.GreenCardScoring:
+                        color = GetColorFromResources("GreenCardColor");
+                        break;
+                    case CardSetCategory.BlueCard:
+                        color = GetColorFromResources("BlueCardColor");
+                        break;
+                    case CardSetCategory.BlueCardScoring:
+                        color = GetColorFromResources("BlueCardColor");
+                        break;
+                    case CardSetCategory.RedCard:
+                        color = GetColorFromResources("RedCardColor");
+                        break;
+                    case CardSetCategory.RedCardScoring:
+                        color = GetColorFromResources("RedCardColor");
+                        break;
+                    case CardSetCategory.PinkCard:
+                        color = GetColorFromResources("PinkCardColor");
+                        break;
+                    case CardSetCategory.PinkCardScoring:
+                        color = GetColorFromResources("PinkCardColor");
+                        break;
+                    case CardSetCategory.OrangeCard:
+                        color = GetColorFromResources("OrangeCardColor");
+                        break;
+                    case CardSetCategory.OrangeCardScoring:
+                        color = GetColorFromResources("OrangeCardColor");
+                        break;
+                    case CardSetCategory.GrayCard:
+                        color = GetColorFromResources("GrayCardColor");
+                        break;
+                    case CardSetCategory.GrayCardScoring:
+                        color = GetColorFromResources("GrayCardColor");
                         break;
                     case CardSetCategory.TimeBombPreparation:
                         color = GetColorFromResources("GreenCardColor");
@@ -65,12 +83,6 @@ namespace KnockKnockApp.Converters
                     case CardSetCategory.TimeBombScoring:
                         color = GetColorFromResources("GreenCardColor");
                         break;
-                    case CardSetCategory.TeamDare:
-                        color = GetColorFromResources("BlueCardColor");
-                        break;
-                    case CardSetCategory.TeamTuneYourViolins:
-                        color = GetColorFromResources("PinkCardColor");
-                        break;
                     case CardSetCategory.StopWatchPreparation:
                         color = GetColorFromResources("PinkCardColor");
                         break;
@@ -79,21 +91,6 @@ namespace KnockKnockApp.Converters
                         break;
                     case CardSetCategory.StopWatchScoring:
                         color = GetColorFromResources("PinkCardColor");
-                        break;
-                    case CardSetCategory.GuessingGame:
-                        color = GetColorFromResources("OrangeCardColor");
-                        break;
-                    case CardSetCategory.GuessingGameScoring:
-                        color = GetColorFromResources("OrangeCardColor");
-                        break;
-                    case CardSetCategory.KnockKnockGlasTrinken:
-                        color = GetColorFromResources("RedCardColor");
-                        break;
-                    case CardSetCategory.KnockKnockGlasBefüllen:
-                        color = GetColorFromResources("BlueCardColor");
-                        break;
-                    case CardSetCategory.KnockKnockGlasWeitergeben:
-                        color = GetColorFromResources("GreenCardColor");
                         break;
                     default:
                         color = GetColorFromResources("GrayCardColor");

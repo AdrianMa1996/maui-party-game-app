@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.Input;
+using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
 using KnockKnockApp.Models.DTOs;
 
@@ -6,12 +7,58 @@ namespace KnockKnockApp.Views.GameplayViews;
 
 public partial class BasicGamecardView : ContentView
 {
-    public static readonly BindableProperty GamecardTapGestureRecognizerCommandProperty = BindableProperty.Create(nameof(GamecardTapGestureRecognizerCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+    public static readonly BindableProperty CurrentCardProperty = BindableProperty.Create(nameof(CurrentCard), typeof(GameCardDto), typeof(BasicGamecardView), propertyChanged: OnGamecardChanged);
 
-    public RelayCommand GamecardTapGestureRecognizerCommand
+    static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        get => (RelayCommand)GetValue(GamecardTapGestureRecognizerCommandProperty);
-        set => SetValue(GamecardTapGestureRecognizerCommandProperty, value);
+        BasicGamecardView gamecardView = (BasicGamecardView)bindable;
+        gamecardView.AnimateCardText();
+    }
+
+    public GameCardDto CurrentCard
+    {
+        get => (GameCardDto)GetValue(CurrentCardProperty);
+        set => SetValue(CurrentCardProperty, value);
+    }
+
+    public static readonly BindableProperty CurrentGameModeProperty = BindableProperty.Create(nameof(CurrentGameMode), typeof(GameMode), typeof(BasicGamecardView));
+
+    public GameMode CurrentGameMode
+    {
+        get => (GameMode)GetValue(CurrentGameModeProperty);
+        set => SetValue(CurrentGameModeProperty, value);
+    }
+
+    public static readonly BindableProperty TeamOneProperty = BindableProperty.Create(nameof(TeamOne), typeof(Team), typeof(BasicGamecardView));
+
+    public Team TeamOne
+    {
+        get => (Team)GetValue(TeamOneProperty);
+        set => SetValue(TeamOneProperty, value);
+    }
+
+    public static readonly BindableProperty TeamTwoProperty = BindableProperty.Create(nameof(TeamTwo), typeof(Team), typeof(BasicGamecardView));
+
+    public Team TeamTwo
+    {
+        get => (Team)GetValue(TeamTwoProperty);
+        set => SetValue(TeamTwoProperty, value);
+    }
+
+    public static readonly BindableProperty PointsToTeamOneCommandProperty = BindableProperty.Create(nameof(PointsToTeamOneCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand PointsToTeamOneCommand
+    {
+        get => (RelayCommand)GetValue(PointsToTeamOneCommandProperty);
+        set => SetValue(PointsToTeamOneCommandProperty, value);
+    }
+
+    public static readonly BindableProperty PointsToTeamTwoCommandProperty = BindableProperty.Create(nameof(PointsToTeamTwoCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+
+    public RelayCommand PointsToTeamTwoCommand
+    {
+        get => (RelayCommand)GetValue(PointsToTeamTwoCommandProperty);
+        set => SetValue(PointsToTeamTwoCommandProperty, value);
     }
 
     public static readonly BindableProperty NavigateToManagePlayersCommandProperty = BindableProperty.Create(nameof(NavigateToManagePlayersCommand), typeof(RelayCommand), typeof(BasicGamecardView));
@@ -22,55 +69,25 @@ public partial class BasicGamecardView : ContentView
         set { SetValue(NavigateToManagePlayersCommandProperty, value); }
     }
 
-    public static readonly BindableProperty LeaveGameModeCommandProperty = BindableProperty.Create(nameof(LeaveGameModeCommand), typeof(RelayCommand), typeof(BasicGamecardView));
+    public static readonly BindableProperty NavigateToSelectGameModeCommandProperty = BindableProperty.Create(nameof(NavigateToSelectGameModeCommand), typeof(RelayCommand), typeof(BasicGamecardView));
 
-    public RelayCommand LeaveGameModeCommand
+    public RelayCommand NavigateToSelectGameModeCommand
     {
-        get { return (RelayCommand)GetValue(LeaveGameModeCommandProperty); }
-        set { SetValue(LeaveGameModeCommandProperty, value); }
+        get { return (RelayCommand)GetValue(NavigateToSelectGameModeCommandProperty); }
+        set { SetValue(NavigateToSelectGameModeCommandProperty, value); }
     }
 
-    public static readonly BindableProperty PointsTeamAProperty = BindableProperty.Create(nameof(PointsTeamA), typeof(string), typeof(BasicGamecardView), string.Empty);
+    public static readonly BindableProperty DisplayNextCardCommandProperty = BindableProperty.Create(nameof(DisplayNextCardCommand), typeof(RelayCommand), typeof(BasicGamecardView));
 
-    public string PointsTeamA
+    public RelayCommand DisplayNextCardCommand
     {
-        get => (string)GetValue(PointsTeamAProperty);
-        set => SetValue(PointsTeamAProperty, value);
-    }
-
-    public static readonly BindableProperty PointsTeamBProperty = BindableProperty.Create(nameof(PointsTeamB), typeof(string), typeof(BasicGamecardView), string.Empty);
-
-    public string PointsTeamB
-    {
-        get => (string)GetValue(PointsTeamBProperty);
-        set => SetValue(PointsTeamBProperty, value);
-    }
-
-    public static readonly BindableProperty GamecardProperty = BindableProperty.Create(nameof(Gamecard), typeof(GameCardDto), typeof(BasicGamecardView), propertyChanged: OnGamecardChanged);
-
-    static void OnGamecardChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        BasicGamecardView gamecardView = (BasicGamecardView)bindable;
-        gamecardView.AnimateCardText();
-    }
-
-    public GameCardDto Gamecard
-    {
-        get => (GameCardDto)GetValue(GamecardProperty);
-        set => SetValue(GamecardProperty, value);
-    }
-
-    public static readonly BindableProperty GameModeProperty = BindableProperty.Create(nameof(GameMode), typeof(GameMode), typeof(BasicGamecardView));
-
-    public GameMode GameMode
-    {
-        get => (GameMode)GetValue(GameModeProperty);
-        set => SetValue(GameModeProperty, value);
+        get => (RelayCommand)GetValue(DisplayNextCardCommandProperty);
+        set => SetValue(DisplayNextCardCommandProperty, value);
     }
 
     public BasicGamecardView()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
     }
 
     public async void AnimateCardText()

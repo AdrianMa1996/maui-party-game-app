@@ -83,7 +83,7 @@ namespace KnockKnockApp.Services
 
             var gameCardDto = await _gameCardMapper.ConvertToDtoAsync(gameCard);
 
-            if (gameCardDto.CardSetDetails.Category == CardSetCategory.GameOver || gameCardDto.CardSetDetails.Category == CardSetCategory.GameOverTeams)
+            if (gameCardDto.CardSetDetails.Category == CardSetCategory.GameOver)
             {
                 isGameOver = true;
             }

@@ -16,34 +16,32 @@ namespace KnockKnockApp.Models.Database
         // Information
         Information,
         GameOver,
-        // Normal
-        Basic,
-        Duel,
-        Game,
-        Dare,
-        Rule,
-        Powerdown,
-        Powerup,
-        // Team-Information
-        InformationTeams,
-        GameOverTeams,
         ManageTeams,
         PunishmentGame,
-        // Team
-        TeamBasic,
+        // CardColors
+        PurpleCard, // Basic
+        PurpleCardScoring,
+        YellowCard, // Mehr oder weniger
+        YellowCardScoring,
+        GreenCard, // Minigame, Abstimmen
+        GreenCardScoring,
+        BlueCard, // Fallback, Werbung, Pflicht, Wahrheit, Wer etwas zuletzt macht
+        BlueCardScoring,
+        RedCard, // Richtig oder Falsch (Fake News)
+        RedCardScoring,
+        PinkCard, // Schätzspiel
+        PinkCardScoring,
+        OrangeCard, // Allgemeinwissen
+        OrangeCardScoring,
+        GrayCard, // Gewinnerbekanntgabe
+        GrayCardScoring,
+        // TimeBomb
         TimeBombPreparation,
         TimeBomb,
-        TimeBombScoring,
-        TeamDare,
-        TeamTuneYourViolins,
+        TimeBombScoring, // nur bei Teammode
+        // StopWatch
         StopWatchPreparation,
         StopWatch,
-        StopWatchScoring,
-        GuessingGame,
-        GuessingGameScoring,
-        // KnockKnockGlas
-        KnockKnockGlasTrinken,
-        KnockKnockGlasBefüllen,
-        KnockKnockGlasWeitergeben
+        StopWatchScoring, // nur bei TeamMode
     }
 }
