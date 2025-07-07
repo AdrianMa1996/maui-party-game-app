@@ -5,6 +5,7 @@ namespace KnockKnockApp.Models.DTOs
     public class GameModeDto
     {
         public GameMode GameModeDetails { get; set; }
-        public List<CardSetDto> CardSets { get; set; }
+        public Template TemplateDetails { get; set; }
+        public List<TemplateSlot> TemplateSlots { get; set; }
     }
 }

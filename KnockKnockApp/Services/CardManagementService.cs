@@ -8,65 +8,78 @@ namespace KnockKnockApp.Services
     public class CardManagementService : ICardManagementService
     {
         private readonly IGameModeMapper _gameModeMapper;
+        private readonly ICardSetMapper _cardSetMapper;
         private readonly IGameCardMapper _gameCardMapper;
         private readonly IGameCardRepository _gameCardRepository;
+        private readonly ICardSetRepository _cardSetRepository;
         private readonly IPlayerManagementService _playerManagementService;
         private readonly ITeamManagementService _teamManagementService;
         private readonly ICardTextPlaceholderService _cardTextPlaceholderService;
+        private readonly IPlayedCardRepository _playedCardRepository;
+        private readonly IPlayedGameRepository _playedGameRepository;
 
         private Random _random = new Random();
 
         private GameModeDto? _gameModeDto;
         private Stack<GameCard?> _cardDeck = new();
-        private List<GameCard> _usedCards = [];
         private bool isGameOver = false;
 
-        public CardManagementService(IGameModeMapper gameModeMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService, ITeamManagementService teamManagementService)
+        public CardManagementService(IGameModeMapper gameModeMapper, ICardSetMapper cardSetMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, ICardSetRepository cardSetRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService, ITeamManagementService teamManagementService, IPlayedCardRepository playedCardRepository, IPlayedGameRepository playedGameRepository)
         {
             _gameModeMapper = gameModeMapper;
+            _cardSetMapper = cardSetMapper;
             _gameCardMapper = gameCardMapper;
             _gameCardRepository = gameCardRepository;
+            _cardSetRepository = cardSetRepository;
             _playerManagementService = playerManagementService;
             _cardTextPlaceholderService = cardTextPlaceholderService;
             _teamManagementService = teamManagementService;
+            _playedCardRepository = playedCardRepository;
+            _playedGameRepository = playedGameRepository;
         }
 
         public async Task SetupAsync(GameMode gameMode)
         {
             _gameModeDto = await _gameModeMapper.ConvertToDtoAsync(gameMode);
             _cardDeck = new Stack<GameCard?>();
-            _usedCards = new List<GameCard>();
 
-            InitializeCardDeckWithNullCards();
+            InitializeCardDeckWithTemplateCards();
 
             _cardTextPlaceholderService.SetupAndShuffleLists();
 
             await PlaceFollowUpCardsAsync(_gameModeDto.GameModeDetails.StartingCardID);
-            await PlaceFollowUpCardsAsync(_gameModeDto.GameModeDetails.FinisherCardID, _cardDeck.Count);
+            await PlaceFollowUpCardsAsync(_gameModeDto.GameModeDetails.FinisherCardID, _cardDeck.Count, true);
         }
 
         public async Task<GameCardDto?> DrawNextCardAsync()
         {
             _cardTextPlaceholderService.SetupAndShuffleLists();
 
-            if (_cardDeck.Count == 0 || isGameOver) // wenn _cardDeck ist empty: Spielende (return null)
+            if (_cardDeck.Count == 0 || isGameOver)
             {
+                await _playedGameRepository.AddPlayedGameAsync(new PlayedGame()
+                {
+                    GameModeID = _gameModeDto.GameModeDetails.GameModeID,
+                    TemplateID = _gameModeDto.TemplateDetails.TemplateID,
+                });
                 return null;
             }
 
             var gameCard = _cardDeck.Pop();
-            if (gameCard == null)
+            if (gameCard.GameCardID == 0)
             {
-                gameCard = GetRandomCard();
+                gameCard = await GetRandomTemplateCardAsync(gameCard);
                 PlaceCardInCardDeck(gameCard);
                 await PlaceFollowUpCardsAsync(gameCard.FollowUpCardID, gameCard.IntervalToFollowUp);
                 gameCard = _cardDeck.Pop();
+                await _playedCardRepository.AddPlayedCardAsync(new PlayedCard()
+                {
+                    GameCardID = gameCard.GameCardID,
+                });
             }
 
             gameCard = _cardTextPlaceholderService.ResolveWinningTeamPlaceholders(gameCard);
             gameCard = _cardTextPlaceholderService.ResolveLosingTeamPlaceholders(gameCard);
-
-            _usedCards.Add(gameCard);
 
             var gameCardDto = await _gameCardMapper.ConvertToDtoAsync(gameCard);
 
@@ -75,29 +88,39 @@ namespace KnockKnockApp.Services
                 isGameOver = true;
             }
 
-            return await _gameCardMapper.ConvertToDtoAsync(gameCard);
+            return gameCardDto;
         }
 
-        private void InitializeCardDeckWithNullCards()
+        private void InitializeCardDeckWithTemplateCards()
         {
-            for (int i = 0; i < _gameModeDto.GameModeDetails.NumberOfGameCards; i++)
+            var reversedTemplateSlots = _gameModeDto.TemplateSlots;
+            reversedTemplateSlots.Reverse();
+            foreach (var templateSlot in reversedTemplateSlots)
             {
-                _cardDeck.Push(null);
+                _cardDeck.Push(new GameCard()
+                {
+                    GameCardID = 0, // Template: ID = 0
+                    CardSetID = templateSlot.CardSetID,
+                    CardText = "TemplateCard",
+                    RequiredPlayers = 0,
+                    FollowUpCardID = 0,
+                    IntervalToFollowUp = 0,
+                });
             }
         }
 
-        private async Task PlaceFollowUpCardsAsync(int followUpCardID, int followUpInterval = 0)
+        private async Task PlaceFollowUpCardsAsync(int followUpCardID, int followUpInterval = 0, bool belongsToFinisherCard = false)
         {
             while (followUpCardID != 0)
             {
                 var gameCard = await _gameCardRepository.GetGameCardByIdAsync(followUpCardID);
-                PlaceCardInCardDeck(gameCard, followUpInterval);
+                PlaceCardInCardDeck(gameCard, followUpInterval, belongsToFinisherCard);
                 followUpCardID = gameCard.FollowUpCardID;
                 followUpInterval = followUpInterval + gameCard.IntervalToFollowUp;
             }
         }
 
-        private void PlaceCardInCardDeck(GameCard gameCard, int cardDepth = 0)
+        private void PlaceCardInCardDeck(GameCard gameCard, int cardDepth = 0, bool belongsToFinisherCard = false)
         {
             if (cardDepth >= 0)
             {
@@ -106,6 +129,11 @@ namespace KnockKnockApp.Services
                 while (cardDepth != 0 && _cardDeck.Count > 0)
                 {
                     var drawnCard = _cardDeck.Pop();
+                    if (drawnCard.GameCardID == _gameModeDto.GameModeDetails.FinisherCardID && !belongsToFinisherCard)
+                    {
+                        _cardDeck.Push(drawnCard);
+                        break;
+                    }
                     tempStack.Push(drawnCard);
                     cardDepth = cardDepth - 1;
                 }
@@ -116,7 +144,7 @@ namespace KnockKnockApp.Services
                 gameCard = _cardTextPlaceholderService.ResolvePlayerTeam1Placeholders(gameCard);
                 gameCard = _cardTextPlaceholderService.ResolvePlayerTeam2Placeholders(gameCard);
 
-                _cardDeck.Push(gameCard); // Problem: Karte wird eventuell hinter der Spiel-Ende karte gepushed
+                _cardDeck.Push(gameCard);
 
                 while (tempStack.Count > 0)
                 {
@@ -125,68 +153,53 @@ namespace KnockKnockApp.Services
             }
         }
 
-        private GameCard GetRandomCard()
+        private async Task<GameCard> GetRandomTemplateCardAsync(GameCard gameCard)
         {
-            var gameCard = new GameCard();
             var isValidForPlay = false;
+            var numberOfAttempts = 0;
             while (isValidForPlay == false)
             {
-                var cardSet = GetRandomActivatedCardSet();
-                int randomNumber = _random.Next(cardSet.GameCards.Count);
-                gameCard = cardSet.GameCards[randomNumber];
-                isValidForPlay = CheckIfGameCardIsValidCard(gameCard);
+                numberOfAttempts = numberOfAttempts + 1;
+                if(numberOfAttempts <= 20)
+                {
+                    var cardSet = await _cardSetRepository.GetCardSetByIdAsync(gameCard.CardSetID);
+                    var cardSetDto = await _cardSetMapper.ConvertToDtoAsync(cardSet);
+                    int randomNumber = _random.Next(cardSetDto.GameCards.Count);
+                    gameCard = cardSetDto.GameCards[randomNumber];
+                    isValidForPlay = await CheckIfGameCardIsValidCardAsync(gameCard);
+                }
+                else
+                {
+                    var cardSet = await _cardSetRepository.GetCardSetByIdAsync(_gameModeDto.GameModeDetails.FallbackCardSet);
+                    var cardSetDto = await _cardSetMapper.ConvertToDtoAsync(cardSet);
+                    int randomNumber = _random.Next(cardSetDto.GameCards.Count);
+                    gameCard = cardSetDto.GameCards[randomNumber];
+                    isValidForPlay = await CheckIfGameCardIsValidCardAsync(gameCard);
+                }
             }
 
             return gameCard;
         }
 
-        private CardSetDto? GetRandomActivatedCardSet()
+        private async Task<bool> CheckIfGameCardIsValidCardAsync(GameCard gameCard)
         {
-            int totalProbability = 0;
-            foreach (var cardSet in _gameModeDto.CardSets)
+            if (gameCard.RequiredPlayers > _playerManagementService.GetAllPlayers().Count)
             {
-                if (cardSet.GameModeBindingDetails.IsActivated)
-                {
-                    totalProbability += cardSet.GameModeBindingDetails.CardSetOccurrence;
-                }
+                return false;
             }
 
-            int randomNumber = _random.Next(totalProbability);
-
-            foreach (var cardSet in _gameModeDto.CardSets)
+            if (_gameModeDto.GameModeDetails.IsTeamGameMode && (gameCard.RequiredPlayers > _teamManagementService.GetTeamOne().TeamMembers.Count || gameCard.RequiredPlayers > _teamManagementService.GetTeamTwo().TeamMembers.Count))
             {
-                if (cardSet.GameModeBindingDetails.IsActivated)
-                {
-                    if (randomNumber < cardSet.GameModeBindingDetails.CardSetOccurrence)
-                    {
-                        return cardSet;
-                    }
-                    randomNumber -= cardSet.GameModeBindingDetails.CardSetOccurrence;
-                }
+                return false;
             }
 
-            return null; // dürfte eigentlich nie passieren
-        }
-
-        private bool CheckIfGameCardIsValidCard(GameCard gameCard)
-        {
-            if (gameCard.RequiredPlayedCardCount <= _usedCards.Count)
+            var last100PlayedCards = await _playedCardRepository.GetLast100PlayedCardsAsync();
+            if (last100PlayedCards.Any(pc => pc.GameCardID== gameCard.GameCardID))
             {
-                if (!_usedCards.Contains(gameCard))
-                {
-                    if (gameCard.RequiredTotalPlayersCount <= _playerManagementService.GetAllPlayers().Count)
-                    {
-                        if (gameCard.RequiredTeamOnePlayersCount > _teamManagementService.GetTeamOne().TeamMembers.Count || gameCard.RequiredTeamTwoPlayersCount > _teamManagementService.GetTeamTwo().TeamMembers.Count)
-                        {
-                            return false;
-                        }
-
-                        return true;
-                    }
-                }
+                return false;
             }
 
-            return false;
+            return true;
         }
     }
 }

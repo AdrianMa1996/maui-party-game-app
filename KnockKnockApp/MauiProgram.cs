@@ -39,11 +39,18 @@ namespace KnockKnockApp
             builder.Services.AddTransient<IExtensionCardManagementService, ExtensionCardManagementService>();
             builder.Services.AddSingleton<ILocalizationService, LocalizationService>();
             builder.Services.AddSingleton<ISettingsRepository, SettingsRepository>();
+            builder.Services.AddSingleton<IPlayedCardRepository, PlayedCardRepository>();
+            builder.Services.AddSingleton<IPlayedGameRepository, PlayedGameRepository>();
+            builder.Services.AddSingleton<ITemplateRepository, TemplateRepository>();
+            builder.Services.AddSingleton<ITemplateSlotRepository, TemplateSlotRepository>();
 
             builder.Services.AddSingleton<IGameCardMapper, GameCardMapper>();
             builder.Services.AddSingleton<IGameModeMapper, GameModeMapper>();
+            builder.Services.AddSingleton<ICardSetMapper, CardSetMapper>();
             builder.Services.AddSingleton<ICardSetRepository, CardSetRepository>();
             builder.Services.AddSingleton<IGameCardRepository, GameCardRepository>();
+            builder.Services.AddSingleton<IPlayedCardRepository, PlayedCardRepository>();
+            builder.Services.AddSingleton<IPlayedGameRepository, PlayedGameRepository>();
 
             builder.Services.AddSingleton<IExtensionCardMapper, ExtensionCardMapper>();
             builder.Services.AddSingleton<IExtensionMapper, ExtensionMapper>();

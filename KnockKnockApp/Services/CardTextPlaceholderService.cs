@@ -1,11 +1,6 @@
 ﻿using KnockKnockApp.Models;
 using KnockKnockApp.Models.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace KnockKnockApp.Services
 {
@@ -86,13 +81,6 @@ namespace KnockKnockApp.Services
 
         public GameCard ResolvePointValuePlaceholders(GameCard gameCard)
         {
-            var pointValuePlaceholderRegex = new Regex(@"\{PointValue\}");
-            var matches = pointValuePlaceholderRegex.Matches(gameCard.CardText);
-
-            foreach (Match match in matches)
-            {
-                gameCard.CardText = gameCard.CardText.Replace(match.Value, gameCard.PointValue.ToString());
-            }
 
             return gameCard;
         }

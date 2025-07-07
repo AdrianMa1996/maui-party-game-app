@@ -43,6 +43,12 @@ namespace KnockKnockApp.ViewModels
         public AccountInformation accountInformation;
 
         [ObservableProperty]
+        public bool isShowingSoloGameModeCollection = true;
+
+        [ObservableProperty]
+        public bool isShowingTeamGameModeCollection = false;
+
+        [ObservableProperty]
         public ObservableCollection<GameMode> gameModeCollection = new ObservableCollection<GameMode>();
 
         [ObservableProperty]
@@ -51,7 +57,23 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public async void RefreshGameModeCollection()
         {
-            GameModeCollection = new ObservableCollection<GameMode>(await _gameModeRepository.GetGameModesAsync());
+            GameModeCollection = new ObservableCollection<GameMode>(await _gameModeRepository.GetGameModesAsync(IsShowingTeamGameModeCollection, IsShowingSoloGameModeCollection));
+        }
+
+        [RelayCommand]
+        public void ShowSoloGameModeCollection()
+        {
+            IsShowingTeamGameModeCollection = false;
+            IsShowingSoloGameModeCollection = true;
+            RefreshGameModeCollection();
+        }
+
+        [RelayCommand]
+        public void ShowTeamGameModeCollection()
+        {
+            IsShowingTeamGameModeCollection = true;
+            IsShowingSoloGameModeCollection = false;
+            RefreshGameModeCollection();
         }
 
         [RelayCommand]

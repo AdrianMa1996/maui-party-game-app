@@ -6,49 +6,53 @@ namespace KnockKnockApp.Mapper
 {
     public class GameModeMapper : IGameModeMapper
     {
-        private readonly IGameModeAndCardSetBindingRepository _gameModeAndCardSetBindingRepository;
-        private readonly ICardSetRepository _cardSetRepository;
-        private readonly IGameCardRepository _gameCardRepository;
+        private readonly ITemplateRepository _templateRepository;
+        private readonly ITemplateSlotRepository _templateSlotRepository;
+        private readonly IPlayedGameRepository _playedGameRepository;
 
-        public GameModeMapper(IGameModeAndCardSetBindingRepository gameModeAndCardSetBindingRepository, ICardSetRepository cardSetRepository, IGameCardRepository gameCardRepository)
+        private Random _random = new Random();
+
+        public GameModeMapper(ITemplateRepository templateRepository, ITemplateSlotRepository templateSlotRepository, IPlayedGameRepository playedGameRepository)
         {
-            _gameModeAndCardSetBindingRepository = gameModeAndCardSetBindingRepository;
-            _cardSetRepository = cardSetRepository;
-            _gameCardRepository = gameCardRepository;
+            _templateRepository = templateRepository;
+            _templateSlotRepository = templateSlotRepository;
+            _playedGameRepository = playedGameRepository;
         }
 
         public async Task<GameModeDto> ConvertToDtoAsync(GameMode gameMode)
         {
+            var templates = await _templateRepository.GetTemplatesByGameModeIdAsync(gameMode.GameModeID);
+
+            var template = new Template();
+            var validTemplateFound = false;
+            while (validTemplateFound == false)
+            {
+                int randomNumber = _random.Next(templates.Count);
+                template = templates[randomNumber];
+
+                var last3PlayedGames = await _playedGameRepository.GetLast3PlayedGamesAsync();
+                if (last3PlayedGames.Count > 0 && last3PlayedGames[0].TemplateID == template.TemplateID)
+                {
+                    continue;
+                }
+
+                if (template.ContainsAdvertising && last3PlayedGames.Count < 3)
+                {
+                    continue;
+                }
+
+                validTemplateFound = true;
+            }
+
+            var templateSlots = await _templateSlotRepository.GetTemplateSlotsByTemplateIdAsync(template.TemplateID);
+
             var gameModeDto = new GameModeDto()
             {
                 GameModeDetails = gameMode,
-                CardSets = await GetCardSetDtoListAsync(gameMode)
+                TemplateDetails = template,
+                TemplateSlots = templateSlots
             };
             return gameModeDto;
-        }
-
-        private async Task<List<CardSetDto>> GetCardSetDtoListAsync(GameMode gameMode)
-        {
-            var cardSetDtoList = new List<CardSetDto>();
-
-            var gameModeAndCardSetBindingList = await _gameModeAndCardSetBindingRepository.GetGameModeAndCardSetBindingsByGameModeIdAsync(gameMode.GameModeID);
-
-            foreach (var gameModeAndCardSetBinding in gameModeAndCardSetBindingList)
-            {
-                var cardSet = await _cardSetRepository.GetCardSetByIdAsync(gameModeAndCardSetBinding.CardSetID);
-                var gameCardList = await _gameCardRepository.GetGameCardListByCardSetIdAsync(cardSet.CardSetID);
-                var cardSetDto = new CardSetDto()
-                {
-                    CardSetDetails = cardSet,
-                    GameModeBindingDetails = gameModeAndCardSetBinding,
-                    GameModeDetails = gameMode,
-                    GameCards = gameCardList
-                };
-
-                cardSetDtoList.Add(cardSetDto);
-            }
-
-            return cardSetDtoList;
         }
     }
 }

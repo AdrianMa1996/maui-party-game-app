@@ -110,10 +110,13 @@
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
         </ScrollView>
+
+        <ActivityIndicator x:Key="GameModeCollectionActivityIndicator" IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
     </ContentPage.Resources>
 
     <Grid BackgroundColor="{StaticResource Violet}" >
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -131,11 +134,20 @@
             <Label Text="Spielmodi" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" FontSize="26" LineHeight="0.8"/>
         </Grid>
 
-        <ContentView x:Name="GameModeContentView" Grid.Row="1" >
+        <Grid Grid.Row="1" Padding="25,0,25,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Clicked="ButtonClickedShowSoloGameModeCollection" Text="Solo" FontFamily="BowlbyOneSC" FontSize="22" TextColor="{StaticResource Violet}" Padding="0,0" CornerRadius="15" BackgroundColor="{StaticResource Gold}" Margin="0,0,5,0"/>
+            <Button Grid.Column="1" Clicked="ButtonClickedShowTeamGameModeCollection" Text="Team" FontFamily="BowlbyOneSC" FontSize="22" TextColor="{StaticResource Violet}" Padding="0,0" CornerRadius="15" BackgroundColor="{StaticResource Gold}" Margin="5,0,0,0"/>
+        </Grid>
+
+        <ContentView x:Name="GameModeContentView" Grid.Row="2" >
             <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </ContentView>
 
-        <Grid Grid.Row="2" BackgroundColor="{StaticResource Gray700}" Padding="5">
+        <Grid Grid.Row="3" BackgroundColor="{StaticResource Gray700}" Padding="5">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding NavigateToManagePlayersCommand}"/>
             </Grid.GestureRecognizers>

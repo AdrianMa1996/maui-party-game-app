@@ -20,13 +20,23 @@ namespace KnockKnockApp.Repositories
             _localizationService = localizationService;
         }
 
-        public async Task<List<GameMode>> GetGameModesAsync()
+        public async Task<List<GameMode>> GetGameModesAsync(bool getTeamModes = true, bool getSoloModes = true)
         {
             var cultureCode = _localizationService.GetCurrentLocalization().Culture.Name;
             var gameModeList = await _dbConnection.Table<GameMode>().Where(gameMode => gameMode.Language == cultureCode).ToListAsync();
             if (gameModeList.Count == 0)
             {
                 gameModeList = await _dbConnection.Table<GameMode>().Where(gameMode => gameMode.Language == "en-GB").ToListAsync();
+            }
+
+            if (getTeamModes == true && getSoloModes == false)
+            {
+                gameModeList = gameModeList.Where(gameMode => gameMode.IsTeamGameMode == true).ToList();
+            }
+
+            if (getTeamModes == false && getSoloModes == true)
+            {
+                gameModeList = gameModeList.Where(gameMode => gameMode.IsTeamGameMode == false).ToList();
             }
 
             return gameModeList;

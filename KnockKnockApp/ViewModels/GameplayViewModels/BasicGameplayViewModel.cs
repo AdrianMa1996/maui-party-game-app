@@ -114,7 +114,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [RelayCommand]
         public async void PointsToTeamOne()
         {
-            _teamManagementService.AddGamePointsToTeamOne(CurrentCard.GameCardDetails.PointValue);
+            _teamManagementService.AddGamePointsToTeamOne(1);
             TeamOne = new Team("TeamOne", 0);
             TeamOne = _teamManagementService.GetTeamOne();
             DisplayNextCard();
@@ -123,7 +123,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         [RelayCommand]
         public async void PointsToTeamTwo()
         {
-            _teamManagementService.AddGamePointsToTeamTwo(CurrentCard.GameCardDetails.PointValue);
+            _teamManagementService.AddGamePointsToTeamTwo(1);
             TeamTwo = new Team("TeamTwo", 0);
             TeamTwo = _teamManagementService.GetTeamTwo();
             DisplayNextCard();
