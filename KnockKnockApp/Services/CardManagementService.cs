@@ -193,7 +193,7 @@ namespace KnockKnockApp.Services
                 return false;
             }
 
-            var last100PlayedCards = await _playedCardRepository.GetLast100PlayedCardsAsync();
+            var last100PlayedCards = await _playedCardRepository.GetLast80PlayedCardsAsync();
             if (last100PlayedCards.Any(pc => pc.GameCardID== gameCard.GameCardID))
             {
                 return false;

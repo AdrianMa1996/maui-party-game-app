@@ -21,9 +21,10 @@ namespace KnockKnockApp.Repositories
             await _dbConnection.InsertAsync(playedCard);
         }
 
-        public async Task<List<PlayedCard>> GetLast100PlayedCardsAsync()
+
+        public async Task<List<PlayedCard>> GetLast80PlayedCardsAsync()
         {
-            var playedCardList = await _dbConnection.Table<PlayedCard>().OrderByDescending(card => card.PlayedCardID).Take(100).ToListAsync();
+            var playedCardList = await _dbConnection.Table<PlayedCard>().OrderByDescending(card => card.PlayedCardID).Take(80).ToListAsync();
             return playedCardList;
         }
     }
