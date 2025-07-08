@@ -28,7 +28,7 @@
                         <Image Source="icon_arrow_right_gold.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" Rotation="180"/>
                     </HorizontalStackLayout>
                 </Frame>
-                <Label Text="Mitspieler" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" FontSize="26" LineHeight="0.8"/>
+                <Label Text="Mitspieler" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Open Sans" FontAttributes="Bold" TextColor="{StaticResource Gold}" FontSize="30" LineHeight="0.8"/>
             </Grid>
 
             <!--<Image Grid.Row="1" Grid.RowSpan="2" Source="logo_basic_ohne_hintergrund.png" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="50,25,50,0"/>-->
@@ -39,7 +39,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Text="Trage die Mitspieler in das Textfeld ein und füge sie mit einem Klick auf das Pluszeichen der Spielerliste hinzu." Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1" Margin="15,0,15,0"/>
+                    <Label Text="Trage die Mitspieler in das Textfeld ein und füge sie mit einem Klick auf das Pluszeichen der Spielerliste hinzu" Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="20" TextColor="White" LineHeight="1.1" Margin="15,0,15,0"/>
                     <FlexLayout x:Name="ListPlayers" Grid.Row="1" BindableLayout.ItemsSource="{Binding AllPlayers}" Wrap="Wrap" AlignContent="End">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
