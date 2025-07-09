@@ -39,13 +39,11 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackLayout x:Name="LedOne" Grid.Column="0" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
             <StackLayout x:Name="LedTwo" Grid.Column="1" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
             <StackLayout x:Name="LedThree" Grid.Column="2" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
             <StackLayout x:Name="LedFour" Grid.Column="3" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
-            <StackLayout x:Name="LedFive" Grid.Column="4" BackgroundColor="{StaticResource Gray300}" Margin="5, 0"/>
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1">

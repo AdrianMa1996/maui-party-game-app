@@ -112,47 +112,35 @@ public partial class PunishmentGameView : ContentView
     {
         switch (remainingAttempts)
         {
-            case 5:
+            case 4:
                 LedOne.BackgroundColor = grayLedColor;
                 LedTwo.BackgroundColor = grayLedColor;
                 LedThree.BackgroundColor = grayLedColor;
                 LedFour.BackgroundColor = grayLedColor;
-                LedFive.BackgroundColor = grayLedColor;
                 break;
-            case 4:
+            case 3:
                 LedOne.BackgroundColor = greenLedColor;
                 LedTwo.BackgroundColor = grayLedColor;
                 LedThree.BackgroundColor = grayLedColor;
                 LedFour.BackgroundColor = grayLedColor;
-                LedFive.BackgroundColor = grayLedColor;
-                break;
-            case 3:
-                LedOne.BackgroundColor = greenLedColor;
-                LedTwo.BackgroundColor = greenLedColor;
-                LedThree.BackgroundColor = grayLedColor;
-                LedFour.BackgroundColor = grayLedColor;
-                LedFive.BackgroundColor = grayLedColor;
                 break;
             case 2:
                 LedOne.BackgroundColor = greenLedColor;
                 LedTwo.BackgroundColor = greenLedColor;
-                LedThree.BackgroundColor = greenLedColor;
+                LedThree.BackgroundColor = grayLedColor;
                 LedFour.BackgroundColor = grayLedColor;
-                LedFive.BackgroundColor = grayLedColor;
                 break;
             case 1:
                 LedOne.BackgroundColor = greenLedColor;
                 LedTwo.BackgroundColor = greenLedColor;
                 LedThree.BackgroundColor = greenLedColor;
-                LedFour.BackgroundColor = greenLedColor;
-                LedFive.BackgroundColor = grayLedColor;
+                LedFour.BackgroundColor = grayLedColor;
                 break;
             case 0:
                 LedOne.BackgroundColor = greenLedColor;
                 LedTwo.BackgroundColor = greenLedColor;
                 LedThree.BackgroundColor = greenLedColor;
                 LedFour.BackgroundColor = greenLedColor;
-                LedFive.BackgroundColor = greenLedColor;
                 isGameOver = true;
                 break;
 
@@ -164,17 +152,16 @@ public partial class PunishmentGameView : ContentView
             LedTwo.BackgroundColor = redLedColor;
             LedThree.BackgroundColor = redLedColor;
             LedFour.BackgroundColor = redLedColor;
-            LedFive.BackgroundColor = redLedColor;
         }
 
         CurrentPokerCard.Source = currentPokerCard.CardImage;
 
         GameOverview.IsVisible = !isGameOver && !startNewAttempt;
-        OverviewNumberOfKnockers.Text = (6 - remainingAttempts).ToString();
+        OverviewNumberOfKnockers.Text = (5 - remainingAttempts).ToString();
         RemainingAttempts.Text = remainingAttempts.ToString();
 
         RestartPunishmentGameText.IsVisible = startNewAttempt;
-        RestartNumberOfKnockers.Text = (6 - remainingAttempts).ToString();
+        RestartNumberOfKnockers.Text = (5 - remainingAttempts).ToString();
 
         EndPunishmentGameText.IsVisible= isGameOver && !startNewAttempt;
 
@@ -246,7 +233,7 @@ public partial class PunishmentGameView : ContentView
 
         isGameOver = false;
         startNewAttempt = false;
-        remainingAttempts = 5;
+        remainingAttempts = 4;
 
         currentPokerCard = GetNextPokerCard();
         RefreshPunishmentGameView();

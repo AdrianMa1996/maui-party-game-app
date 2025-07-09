@@ -46,12 +46,12 @@
                     <Image Source="icon_arrow_right_gold.png" Aspect="AspectFill" HeightRequest="25" WidthRequest="25" Rotation="180"/>
                 </HorizontalStackLayout>
             </Frame>
-            <Label Text="Kartenspiel" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="BowlbyOneSC" TextColor="{StaticResource Gold}" FontSize="26" LineHeight="0.8"/>
+            <Label Text="Kartenspiel" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Open Sans" FontAttributes="Bold" TextColor="{StaticResource Gold}" FontSize="30" LineHeight="0.8"/>
         </Grid>
 
         <VerticalStackLayout Grid.Row="1" Margin="15,0,15,10">
-            <Label Text="So funktioniert's: Holt euch euer KnockKnock-Kartenspiel und folgt der beiliegenden Anleitung. Wenn ihr eine Karte zieht, die ein Minispiel in der App erfordert, könnt ihr hier das passende Spiel auswählen." FontSize="20"  Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" LineHeight="1.1"/>
-            <Label Text="(Erhältlich auf Amazon!)" VerticalOptions="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource Gold}" LineHeight="1.1" FontAttributes="Bold" TextDecorations="Underline">
+            <Label Text="So funktioniert's: Holt euch euer KnockKnock-Kartenspiel. Wenn ihr eine Karte zieht, die ein Minispiel in der App erfordert, könnt ihr dieses hier auswählen." FontSize="20"  Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="White" LineHeight="1.1"/>
+            <Label Text="(Erhältlich auf Amazon)" VerticalOptions="Center" HorizontalOptions="Fill" HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource Gold}" LineHeight="1.1" FontAttributes="Bold" TextDecorations="Underline">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OpenAmazonKnockKnockCardGameCommand}"/>
                 </Label.GestureRecognizers>
