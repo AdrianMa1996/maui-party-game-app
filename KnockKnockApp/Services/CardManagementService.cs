@@ -179,7 +179,7 @@ namespace KnockKnockApp.Services
                     var cardSetDto = await _cardSetMapper.ConvertToDtoAsync(cardSet);
                     int randomNumber = _random.Next(cardSetDto.GameCards.Count);
                     gameCard = cardSetDto.GameCards[randomNumber];
-                    isValidForPlay = await CheckIfGameCardIsValidCardAsync(gameCard);
+                    isValidForPlay = true;
                 }
             }
 
