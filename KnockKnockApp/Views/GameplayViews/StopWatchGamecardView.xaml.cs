@@ -54,6 +54,22 @@ public partial class StopWatchGamecardView : ContentView
         set => SetValue(CurrentGameModeProperty, value);
     }
 
+    public static readonly BindableProperty TemplateSizeProperty = BindableProperty.Create(nameof(TemplateSize), typeof(int), typeof(StopWatchGamecardView));
+
+    public int TemplateSize
+    {
+        get => (int)GetValue(TemplateSizeProperty);
+        set => SetValue(TemplateSizeProperty, value);
+    }
+
+    public static readonly BindableProperty NumberOfPlayedTemplateCardsProperty = BindableProperty.Create(nameof(NumberOfPlayedTemplateCards), typeof(int), typeof(StopWatchGamecardView));
+
+    public int NumberOfPlayedTemplateCards
+    {
+        get => (int)GetValue(NumberOfPlayedTemplateCardsProperty);
+        set => SetValue(NumberOfPlayedTemplateCardsProperty, value);
+    }
+
     public static readonly BindableProperty TeamOneProperty = BindableProperty.Create(nameof(TeamOne), typeof(Team), typeof(StopWatchGamecardView));
 
     public Team TeamOne

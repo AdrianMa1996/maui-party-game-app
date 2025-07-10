@@ -71,6 +71,12 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public GridLength keyboardHeight = new GridLength(0);
 
         [ObservableProperty]
+        public int templateSize;
+
+        [ObservableProperty]
+        public int numberOfPlayedTemplateCards;
+
+        [ObservableProperty]
         public ObservableCollection<Player> allPlayers;
 
         [ObservableProperty]
@@ -109,6 +115,8 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
                 _deviceOrientationService.SetDeviceOrientation(DisplayOrientation.Portrait);
             }
             CurrentCard = nextCard;
+            TemplateSize = _cardManagementService.GetTemplateSize();
+            NumberOfPlayedTemplateCards = _cardManagementService.GetNumberOfPlayedTemplateCards();
         }
 
         [RelayCommand]
@@ -150,7 +158,7 @@ namespace KnockKnockApp.ViewModels.GameplayViewModels
         public async void SetupGameAndDrawCard()
         {
             await _cardManagementService.SetupAsync(CurrentGameMode);
-            CurrentCard = await _cardManagementService.DrawNextCardAsync();
+            DisplayNextCard();
         }
 
         [RelayCommand]

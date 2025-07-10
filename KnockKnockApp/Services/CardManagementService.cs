@@ -24,6 +24,9 @@ namespace KnockKnockApp.Services
         private Stack<GameCard?> _cardDeck = new();
         private bool isGameOver = false;
 
+        public int templateSize = 0;
+        public int numberOfPlayedTemplateCards = 0;
+
         public CardManagementService(IGameModeMapper gameModeMapper, ICardSetMapper cardSetMapper, IGameCardMapper gameCardMapper, IGameCardRepository gameCardRepository, ICardSetRepository cardSetRepository, IPlayerManagementService playerManagementService, ICardTextPlaceholderService cardTextPlaceholderService, ITeamManagementService teamManagementService, IPlayedCardRepository playedCardRepository, IPlayedGameRepository playedGameRepository)
         {
             _gameModeMapper = gameModeMapper;
@@ -69,6 +72,7 @@ namespace KnockKnockApp.Services
             if (gameCard.GameCardID == 0)
             {
                 gameCard = await GetRandomTemplateCardAsync(gameCard);
+                numberOfPlayedTemplateCards = numberOfPlayedTemplateCards + 1;
                 PlaceCardInCardDeck(gameCard);
                 await PlaceFollowUpCardsAsync(gameCard.FollowUpCardID, gameCard.IntervalToFollowUp);
                 gameCard = _cardDeck.Pop();
@@ -107,6 +111,7 @@ namespace KnockKnockApp.Services
                     IntervalToFollowUp = 0,
                 });
             }
+            templateSize = _gameModeDto.TemplateSlots.Count;
         }
 
         private async Task PlaceFollowUpCardsAsync(int followUpCardID, int followUpInterval = 0, bool belongsToFinisherCard = false)
@@ -200,6 +205,16 @@ namespace KnockKnockApp.Services
             }
 
             return true;
+        }
+
+        public int GetTemplateSize()
+        {
+            return templateSize;
+        }
+
+        public int GetNumberOfPlayedTemplateCards()
+        {
+            return numberOfPlayedTemplateCards;
         }
     }
 }

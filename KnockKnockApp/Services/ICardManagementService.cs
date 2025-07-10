@@ -7,5 +7,7 @@ namespace KnockKnockApp.Services
     {
         public Task SetupAsync(GameMode gameMode);
         public Task<GameCardDto?> DrawNextCardAsync();
+        public int GetTemplateSize();
+        public int GetNumberOfPlayedTemplateCards();
     }
 }
