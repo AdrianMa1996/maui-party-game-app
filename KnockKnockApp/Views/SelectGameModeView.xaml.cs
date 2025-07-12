@@ -1,5 +1,6 @@
 using KnockKnockApp.ViewModels;
 using KnockKnockApp.Services;
+using Microsoft.Maui.Controls;
 
 namespace KnockKnockApp.Views;
 
@@ -21,9 +22,9 @@ public partial class SelectGameModeView : ContentPage
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                if (Resources.TryGetValue("GameModeCollectionView", out var grid))
+                if (Resources.TryGetValue("GameModeCollectionView", out var template2))
                 {
-                    GameModeContentView.Content = grid as View;
+                    GameModeContentView.Content = (template2 as DataTemplate)?.CreateContent() as View;
                 }
             });
         });
@@ -37,67 +38,35 @@ public partial class SelectGameModeView : ContentPage
 
     private async void ButtonClickedShowTeamGameModeCollection(object sender, EventArgs e)
     {
-        await Task.Run(() =>
+        if (Resources.TryGetValue("GameModeCollectionActivityIndicator", out var template1))
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                if (Resources.TryGetValue("GameModeCollectionActivityIndicator", out var grid))
-                {
-                    GameModeContentView.Content = grid as View;
-                }
-            });
-        });
+            GameModeContentView.Content = (template1 as DataTemplate)?.CreateContent() as View;
+            await Task.Delay(50);
+        }
 
-        await Task.Run(() =>
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                _viewModel.ShowTeamGameModeCollection();
-            });
-        });
+        _viewModel.ShowTeamGameModeCollection();
 
-        await Task.Run(() =>
+        if (Resources.TryGetValue("GameModeCollectionView", out var template2))
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                if (Resources.TryGetValue("GameModeCollectionView", out var grid))
-                {
-                    GameModeContentView.Content = grid as View;
-                }
-            });
-        });
+            await Task.Delay(50);
+            GameModeContentView.Content = (template2 as DataTemplate)?.CreateContent() as View;
+        }
     }
 
     private async void ButtonClickedShowSoloGameModeCollection(object sender, EventArgs e)
     {
-        await Task.Run(() =>
+        if (Resources.TryGetValue("GameModeCollectionActivityIndicator", out var template1))
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                if (Resources.TryGetValue("GameModeCollectionActivityIndicator", out var grid))
-                {
-                    GameModeContentView.Content = grid as View;
-                }
-            });
-        });
+            GameModeContentView.Content = (template1 as DataTemplate)?.CreateContent() as View;
+            await Task.Delay(50);
+        }
 
-        await Task.Run(() =>
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                _viewModel.ShowSoloGameModeCollection();
-            });
-        });
+        _viewModel.ShowSoloGameModeCollection();
 
-        await Task.Run(() =>
+        if (Resources.TryGetValue("GameModeCollectionView", out var template2))
         {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                if (Resources.TryGetValue("GameModeCollectionView", out var grid))
-                {
-                    GameModeContentView.Content = grid as View;
-                }
-            });
-        });
+            await Task.Delay(50);
+            GameModeContentView.Content = (template2 as DataTemplate)?.CreateContent() as View;
+        }
     }
 }

@@ -8,7 +8,8 @@
              NavigatedTo="ContentPage_NavigatedTo">
 
     <ContentPage.Resources>
-        <ScrollView x:Key="GameModeCollectionView">
+        <DataTemplate x:Key="GameModeCollectionView">
+        <ScrollView>
             <VerticalStackLayout x:Name="GameModesList" BindableLayout.ItemsSource="{Binding GameModeCollection}" Spacing="10" Padding="25,20,25,25">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -110,8 +111,11 @@
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
         </ScrollView>
+        </DataTemplate>
 
-        <ActivityIndicator x:Key="GameModeCollectionActivityIndicator" IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <DataTemplate x:Key="GameModeCollectionActivityIndicator">
+            <ActivityIndicator IsRunning="True" Color="{StaticResource Gold}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </DataTemplate>
     </ContentPage.Resources>
 
     <Grid BackgroundColor="{StaticResource Violet}" >
