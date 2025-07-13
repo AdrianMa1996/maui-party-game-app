@@ -48,13 +48,13 @@ namespace KnockKnockApp.ViewModels
         [RelayCommand]
         public void OpenTermsOfUse()
         {
-            AppShell.Current.GoToAsync("TermsOfUseView", false);
+            Launcher.OpenAsync("https://knockknock-partygame.com/knockknock-app/nutzungsbedingungen");
         }
 
         [RelayCommand]
         public void OpenPrivacyPolicy()
         {
-            AppShell.Current.GoToAsync("PrivacyPolicyView", false);
+            Launcher.OpenAsync("https://knockknock-partygame.com/knockknock-app/datenschutzbestimmungen");
         }
     }
 }

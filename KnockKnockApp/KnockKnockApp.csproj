@@ -162,8 +162,10 @@
 	  <None Remove="Resources\Images\icon_arrow_right_gold.png" />
 	  <None Remove="Resources\Images\icon_arrow_right_white.png" />
 	  <None Remove="Resources\Images\icon_close_black.png" />
+	  <None Remove="Resources\Images\icon_close_gold.png" />
 	  <None Remove="Resources\Images\icon_close_gray.png" />
 	  <None Remove="Resources\Images\icon_close_lightgray.png" />
+	  <None Remove="Resources\Images\icon_crown_gold.png" />
 	  <None Remove="Resources\Images\icon_dice_white.png" />
 	  <None Remove="Resources\Images\icon_edit_white.png" />
 	  <None Remove="Resources\Images\icon_information_gold.png" />
@@ -174,6 +176,7 @@
 	  <None Remove="Resources\Images\icon_settings_gold.png" />
 	  <None Remove="Resources\Images\icon_settings_white.png" />
 	  <None Remove="Resources\Images\icon_star_gold.png" />
+	  <None Remove="Resources\Images\icon_star_two_gold.png" />
 	  <None Remove="Resources\Images\image_bomb_explosion.png" />
 	  <None Remove="Resources\Images\image_time_bomb.png" />
 	  <None Remove="Resources\Images\logo_basic_ohne_hintergrund.png" />
