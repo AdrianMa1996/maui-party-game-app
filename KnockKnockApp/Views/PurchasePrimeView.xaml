@@ -18,7 +18,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="0.1*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -64,9 +63,9 @@
             <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Command="{Binding BuyPrimeSubscriptionCommand}" Text="STARTEN" FontFamily="BowlbyOneSC" FontSize="30" TextColor="{StaticResource Violet}" Padding="0,16" CornerRadius="15" BackgroundColor="{StaticResource Gold}"/>
         </VerticalStackLayout>
 
-        <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource VioletDark}" Padding="0,25,0,35">
-            <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" FontSize="18" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseCommand}"/>
-            <Button IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}" Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" FontSize="18" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyCommand}"/>
+        <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource VioletDark}" Padding="0,25,0,35">
+            <Button Text="Nutzungsbedingungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" FontSize="18" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenTermsOfUseCommand}"/>
+            <Button Text="Datenschutzbestimmungen" TextColor="{StaticResource Gray300}" BackgroundColor="Transparent" HorizontalOptions="Center" FontSize="18" Margin="0,10,0,0" Padding="0" MinimumHeightRequest="0" Command="{Binding OpenPrivacyPolicyCommand}"/>
         </StackLayout>
     </Grid>
 </ContentPage>
